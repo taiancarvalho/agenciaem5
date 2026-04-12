@@ -1,0 +1,39 @@
+{
+  "name": "agencyos-core",
+  "version": "0.1.0",
+  "description": "Sistema Operacional para Agencias de Marketing Digital — framework de agentes, tasks, templates e workflows",
+  "main": "index.js",
+  "bin": {
+    "agencyos": "bin/agencyos.js"
+  },
+  "files": [
+    "lib/",
+    "bin/",
+    "agents/",
+    "core/",
+    "clientes/_template/",
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "agency",
+    "marketing",
+    "automation",
+    "ai-agents",
+    "claude",
+    "framework"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^8.2.6",
+    "js-yaml": "^4.1.0",
+    "glob": "^10.4.4"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "provider": "wavespeed.ai",
+  "model": "google/nano-banana-2/text-to-image",
+  "input": {
+    "prompt": "Actor lock: Astrid, seed ugc_astrid_seed_28641, 28-year-old Brazilian woman with confident seductive adult-content creator energy, soft oval face with balanced proportions and subtle cheek fullness, feminine defined jawline with soft taper and clean chin contour, slim upturned nose with a lightly elevated tip and refined bridge, naturally rosy full lips with soft definition and a slightly fuller lower lip, almond dark brown eyes with a heavy seductive gaze and slightly lowered upper lids, warm neutral golden beige skin tone #C98A6B with natural satin finish, dark brown long smooth hair with soft natural bends through the ends, center part slightly offset, small gold hoop earrings, thin delicate necklace. Scenario: Astrid is standing in a living room at night, wearing a tight white strapless dress fitted close to the body, holding a champagne glass in one hand and a red handbag in the other, party makeup with defined eyes, soft lip gloss, believable glam styling, sensual but realistic creator energy, full-body portrait, elegant natural pose, not fashion-editorial perfection. Environment: upscale but lived-in living room at night, warm practical lamps, soft reflections on furniture, subtle city light or window darkness in the background, realistic interior textures, evening party atmosphere, candid luxury-home mood without looking staged. Camera: simulated rear iPhone camera capture, handheld human-shot vertical still, full-body framing, slight three-quarter perspective, natural smartphone lens behavior, mild consumer HDR, realistic highlight handling on white fabric and skin. Realism injection: visible skin pores on cheeks and nose, fine under-eye texture, subtle tonal variation around mouth and nostrils, natural clavicle and arm skin detail, realistic white dress fabric tension and fold behavior, champagne glass reflections with imperfect light scatter, handbag leather texture, slight sensor grain and compression texture, a few fine flyaway hairs around the crown and temples, believable body proportions and hand anatomy.",
+    "aspect_ratio": "9:16",
+    "resolution": "2k",
+    "output_format": "png"
+  },
+  "notes": {
+    "source_actor_card": ".claude/skills/ugc-creator/actors/astrid.json",
+    "target_output": "Astrid standing in a living room at night in a tight white strapless dress, with champagne glass and red handbag, no image reference"
+  }
+}

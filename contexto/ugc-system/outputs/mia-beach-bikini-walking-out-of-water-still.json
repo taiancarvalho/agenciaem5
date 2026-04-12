@@ -1,0 +1,52 @@
+{
+  "actor_identity_card": {
+    "actor_id": "mia_cleangirl_v1",
+    "display_name": "Mia",
+    "prompt_seed": "ugc_mia_seed_24031",
+    "age": 24,
+    "heritage": "mixed Black and Latina",
+    "vibe": "clean girl energy",
+    "face": {
+      "shape": "soft oval face with gentle cheek fullness and balanced proportions",
+      "jawline": "soft feminine jawline with light taper and clean mandibular contour"
+    },
+    "eyes": {
+      "shape": "almond eyes with softly lifted outer corners",
+      "color": "deep dark brown"
+    },
+    "skin": {
+      "tone_hex": "#C2875E",
+      "undertone": "warm golden",
+      "finish": "dewy natural finish"
+    },
+    "hair": {
+      "color": "dark brown with caramel highlights",
+      "style": "loose defined waves with clean girl polish and natural separation",
+      "length": "mid-chest length",
+      "parting": "slightly off-center"
+    },
+    "distinguishing_marks": [
+      "small beauty mark below the left eye"
+    ],
+    "signature_accessories": [
+      "gold hoop earrings",
+      "dainty chain necklace"
+    ]
+  },
+  "shot_plan": {
+    "shot_id": "shot_01",
+    "shot_type": "walk_and_talk_lifestyle",
+    "camera_profile": "rear_cam",
+    "intent": "Mia standing and stepping out of the ocean in an aqua green bikini, natural beach lifestyle still with believable movement and wet-skin realism."
+  },
+  "prompt_stack": {
+    "character_lock": "Actor lock: Mia, seed ugc_mia_seed_24031, 24-year-old mixed Black and Latina woman with clean girl energy, soft oval face, soft feminine tapered jawline, almond deep dark brown eyes, warm golden skin tone #C2875E with dewy natural finish, small beauty mark below the left eye, dark brown wavy hair with caramel highlights, mid-chest length, slightly off-center part, gold hoop earrings, dainty chain necklace.",
+    "scenario": "Scenario: Mia is standing and walking out of the ocean toward shore, wearing an aqua green bikini, body relaxed and natural, one foot stepping forward through shallow water, calm confident expression, effortless summer energy, not posed like a swimwear campaign, more like a candid iPhone beach capture.",
+    "environment": "Environment: shoreline with small waves around her legs, wet sand reflecting warm sunlight, beach horizon behind her, soft ocean texture and mild sparkle on the water, realistic late afternoon beach setting, light breeze, natural summer atmosphere without editorial staging.",
+    "camera": "Camera: simulated rear iPhone camera capture, handheld human-shot beach still, medium full-body to three-quarter framing, slightly low-to-level perspective from shore, vertical composition, natural smartphone lens perspective with mild edge distortion, consumer HDR with imperfect highlight control on water reflections.",
+    "realism_injection": "Realism injection: visible skin pores on face and shoulders, stray wet hairs clinging unevenly to forehead, temples, neck, and collarbone, under-eye texture with fine natural creasing, uneven skin tone with realistic warmth shifts and damp skin sheen, bikini fabric texture darkened slightly by water and stretched naturally, environmental noise with fine grain and water detail, lighting imperfection from hard sunlight, reflected ocean bounce, and patchy specular highlights, camera artifacts with slight sharpening halos and smartphone compression, nail detail with realistic cuticles and damp fingers, jewelry physics with hoop earrings and dainty chain reacting naturally to water, gravity, and movement.",
+    "negative_prompt": "beauty filter, porcelain skin, plastic CGI texture, over-symmetry, luxury swimwear campaign polish, studio beauty lighting, fake ocean backdrop, floating jewelry, dry hair with no wet clumping, warped bikini fit, extra fingers, distorted limbs, missing beauty mark, wrong hair color, wrong skin undertone, oversmoothed wet skin, fake cinematic bokeh, editorial runway pose, impossible water behavior."
+  },
+  "full_prompt": "Actor lock: Mia, seed ugc_mia_seed_24031, 24-year-old mixed Black and Latina woman with clean girl energy, soft oval face, soft feminine tapered jawline, almond deep dark brown eyes, warm golden skin tone #C2875E with dewy natural finish, small beauty mark below the left eye, dark brown wavy hair with caramel highlights, mid-chest length, slightly off-center part, gold hoop earrings, dainty chain necklace. Scenario: Mia is standing and walking out of the ocean toward shore, wearing an aqua green bikini, body relaxed and natural, one foot stepping forward through shallow water, calm confident expression, effortless summer energy, not posed like a swimwear campaign, more like a candid iPhone beach capture. Environment: shoreline with small waves around her legs, wet sand reflecting warm sunlight, beach horizon behind her, soft ocean texture and mild sparkle on the water, realistic late afternoon beach setting, light breeze, natural summer atmosphere without editorial staging. Camera: simulated rear iPhone camera capture, handheld human-shot beach still, medium full-body to three-quarter framing, slightly low-to-level perspective from shore, vertical composition, natural smartphone lens perspective with mild edge distortion, consumer HDR with imperfect highlight control on water reflections. Realism injection: visible skin pores on face and shoulders, stray wet hairs clinging unevenly to forehead, temples, neck, and collarbone, under-eye texture with fine natural creasing, uneven skin tone with realistic warmth shifts and damp skin sheen, bikini fabric texture darkened slightly by water and stretched naturally, environmental noise with fine grain and water detail, lighting imperfection from hard sunlight, reflected ocean bounce, and patchy specular highlights, camera artifacts with slight sharpening halos and smartphone compression, nail detail with realistic cuticles and damp fingers, jewelry physics with hoop earrings and dainty chain reacting naturally to water, gravity, and movement.",
+  "negative_prompt": "beauty filter, porcelain skin, plastic CGI texture, over-symmetry, luxury swimwear campaign polish, studio beauty lighting, fake ocean backdrop, floating jewelry, dry hair with no wet clumping, warped bikini fit, extra fingers, distorted limbs, missing beauty mark, wrong hair color, wrong skin undertone, oversmoothed wet skin, fake cinematic bokeh, editorial runway pose, impossible water behavior"
+}

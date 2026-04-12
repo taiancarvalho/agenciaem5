@@ -1,0 +1,18 @@
+{
+  "provider": "wavespeed.ai",
+  "model": "google/nano-banana-2/edit",
+  "input": {
+    "images": [
+      "img-referencias/astrid-headshot-ref.png"
+    ],
+    "prompt": "Transform the referenced woman into a full-body vertical smartphone photo while preserving her exact identity, facial geometry, seductive half-lidded gaze, dark brown eyes, slightly upturned nose, naturally rosy lips, dark brown hair, warm neutral golden beige skin tone, and overall facial proportions. Scene: she is standing in a living room at night, wearing a tight white strapless dress fitted close to the body, holding a champagne glass in one hand and a red handbag in the other, party makeup with defined eyes and soft lip gloss, elegant sensual creator energy, believable realistic pose, not editorial perfection. Environment: warm living room at night with practical lamps, realistic furniture and interior textures, subtle evening ambiance, soft window darkness in the background, candid home-party mood. Camera: simulated rear iPhone camera capture, handheld human-shot full-body still, vertical framing, slight three-quarter angle, natural smartphone lens perspective, realistic highlight handling on white fabric and skin, consumer HDR, slight sensor grain and compression texture. Keep realistic skin texture, pores, under-eye detail, hair flyaways, dress fabric folds, glass reflections, and handbag material texture.",
+    "aspect_ratio": "9:16",
+    "resolution": "2k",
+    "output_format": "png"
+  },
+  "notes": {
+    "source_actor_card": ".claude/skills/ugc-creator/actors/astrid.json",
+    "reference_image": "img-referencias/astrid-headshot-ref.png",
+    "target_output": "Astrid standing in a living room at night in a tight white strapless dress, with champagne glass and red handbag, using image reference"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "actor_id": "astrid_seductress_v1",
+  "display_name": "Astrid",
+  "age": 28,
+  "heritage": "Brazilian",
+  "vibe": "confident seductive adult-content creator energy with believable casual realism",
+  "prompt_seed": "ugc_astrid_seed_28641",
+  "face": {
+    "shape": "soft oval face with balanced proportions and subtle cheek fullness",
+    "forehead": "medium-height forehead with smooth natural hairline",
+    "nose": "slim upturned nose with a lightly elevated tip and refined bridge",
+    "lips": "naturally rosy full lips with soft definition and slightly fuller lower lip",
+    "cheek_structure": "gentle cheek volume with soft contour, not sculpted",
+    "jawline": "feminine defined jawline with soft taper and clean chin contour"
+  },
+  "eyes": {
+    "shape": "almond eyes with a heavy seductive gaze and slightly lowered upper lids",
+    "color": "dark brown",
+    "spacing": "balanced natural spacing",
+    "upper_lid": "slightly hooded upper lid creating a half-lidded look",
+    "lower_lid": "soft lower lid with natural under-eye texture",
+    "lash_density": "medium natural lash density",
+    "brow_shape": "full softly arched brows with clean but not overly sharp edges"
+  },
+  "skin": {
+    "tone_hex": "#C98A6B",
+    "undertone": "warm neutral golden beige",
+    "finish": "natural satin finish with soft skin reflectivity",
+    "base_texture": "visible pores around nose and inner cheeks with natural skin grain",
+    "freckling": "minimal to none",
+    "under_eye_texture": "fine natural creasing with mild tonal depth",
+    "pigmentation_pattern": "slight warmth on cheeks and faint uneven tone around nostrils and mouth"
+  },
+  "hair": {
+    "color": "dark brown",
+    "style": "long smooth hair with soft natural bends through the ends",
+    "length": "mid-back length",
+    "density": "high density",
+    "parting": "center part slightly offset",
+    "flyaway_pattern": "fine halo flyaways around crown and temples"
+  },
+  "distinguishing_marks": [
+    "consistently seductive half-lidded gaze",
+    "slightly upturned nose tip visible in three-quarter angles",
+    "naturally rosy lip tone even without heavy makeup"
+  ],
+  "reference_headshot_file": "img-referencias/astrid-headshot-ref.png",
+  "signature_accessories": [
+    "small gold hoop earrings",
+    "thin delicate necklace"
+  ],
+  "outfit_variations": [
+    {
+      "look_id": "lingerie_soft_luxe",
+      "top": "black lace bralette",
+      "bottom": "matching black high-waist lingerie bottom",
+      "layer": "sheer black robe worn open",
+      "accessories": [
+        "small gold hoop earrings",
+        "thin delicate necklace"
+      ],
+      "color_story": [
+        "black",
+        "soft gold",
+        "warm skin neutrals"
+      ]
+    },
+    {
+      "look_id": "mirror_black_minimal",
+      "top": "black fitted spaghetti-strap dress",
+      "bottom": "not visible",
+      "layer": "none",
+      "accessories": [
+        "small gold hoop earrings",
+        "thin delicate necklace"
+      ],
+      "color_story": [
+        "black",
+        "soft gold",
+        "deep brown"
+      ]
+    },
+    {
+      "look_id": "home_creator_satin",
+      "top": "champagne satin cami",
+      "bottom": "cream lounge shorts",
+      "layer": "oversized ivory shirt worn open",
+      "accessories": [
+        "small gold hoop earrings"
+      ],
+      "color_story": [
+        "champagne",
+        "cream",
+        "ivory",
+        "soft gold"
+      ]
+    }
+  ],
+  "identity_lock": {
+    "must_match": [
+      "face.shape",
+      "face.nose",
+      "face.lips",
+      "face.jawline",
+      "eyes.shape",
+      "eyes.color",
+      "skin.tone_hex",
+      "skin.undertone",
+      "hair.color",
+      "hair.style",
+      "hair.length",
+      "hair.parting",
+      "distinguishing_marks",
+      "signature_accessories",
+      "prompt_seed"
+    ],
+    "may_vary": [
+      "expression_intensity",
+      "pose",
+      "outfit_variations",
+      "hand_position",
+      "background_micro_details",
+      "hair_smoothness_level",
+      "lip_gloss_intensity"
+    ],
+    "must_not_drift": [
+      "seductive eye shape and lid weight",
+      "nose geometry and tip angle",
+      "lip volume and natural rosy tone",
+      "brow thickness",
+      "hair color depth",
+      "overall facial proportions",
+      "jawline silhouette"
+    ]
+  }
+}

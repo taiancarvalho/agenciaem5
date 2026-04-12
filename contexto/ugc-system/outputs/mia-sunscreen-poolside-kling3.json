@@ -1,0 +1,18 @@
+{
+  "provider": "wavespeed.ai",
+  "model": "kwaivgi/kling-v3.0-pro/text-to-video",
+  "input": {
+    "prompt": "Actor lock: Mia, seed ugc_mia_seed_24031, 24-year-old mixed Black and Latina woman with clean girl energy, soft oval face, soft feminine tapered jawline, almond deep dark brown eyes, warm golden skin tone #C2875E with dewy natural finish, small beauty mark below the left eye, dark brown wavy hair with caramel highlights, mid-chest length, slightly off-center part, gold hoop earrings, dainty chain necklace. Scenario: Mia is poolside reviewing a sunscreen product in a relaxed first-person selfie, holding the sunscreen bottle close to camera with one hand while speaking naturally; expression is warm, confident, fresh, slightly smiling; implied line: this is the sunscreen I keep reaching for because it feels light, gives a healthy glow, and does not look greasy in the heat. Environment: lived-in upscale pool area, pale stone deck, blurred turquoise water, lounge chair with towel, tote bag and sandals off to one side, golden hour, low warm sunlight with soft sky fill and reflected pool bounce. Camera: simulated selfie front iPhone camera capture, arm-length distance, slightly high handheld angle, head-and-upper-torso framing, subtle handheld sway, face-priority focus with mild background softness and occasional micro-pumping. Realism injection: visible skin pores on nose and inner cheeks, stray hairs and halo flyaways catching backlight, under-eye texture with fine creasing, uneven skin tone with slight warmth and tonal variation around cheeks and mouth, realistic fabric texture, environmental noise and faint sensor grain in shadow zones, lighting imperfection from low sun and reflected pool bounce, camera artifacts including slight compression and local sharpening halos, nail detail with natural cuticles and realistic nail beds while holding the bottle, jewelry physics with hoop earrings and dainty chain responding naturally to posture and micro-movement.",
+    "negative_prompt": "beauty filter, porcelain skin, plastic CG skin, over-symmetry, luxury ad polish, perfect studio lighting, fake pool reflections, floating jewelry, glossy mannequin lips, overwhitened teeth, extra fingers, warped hand around product, identity drift, missing beauty mark, wrong hair color, wrong skin undertone, fake bokeh, waxy highlights, over-smoothed under-eyes",
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "cfg_scale": 0.5,
+    "sound": true,
+    "shot_type": "customize"
+  },
+  "notes": {
+    "requires_env": ["WAVESPEED_API_KEY"],
+    "source_actor_card": ".claude/skills/ugc-creator/actors/mia.json",
+    "target_output": "poolside selfie sunscreen review at golden hour"
+  }
+}
