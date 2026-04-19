@@ -1,0 +1,11 @@
+{
+  "attempt": "list ad accounts",
+  "response": {
+    "error": {
+      "message": "API access deactivated. To reactivate, go to developer.facebook.com and complete developer registration.",
+      "type": "OAuthException",
+      "code": 200,
+      "fbtrace_id": "ApNtXZ_VU6E2VZOxbU-2GRC"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+# Estrutura de pastas do cliente
+# Versao: 1.0
+# Usado por: agency-master (novo-cliente), todos os agentes
+
+cliente:
+  onboarding:
+    arquivos:
+      - briefing-original.md
+      - briefing-final.md
+      - contrato.md
+      - contato.md
+
+  estrategia:
+    arquivos:
+      - plano-estrategico.md
+      - analise-briefing.md
+
+  copy:
+    descricao: "Pecas de copy organizadas por ID (CR-XXX)"
+    arquivos_padrao:
+      - analise-icp.md
+      - (CR-XXX por tipo)
+
+  design:
+    diretorios:
+      - criativos/
+      - videos/
+      - landing-pages/
+      - exports/
+    arquivos_padrao:
+      - (CR-XXX por tipo com versionamento)
+
+  assets:
+    diretorios:
+      - logo/
+      - fotos/
+      - videos/
+      - produtos/
+
+  branding:
+    arquivos:
+      - cores.yaml
+      - fontes.yaml
+      - guia-estilo.md
+
+  setup-tecnico:
+    arquivos:
+      - acessos.md
+      - checklist-tracking.md
+      - status.md
+
+  trafego:
+    diretorios:
+      - (arquivos de estrutura de campanha)
+    arquivos_padrao:
+      - plano-growth.md (se growth ativo)
+
+  relatorios:
+    descricao: "Relatorios por periodo"
+
+  operacao:
+    arquivos:
+      - log-operacional.md
+      - log-performance-criativa.md
+      - log-growth.md
+      - proximos-passos.md
+    diretorios:
+      - historico/

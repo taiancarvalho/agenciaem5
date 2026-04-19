@@ -1,0 +1,46 @@
+# Padrao de nomenclatura de campanhas
+# Versao: 1.0
+# Usado por: gestor-trafego, qa-campanha
+
+padrao: "[CLIENTE]_[OBJETIVO]_[CANAL]_[TIPO]_[ID]"
+
+objetivos:
+  - LEADS
+  - VENDAS
+  - AWARENESS
+  - RETENCAO
+  - REATIVACAO
+  - TRAFEGO
+  - ENGAJAMENTO
+  - MENSAGENS
+
+tipos:
+  - PROSPECCAO
+  - RETARGETING
+  - LOOKALIKE
+  - REMARKETING
+  - SEARCH
+  - SHOPPING
+  - VIDEO
+  - ENGajamento
+
+canais:
+  - META
+  - GOOGLE
+  - TIKTOK
+  - LINKEDIN
+  - EMAIL
+  - WHATSAPP
+
+exemplos:
+  - "CLINICA_LEADS_META_PROSPECCAO_001"
+  - "ECOMMERCE_VENDAS_GOOGLE_SEARCH_003"
+  - "CURSOS_LEADS_META_LOOKALIKE_002"
+  - "APP_VENDAS_META_RETARGETING_001"
+  - "CONSULTORIA_TRAFEGO_LINKEDIN_PROSPECCAO_001"
+
+regras:
+  - "SEPRE nomes com underscore (_)"
+  - "USE apenas letras maiusculas"
+  - "MANTENHA IDs sequenciais por cliente (001, 002, 003)"
+  - "NAO use espacos, acentos ou caracteres especiais"

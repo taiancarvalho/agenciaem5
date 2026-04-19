@@ -1,0 +1,22 @@
+{
+  "propertyAlias": "hof-beauty",
+  "propertyId": "501414174",
+  "dateRange": {
+    "start": "2026-03-15",
+    "end": "2026-04-14"
+  },
+  "files": [
+    {
+      "path": "/home/node/.openclaw/workspace/clients/HOF_Beauty/exports/ga4_overview_30d.csv",
+      "rows": 1
+    },
+    {
+      "path": "/home/node/.openclaw/workspace/clients/HOF_Beauty/exports/ga4_daily_30d.csv",
+      "rows": 31
+    },
+    {
+      "path": "/home/node/.openclaw/workspace/clients/HOF_Beauty/exports/ga4_top_pages_30d.csv",
+      "rows": 4
+    }
+  ]
+}

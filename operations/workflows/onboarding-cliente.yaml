@@ -1,0 +1,166 @@
+# Workflow: Onboarding de Cliente
+# Versao: 2.0
+# Dono do processo: Sol (CS)
+
+nome: "onboarding-cliente"
+descricao: "Recebe cliente fechado, coleta contexto com Tai/cliente, organiza artefatos obrigatorios e entrega o cliente pronto para estrategia e execucao"
+gatilho: "Tai informa que entrou cliente novo ou pede para iniciar onboarding"
+dono_do_processo: "sol"
+objetivo_final: "cliente com pasta criada, briefing validado, objetivos e acessos documentados, setup tecnico registrado e handoff pronto"
+
+regras:
+  - "Sol conduz o onboarding de ponta a ponta e cobra pendencias"
+  - "ISIS pode iniciar o processo, mas operacionaliza via Sol"
+  - "Toda informacao coletada em audio, texto ou call precisa virar arquivo"
+  - "Nao existe handoff para estrategia sem artefatos obrigatorios preenchidos"
+  - "Se uma informacao ainda nao existir, registrar explicitamente como pendente"
+
+papeis:
+  isis:
+    faz:
+      - "aciona Sol quando um cliente novo entra"
+      - "coleta contexto inicial com Tai quando necessario"
+      - "acompanha pendencias e destrava decisoes"
+    nao_faz:
+      - "nao conclui onboarding sem Sol registrar os artefatos"
+
+  sol:
+    faz:
+      - "abre o onboarding"
+      - "faz as perguntas para Tai/cliente"
+      - "cria pastas e documentos iniciais do cliente"
+      - "consolida respostas em arquivos padrao"
+      - "lista acessos e controla pendencias"
+      - "registra status tecnico e libera ou bloqueia handoff"
+    entregaveis:
+      - "onboarding/briefing-perguntas.md"
+      - "onboarding/briefing-final.md"
+      - "onboarding/objetivos-kpis.md"
+      - "onboarding/oferta-e-restricoes.md"
+      - "onboarding/publico-alvo.md"
+      - "onboarding/responsaveis-e-canais.md"
+      - "onboarding/acessos-solicitados.md"
+      - "setup-tecnico/checklist-tracking.md"
+      - "setup-tecnico/status-tecnico.md"
+      - "relatorios/canal-telegram.md"
+      - "estrategia/handoff-onboarding.md"
+
+  vera:
+    faz:
+      - "recebe o handoff somente quando onboarding estiver liberado"
+      - "usa os artefatos para definir direcionamento estrategico"
+
+  max:
+    faz:
+      - "usa objetivos, oferta, publico e setup tecnico para executar trafego"
+      - "aponta gaps se faltar conta, tracking ou KPI operacional"
+
+  cal:
+    faz:
+      - "usa briefing, publico, marca e oferta para copy"
+
+  lux:
+    faz:
+      - "usa briefing, marca, publico e referencias para criativos"
+
+  zara:
+    faz:
+      - "valida a saida antes de publicar campanha ou entregar algo sensivel"
+
+artefatos_obrigatorios:
+  - "onboarding/briefing-final.md"
+  - "onboarding/objetivos-kpis.md"
+  - "onboarding/oferta-e-restricoes.md"
+  - "onboarding/publico-alvo.md"
+  - "onboarding/responsaveis-e-canais.md"
+  - "onboarding/acessos-solicitados.md"
+  - "setup-tecnico/checklist-tracking.md"
+  - "setup-tecnico/status-tecnico.md"
+  - "relatorios/canal-telegram.md"
+  - "estrategia/handoff-onboarding.md"
+
+sequencia:
+  - etapa: "abrir-onboarding"
+    responsavel: "sol"
+    apoio: ["isis"]
+    entrada:
+      - "nome do cliente"
+      - "contexto inicial passado por Tai"
+    faz:
+      - "cria a pasta do cliente em .agencyos/clientes/{nome}/"
+      - "cria as subpastas base da operacao"
+      - "copia os templates obrigatorios para a pasta do cliente"
+      - "registra o onboarding como iniciado"
+    saida:
+      - "workspace do cliente criado"
+      - "documentos base criados"
+
+  - etapa: "coletar-contexto"
+    responsavel: "sol"
+    entrada:
+      - "template onboarding/briefing-perguntas.md"
+      - "respostas de Tai por audio, texto ou call"
+    faz:
+      - "faz as perguntas por blocos"
+      - "transforma respostas soltas em informacao organizada"
+      - "marca claramente o que esta confirmado e o que esta pendente"
+    saida:
+      - "respostas brutas organizadas"
+      - "pendencias listadas"
+
+  - etapa: "consolidar-onboarding"
+    responsavel: "sol"
+    dependencia: "coletar-contexto"
+    faz:
+      - "preenche briefing-final.md"
+      - "preenche objetivos-kpis.md"
+      - "preenche oferta-e-restricoes.md"
+      - "preenche publico-alvo.md"
+      - "preenche responsaveis-e-canais.md"
+      - "preenche canal-telegram.md"
+    saida:
+      - "onboarding consolidado em arquivos"
+
+  - etapa: "mapear-acessos"
+    responsavel: "sol"
+    dependencia: "consolidar-onboarding"
+    faz:
+      - "lista todos os acessos, ativos e contas necessarios"
+      - "registra o que ja foi recebido"
+      - "registra o que falta pedir ou cobrar"
+    saida:
+      - "onboarding/acessos-solicitados.md atualizado"
+      - "setup-tecnico/status-tecnico.md iniciado"
+
+  - etapa: "validar-setup-tecnico"
+    responsavel: "sol"
+    apoio: ["max"]
+    dependencia: "mapear-acessos"
+    faz:
+      - "preenche checklist-tracking.md"
+      - "registra status tecnico real"
+      - "define se existe bloqueio para execucao"
+    saida:
+      - "setup-tecnico/checklist-tracking.md preenchido"
+      - "setup-tecnico/status-tecnico.md atualizado"
+
+  - etapa: "preparar-handoff"
+    responsavel: "sol"
+    dependencia: "validar-setup-tecnico"
+    criterio_minimo:
+      - "objetivo principal definido"
+      - "KPI principal definido ou pendencia explicitada"
+      - "responsaveis e canais documentados"
+      - "contas e acessos documentados"
+      - "status tecnico registrado"
+    faz:
+      - "resume contexto, riscos, pendencias e proximo passo"
+      - "cria estrategia/handoff-onboarding.md"
+      - "marca se o cliente esta liberado, parcial ou bloqueado"
+    saida:
+      - "handoff pronto para Vera e operacao"
+
+status_finais_possiveis:
+  - "liberado para estrategia"
+  - "liberado com pendencias controladas"
+  - "bloqueado por falta de informacao ou acesso"

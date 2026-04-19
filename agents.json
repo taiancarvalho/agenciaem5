@@ -1,0 +1,62 @@
+[
+  {
+    "id": "sol",
+    "name": "Sol Operacional",
+    "role": "Onboarding, follow-up, organização",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/cs.md"
+  },
+  {
+    "id": "max-trafego",
+    "name": "Max Tráfego",
+    "role": "Mídia paga, performance",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/gestor-trafego.md"
+  },
+  {
+    "id": "vera",
+    "name": "Vera Estrategista",
+    "role": "Posicionamento, direção de campanha",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/estrategista.md"
+  },
+  {
+    "id": "cal",
+    "name": "Cal Copywriter",
+    "role": "Copy, ângulos, mensagens",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/copywriter.md"
+  },
+  {
+    "id": "lux",
+    "name": "Lux Designer",
+    "role": "Direção criativa, peças visuais",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/designer.md"
+  },
+  {
+    "id": "zara",
+    "name": "Zara QA Campanha",
+    "role": "Checklist, validação pré-publicação",
+    "level": "L1",
+    "model": "openai-codex/gpt-5.4",
+    "status": "active",
+    "workspace": "/home/node/.openclaw/workspace",
+    "instructions_path": "agents/qa-campanha.md"
+  }
+]
