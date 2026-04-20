@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "composio": {
+      "command": "npx",
+      "args": ["-y", "@composio-dev/mcp@latest", "--toolset", "meta_ads,google_analytics,googlesheets,gmail,slack"],
+      "env": {
+        "COMPOSIO_API_KEY": "${COMPOSIO_API_KEY}"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "env": {}
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)"
+    ]
+  }
+}
