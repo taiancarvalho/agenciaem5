@@ -1,7 +1,7 @@
 ---
 name: escrever-copy
 agent: copywriter
-description: Escrever copy completa para o tipo e canal solicitado, com base no ângulo definido
+description: Escrever copy completa para o tipo e canal solicitado, com base no angulo definido
 inputs:
   - .omgsys/clientes/{nome}/copy/angulos.md
   - .omgsys/clientes/{nome}/trafego/briefing-criativos.md (se existir)
@@ -13,6 +13,13 @@ elicit: true
 ---
 
 # Escrever Copy
+
+## Playbook de Referência
+
+**Ler antes de executar:** `.omgsys/playbooks/copywriter-frameworks.md`
+**Memória:** ler últimas 3 entradas de `.omgsys/clientes/{nome}/memoria/notas-sessao.md`
+
+---
 
 ## Objetivo
 
@@ -29,9 +36,25 @@ Sem hook forte, o resto não existe.
 
 ---
 
+## Framework de Ângulos (5 tipos)
+
+Escolher o ângulo correto antes de escrever. Consultar `playbooks/copywriter-frameworks.md` para exemplos completos.
+
+| Ângulo | Quando usar | Exemplo de hook |
+|--------|------------|------------------|
+| DOR | Produto resolve problema urgente | "Você tá gastando R$1k+ em tráfego e levando zero leads?" |
+| PROVA SOCIAL | Depoimentos e resultados reais | "847 clientes já passaram por aqui" |
+| URGÊNCIA | Prazo ou escassez real | "Últimas 12 vagas — depois fecha" |
+| ASPIRAÇÃO | Transformação de vida / lifestyle | "Imagine abrir o app e ver mais um pagamento de R$2k" |
+| CONVENIÊNCIA | Produto simplifica algo complexo | "Em 3 cliques, sem sair de casa" |
+
+**Regra de ouro:** nunca usar hook genérico. Se não der para identificar o ângulo — reler o ICP antes de escrever.
+
+---
+
 ## Estrutura por tipo de copy
 
-### Anúncio curto (Meta Feed / Stories / Reels — legenda ou texto)
+### Anúncio curto (Meta Feed / Stories / Reels)
 
 ```
 [HOOK — 1 linha que para o scroll]
@@ -46,8 +69,8 @@ Sem hook forte, o resto não existe.
 ### Roteiro de vídeo (15-60 segundos)
 
 ```
-[0-3s] GANCHO VISUAL + frase de abertura que prende
-[3-15s] PROBLEMA ou DESEJO amplificado
+[0-3s]   GANCHO VISUAL + frase de abertura que prende
+[3-15s]  PROBLEMA ou DESEJO amplificado
 [15-35s] SOLUÇÃO + mecanismo que viabiliza a promessa
 [35-50s] PROVA + resultado de quem já usou
 [50-60s] CTA direto
@@ -56,14 +79,14 @@ Sem hook forte, o resto não existe.
 ### Copy de landing page
 
 ```
-[HERO] Headline principal (promessa central) + Subheadline (como)
-[DOR] Bloco que espelha o problema do ICP
-[SOLUÇÃO] Apresentação do produto/serviço como resposta
-[BENEFÍCIOS] Lista de transformações (não de features)
-[PROVA] Depoimentos, números, casos reais
-[CTA PRINCIPAL] Ação clara
-[FAQ] Objeções mais comuns respondidas
-[CTA FINAL] Repetição da ação
+[HERO]    Headline principal (promessa) + Subheadline (como)
+[DOR]     Bloco que espelha o problema do ICP
+[SOLUÇÃO] Produto como resposta
+[BENEF]   Lista de transformações (não features)
+[PROVA]   Depoimentos, números, casos reais
+[CTA]     Ação clara
+[FAQ]     Objeções respondidas
+[CTA]     Repetição final
 ```
 
 ### Mensagem de WhatsApp
@@ -72,7 +95,7 @@ Sem hook forte, o resto não existe.
 Olá {nome}! [abertura personalizada]
 [1 frase que conecta com o contexto do lead]
 [Oferta ou próximo passo direto]
-[CTA com instrução clara: "Posso te mandar mais detalhes?"]
+[CTA: "Posso te mandar mais detalhes?"]
 ```
 
 ---
@@ -81,14 +104,12 @@ Olá {nome}! [abertura personalizada]
 
 ### 1. Definir escopo
 
-Perguntar ao usuário:
-
 ```
 1. Qual o ID desta peça? (CR-{próximo número})
 2. Qual o tipo? (anúncio / roteiro / landing page / WhatsApp / e-mail / legenda)
-3. Qual o canal? (Meta / Google / WhatsApp / E-mail / Instagram / LinkedIn)
-4. Qual o ângulo a usar? (consultar angulos.md)
-5. Qual o CTA esperado? (clicar no link / mandar mensagem / ligar / comprar)
+3. Qual o canal? (Meta / Google / WhatsApp / E-mail / Instagram)
+4. Qual o ângulo? (consultar tabela acima + angulos.md)
+5. Qual o CTA esperado? (clicar / mandar mensagem / ligar / comprar)
 ```
 
 ### 2. Escrever a copy
@@ -97,47 +118,39 @@ Produzir a copy completa com base na estrutura do tipo definido.
 
 ### 3. Salvar arquivo
 
-Criar `.omgsys/clientes/{nome}/copy/CR-{id}.md`:
+Criar `.omgsys/clientes/{nome}/copy/CR-{id}.md` com copy + brief visual para o designer.
+
+### 4. Registrar no log
+
+Adicionar linha no `log-performance-criativa.md` e entrada em `memoria/notas-sessao.md`.
+
+---
+
+## Em caso de falha
+
+Se a copy não puder ser entregue (dados insuficientes, ICP não analisado):
 
 ```markdown
-# CR-{id} — {nome descritivo}
-
-**Data:** {data}
-**Autor:** Cal (Copywriter)
-**Canal:** {canal}
-**Tipo:** {tipo}
-**Ângulo:** {ângulo}
-**Status:** RASCUNHO / EM QA / APROVADO
-
----
-
-## Copy
-
-{copy completa aqui}
-
----
-
-## Brief visual para o Designer
-
-**ID da peça:** CR-{id}
-**Ideia visual sugerida:** {o que o visual deve mostrar para amplificar a mensagem}
-**Tom visual:** {urgente / aspiracional / humano / técnico / minimalista}
-**CTA visual:** {onde e como o CTA deve aparecer}
-**Assets disponíveis:** {fotos, vídeos ou ícones que podem ser usados}
-
----
-
-## Observações
-
-{qualquer contexto relevante para o Designer ou o Gestor de Tráfego}
+**Problema:** {o que falta para escrever}
+**Agente responsável:** @copywriter
+**Ação corretiva:** executar analisar-icp.md antes de tentar novamente
+**Retestar após:** analise-icp.md disponível
 ```
 
-### 4. Registrar no log de performance criativa
+---
 
-Adicionar linha em `.omgsys/clientes/{nome}/operacao/log-performance-criativa.md`:
+## Handoff
 
 ```markdown
-| CR-{id} | {data} | {canal} | {tipo} | {ângulo} | {resumo da copy em 1 linha} | — | — | RASCUNHO | — | — |
+## Handoff para @designer
+**Arquivos que ele DEVE ler:**
+- copy/CR-{id}.md (este arquivo — seção "Brief visual")
+- board-cliente.md (seção 7: brand guidelines)
+
+**O que foi feito:** {copy escrita, ângulo usado, canal}
+**Atenção:** {restrições visuais, tom específico, assets necessários}
+
+**Próxima task:** definir-conceito-visual ou gerar-ugc
 ```
 
 ## Output esperado

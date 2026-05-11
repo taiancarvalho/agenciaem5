@@ -1,17 +1,24 @@
 ---
 name: auditar-conta
 agent: traffic
-description: Auditar a conta de anúncios do cliente para mapear o histórico, campanhas ativas, padrões de performance e oportunidades antes de agir
+description: Auditar a conta de anuncios do cliente para mapear historico, campanhas ativas, padroes de performance e oportunidades antes de agir
 inputs:
-  - .omgsys/clientes/{nome}/onboarding/briefing-final.md
+  - .omgsys/clientes/{nome}/onboarding/board-cliente.md
   - .omgsys/clientes/{nome}/estrategia/plano-estrategico.md
-  - acesso à conta de anúncios (Meta Ads ou Google Ads)
+  - acesso a conta de anuncios (Meta Ads ou Google Ads)
 outputs:
   - .omgsys/clientes/{nome}/trafego/auditoria.md
 elicit: false
 ---
 
 # Auditar Conta de Anúncios
+
+## Playbook de Referência
+
+**Ler antes de executar:** `.omgsys/playbooks/traffic-meta.md` (seção 3: Auditoria)
+**Memória:** ler últimas 3 entradas de `.omgsys/clientes/{nome}/memoria/notas-sessao.md`
+
+---
 
 ## Objetivo
 
@@ -28,16 +35,43 @@ Nenhuma mudança na conta sem entender o estado atual.
 
 ## Passo a passo
 
-### 1. Acessar a conta
+### 1. Acessar a conta via Composio
 
-Se Meta Ads MCP estiver configurado, usar:
-- `get_ad_accounts` — listar contas disponíveis
-- `get_campaigns` — listar campanhas ativas e pausadas
-- `get_campaign_insights` — métricas dos últimos 30/60/90 dias
+```
+# Listar contas disponíveis
+composio.meta_ads.get_ad_accounts()
 
-Se não houver integração, fazer auditoria manual com dados fornecidos pelo cliente ou pelo CS.
+# Listar campanhas (ativas + pausadas)
+composio.meta_ads.get_campaigns(
+  account_id: "{id do board-cliente}",
+  date_preset: "last_90d"
+)
 
-### 2. Gerar relatório de auditoria
+# Puxar métricas por campanha
+composio.meta_ads.get_campaign_insights(
+  campaign_ids: [...],
+  date_preset: "last_90d",
+  fields: ["spend", "leads", "cost_per_lead", "ctr", "frequency", "impressions", "cpm"]
+)
+
+# Verificar pixel
+composio.meta_ads.get_pixels(account_id: "{id}")
+```
+
+Se não houver integração Composio: solicitar dados ao @cs ou ao cliente.
+
+### 2. Diagnóstico rápido por tipo de problema
+
+```
+Pixel ausente/com defeito:  → escalar para @cs → validar-tracking.md (bloqueador)
+Todas campanhas pausadas:  → investigar motivo antes de reativar
+CPL consistente > 3x meta: → conta queimada? testar campanha fresh
+Frequência > 4.0:          → público saturado, renovar criativos
+Criativos > 90 dias ativos:→ marcar para renovação urgente
+Sem conversas salvas:      → cliente não tem histórico = começar do zero
+```
+
+### 3. Gerar relatório de auditoria
 
 Criar `.omgsys/clientes/{nome}/trafego/auditoria.md`:
 
@@ -45,91 +79,87 @@ Criar `.omgsys/clientes/{nome}/trafego/auditoria.md`:
 # Auditoria de Conta — {Nome do Cliente}
 
 **Data:** {data}
-**Auditado por:** Max (Gestor de Tráfego)
-**Conta:** {ID da conta} — {plataforma}
-**Período analisado:** Últimos {30/60/90} dias
-
----
+**Conta:** {ID} — Meta Ads
+**Período analisado:** Últimos 90 dias
 
 ## Resumo Executivo
 
 | Item | Status |
 |------|--------|
 | Conta ativa? | SIM / NÃO |
-| Campanhas ativas | {N} |
-| Campanhas pausadas | {N} |
 | Pixel funcionando? | SIM / NÃO / NÃO TEM |
-| Investimento total no período | R$ {valor} |
-| Resultado geral | {bom/regular/ruim} |
-
----
+| Investimento total 90d | R$ {valor} |
+| Campanhas ativas | {N} |
+| Melhor CPL histórico | R$ {valor} (CR-XXX) |
+| Resultado geral | bom / regular / ruim |
 
 ## Campanhas Ativas
 
-| ID | Nome | Objetivo | Status | Budget/dia | CPL/CPA | Volume | Observação |
-|----|------|----------|--------|-----------|---------|--------|------------|
-| {id} | {nome} | {objetivo} | ATIVO | R$ {x} | R$ {x} | {N} leads | {obs} |
-
----
+| Nome | Objetivo | Budget/dia | CPL/CPA | Volume | Observação |
+|------|----------|-----------|---------|--------|------------|
 
 ## Campanhas Pausadas (com histórico relevante)
 
-| ID | Nome | Objetivo | Por que pausou | Melhor resultado | Vale reativar? |
-|----|------|----------|---------------|-----------------|----------------|
-| {id} | {nome} | {objetivo} | {motivo} | CPL R$ {x} | SIM / NÃO |
-
----
+| Nome | Objetivo | Por que pausou | Melhor CPL | Vale reativar? |
+|------|----------|---------------|------------|---------------|
 
 ## Públicos Utilizados
 
-| Público | Tipo | Tamanho | Performance | Status |
-|---------|------|---------|-------------|--------|
-| {público 1} | Interesse/Lookalike/Custom | {tamanho} | {bom/regular/ruim} | ATIVO/PAUSADO |
-
----
+| Público | Tipo | Tamanho | Performance |
+|---------|------|---------|-------------|
 
 ## Criativos com Histórico
 
-| ID | Tipo | Ângulo | CTR | CPL/CPA | Volume | Status |
-|----|------|--------|-----|---------|--------|--------|
-| {id} | Vídeo/Imagem | {ângulo} | {%} | R$ {x} | {N} | ATIVO/PAUSADO |
-
----
+| ID | Tipo | CTR | CPL | Volume | Status |
+|----|------|-----|-----|--------|--------|
 
 ## Diagnóstico
 
-**Principal problema identificado:**
-{o que está causando performance ruim ou limitando crescimento}
+**Principal problema identificado:** {causa raiz}
+**Oportunidades:** {campanhas/criativos que podem ser reaproveitados}
+**Alertas técnicos:** {pixel, tracking, problemas de conta}
 
-**Oportunidades identificadas:**
-1. {oportunidade 1 — ex: criativo A tinha CPL ótimo e foi pausado sem motivo claro}
-2. {oportunidade 2}
-
-**Alertas técnicos:**
-- {ex: pixel sem evento de lead configurado}
-- {ex: conta com score de qualidade baixo}
-- {ex: todos os criativos têm mais de 90 dias}
-
----
-
-## Ações Recomendadas (prioridade)
+## Ações Recomendadas
 
 1. IMEDIATO: {ação urgente}
 2. ESTA SEMANA: {ação prioritária}
 3. PRÓXIMAS 2 SEMANAS: {ação planejada}
 ```
 
-### 3. Identificar campanhas para reativar
+### 4. Atualizar log e memória
 
-Se houver campanhas com bom histórico pausadas sem motivo claro, listar para decisão.
+Atualizar `log-operacional.md` e adicionar entrada em `memoria/notas-sessao.md`.
 
-### 4. Atualizar log operacional
+---
+
+## Em caso de falha
+
+Se não for possível acessar a conta, gerar `trafego/diagnosis.md`:
 
 ```markdown
-| {data} | AUDITORIA | Max | Conta auditada. {N} campanhas ativas, {N} pausadas. Principal problema: {diagnóstico}. Auditoria completa em trafego/auditoria.md | CONCLUÍDO | Estruturar campanha inicial |
+**Problema:** {sem acesso / pixel ausente / conta bloqueada}
+**Agente responsável:** @cs
+**Ação corretiva:** {listar-acessos.md ou setup-tecnico.md}
+**Retestar após:** acesso configurado via Composio
+```
+
+---
+
+## Handoff
+
+```markdown
+## Handoff para @traffic (estruturar)
+**Arquivos que ele DEVE ler:**
+- trafego/auditoria.md (este arquivo)
+- board-cliente.md (seções 2 e 5: objetivo e público)
+
+**O que foi feito:** {auditoria completa, N campanhas analisadas}
+**Atenção:** {principais problemas ou oportunidades do diagnóstico}
+
+**Próxima task:** estruturar-campanha
 ```
 
 ## Output esperado
 
-- `auditoria.md` completo com diagnóstico e ações recomendadas
+- `auditoria.md` com diagnóstico e ações recomendadas
 - Pronto para: `*estruturar-campanha {nome}`

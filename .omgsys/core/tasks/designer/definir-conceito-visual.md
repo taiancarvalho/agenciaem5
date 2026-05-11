@@ -3,22 +3,27 @@ name: definir-conceito-visual
 agent: designer
 description: Escolher conceito visual antes de produzir criativos, com base na copy, estrategia e branding do cliente
 inputs:
-  - .omgsys/clientes/{nome}/copy/CR-{id}.md (copy da campanha)
-  - .omgsys/clientes/{nome}/estrategia/ (documento de estrategia)
-  - .omgsys/clientes/{nome}/branding/ (cores, fontes, guia de estilo)
+  - .omgsys/clientes/{nome}/copy/CR-{id}.md
+  - .omgsys/clientes/{nome}/estrategia/
+  - .omgsys/clientes/{nome}/branding/
 outputs:
-  - conceito visual definido e documentado em .omgsys/clientes/{nome}/operacao/log-performance-criativa.md
+  - conceito visual definido e documentado
   - direcao visual clara para producao
 elicit: true
 ---
 
 # Definir Conceito Visual
 
+## Playbook de Referência
+
+**Ler antes de executar:** `.omgsys/playbooks/designer-instagram.md`
+**Memória:** ler últimas 3 entradas de `.omgsys/clientes/{nome}/memoria/notas-sessao.md`
+
+---
+
 ## Objetivo
 
-Escolher o conceito visual que reforça a mensagem da copy e a intenção estratégica da campanha. Esta etapa é um checkpoint obrigatório antes de qualquer produção visual — sem conceito definido, não se cria peça.
-
-O conceito visual é a ponte entre "o que a copy diz" e "o que o design mostra". É ele que garante que a peça visual transmite emoção, reforça a promessa e guia o olhar do público na dirección correta.
+Escolher o conceito visual que reforça a mensagem da copy e a intenção estratégica da campanha. Checkpoint obrigatório antes de qualquer produção visual.
 
 ## Regra
 
@@ -34,84 +39,82 @@ Conceito visual deve ser definido e confirmado antes da produção.
 
 ### 1. Ler a copy da peça
 
-Acessar `.omgsys/clientes/{nome}/copy/CR-{id}.md` e extrair:
-
-- **Hook** — o que captura atenção nos primeiros segundos
-- **Ângulo** — a abordagem emocional ou racional
-- **Promessa** — o que o cliente receberá/transformará
+Acessar `CR-{id}.md` e extrair:
+- **Hook** — o que captura atenção
+- **Ângulo** — DOR / PROVA SOCIAL / URGÊNCIA / ASPIRAÇÃO / CONVENIÊNCIA
+- **Promessa** — o que o cliente receberá
 - **CTA** — ação esperada
-- **Tom emocional** — urgência, desejo, prova social, conveniência, etc.
 
-### 2. Ler a estratégia da campanha
+### 2. Escolher conceito com base no ângulo
 
-Acessar `.omgsys/clientes/{nome}/estrategia/` e extrair:
+**Árvore de decisão obrigatória:**
 
-- **Objetivo da campanha** — conversão, engajamento, awareness?
-- **Canal** — Meta Ads (atenção rápida), landing page (leitura profunda), WhatsApp (apoio direto)?
-- **Posição no funil** — topo, meio, fundo?
-- **Público-alvo** — quem vai consumir a peça?
+| Ângulo da Copy | Conceito Visual | Elementos-chave | UGC Shot Type |
+|---------------|-----------------|-----------------|---------------|
+| DOR | Agitação, cores quentes | Expressão preocupada, contraste, vermelho/laranja | `talking_selfie_problem` |
+| PROVA SOCIAL | Faces reais, números grandes | Depoimentos em destaque, selos, credênciais | `talking_selfie_testimonial` ou `testimonial_hold` |
+| URGÊNCIA | Countdown, pressão visual | Relógio/prazo, cores quentes, CTA grande | `mirror_selfie` (tensão) ou `overhead_flatlay` |
+| ASPIRAÇÃO | Lifestyle premium, cenário | Imagens aspiracionais, cores sofisticadas, "depois" | `mirror_selfie` (aspirational) ou `lifestyle_still` |
+| CONVENIÊNCIA | Minimalista, clean | Espaço em branco, ícones simples, fluidez | `screen_recording_selfie` ou `overhead_flatlay` |
 
-### 3. Ler o branding e conferir assets
+Se nenhum se encaixa, propor conceito próprio e justificar.
+
+### 3. Ler o branding do cliente
 
 Consultar:
+- `branding/cores.yaml` — paleta
+- `branding/fontes.yaml` — tipografia
+- `branding/guia-estilo.md` — tom visual, restrições
+- `assets/` — fotos, logo, produtos
 
-- `.omgsys/clientes/{nome}/branding/cores.yaml` — paleta de cores
-- `.omgsys/clientes/{nome}/branding/fontes.yaml` — tipografia
-- `.omgsys/clientes/{nome}/branding/guia-estilo.md` — tom visual, restrições
-- `.omgsys/clientes/{nome}/assets/` — logo, fotos, produtos disponíveis
-
-### 4. Escolher o conceito visual
-
-Com base na copy e estratégia, selecionar um dos conceitos visuais abaixo — ou propor outro que faça mais sentido:
-
-| Conceito Visual | Quando usar | Direção visual |
-|-----------------|-------------|----------------|
-| **Prova social** | A copy usa testemunhos, números, resultados reais | Depoimentos em destaque, números grandes, selos de validação, faces reais, layout com credibilidade |
-| **Urgência** | A copy usa escassez, prazo, limite | Elementos de tempo (relógio, contagem regressiva), cores quentes (vermelho, laranja), composição que pressiona a ação |
-| **Desejo** | A copy foca em lifestyle, transformação, status | Imagens aspiracionais, cenários premium, cores sofisticadas, composição que projeta o "depois" da transformação |
-| **Conveniência** | A copy foca em simplicidade, facilidade, praticidade | Layout limpo, espaço em branco, ícones de simplicidade, cores calmas, composição que transmite fluidez |
-
-Se nenhum desses se encaixa, propor um conceito próprio e justificar.
-
-### 5. Definir a direção visual
-
-Com o conceito escolhido, detalhar:
+### 4. Definir direção visual
 
 ```
-Conceito: {nome do conceito — ex: prova social}
-Justificativa: {por que esse conceito reforça a copy e a estratégia}
-Composição: {o que aparece na cena — produto, pessoa, texto, etc.}
-Hierarquia visual: {1° o que o olho vê, 2°, 3°}
+Conceito: {nome do conceito}
+Justificativa: {por que reforça a copy e a estratégia}
+Composição: {o que aparece na cena}
+Hierarquia visual: {1°, 2°, 3° elemento}
 Tom: {agressivo / suave / sofisticado / direto / aspiracional}
-Formato: {1:1 feed / 9:16 stories / 16:9 landing page / etc.}
-Elementos-chave: {quais elementos visuais vão carregar a mensagem}
-Restrições: {o que NÃO pode aparecer — baseado no branding}
+Formato: {1:1 / 4:5 / 9:16 / etc.}
+Restrições: {o que NÃO pode aparecer}
+UGC shot type sugerido: {conforme tabela acima}
 ```
 
-### 6. Confirmar com o usuário
+### 5. Confirmar com o usuário
 
-Se `elicit: true` (padrão), apresentar ao usuário:
+Apresentar conceito definido e aguardar confirmação antes de prosseguir para produção.
 
+### 6. Registrar e atualizar memória
+
+Registrar no `log-performance-criativa.md` e adicionar entrada em `memoria/notas-sessao.md`.
+
+---
+
+## Em caso de falha
+
+Se o conceito não puder ser definido (branding ausente, copy sem ângulo claro):
+
+```markdown
+**Problema:** {o que está faltando}
+**Agente responsável:** @{designer ou copywriter}
+**Ação corretiva:** {ler-branding.md / revisar copy antes de prosseguir}
+**Retestar após:** {condição}
 ```
-Conceito visual definido para CR-{id}:
 
-Conceito: {nome}
-Justificativa: {explicação}
-Composição: {descrição}
-Hierarquia: {1º, 2º, 3º}
+---
 
-Deseja validar este conceito ou ajustar?
-```
+## Handoff
 
-Aguardar confirmação antes de prosseguir para produção.
+```markdown
+## Handoff para @designer (produção)
+**Arquivos que ele DEVE ler:**
+- copy/CR-{id}.md
+- branding/ (cores, fontes, guia)
 
-### 7. Registrar no log
+**O que foi feito:** {conceito definido e aprovado}
+**Atenção:** {restrições de branding, assets disponíveis}
 
-Encontrar a linha do `CR-{id}` em `.omgsys/clientes/{nome}/operacao/log-performance-criativa.md` e registrar:
-
-```
-Conceito visual: {nome do conceito}
-Direção: {breve descrição}
+**Próxima task:** gerar-ugc ou gerar-imagem ou gerar-video
 ```
 
 ## Output esperado
