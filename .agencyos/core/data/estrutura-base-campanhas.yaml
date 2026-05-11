@@ -1,0 +1,62 @@
+# Estrutura base obrigatoria de campanhas
+# Referencia para @traffic ao montar campanhas do zero
+
+meta_ads:
+  estrutura_minima_obrigatoria:
+    campanha_audiencia:
+      objetivo: "REACH ou VIDEO_VIEWS ou POST_ENGAGEMENT"
+      proposito: "Construir base, gerar audiencia quente para retargeting"
+      publico:
+        - tipo: "interesse_amplo"
+          descricao: "Publico frio baseado em interesses relevantes ao nicho"
+        - tipo: "lookalike_1_3pct"
+          descricao: "Lookalike da base de clientes ou leads"
+      verba_percentual: 30
+      nota: "Menor parcela da verba — construcao de longo prazo"
+
+    campanha_resultado:
+      objetivo: "LEAD_GENERATION ou MESSAGES ou CONVERSIONS"
+      proposito: "Gerar o resultado principal (leads, vendas, contatos)"
+      publico:
+        - tipo: "retargeting_engajamento_30d"
+          descricao: "Quem ja engajou com o perfil nos ultimos 30 dias"
+        - tipo: "retargeting_site_7d"
+          descricao: "Visitantes do site nos ultimos 7 dias"
+        - tipo: "publico_frio_qualificado"
+          descricao: "Interesse restrito + comportamento de compra"
+      verba_percentual: 70
+      nota: "Maior parcela — foco no resultado do cliente"
+
+  nomenclatura: "[CLIENTE]_[OBJETIVO]_META_[TIPO]_[ID]"
+  exemplo: "EMPRESA_LEAD_META_VIDEO_CP-001"
+
+google_ads:
+  estrutura_minima_obrigatoria:
+    campanha_search:
+      objetivo: "SEARCH"
+      proposito: "Capturar demanda ativa — quem busca pelo produto/servico"
+      match_types:
+        - "exact": "Para termos de alta intencao de compra"
+        - "phrase": "Para variacoes do termo principal"
+      estrutura_adgroups: "1 grupo por tema/produto — sem misturar temas"
+      nota: "Prioridade para palavras-chave de alta intencao comercial"
+
+    campanha_performance_max:
+      objetivo: "PERFORMANCE_MAX"
+      proposito: "Alcance amplo com otimizacao automatica do Google"
+      assets_obrigatorios:
+        - headlines: "minimo 15 headlines (30 chars cada)"
+        - descriptions: "minimo 4 descriptions (90 chars cada)"
+        - images: "minimo 3 imagens (1200x628 + 1200x1200 + 960x1200)"
+        - videos: "recomendado ao menos 1 video de 15-30s"
+      nota: "Usar apenas apos Search estar rodando e otimizado"
+
+  nomenclatura: "[CLIENTE]_[OBJETIVO]_GOOGLE_[TIPO]_[ID]"
+  exemplo: "EMPRESA_LEAD_GOOGLE_SEARCH_CP-001"
+
+regras_gerais:
+  - "Nunca subir campanha sem ao menos 1 criativo aprovado pelo QA"
+  - "Budget inicial: periodo de aprendizado de 7-14 dias sem otimizacoes agressivas"
+  - "Minimo 2 variacoes de criativo por conjunto de anuncios para teste A/B"
+  - "Pixel instalado e disparando eventos ANTES de subir campanha"
+  - "Exclusao de publicos ja convertidos quando objetivo for aquisicao"
