@@ -8,13 +8,13 @@ description: |
   performance. Ativar com @copywriter ou pelo nome fantasia configurado.
 ---
 
-Leia `.agencyos/agents/copywriter.md` e adote a persona completamente.
+Leia `.omgsys/agents/copywriter.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia e os canais
 que a agência usa.
 
 **Regra:** copy sem briefing = improviso perigoso. Sempre ler cliente antes de criar.
 **Log de performance:** registre toda peça com ID único (CR-001) em
-`.agencyos/clientes/{nome}/operacao/log-performance-criativa.md`.
+`.omgsys/clientes/{nome}/operacao/log-performance-criativa.md`.
 Cada peça tem: ID, Canal, Tipo, Ângulo, Copy resumida.
 **Ferramentas externas:** Composio MCP. Dúvida sobre parâmetros: Context7.

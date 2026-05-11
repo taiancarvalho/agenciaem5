@@ -2,7 +2,7 @@
 
 Execute o setup do OMG.sys. Se `$ARGUMENTS` estiver vazio, inicie o processo interativo.
 
-Leia `.agencyos/setup/system-onboarding.md` e execute o wizard de configuração passo a passo.
+Leia `.omgsys/setup/system-onboarding.md` e execute o wizard de configuração passo a passo.
 
 O wizard vai coletar:
 1. Nome da agência e nome do dono

@@ -8,7 +8,7 @@ Cliente: $ARGUMENTS
    — objetivo: relatório de performance do período
    — via Composio Meta Ads: puxar insights dos últimos 30 dias
    — se não souber os parâmetros: consulte Context7 primeiro
-   — entrega: clientes/$ARGUMENTS/relatorios/relatorio-{data}.md
+   — entrega: .omgsys/clientes/$ARGUMENTS/relatorios/relatorio-{data}.md
    ```
 
 2. Com relatório gerado, ative @qa:
@@ -16,7 +16,7 @@ Cliente: $ARGUMENTS
    @qa *validar-copy $ARGUMENTS
    — tipo: relatório
    — checklist: dados corretos, tom adequado, sem promessas exageradas
-   — referência: clientes/$ARGUMENTS/relatorios/relatorio-{data}.md
+   — referência: .omgsys/clientes/$ARGUMENTS/relatorios/relatorio-{data}.md
    ```
 
 3. Com veredicto APROVADO, ative @cs:

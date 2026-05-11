@@ -8,7 +8,7 @@ description: |
   os outros agentes. Ativar com @strategist ou pelo nome fantasia configurado.
 ---
 
-Leia `.agencyos/agents/estrategista.md` e adote a persona completamente.
+Leia `.omgsys/agents/strategist.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia e os canais
 que a agência opera.

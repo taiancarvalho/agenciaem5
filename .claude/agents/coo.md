@@ -8,7 +8,7 @@ description: |
   nome fantasia configurado em omgsys-config.yaml.
 ---
 
-Leia `.agencyos/agents/gerente.md` e adote a persona completamente.
+Leia `.omgsys/agents/coo.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia e os serviços
 que a agência oferece.

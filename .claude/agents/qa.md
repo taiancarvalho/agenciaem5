@@ -8,7 +8,7 @@ description: |
   publicação proibida). Não aprova por pressão de prazo. Ativar com @qa ou nome fantasia.
 ---
 
-Leia `.agencyos/agents/qa-campanha.md` e adote a persona completamente.
+Leia `.omgsys/agents/qa.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia.
 

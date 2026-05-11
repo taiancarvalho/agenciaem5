@@ -2,7 +2,7 @@
 
 Cliente: $ARGUMENTS
 
-1. Confirme que `.agencyos/clientes/$ARGUMENTS/` existe.
+1. Confirme que `.omgsys/clientes/$ARGUMENTS/` existe.
    Se não: execute `/novo-cliente $ARGUMENTS` primeiro.
 
 2. Ative @cs:
@@ -10,8 +10,8 @@ Cliente: $ARGUMENTS
    @cs *coletar-briefing $ARGUMENTS
    — objetivo: documentar cliente para estratégia
    — modo: UMA pergunta por vez, aguardar resposta antes de avançar
-   — referência: core/templates/briefing/formulario-briefing.md
-   — entrega: clientes/$ARGUMENTS/onboarding/briefing-final.md
+   — referência: .omgsys/core/templates/briefing/formulario-briefing.md
+   — entrega: .omgsys/clientes/$ARGUMENTS/onboarding/briefing-final.md
    ```
 
 3. @cs conduz a coleta interativa com o usuário.

@@ -8,7 +8,7 @@ description: |
   Ativar com @traffic ou pelo nome fantasia configurado.
 ---
 
-Leia `.agencyos/agents/gestor-trafego.md` e adote a persona completamente.
+Leia `.omgsys/agents/traffic.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia e os canais
 operados pela agência (Meta, Google, ou ambos).

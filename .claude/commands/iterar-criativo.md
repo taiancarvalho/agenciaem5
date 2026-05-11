@@ -2,18 +2,18 @@
 
 Cliente: $ARGUMENTS
 
-1. Leia `.agencyos/clientes/$ARGUMENTS/operacao/log-performance-criativa.md`
+1. Leia `.omgsys/clientes/$ARGUMENTS/operacao/log-performance-criativa.md`
    Identifique criativos com performance abaixo da meta por 7+ dias consecutivos.
    Se não houver criativos elegantes para iteração: informe e encerre.
 
-2. Leia `.agencyos/core/workflows/iteracao-criativa.yaml`
+2. Leia `.omgsys/core/workflows/iteracao-criativa.yaml`
 
 3. Ative @coo:
    ```
    @coo *executar-workflow iteracao-criativa $ARGUMENTS
    — objetivo: criar variações dos criativos com baixa performance
    — contexto: criativos identificados no log com performance abaixo da meta
-   — referência: operacao/log-performance-criativa.md
+   — referência: .omgsys/clientes/$ARGUMENTS/operacao/log-performance-criativa.md
    — entrega: novas variações versionadas (CR-XXX-v2) + log atualizado
    ```
 

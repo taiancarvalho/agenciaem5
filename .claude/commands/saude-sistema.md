@@ -1,6 +1,6 @@
 # Health check completo do OMG.sys
 
-1. Liste todos os clientes em `.agencyos/clientes/` (ignore `_template`)
+1. Liste todos os clientes em `.omgsys/clientes/` (ignore `_template`)
 
 2. Para cada cliente, verifique a existência de:
    - `onboarding/briefing-final.md` → onboarding completo

@@ -2,18 +2,18 @@
 
 Cliente: $ARGUMENTS
 
-1. Verifique se `.agencyos/clientes/$ARGUMENTS/estrategia/plano-estrategico.md` existe.
+1. Verifique se `.omgsys/clientes/$ARGUMENTS/estrategia/plano-estrategico.md` existe.
    Se não existir: PARE.
    Estratégia é obrigatória antes de criar campanha.
    Instrua: execute `/onboarding $ARGUMENTS` e depois `@strategist *criar-plano-estrategico $ARGUMENTS`.
 
-2. Leia `.agencyos/core/workflows/ciclo-campanha.yaml`
+2. Leia `.omgsys/core/workflows/ciclo-campanha.yaml`
 
 3. Ative @coo:
    ```
    @coo *lancar-campanha $ARGUMENTS
    — objetivo: ciclo completo desde análise até publicação
-   — referência: estrategia/plano-estrategico.md
+   — referência: .omgsys/clientes/$ARGUMENTS/estrategia/plano-estrategico.md
    — entrega: campanha ativa + relatório inicial para @cs
    ```
 

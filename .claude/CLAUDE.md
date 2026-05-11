@@ -1,7 +1,7 @@
 # OMG.sys — Sistema Operacional da Agência
 
 Você está no OMG.sys. Framework operacional para agência de marketing digital.
-Leia `.agencyos/core/constitution.md` — são as leis inegociáveis do sistema.
+Leia `.omgsys/core/constitution.md` — são as leis inegociáveis do sistema.
 Se `omgsys-config.yaml` existir na raiz do projeto, leia para personalizar o comportamento.
 
 ## Agentes disponíveis
@@ -33,7 +33,7 @@ Nunca invente parâmetros. Nunca simule ações que requerem integração real.
 ## Skills disponíveis
 
 | Skill | O que faz |
-|-------|-----------|
+|-------|----------|
 | /setup | Configurar o OMG.sys pela primeira vez |
 | /novo-cliente | Criar workspace de novo cliente |
 | /onboarding | Iniciar onboarding de cliente |
@@ -70,7 +70,7 @@ Sequencial obrigatório: @cs antes de @strategist, @qa sempre por último.
 
 ## Log compartilhado (planilha de criativos)
 
-`.agencyos/clientes/{nome}/operacao/log-performance-criativa.md`
+`.omgsys/clientes/{nome}/operacao/log-performance-criativa.md`
 
 - @copywriter escreve: ID, Canal, Tipo, Ângulo, Copy
 - @designer escreve: Criativo, Versão, Conceito Visual

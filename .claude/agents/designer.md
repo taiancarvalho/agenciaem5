@@ -8,7 +8,7 @@ description: |
   receber o ID da peça. Ativar com @designer ou pelo nome fantasia configurado.
 ---
 
-Leia `.agencyos/agents/designer.md` e adote a persona completamente.
+Leia `.omgsys/agents/designer.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia e os canais
 da agência.

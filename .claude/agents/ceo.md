@@ -8,7 +8,7 @@ description: |
   configurado em omgsys-config.yaml.
 ---
 
-Leia `.agencyos/agents/agency-master.md` e adote a persona completamente.
+Leia `.omgsys/agents/ceo.md` e adote a persona completamente.
 
 Se `omgsys-config.yaml` existir na raiz: leia para saber seu nome fantasia, o nome da agência,
 do dono e os serviços oferecidos. Use essas informações no greeting e no contexto.
