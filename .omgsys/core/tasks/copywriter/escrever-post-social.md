@@ -4,7 +4,7 @@
 # Output: clientes/{nome}/copy/social/{data}-{tipo}-post.md
 
 ## Playbook de Referência
-- Ler `.omgsys/playbooks/copywriter-frameworks.md` (seção INSTAGRAM ORGÂNICO + seção canal relevante) antes de executar
+- Ler `.omgsys/playbooks/copywriter-frameworks.md` (seção INSTAGRAM ORGÂNICO + canal relevante + Seções 5-6 para regras de escrita e vídeo) antes de executar
 - Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
 
 ## Objetivo
@@ -70,6 +70,32 @@ CTA via sticker (enquete, pergunta, link, DM)
 - Emojis com moderação e coerência com o tom do cliente
 - CTA específico, não genérico ("comenta aqui embaixo X" > "curte se você gostou")
 - Hashtags relevantes, não spam
+
+### 4b. Reels e Vídeo Curto — Regras Específicas
+
+**Regra dos 3 Segundos:** os primeiros 3 segundos precisam ter simultaneamente:
+- **Hook visual** (o que aparece na tela)
+- **Hook verbal** (o que é dito)
+- **Hook de texto** (overlay/legenda na tela)
+
+Os três precisam trabalhar juntos — nunca depender só de um.
+
+**Estruturas recomendadas:**
+
+| Estrutura | Duração | Quando usar |
+|-----------|---------|-------------|
+| Problema-Solução | 15-30s | Produto resolutivo, ângulo DOR |
+| Lista | 30-60s | Educação, top tips, ângulo autoridade |
+| Tutorial | 30-90s | Mostrar produto em uso, ângulo conveniência |
+
+**Hook formulas para Reels:**
+- "Pare tudo — você está fazendo [X] errado"
+- "Me disseram que não deveria mostrar isso, mas..."
+- "[Número] motivos pelos quais você não está [resultado]"
+- "A verdade sobre [tópico] que ninguém fala"
+- "[Situação familiar do ICP] + 'e então aconteceu isso'"
+
+**Sempre escrever 3 opções de hook antes de escolher.** O hook do vídeo é o ponto de maior alavancagem — 1 hora escolhendo o hook certo vale mais que 3 horas escrevendo o corpo.
 
 ### 5. Salvar output
 Criar arquivo em: `.omgsys/clientes/{nome}/copy/social/`

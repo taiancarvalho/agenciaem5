@@ -46,6 +46,46 @@
 
 ---
 
+## Diagnóstico de Switching
+
+Antes de passar para @strategist, entender as forças que movem (ou bloqueiam) a decisão do cliente e do ICP dele:
+
+| Força | Pergunta para mapear | O que fazer com a resposta |
+|-------|---------------------|---------------------------|
+| **Push** (dor atual) | "O que está te incomodando na situação atual com [problema]?" | Usar como ângulo DOR na copy |
+| **Pull** (atração) | "O que te atraiu para tentar essa solução especificamente?" | Reforçar nos anúncios como benefício esperado |
+| **Hábito** (inércia) | "O que impede seu cliente de mudar mesmo sabendo que precisa?" | Usar ângulo CONVENIÊNCIA — CTA mínimo, "sem burocracia" |
+| **Ansiedade** (medo de troca) | "O que seu cliente mais teme ao tentar algo novo?" | Usar PROVA SOCIAL + garantia + depoimentos |
+
+**Tabela de aplicação imediata:**
+
+| Força dominante | Ângulo principal | Elemento obrigatório na copy |
+|-----------------|-----------------|------------------------------|
+| Push alto | DOR | Hook que expõe a frustração exata |
+| Pull alto | ASPIRAÇÃO | Imagem do depois, resultado desejado |
+| Hábito alto | CONVENIÊNCIA | "Sem sair de casa", "3 cliques", "sem burocracia" |
+| Ansiedade alta | PROVA SOCIAL | Número de clientes + garantia + depoimento real |
+
+---
+
+## Pesquisa de ICP (quando cliente não sabe o público)
+
+Se o cliente não conseguir descrever o ICP com precisão, pesquisar nos "pontos de encontro digitais":
+
+| Tipo de ICP | Onde pesquisar |
+|-------------|---------------|
+| Consumidor B2C | Grupos do Facebook do nicho, comentários de concorrentes no Instagram |
+| Empreendedor/PME | LinkedIn groups, fóruns setoriais, grupos WhatsApp de associações |
+| Profissional liberal | Conselhos de classe online, grupos de formação continuada |
+| E-commerce | Avaliações de produtos similares na Amazon/Americanas, comentários de anúncios |
+
+**Como usar na prática:**
+1. Abrir 20-30 comentários reais do público-alvo em posts de concorrentes
+2. Copiar as frases exatas de dor, desejo e objeção que aparecem
+3. Essas frases viram os hooks — se o público escreve "to cansada de não ter tempo", o hook é "Cansada de não ter tempo para...?"
+
+---
+
 ## Checklist Final (antes de encerrar sessão)
 
 - [ ] Score de maturidade calculado?
@@ -53,6 +93,7 @@
 - [ ] Dados Composio registrados no board?
 - [ ] Red flags documentados e escalados se necessário?
 - [ ] board-cliente.md criado e completo?
+- [ ] Diagnóstico de switching registrado (forças Push/Pull/Hábito/Ansiedade)?
 - [ ] Handoff para @strategist preparado?
 - [ ] Entrada criada em `memoria/notas-sessao.md`?
 

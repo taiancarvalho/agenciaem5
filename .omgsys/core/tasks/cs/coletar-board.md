@@ -95,6 +95,18 @@ Qual a maior dor que seu produto resolve?
 O que esse cliente mais deseja conquistar?
 ```
 
+### Seção 5b — Dinâmicas de Troca
+
+```
+Por que o cliente ideal buscaria essa solução agora?
+  → Qual dor ou frustração atual está empurrando ele a mudar? (Push)
+  → O que na sua oferta especificamente atrai ele? (Pull)
+O que impede ele de agir mesmo quando quer? (Hábito / inércia)
+Qual a maior objeção ou medo antes de comprar? (Ansiedade de troca)
+```
+
+> Mapear as respostas no diagnóstico de switching do board. Ver `playbooks/cs-board-cliente.md` para tabela de aplicação na copy.
+
 ### Seção 6 — Presença Digital
 
 ```
@@ -197,7 +209,7 @@ TOTAL MÁXIMO:                      100 pts
 
 ## Checklist de Prontidão Pós-Board
 
-Antes de passar para `*criar-plano-estrategico`, verificar:
+Antes de passar para `criar-plano-estrategico`, verificar:
 
 **OBRIGATÓRIO (sem isso, NÃO avançar):**
 - [ ] CPA/ROAS desejado definido
@@ -235,13 +247,14 @@ Atualizar log operacional:
 ```markdown
 ## Handoff para @strategist
 **Arquivos que ele DEVE ler:**
-- board-cliente.md (este arquivo — seções 2, 3, 4, 5)
+- board-cliente.md (este arquivo — seções 2, 3, 4, 5, 5b)
 
 **Resumo:**
 {3 linhas: quem é o cliente, objetivo, contexto mais importante}
 
 **Atenção:**
 {1-2 alertas ou riscos identificados no board}
+{força de switching dominante: Push/Pull/Hábito/Ansiedade}
 
 **Próxima task:** criar-plano-estrategico
 ```
