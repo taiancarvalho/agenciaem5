@@ -1,0 +1,102 @@
+# Workflow: Lancamento de Produto ou Servico
+# Versao: 1.0
+# Descricao: Fluxo pre/durante/pos-lancamento com alta intensidade
+
+nome: "lancamento"
+descricao: "Fluxo completo de lancamento: preparacao, execucao e consolidacao"
+gatilho: "Cliente com lancamento de produto, servico ou oferta especial planejado"
+nota: "Diferente do ciclo de campanha regular. Maior intensidade, janela temporal definida."
+
+fases:
+  pre_lancamento:
+    descricao: "Preparacao completa antes do lancamento. Nada sobe sem estar pronto."
+    duracao_recomendada: "14-21 dias antes da data"
+    sequencia:
+      - etapa: "briefing-lancamento"
+        agente: "cs"
+        entrada: "objetivo do lancamento, data, produto/servico, preco"
+        saida: "clientes/{nome}/lancamento/briefing-lancamento.md"
+        dependencia: nenhuma
+
+      - etapa: "estrategia-lancamento"
+        agente: "strategist"
+        entrada: "briefing-lancamento.md"
+        saida: "clientes/{nome}/lancamento/estrategia-lancamento.md"
+        conteudo: "mecanica (direto/lista de espera/evento), canais, funil, metas"
+        dependencia: "briefing-lancamento"
+
+      - etapa: "criar-copy-lancamento"
+        agente: "copywriter"
+        entrada: "estrategia-lancamento.md"
+        saida: "copy completa: anuncios + emails + WhatsApp + pagina de vendas"
+        dependencia: "estrategia-lancamento"
+
+      - etapa: "produzir-criativos-lancamento"
+        agente: "designer"
+        entrada: "copy-lancamento + branding"
+        saida: "todos os criativos do lancamento versionados"
+        dependencia: "criar-copy-lancamento"
+
+      - etapa: "validar-tudo-pre-lancamento"
+        agente: "qa"
+        entrada: "copy + criativos + estrutura de campanha + pagina de vendas"
+        saida: "veredicto final antes de subir"
+        dependencia:
+          - "criar-copy-lancamento"
+          - "produzir-criativos-lancamento"
+        nota: "QA mais rigoroso que o normal. Lancamento nao tem margem para erro."
+
+      - etapa: "subir-estrutura-pre-lancamento"
+        agente: "traffic"
+        entrada: "veredicto APROVADO"
+        saida: "campanhas configuradas mas pausadas. Prontas para ativar na data."
+        dependencia: "validar-tudo-pre-lancamento"
+
+  durante_lancamento:
+    descricao: "Alta intensidade. Monitorar diariamente e otimizar rapido."
+    sequencia:
+      - etapa: "ativar-campanhas"
+        agente: "traffic"
+        entrada: "data de lancamento atingida, tudo aprovado"
+        saida: "campanhas ativas (via Composio)"
+        dependencia: nenhuma
+
+      - etapa: "monitorar-intensivo"
+        agente: "traffic"
+        entrada: "campanhas ativas, volume de leads/vendas"
+        saida: "registro diario de metricas no log"
+        frequencia: "diaria durante o lancamento"
+        acoes: "pausar criativos com baixo CTR, escalar vencedores, ajustar verba"
+
+      - etapa: "comunicar-cliente"
+        agente: "cs"
+        entrada: "metricas diarias do traffic"
+        saida: "update diario ao cliente via canal preferido"
+        frequencia: "diaria ou conforme acordado"
+
+  pos_lancamento:
+    descricao: "Consolidar aprendizados e definir proximo ciclo."
+    sequencia:
+      - etapa: "relatorio-lancamento"
+        agente: "traffic"
+        entrada: "metricas completas do periodo"
+        saida: "clientes/{nome}/lancamento/relatorio-lancamento.md"
+        dependencia: nenhuma
+
+      - etapa: "registrar-aprendizados"
+        agente: "copywriter"
+        entrada: "o que funcionou em copy e angulos"
+        saida: "log-performance-criativa.md atualizado com resultados do lancamento"
+        dependencia: "relatorio-lancamento"
+
+      - etapa: "definir-proxima-etapa"
+        agente: "strategist"
+        entrada: "relatorio-lancamento.md + aprendizados"
+        saida: "recomendacao: proximo lancamento, campanha regular ou revisao de estrategia"
+        dependencia: "registrar-aprendizados"
+
+      - etapa: "enviar-relatorio-final"
+        agente: "cs"
+        entrada: "relatorio-lancamento.md validado pelo QA"
+        saida: "relatorio enviado ao cliente"
+        dependencia: "relatorio-lancamento"

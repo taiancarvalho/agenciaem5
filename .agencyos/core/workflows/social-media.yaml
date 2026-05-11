@@ -1,0 +1,60 @@
+# Workflow: Social Media Organico
+# Versao: 1.0
+# Agentes: copywriter + designer + cs
+
+nome: "social-media"
+descricao: "Planejamento e producao de conteudo organico para redes sociais"
+gatilho: "Cliente com servico de social media organico ativo"
+
+sequencia:
+  - etapa: "ler-cliente"
+    agente: "copywriter"
+    entrada: "briefing-final.md + plano-estrategico.md"
+    saida: "contexto de ICP, voz da marca e objetivos de conteudo compreendidos"
+    dependencia: nenhuma
+
+  - etapa: "definir-pilares-de-conteudo"
+    agente: "strategist"
+    entrada: "briefing-final.md, objetivos de negocio do cliente"
+    saida: "clientes/{nome}/social/pilares-conteudo.md (3-5 pilares com descricao e exemplos)"
+    dependencia: "ler-cliente"
+    nota: "Pilares devem refletir o posicionamento estrategico — nao apenas o que e facil de postar"
+
+  - etapa: "criar-calendario-editorial"
+    agente: "copywriter"
+    entrada: "pilares-conteudo.md, frequencia acordada com cliente"
+    saida: "clientes/{nome}/social/calendario-{mes}.md"
+    dependencia: "definir-pilares-de-conteudo"
+
+  - etapa: "criar-copy-posts"
+    agente: "copywriter"
+    entrada: "calendario-{mes}.md, pilares de conteudo"
+    saida: "clientes/{nome}/social/copy-posts-{mes}.md (copy de cada post com legenda e CTA)"
+    dependencia: "criar-calendario-editorial"
+
+  - etapa: "produzir-criativos-organicos"
+    agente: "designer"
+    entrada: "copy-posts-{mes}.md + branding do cliente"
+    saida: "criativos visuais para cada post do calendario"
+    dependencia: "criar-copy-posts"
+    nota: "Criativos organicos seguem o mesmo versionamento (CR-XXX) dos criativos pagos"
+
+  - etapa: "validar-qa"
+    agente: "qa"
+    entrada: "copy + criativos do mes"
+    saida: "veredicto por post: APROVADO / REVISAO / BLOQUEADO"
+    dependencia: "produzir-criativos-organicos"
+    nota: "QA valida coerencia com posicionamento, tom e ausencia de erros"
+
+  - etapa: "agendar-publicacoes"
+    agente: "cs"
+    entrada: "posts aprovados pelo QA + calendario com datas"
+    saida: "posts agendados na ferramenta de agendamento (via Composio se disponivel)"
+    dependencia: "validar-qa"
+
+  - etapa: "monitorar-engajamento"
+    agente: "cs"
+    entrada: "posts publicados"
+    saida: "registro de engajamento no log operacional (curtidas, comentarios, alcance)"
+    dependencia: "agendar-publicacoes"
+    nota: "Monitorar nos primeiros 3 dias apos publicacao para responder comentarios"
