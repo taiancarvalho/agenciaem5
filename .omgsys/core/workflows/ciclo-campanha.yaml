@@ -1,110 +1,167 @@
 # Workflow: Ciclo de Campanha
-# Versao: 1.1
-# Agentes: strategist → traffic → copywriter+designer (paralelo) → qa → traffic → cs
+# Versao: 2.0 (wave pattern + on-failure diagnosis)
+# Agentes: strategist → [traffic+copywriter+designer paralelo] → qa → traffic → cs
 
 nome: "ciclo-campanha"
 descricao: "Fluxo completo de criacao, producao e publicacao de campanha"
-gatilho: "Plano estrategico aprovado pelo cliente"
+gatilho: "Board do cliente completo (board-cliente.md gerado pelo @cs)"
 
-sequencia:
-  - etapa: "analisar-briefing"
-    agente: "strategist"
-    entrada: "briefing-final.md"
-    saida: "analise-briefing.md"
-    dependencia: nenhuma
+# ----------------------------------------------------------------
+# WAVES: grupos de tasks com sincronizacao explicita
+# sync: all-must-complete = todos precisam terminar antes da proxima wave
+# sync: sequential = tasks rodam em sequencia dentro da wave
+# ----------------------------------------------------------------
 
-  - etapa: "criar-plano-estrategico"
-    agente: "strategist"
-    entrada: "analise-briefing.md, template plano-estrategico.md"
-    saida: ".omgsys/clientes/{nome}/estrategia/plano-estrategico.md"
-    dependencia: "analisar-briefing"
+waves:
 
-  - etapa: "auditar-mapear"
-    agente: "traffic"
-    entrada: "plano-estrategico.md"
-    saida: "auditoria + mapa de publicos prontos"
-    dependencia: "criar-plano-estrategico"
+  wave-1-estrategia:
+    descricao: "Analise e plano estrategico"
+    sync: all-must-complete
+    artefato-saida: "estrategia/plano-estrategico.md"
+    tasks:
+      - etapa: "analisar-briefing"
+        agente: "strategist"
+        entrada: "onboarding/board-cliente.md"
+        saida: "estrategia/analise-briefing.md"
 
-  - etapa: "estruturar-campanha"
-    agente: "traffic"
-    entrada: "publicos mapeados, plano estrategico"
-    saida: "estrutura de campanha definida"
-    dependencia: "auditar-mapear"
+      - etapa: "criar-plano-estrategico"
+        agente: "strategist"
+        entrada: "estrategia/analise-briefing.md"
+        saida: "estrategia/plano-estrategico.md"
+        dependencia: "analisar-briefing"
 
-  - etapa: "solicitar-criativos"
-    agente: "traffic"
-    entrada: "estrutura de campanha definida"
-    saida: "briefing de criativos para copy + design"
-    dependencia: "estruturar-campanha"
+  wave-2-paralelo:
+    descricao: "Auditoria + ICP + branding em paralelo (iniciam ao mesmo tempo)"
+    sync: all-must-complete
+    checkpoint: "qa-wave-2"
+    tasks:
+      - etapa: "auditar-mapear"
+        agente: "traffic"
+        entrada: "estrategia/plano-estrategico.md"
+        saida: "trafego/auditoria.md + trafego/publicos-mapeados.md"
+        ferramenta: "Composio MCP (Meta Ads / Google Ads)"
 
-  # A partir daqui: copywriter e designer trabalham em paralelo
-  # copywriter: analisar-icp → criar-angulos-e-copy
-  # designer: ler-branding → aguarda copy
+      - etapa: "analisar-icp"
+        agente: "copywriter"
+        entrada: "onboarding/board-cliente.md, estrategia/plano-estrategico.md"
+        saida: "copy/analise-icp.md"
 
-  - etapa: "analisar-icp"
-    agente: "copywriter"
-    entrada: "briefing-final.md, plano-estrategico.md"
-    saida: "analise-icp.md"
-    dependencia: "solicitar-criativos"
+      - etapa: "ler-branding"
+        agente: "designer"
+        entrada: "branding/cores.yaml, branding/fontes.yaml, branding/guia-estilo.md"
+        saida: "diretrizes visuais compreendidas"
 
-  - etapa: "criar-angulos-e-copy"
-    agente: "copywriter"
-    entrada: "analise-icp.md, plano-estrategico.md, briefing-criativos"
-    saida: "angulos criados + copy escrita por canal"
-    dependencia: "analisar-icp"
-
-  - etapa: "ler-branding"
-    agente: "designer"
-    entrada: "branding/cores.yaml, branding/fontes.yaml"
-    saida: "diretrizes visuais compreendidas"
-    dependencia: "solicitar-criativos"
-
-  - etapa: "definir-conceito-visual"
-    agente: "designer"
-    entrada: "copy aprovada, branding lido, briefing-criativos"
-    saida: "conceito visual definido"
-    dependencia:
-      - "criar-angulos-e-copy"
-      - "ler-branding"
-
-  - etapa: "produzir-criativos"
-    agente: "designer"
-    entrada: "conceito visual, copy associada"
-    saida: "criativos produzidos e versionados"
-    dependencia: "definir-conceito-visual"
-
-  - etapa: "validar-tudo"
+  checkpoint-wave-2:
+    descricao: "QA valida os outputs da wave 2 antes de prosseguir"
     agente: "qa"
-    entrada: "copy + criativos + estrutura de campanha + LP"
-    saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
-    dependencia:
-      - "criar-angulos-e-copy"
-      - "produzir-criativos"
-      - "estruturar-campanha"
+    entrada:
+      - "trafego/auditoria.md"
+      - "copy/analise-icp.md"
+    veredicto: "APROVADO / BLOQUEADO"
+    on-blocked:
+      action: gerar-diagnosis
+      path: "operacao/diagnosis-wave-2.md"
+      notify: coo
+      auto-retry: 2
 
-  - etapa: "publicar-campanha"
-    agente: "traffic"
-    entrada: "veredicto APROVADO, criativos finais, estrutura pronta"
-    saida: "campanha ativa na plataforma"
-    dependencia: "validar-tudo"
-    ferramenta: "Composio MCP (Meta Ads / Google Ads)"
+  wave-3-producao:
+    descricao: "Estrutura de campanha + copy + conceito visual"
+    sync: all-must-complete
+    condicao: "checkpoint-wave-2 = APROVADO"
+    tasks:
+      - etapa: "estruturar-campanha"
+        agente: "traffic"
+        entrada: "trafego/publicos-mapeados.md, estrategia/plano-estrategico.md"
+        saida: "trafego/campanhas-ativas.md"
+        ferramenta: "Composio MCP (Meta Ads)"
 
-  - etapa: "monitorar-performance"
-    agente: "traffic"
-    entrada: "campanha ativa, KPIs do plano estrategico"
-    saida: "metricas coletadas e avaliadas"
-    dependencia: "publicar-campanha"
-    ferramenta: "Composio MCP (Google Analytics / Meta Ads)"
+      - etapa: "criar-angulos-e-copy"
+        agente: "copywriter"
+        entrada: "copy/analise-icp.md, estrategia/plano-estrategico.md"
+        saida: "copy/angulos.md + copy/CR-XXX.md por canal"
 
-  - etapa: "gerar-relatorio"
-    agente: "traffic"
-    entrada: "metricas da campanha"
-    saida: ".omgsys/clientes/{nome}/relatorios/relatorio-periodo.md"
-    dependencia: "monitorar-performance"
+      - etapa: "definir-conceito-visual"
+        agente: "designer"
+        entrada: "copy/CR-XXX.md (apos copywriter terminar)"
+        saida: "conceito visual definido"
+        dependencia: "criar-angulos-e-copy"
 
-  - etapa: "enviar-relatorio"
-    agente: "cs"
-    entrada: "relatorio do gestor de trafego"
-    saida: "relatorio enviado ao cliente via canal oficial"
-    dependencia: "gerar-relatorio"
-    ferramenta: "Composio MCP (Gmail / Slack)"
+      - etapa: "produzir-criativos"
+        agente: "designer"
+        entrada: "conceito visual, copy associada, branding"
+        saida: "design/criativos/CR-XXX-v1.{ext}"
+        dependencia: "definir-conceito-visual"
+
+  wave-4-publicacao:
+    descricao: "Validacao final e publicacao"
+    sync: sequential
+    tasks:
+      - etapa: "validar-tudo"
+        agente: "qa"
+        entrada: "copy/CR-XXX.md + design/criativos/ + trafego/campanhas-ativas.md"
+        saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
+        dependencia:
+          - "criar-angulos-e-copy"
+          - "produzir-criativos"
+          - "estruturar-campanha"
+
+      - etapa: "publicar-campanha"
+        agente: "traffic"
+        entrada: "veredicto APROVADO, criativos finais, estrutura pronta"
+        saida: "campanha ativa na plataforma"
+        dependencia: "validar-tudo"
+        ferramenta: "Composio MCP (Meta Ads / Google Ads)"
+
+  wave-5-acompanhamento:
+    descricao: "Monitoramento e relatorio"
+    sync: sequential
+    tasks:
+      - etapa: "monitorar-performance"
+        agente: "traffic"
+        entrada: "campanha ativa, KPIs do plano-estrategico.md"
+        saida: "metricas coletadas e avaliadas"
+        dependencia: "publicar-campanha"
+        ferramenta: "Composio MCP (Google Analytics / Meta Ads)"
+
+      - etapa: "gerar-relatorio"
+        agente: "traffic"
+        entrada: "metricas da campanha"
+        saida: "relatorios/relatorio-periodo.md"
+        dependencia: "monitorar-performance"
+
+      - etapa: "enviar-relatorio"
+        agente: "cs"
+        entrada: "relatorios/relatorio-periodo.md"
+        saida: "relatorio enviado ao cliente"
+        dependencia: "gerar-relatorio"
+        ferramenta: "Composio MCP (Gmail / Slack)"
+
+# ----------------------------------------------------------------
+# ON-FAILURE: comportamento padrao em qualquer falha de wave
+# ----------------------------------------------------------------
+
+on-failure:
+  action: gerar-diagnosis
+  formato:
+    path: "operacao/diagnosis-{etapa}-{YYYY-MM-DD}.md"
+    campos:
+      - "Problema identificado"
+      - "Causa-raiz provavel"
+      - "Agente responsavel pela correcao"
+      - "Acao corretiva"
+      - "Prioridade: CRITICO / NORMAL / BAIXO"
+      - "Retestar apos"
+  notify: coo
+  auto-retry: 2
+  escalar-para-ceo-se: retries-esgotados
+
+# ----------------------------------------------------------------
+# MEMORIA: todos os agentes devem registrar ao terminar cada etapa
+# ----------------------------------------------------------------
+
+memoria:
+  arquivo: "memoria/notas-sessao.md"
+  instrucao: >
+    Todo agente DEVE adicionar uma entrada em notas-sessao.md ao terminar
+    cada etapa. Incluir: o que foi feito, decisoes importantes,
+    e o que a proxima sessao precisa saber.
