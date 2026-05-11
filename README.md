@@ -1,110 +1,155 @@
-# AgencyOS
+# OMG.sys — One Man Gang
 
-> Sistema Operacional para Agencias de Marketing Digital
+> Sistema Operacional para Agência de Marketing Digital.
+> Instale em qualquer projeto e opere com 8 agentes especializados via Claude Code.
 
-Framework operacional baseado em agentes de IA para gerenciar toda operacao de uma agencia de marketing — do onboarding do cliente a entrega de relatorios.
+---
 
-## O que e
+## O que é
 
-AgencyOS e um conjunto de **agentes especializados**, **tasks executaveis**, **templates**, **workflows** e **checklists** que transformam a operacao de marketing em processo padronizado e replicavel.
+OMG.sys é um framework operacional que transforma qualquer pasta em uma agência de marketing digital funcionando com agentes Claude Code especializados.
 
-**Nao e SaaS. Nao e ferramenta.** E um framework que roda dentro do seu projeto via Claude Code (ou qualquer ambiente compativel com agentes).
+**Você → @ceo → @coo → agentes → arquivos → @qa → cliente**
 
-## Instalacao
+Cada agente tem um papel fixo, opera por arquivos e passa handoffs via documentos — não por conversa.
+
+---
+
+## Instalação
 
 ```bash
-npx agencyos-core@latest install
+npx omgsys-core@latest install
 ```
 
-Ou copie `.agencyos/` para seu projeto manualmente.
+Ou clone e configure manualmente:
+
+```bash
+git clone https://github.com/taiancarvalho/AgencyOS.git minha-agencia
+cd minha-agencia
+# Abra no Claude Code e digite:
+/setup
+```
+
+---
 
 ## Agentes
 
-| Agente | Persona | Responsabilidade |
-|--------|---------|-----------------|
-| @agency-master | Atlas 🗺️ | Orquestracao, setup, health check |
-| @cs | Sol ☀️ | Onboarding, setup tecnico, gestao do cliente |
-| @estrategista | Vera 🎯 | Estrategia, posicionamento, plano de campanha |
-| @gestor-trafego | Max 📊 | Midia paga, campanha, otimizacao |
-| @copywriter | Cal ✍️ | Copy, angulos, adaptacao por canal |
-| @designer | Lux 🎨 | Criativos visuais, videos, UGC |
-| @qa-campanha | Zara 🔍 | Validacao antes de publicar |
+| ID | Fantasy Name | Papel |
+|----|-------------|-------|
+| @ceo | Atlas | Estratégia da agência, decisões de negócio |
+| @coo | Marcos | Orquestrador operacional, workflows |
+| @cs | Sol | Customer Success, onboarding, relatórios |
+| @strategist | Vera | Estratégia de marketing, posicionamento |
+| @traffic | Max | Mídia paga, campanhas, otimização |
+| @copywriter | Cal | Copy, ângulos, adaptação por canal |
+| @designer | Lux | Criativos visuais, vídeos, UGC |
+| @qa | Zara | Validação obrigatória antes de publicar |
 
-## Como Usar
+Cada ID funciona como `@ceo` ou pelo nome fantasia configurado (`@Atlas`).
+Configure nomes personalizados no `/setup`.
 
-### 1. Instalar
+---
 
-```bash
-npx agencyos-core@latest install
-```
-
-### 2. Criar workspace de cliente
-
-```bash
-npx agencyos-core new-client nome-do-cliente
-```
-
-### 3. Iniciar operacao
+## Fluxo Padrão
 
 ```
-@cs *iniciar-onboarding nome-do-cliente
+Você
+ └→ @ceo — traduz intenção estratégica
+     └→ @coo — lê workflow, delega com contexto mínimo
+         ├→ @strategist — plano estratégico
+         ├→ @traffic — estrutura e sobe campanhas
+         ├→ @copywriter — copy e ângulos
+         ├→ @designer — criativos visuais
+         └→ @qa — valida tudo antes de publicar
+              └→ @cs — envia ao cliente
 ```
 
-### 4. Flu
+---
+
+## Skills (Slash Commands)
+
+| Skill | O que faz |
+|-------|-----------|
+| `/setup` | Configurar o sistema pela primeira vez |
+| `/novo-cliente` | Criar workspace de novo cliente |
+| `/onboarding` | Iniciar onboarding de cliente |
+| `/status-cliente` | Resumo operacional de um cliente |
+| `/relatorio` | Gerar e enviar relatório de performance |
+| `/criar-campanha` | Ciclo completo de campanha ponta a ponta |
+| `/auditoria-conta` | Auditar conta Meta ou Google Ads |
+| `/iterar-criativo` | Iterar criativos com baixa performance |
+| `/briefing` | Coletar briefing estruturado |
+| `/saude-sistema` | Health check completo |
+
+---
+
+## Integrações Externas
+
+Todas as integrações passam pelo **Composio MCP** (Artigo IX da Constituição):
+
+- Meta Ads
+- Google Analytics / Google Ads
+- Gmail
+- Slack
+- Google Sheets
+
+Se não souber os parâmetros: consulte **Context7** antes de executar.
+
+---
+
+## Estrutura do Projeto
 
 ```
-Onboarding (CS) → Estrategia (Vera) → Trafego + Copy + Design → QA (Zara) → Publicacao
-```
-
-## Estrutura
-
-```
-.agencyos/
-├── agents/          # Definições dos 7 agentes
+.omgsys/
+├── agents/          ← 8 agentes completos (personas, comandos, dependências)
 ├── core/
-│   ├── constitution.md    # Principios inegociaveis
-│   ├── tasks/      # Tasks executaveis por agente
-│   ├── templates/  # Templates de documentos
-│   ├── data/       # Dados de referencia
-│   ├── workflows/  # Workflows multi-agent
-│   └── checklists/ # Checklists de validação
-├── clientes/       # Workspaces dos clientes
-│   └── _template/  # Template base
-└── bin/            # Scripts auxiliares
+│   ├── constitution.md
+│   ├── tasks/       ← 53+ tasks distribuídas em 8 pastas de agente
+│   ├── data/        ← 8 arquivos de dados (KPIs, estruturas, nomenclaturas)
+│   ├── workflows/   ← 6 workflows (onboarding, ciclo-campanha, google-ads, social-media, lancamento, iteracao-criativa)
+│   ├── templates/   ← templates de briefing, copy, relatorios, contratos
+│   └── checklists/  ← checklists operacionais
+├── setup/           ← wizard de configuração inicial
+├── rules/           ← regras de autoridade, handoff e execução
+└── clientes/        ← workspace por cliente
+
+.claude/
+├── CLAUDE.md        ← entry point do sistema
+├── settings.json    ← Composio + Context7 MCPs
+├── agents/          ← 8 wrappers leves (apontam para .omgsys/agents/)
+└── commands/        ← 10 skills operacionais
+
+omgsys-config.yaml   ← configuração da agência (gerado pelo /setup)
 ```
 
-## Principios
+---
 
-1. **Filesystem First:** Tudo e arquivo, arquivo tem lugar previsivel
-2. **Agente = Papel, Task = Execucao:** 1 agente = 1 dominio responsabilidade
-3. **Artefatos sobre Conversa:** Agentes se conectam por arquivos, nao por dialogo
-4. **Contexto Reduzido:** Executor so carrega que precisa
-5. **QA Gate Obrigatorio:** Nada vai para o cliente sem validacao
+## Primeira Vez
 
-## Integracoes
+1. Abra o projeto no Claude Code
+2. Digite `/setup` para configurar sua agência
+3. Crie seu primeiro cliente: `/novo-cliente {nome}`
+4. Inicie o onboarding: `/onboarding {nome}`
+5. Ou fale diretamente com o CEO: `@ceo`
 
-- **UGC Creator (WaveSpeed AI):** Geracao de conteudo UGC fotorrealista
-- **Avora Skills Library:** Biblioteca de skills de marketing e vendas
-- **Meta Ads MCP:** Operacao real de campanhas (opcional)
+---
 
-## Desenvolvimento
+## Princípios
 
-### Projeto atual
+1. **Filesystem First:** Tudo é arquivo, arquivo tem lugar previsível
+2. **1 Agente = 1 Papel:** Cada agente conhece seu domínio e seus limites
+3. **Artefatos sobre Conversa:** Handoffs acontecem por documento, não por diálogo
+4. **Contexto Reduzido:** Executor carrega apenas o que precisa para a task
+5. **QA Gate Obrigatório:** Nada vai ao cliente sem veredicto APROVADO do @qa
+6. **Composio como Gateway:** Todas as integrações externas passam pelo Composio MCP
 
-- ✅ Fase 1: Conteudo operacional completo
-- ✅ Fase 2: Scripts + AGENTS.md + package.json
-- 🔄 Fase 3: NPM package com wizard
+---
 
-### Contagem de arquivos
+## Regra Fundamental
 
-| Tipo | Total |
-|------|-------|
-| Tasks | 49 |
-| Templates | 14 |
-| Data files | 5 |
-| Workflows | 3 |
-| Checklists | 3 |
+> **Nada vai ao cliente sem veredicto APROVADO do @qa.**
+> QA não aprova por pressão. BLOQUEADO significa bloqueado.
 
-## License
+---
 
-MIT
+*OMG.sys v1.0 — One Man Gang*

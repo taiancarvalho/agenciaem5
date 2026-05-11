@@ -1,0 +1,126 @@
+# Canais suportados pelo AgencyOS
+# Versao: 1.0
+# Usado por: todos os agentes para referencia de canal
+
+meta_ads:
+  nome: "Meta Ads (Facebook + Instagram)"
+  tipo: plataforma_pago
+  objetivo_possiveis:
+    - leads
+    - vendas
+    - awareness
+    - trafego
+    - engajamento
+    - mensagens
+  formatos:
+    - imagem
+    - video
+    - carrossel
+    - stories
+    - reels
+  dimensoes:
+    feed: "1080x1080 ou 1080x1350"
+    stories_reels: "1080x1920"
+  kpis_principais:
+    - CPL
+    - CPA
+    - ROAS
+    - CTR
+    - CPM
+    - CPC
+  politicas_chave:
+    - "Sem antes/depois para saude/beleza"
+    - "Sem promessas de renda ou resultado garantido"
+    - "Sem discriminacao na segmentacao"
+
+google_ads:
+  nome: "Google Ads"
+  tipo: plataforma_pago
+  objetivo_possiveis:
+    - leads
+    - vendas
+    - trafego
+    - awareness
+  formatos:
+    - search
+    - display
+    - video
+    - shopping
+    - performance_max
+  dimensoes:
+    display_300x250: "300x250"
+    display_728x90: "728x90"
+    display_160x600: "160x600"
+    display_300x600: "300x600"
+    youtube: "16:9"
+  kpis_principais:
+    - CPC
+    - CPA
+    - ROAS
+    - CTR
+    - impressoes
+    -_quality_score
+  politicas_chave:
+    - "Sem texto enganoso ou clickbait"
+    - "Sem markup de marca registrada sem autorizacao"
+
+whatsapp:
+  nome: "WhatsApp"
+  tipo: canal_proprio
+  uso:
+    - follow-up
+    - nutricao
+    - vendas_diretas
+    - relacionamento
+    - reporte
+  integracao_opcional: "Evolution API"
+
+email:
+  nome: "E-mail Marketing"
+  tipo: canal_proprio
+  uso:
+    - nutricao
+    - relacionamento
+    - reativacao
+    - newsletters
+  kpis_principais:
+    - taxa_abertura
+    - taxa_clique
+    - taxa_descadastramento
+
+tiktok_ads:
+  nome: "TikTok Ads"
+  tipo: plataforma_pago
+  objetivo_possiveis:
+    - awareness
+    - trafego
+    - conversoes
+  formatos:
+    - video_vertical
+  dimensoes: "1080x1920"
+  kpis_principais:
+    - CPM
+    - CPC
+    - CTR
+    - CPA
+
+linkedin_ads:
+  nome: "LinkedIn Ads"
+  tipo: plataforma_pago
+  objetivo_possiveis:
+    - leads_b2b
+    - awareness
+    - trafego
+  formatos:
+    - sponsored_content
+    - sponsored_messaging
+    - text_ads
+    - video
+  dimensoes:
+    imagem: "1200x627"
+    video: "16:9"
+  kpis_principais:
+    - CPL
+    - CPC
+    - CTR
+    - CPM

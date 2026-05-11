@@ -1,0 +1,75 @@
+# Workflow: Google Ads
+# Versao: 1.0
+# Agentes: traffic → copywriter → qa → traffic → cs
+
+nome: "google-ads"
+descricao: "Fluxo especifico para criacao e gestao de campanhas Google Ads"
+gatilho: "Plano estrategico aprovado com canal Google Ads definido"
+ferramenta_principal: "Composio MCP (Google Ads API)"
+
+sequencia:
+  - etapa: "auditar-conta-google"
+    agente: "traffic"
+    entrada: "acesso Google Ads via Composio"
+    saida: "trafego/auditoria-google-{data}.md"
+    dependencia: nenhuma
+    ferramenta: "Composio MCP"
+
+  - etapa: "mapear-keywords"
+    agente: "traffic"
+    entrada: "auditoria-google.md + plano-estrategico.md"
+    saida: "lista de keywords por inten cao + match type recomendado"
+    dependencia: "auditar-conta-google"
+    notas: "Consultar Context7 se precisar de orientacoes sobre match types ou ferramentas de keyword research"
+
+  - etapa: "estruturar-search"
+    agente: "traffic"
+    entrada: "keywords mapeadas + estrutura-base-campanhas.yaml"
+    saida: "estrutura de campanha Search definida (campanhas, grupos, keywords)"
+    dependencia: "mapear-keywords"
+
+  - etapa: "criar-copy-search"
+    agente: "copywriter"
+    entrada: "estrutura Search + plano-estrategico.md + keywords priorizadas"
+    saida: "anuncios Search: headlines (min 15) + descriptions (min 4) por grupo"
+    dependencia: "estruturar-search"
+    notas: "Headlines: 30 chars max. Descriptions: 90 chars max. Incluir keyword principal."
+
+  - etapa: "validar-qa"
+    agente: "qa"
+    entrada: "copy Search + estrutura de campanha"
+    saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
+    dependencia: "criar-copy-search"
+
+  - etapa: "publicar"
+    agente: "traffic"
+    entrada: "veredicto APROVADO + estrutura + copies"
+    saida: "campanhas ativas no Google Ads"
+    dependencia: "validar-qa"
+    ferramenta: "Composio MCP (Google Ads API)"
+
+  - etapa: "monitorar"
+    agente: "traffic"
+    entrada: "campanhas ativas + KPIs do plano"
+    saida: "log de monitoramento diario"
+    dependencia: "publicar"
+    frequencia: "diaria (desvios graves) + semanal (otimizacao)"
+    ferramenta: "Composio MCP"
+
+  - etapa: "relatorio"
+    agente: "traffic"
+    entrada: "dados de performance 7-30 dias"
+    saida: "trafego/relatorio-google-{data}.md"
+    dependencia: "monitorar"
+
+  - etapa: "enviar-relatorio"
+    agente: "cs"
+    entrada: "relatorio-google.md"
+    saida: "relatorio enviado ao cliente"
+    dependencia: "relatorio"
+    ferramenta: "Composio MCP (Gmail)"
+
+notas_importantes:
+  - "Sempre verificar Quality Score das keywords apos 7 dias"
+  - "Adicionar Search Terms negativos semanalmente"
+  - "Performance Max: aguardar minimo 14 dias antes de otimizacoes"

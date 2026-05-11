@@ -19,7 +19,14 @@
       "Bash(ls:*)",
       "Bash(cat:*)",
       "Bash(cp:*)",
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(touch:*)",
+      "Bash(echo:*)",
+      "Bash(date:*)",
+      "Bash(node:*)",
+      "Bash(npx:*)"
     ]
   }
 }

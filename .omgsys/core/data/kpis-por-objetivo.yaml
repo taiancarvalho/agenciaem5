@@ -1,0 +1,106 @@
+# KPIs esperados por objetivo e estagio
+# Versao: 1.0
+# Usado por: strategist, traffic, cs
+
+leads:
+  descricao: "Campanhas com objetivo de captacao de leads"
+  kpis_primarios:
+    - CPL
+    - volume_leads
+    - taxa_conversao_LP
+  kpis_secundarios:
+    - CPM
+    - CTR
+    - CPC
+  referencia_saudavel:
+    CPL: "Depende do ticket medio — geralmente < 10% do ticket"
+    CTR_minimo: "1.5%"
+    conversao_LP_minima: "10%"
+  alerta:
+    CPL_alto: "Acima de 15% do ticket medio"
+    CTR_baixo: "Abaixo de 1% apos 7 dias"
+
+vendas:
+  descricao: "Campanhas com objetivo de conversao direta"
+  kpis_primarios:
+    - CPA
+    - ROAS
+    - receita_gerada
+  kpis_secundarios:
+    - taxa_conversao
+    - AOV
+    - CTR
+  referencia_saudavel:
+    ROAS_minimo: "3x"
+    CPA_maximo: "< 30% do ticket medio"
+  alerta:
+    ROAS_baixo: "Abaixo de 2x apos 14 dias"
+    CPA_alto: "Acima de 40% do ticket medio"
+
+awareness:
+  descricao: "Campanhas com objetivo de alcance e reconhecimento"
+  kpis_primarios:
+    - alcance
+    - impressoes
+    - CPM
+  kpis_secundarios:
+    - frequencia
+    - video_views
+  referencia_saudavel:
+    frequencia_maxima: "3.0 (acima disso = saturacao)"
+    CTR_minimo: "0.5%"
+  alerta:
+    saturacao: "Frequencia acima de 4.0"
+
+trafego:
+  descricao: "Campanhas com objetivo de levar visitantes ao destino"
+  kpis_primarios:
+    - cliques
+    - CTR
+    - CPC
+  kpis_secundarios:
+    - CPM
+    - bounce_rate
+    - tempo_na_pagina
+  referencia_saudavel:
+    CTR_minimo: "1.0%"
+    bounce_rate_maximo: "70%"
+
+engajamento:
+  descricao: "Campanhas com objetivo de interacao"
+  kpis_primarios:
+    - engajamentos
+    - taxa_engajamento
+    - CPE
+  kpis_secundarios:
+    - comentarios
+    - compartilhamentos
+    - saves
+  referencia_saudavel:
+    taxa_engajamento_minima: "3%"
+
+mensagens:
+  descricao: "Campanhas com objetivo de iniciar conversas"
+  kpis_primarios:
+    - CPC_conversa
+    - volume_conversas
+    - taxa_resposta
+  kpis_secundarios:
+    - CTR
+    - CPM
+  referencia_saudavel:
+    CPC_conversa: "Ate R$2-5 dependendo do segmento"
+  alerta:
+    conversas_sem_resposta: "Mais de 30% sem resposta em 1h"
+
+retencao:
+  descricao: "Campanhas para reativacao e fidelizacao"
+  kpis_primarios:
+    - taxa_reativacao
+    - CPA_reativacao
+    - LTV
+  kpis_secundarios:
+    - taxa_churn
+    - frequencia_compra
+  referencia_saudavel:
+    taxa_reativacao_minima: "5-10%"

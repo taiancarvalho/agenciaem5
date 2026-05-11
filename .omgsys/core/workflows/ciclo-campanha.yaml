@@ -1,0 +1,110 @@
+# Workflow: Ciclo de Campanha
+# Versao: 1.1
+# Agentes: strategist → traffic → copywriter+designer (paralelo) → qa → traffic → cs
+
+nome: "ciclo-campanha"
+descricao: "Fluxo completo de criacao, producao e publicacao de campanha"
+gatilho: "Plano estrategico aprovado pelo cliente"
+
+sequencia:
+  - etapa: "analisar-briefing"
+    agente: "strategist"
+    entrada: "briefing-final.md"
+    saida: "analise-briefing.md"
+    dependencia: nenhuma
+
+  - etapa: "criar-plano-estrategico"
+    agente: "strategist"
+    entrada: "analise-briefing.md, template plano-estrategico.md"
+    saida: ".omgsys/clientes/{nome}/estrategia/plano-estrategico.md"
+    dependencia: "analisar-briefing"
+
+  - etapa: "auditar-mapear"
+    agente: "traffic"
+    entrada: "plano-estrategico.md"
+    saida: "auditoria + mapa de publicos prontos"
+    dependencia: "criar-plano-estrategico"
+
+  - etapa: "estruturar-campanha"
+    agente: "traffic"
+    entrada: "publicos mapeados, plano estrategico"
+    saida: "estrutura de campanha definida"
+    dependencia: "auditar-mapear"
+
+  - etapa: "solicitar-criativos"
+    agente: "traffic"
+    entrada: "estrutura de campanha definida"
+    saida: "briefing de criativos para copy + design"
+    dependencia: "estruturar-campanha"
+
+  # A partir daqui: copywriter e designer trabalham em paralelo
+  # copywriter: analisar-icp → criar-angulos-e-copy
+  # designer: ler-branding → aguarda copy
+
+  - etapa: "analisar-icp"
+    agente: "copywriter"
+    entrada: "briefing-final.md, plano-estrategico.md"
+    saida: "analise-icp.md"
+    dependencia: "solicitar-criativos"
+
+  - etapa: "criar-angulos-e-copy"
+    agente: "copywriter"
+    entrada: "analise-icp.md, plano-estrategico.md, briefing-criativos"
+    saida: "angulos criados + copy escrita por canal"
+    dependencia: "analisar-icp"
+
+  - etapa: "ler-branding"
+    agente: "designer"
+    entrada: "branding/cores.yaml, branding/fontes.yaml"
+    saida: "diretrizes visuais compreendidas"
+    dependencia: "solicitar-criativos"
+
+  - etapa: "definir-conceito-visual"
+    agente: "designer"
+    entrada: "copy aprovada, branding lido, briefing-criativos"
+    saida: "conceito visual definido"
+    dependencia:
+      - "criar-angulos-e-copy"
+      - "ler-branding"
+
+  - etapa: "produzir-criativos"
+    agente: "designer"
+    entrada: "conceito visual, copy associada"
+    saida: "criativos produzidos e versionados"
+    dependencia: "definir-conceito-visual"
+
+  - etapa: "validar-tudo"
+    agente: "qa"
+    entrada: "copy + criativos + estrutura de campanha + LP"
+    saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
+    dependencia:
+      - "criar-angulos-e-copy"
+      - "produzir-criativos"
+      - "estruturar-campanha"
+
+  - etapa: "publicar-campanha"
+    agente: "traffic"
+    entrada: "veredicto APROVADO, criativos finais, estrutura pronta"
+    saida: "campanha ativa na plataforma"
+    dependencia: "validar-tudo"
+    ferramenta: "Composio MCP (Meta Ads / Google Ads)"
+
+  - etapa: "monitorar-performance"
+    agente: "traffic"
+    entrada: "campanha ativa, KPIs do plano estrategico"
+    saida: "metricas coletadas e avaliadas"
+    dependencia: "publicar-campanha"
+    ferramenta: "Composio MCP (Google Analytics / Meta Ads)"
+
+  - etapa: "gerar-relatorio"
+    agente: "traffic"
+    entrada: "metricas da campanha"
+    saida: ".omgsys/clientes/{nome}/relatorios/relatorio-periodo.md"
+    dependencia: "monitorar-performance"
+
+  - etapa: "enviar-relatorio"
+    agente: "cs"
+    entrada: "relatorio do gestor de trafego"
+    saida: "relatorio enviado ao cliente via canal oficial"
+    dependencia: "gerar-relatorio"
+    ferramenta: "Composio MCP (Gmail / Slack)"
