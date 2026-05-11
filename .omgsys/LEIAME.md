@@ -1,7 +1,7 @@
 # OMG.sys — Mapa Completo e Guia de Validação
 
 > Este documento é o ponto de entrada do sistema. Leia antes de executar qualquer coisa.
-> Última atualização: Fase 2 completa — Board + Playbooks + Memória + Diagnosis + Wave Pattern
+> Última atualização: Fase 2 completa — Board + Playbooks + Memória + Diagnosis + Wave Pattern + Learnings
 
 ---
 
@@ -23,7 +23,7 @@ O sistema existe para que um operador humano consiga gerenciar múltiplos client
 | @cs | Mia | Customer Success — onboarding, board do cliente, relacionamento |
 | @strategist | Vera | Estratégia — análise de briefing, plano estratégico, hipóteses |
 | @copywriter | Cal | Copy — anúncios, posts, emails, WhatsApp, scripts |
-| @designer | Lux | Design — conceito visual, criativos, UGC |
+| @designer | Lux | Design — conceito visual, criativos, UGC via WaveSpeed MCP |
 | @traffic | Max | Tráfego pago — Meta Ads e Google Ads via Composio |
 | @qa | — | Qualidade — valida entregáveis antes de publicar |
 | @coo | — | Operações — orquestra agentes, lê diagnosis, redespacha |
@@ -51,10 +51,13 @@ Não falam diretamente entre si. A comunicação acontece via **arquivos**:
 │   ├── traffic-meta.md              → CPL matrix, estrutura de campanha, saturation rules
 │   ├── traffic-google.md            → Search/PMax, quando usar cada um, thresholds
 │   ├── copywriter-frameworks.md     → 5 ângulos com exemplos bom/ruim por canal
-│   ├── designer-instagram.md        → árvore ângulo→conceito→UGC shot type
+│   ├── designer-instagram.md        → WaveSpeed MCP setup + árvore ângulo→conceito→UGC
 │   └── cs-board-cliente.md          → como conduzir o board, tom, red flags
 │
 ├── core/
+│   ├── comportamento-agente.md      ← REGRAS DE COMPORTAMENTO — todos os agentes leem
+│   │                                  WAL Protocol, ciclo de memória, auto-melhoria
+│   │
 │   ├── tasks/                       ← O QUE fazer (instrução por task)
 │   │   ├── cs/
 │   │   │   ├── coletar-board.md     → 10 seções + Composio auto-lookup + scoring 0-100
@@ -79,10 +82,15 @@ Não falam diretamente entre si. A comunicação acontece via **arquivos**:
 │   │   │   └── escrever-post-social.md  → legenda Instagram/Facebook/LinkedIn
 │   │   └── designer/
 │   │       ├── definir-conceito-visual.md → árvore ângulo→conceito visual
-│   │       └── gerar-ugc.md              → UGC via WaveSpeed/Kling com atores
+│   │       └── gerar-ugc.md              → UGC via WaveSpeed MCP (Kling/Banana/GPT-image)
 │   │
 │   └── workflows/
 │       └── ciclo-campanha.yaml       ← ORQUESTRAÇÃO — sequência completa de waves
+│
+├── learnings/                       ← AUTO-MELHORIA — o sistema aprende com o tempo
+│   ├── LEARNINGS.md                 → padrões descobertos, o que funciona, promoção a playbook
+│   ├── ERRORS.md                    → erros encontrados, causa-raiz, correção aplicada
+│   └── FEATURE_REQUESTS.md         → capacidades que faltam, pedidas por agentes ou humano
 │
 └── agents/                          ← definições de personalidade e instruções base
     └── (arquivos por agente)
@@ -90,7 +98,7 @@ Não falam diretamente entre si. A comunicação acontece via **arquivos**:
 clientes/
 ├── _template/                       ← copiar para novo cliente
 │   ├── onboarding/board-cliente.md  → preenchido pelo @cs
-│   ├── memoria/notas-sessao.md      → memória entre sessões
+│   ├── memoria/notas-sessao.md      → memória entre sessões (WAL Protocol + SESSION-STATE)
 │   └── operacao/log-performance-criativa.md → log semanal de criativos
 └── {nome-do-cliente}/
     ├── onboarding/
@@ -101,14 +109,16 @@ clientes/
     ├── copy/
     │   ├── anuncios/                → copy de Meta/Google
     │   └── social/                  → captions orgânicas
-    ├── design/criativos/            → arquivos de design e UGC
+    ├── design/
+    │   ├── criativos/               → arquivos de design e UGC
+    │   └── criativos/prompts/       → prompts WaveSpeed salvos por criativo
     ├── trafego/
     │   ├── estrutura-campanhas.md   → documentação da conta
     │   └── keywords-{data}.md       → mapa de keywords Google
     ├── operacao/
     │   └── log-performance-criativa.md → histórico de criativos e decisões
     └── memoria/
-        └── notas-sessao.md          → memória contínua entre sessões
+        └── notas-sessao.md          → memória contínua + SESSION-STATE ativo
 
 contexto/
 ├── ugc-system/                      → guia de atores, shots e configurações WaveSpeed
@@ -171,7 +181,7 @@ copiar clientes/_template/ → clientes/{nome-do-cliente}/
 
 **5. Wave 3 de produção**
 - @copywriter: escreve copy com ângulo escolhido
-- @designer: define conceito visual → produz criativos
+- @designer: define conceito visual → produz criativos (WaveSpeed MCP)
 - @traffic: estrutura campanha via Composio
 
 **6. Wave 4 de publicação**
@@ -198,7 +208,7 @@ O que procurar: campos com valores numéricos concretos — meta em número de l
 O que procurar: a CPL Decision Matrix com thresholds numéricos. Se você lê "otimize quando ruim" em vez de "CPL > 2x meta por 7d → pausar", o playbook está incompleto.
 
 **4º — `clientes/{nome}/memoria/notas-sessao.md`**
-O que procurar: entradas recentes de sessões anteriores. Se está vazio ou não existe, os agentes estão trabalhando sem memória — cada sessão começa do zero.
+O que procurar: entradas recentes de sessões anteriores + SESSION-STATE ativo. Se está vazio ou não existe, os agentes estão trabalhando sem memória — cada sessão começa do zero.
 
 **5º — `.omgsys/core/workflows/ciclo-campanha.yaml`**
 O que procurar: as seções `waves:` com `sync: all-must-complete` e `on-failure: gerar-diagnosis`. Se não existirem, o workflow ainda é sequencial e sem loop de QA.
@@ -220,11 +230,11 @@ Abra qualquer task de `traffic/` ou `copywriter/`. Tem `## Playbook de Referênc
 Abra `ciclo-campanha.yaml`. Tem `wave-2-paralelo` com tasks simultâneas? Tem `on-failure:` com `auto-retry`? Se sim, o sistema age sozinho quando algo falha.
 
 **Pergunta 5 — A memória está sendo usada?**
-Após qualquer sessão com cliente, abra `memoria/notas-sessao.md`. Tem entrada da última sessão? Se não, o agente trabalhou mas não registrou — a próxima sessão vai começar do zero.
+Após qualquer sessão com cliente, abra `memoria/notas-sessao.md`. Tem entrada da última sessão com SESSION-STATE? Se não, o agente trabalhou mas não registrou — a próxima sessão vai começar do zero.
 
 ---
 
-### Checklist rápido — 10 itens
+### Checklist rápido — 12 itens
 
 ```
 □ board-cliente.md tem score 0-100 calculado?
@@ -235,13 +245,15 @@ Após qualquer sessão com cliente, abra `memoria/notas-sessao.md`. Tem entrada 
 □ Tasks de traffic têm "## Playbook de Referência" no topo?
 □ Tasks críticas têm "## Em caso de falha" com template de diagnosis.md?
 □ Tasks têm "## Handoff" com lista de arquivos para o próximo agente?
-□ clientes/_template/memoria/notas-sessao.md existe?
+□ clientes/_template/memoria/notas-sessao.md tem SESSION-STATE ativo?
 □ playbooks/ tem os 5 arquivos (traffic-meta, traffic-google, copywriter-frameworks, designer-instagram, cs-board-cliente)?
+□ .omgsys/core/comportamento-agente.md existe com WAL Protocol?
+□ .omgsys/learnings/ tem os 3 arquivos (LEARNINGS, ERRORS, FEATURE_REQUESTS)?
 ```
 
-**8-10 checks:** sistema em 7.5/10 — pronto para primeiro cliente real.
-**5-7 checks:** gaps pontuais — identifique qual arquivo está faltando.
-**< 5 checks:** revisão dos commits da Fase 2 necessária.
+**10-12 checks:** sistema em 7.5/10 — pronto para primeiro cliente real.
+**7-9 checks:** gaps pontuais — identifique qual arquivo está faltando.
+**< 7 checks:** revisão dos commits da Fase 2 necessária.
 
 ---
 
@@ -257,6 +269,8 @@ Após qualquer sessão com cliente, abra `memoria/notas-sessao.md`. Tem entrada 
 | Estratégia muda a cada sessão sem motivo | `notas-sessao.md` vazio | Instruir agente a escrever ao final de cada task |
 | PMax ativo com budget < R$150/dia | Critérios de `estruturar-pmax.md` não seguidos | `tasks/traffic/google-ads/estruturar-pmax.md` |
 | Score do cliente < 30 mas campanhas rodando | @cs não escalou para @ceo | `tasks/cs/coletar-board.md` seção RED FLAGS |
+| Agente repete o mesmo erro em sessões diferentes | ERRORS.md não está sendo lido | `core/comportamento-agente.md` — verificar ciclo de memória |
+| Aprendizado importante não vira melhoria de sistema | Promoção para playbook não acontece | LEARNINGS.md — verificar se atingiu 3 ocorrências |
 
 ---
 
@@ -264,7 +278,7 @@ Após qualquer sessão com cliente, abra `memoria/notas-sessao.md`. Tem entrada 
 
 ### Status atual: 7.5/10
 
-O sistema executa o fluxo completo. Os agentes têm método. O QA tem loop. A memória entre sessões existe.
+O sistema executa o fluxo completo. Os agentes têm método. O QA tem loop. A memória entre sessões existe. O sistema aprende com LEARNINGS.md. O @designer tem acesso a WaveSpeed MCP.
 
 ### Para chegar em 9.0 — 3 iniciativas
 
@@ -293,6 +307,9 @@ O `log-performance-criativa.md` já existe. Falta o @strategist lê-lo antes de 
 **Relatório automático para o cliente:**
 @cs já tem `enviar-relatorio.md`. Integrar com Composio (Gmail/WhatsApp) para que o relatório seja enviado automaticamente todo domingo sem intervenção humana.
 
+**instagram-carousel skill:**
+Gerar carrosséis 1080x1350 nativamente via Playwright. Absorver o padrão Hook→Problema→Solução→CTA nos slides do @designer.
+
 ---
 
 ## Parte 7 — Como ler o sistema por agente
@@ -300,13 +317,14 @@ O `log-performance-criativa.md` já existe. Falta o @strategist lê-lo antes de 
 Se quiser auditar um agente específico, leia em ordem:
 
 1. **Definição do agente** — `agents/{agente}.md` (personalidade, regras, ferramentas)
-2. **Playbook** — `playbooks/{agente}.md` (método concreto, critérios numéricos)
-3. **Tasks** — `core/tasks/{agente}/` (instrução por task)
-4. **Handoffs** — seção `## Handoff` em cada task (confirma continuidade)
+2. **Comportamento base** — `core/comportamento-agente.md` (WAL Protocol, memória, auto-melhoria)
+3. **Playbook** — `playbooks/{agente}.md` (método concreto, critérios numéricos)
+4. **Tasks** — `core/tasks/{agente}/` (instrução por task)
+5. **Handoffs** — seção `## Handoff` em cada task (confirma continuidade)
 
-Se qualquer uma dessas 4 camadas estiver quebrada, o agente vai falhar naquele ponto.
+Se qualquer uma dessas camadas estiver quebrada, o agente vai falhar naquele ponto.
 
 ---
 
-*OMG.sys — Fase 2 completa. Board + Playbooks + Memória + Diagnosis + Wave Pattern.*
+*OMG.sys — Fase 2 completa. Board + Playbooks + Memória + Diagnosis + Wave Pattern + Learnings + WaveSpeed MCP.*
 *Próxima Fase: claude-mem + n8n auto-triggers + skills integradas.*
