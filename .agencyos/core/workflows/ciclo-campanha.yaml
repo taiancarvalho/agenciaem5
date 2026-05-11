@@ -1,6 +1,6 @@
 # Workflow: Ciclo de Campanha
-# Versao: 1.0
-# Agentes: estrategista → gestor-trafego → copywriter → designer → qa → gestor-trafego
+# Versao: 1.1 (corrigido: ordem solicitar-criativos)
+# Agentes: estrategista → gestor-trafego → copywriter + designer → qa → gestor-trafego
 
 nome: "ciclo-campanha"
 descricao: "Fluxo completo de criacao, producao e publicacao de campanha"
@@ -8,28 +8,35 @@ gatilho: "Plano estrategico aprovado pelo cliente"
 
 sequencia:
   - etapa: "analisar-briefing"
-    agente: "estrategista"
+    agente: "strategist"
     entrada: "briefing-final.md"
     saida: "analise-briefing.md"
     dependencia: nenhuma
 
   - etapa: "criar-plano-estrategico"
-    agente: "estrategista"
+    agente: "strategist"
     entrada: "analise-briefing.md, template plano-estrategico.md"
     saida: ".agencyos/clientes/{nome}/estrategia/plano-estrategico.md"
     dependencia: "analisar-briefing"
 
   - etapa: "auditar-mapear"
-    agente: "gestor-trafego"
+    agente: "traffic"
     entrada: "plano-estrategico.md"
     saida: "auditoria + mapa de publicos prontos"
     dependencia: "criar-plano-estrategico"
 
   - etapa: "estruturar-campanha"
-    agente: "gestor-trafego"
+    agente: "traffic"
     entrada: "publicos mapeados, plano estrategico"
     saida: "estrutura de campanha definida"
     dependencia: "auditar-mapear"
+
+  - etapa: "solicitar-criativos"
+    agente: "traffic"
+    entrada: "estrutura de campanha definida"
+    saida: "briefing de criativos para copywriter e designer"
+    dependencia: "estruturar-campanha"
+    nota: "DEVE preceder producao de copy e design"
 
   - etapa: "analisar-icp"
     agente: "copywriter"
@@ -39,9 +46,11 @@ sequencia:
 
   - etapa: "criar-angulos-e-copy"
     agente: "copywriter"
-    entrada: "analise-icp.md, plano-estrategico.md"
+    entrada: "analise-icp.md, plano-estrategico.md, briefing de criativos do traffic"
     saida: "angulos criados + copy escrita por canal"
-    dependencia: "analisar-icp"
+    dependencia:
+      - "analisar-icp"
+      - "solicitar-criativos"
 
   - etapa: "ler-branding"
     agente: "designer"
@@ -51,53 +60,51 @@ sequencia:
 
   - etapa: "definir-conceito-visual"
     agente: "designer"
-    entrada: "copy aprovada, branding lido"
+    entrada: "copy aprovada, branding lido, briefing de criativos do traffic"
     saida: "conceito visual definido"
     dependencia:
       - "criar-angulos-e-copy"
       - "ler-branding"
+      - "solicitar-criativos"
 
   - etapa: "produzir-criativos"
     agente: "designer"
-    entrada: "conceito visual, copy associada"
-    saida: "criativos produzidos e versionados"
+    entrada: "conceito visual definido, copy associada"
+    saida: "criativos produzidos e versionados (CR-XXX-v1)"
     dependencia: "definir-conceito-visual"
 
-  - etapa: "solicitar-criativos"
-    agente: "gestor-trafego"
-    entrada: "estrutura de campanha definida"
-    saida: "briefing de criativos para copy + design"
-    dependencia: "estruturar-campanha"
-
   - etapa: "validar-tudo"
-    agente: "qa-campanha"
-    entrada: "copy + criativos + estrutura de campanha + LP"
+    agente: "qa"
+    entrada: "copy + criativos + estrutura de campanha + LP (se houver)"
     saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
     dependencia:
       - "criar-angulos-e-copy"
       - "produzir-criativos"
       - "estruturar-campanha"
+    nota: "QA valida TUDO antes de qualquer publicacao"
 
   - etapa: "publicar-campanha"
-    agente: "gestor-trafego"
+    agente: "traffic"
     entrada: "veredicto APROVADO, criativos finais, estrutura pronta"
-    saida: "campanha ativa na plataforma"
+    saida: "campanha ativa na plataforma (via Composio)"
     dependencia: "validar-tudo"
+    nota: "Somente com APROVADO. BLOQUEADO = nao publica."
 
   - etapa: "monitorar-performance"
-    agente: "gestor-trafego"
+    agente: "traffic"
     entrada: "campanha ativa, KPIs do plano estrategico"
     saida: "metricas coletadas e avaliadas"
     dependencia: "publicar-campanha"
 
   - etapa: "gerar-relatorio"
-    agente: "gestor-trafego"
-    entrada: "metricas da campanha"
+    agente: "traffic"
+    entrada: "metricas da campanha (via Composio)"
     saida: ".agencyos/clientes/{nome}/relatorios/relatorio-periodo.md"
     dependencia: "monitorar-performance"
 
   - etapa: "enviar-relatorio"
     agente: "cs"
-    entrada: "relatorio do gestor de trafego"
-    saida: "relatorio enviado ao cliente via canal oficial"
+    entrada: "relatorio gerado pelo traffic"
+    saida: "relatorio enviado ao cliente via canal oficial (via Composio)"
     dependencia: "gerar-relatorio"
+    nota: "CS envia. Nunca o traffic envia diretamente ao cliente."
