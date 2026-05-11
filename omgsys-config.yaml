@@ -1,0 +1,74 @@
+# OMG.sys — Configuração da Agência
+# Execute /setup para gerar este arquivo com seus dados reais.
+# Edite manualmente se precisar ajustar algo após o setup.
+
+agency:
+  name: "Minha Agência"           # Nome da sua agência
+  owner: "Seu Nome"               # Seu nome (dono)
+  installed_at: ""                # Preenchido automaticamente no setup
+  version: "1.0"
+
+# Serviços que a agência oferece (true/false)
+services:
+  traffic_meta: true
+  traffic_google: false
+  copywriting: true
+  design: true
+  social_media: false
+  seo: false
+  email_marketing: false
+  whatsapp_crm: false
+
+# Nomes fantasia dos agentes
+# O sistema reconhece sempre os IDs funcionais (@ceo, @coo, etc.)
+# O nome fantasia é como você prefere chamá-los
+agents:
+  ceo:
+    id: ceo
+    fantasy_name: "Atlas"
+    role: "CEO Estratégico"
+  coo:
+    id: coo
+    fantasy_name: "Marcos"
+    role: "COO Operacional"
+  cs:
+    id: cs
+    fantasy_name: "Sol"
+    role: "Customer Success"
+  strategist:
+    id: strategist
+    fantasy_name: "Vera"
+    role: "Estrategista"
+  traffic:
+    id: traffic
+    fantasy_name: "Max"
+    role: "Gestor de Tráfego"
+  copywriter:
+    id: copywriter
+    fantasy_name: "Cal"
+    role: "Copywriter"
+  designer:
+    id: designer
+    fantasy_name: "Lux"
+    role: "Designer"
+  qa:
+    id: qa
+    fantasy_name: "Zara"
+    role: "QA Gate"
+
+# Integrações via Composio MCP
+# Configure a API Key no .env ou nas variáveis de ambiente
+integrations:
+  composio:
+    api_key: "${COMPOSIO_API_KEY}"    # Não coloque a key diretamente aqui
+    tools:
+      meta_ads: true
+      google_analytics: false
+      gmail: true
+      slack: false
+      google_sheets: false
+
+# Canais de comunicação com clientes
+communication:
+  primary_channel: "whatsapp"   # whatsapp | email | slack
+  report_format: "whatsapp"     # whatsapp | email | pdf
