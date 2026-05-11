@@ -4,7 +4,8 @@ agent: strategist
 description: Criar o plano estratégico completo que vai guiar todas as ações de campanha, copy, design e tráfego
 inputs:
   - .omgsys/clientes/{nome}/estrategia/analise-briefing.md
-  - .omgsys/clientes/{nome}/onboarding/briefing-final.md
+  - .omgsys/clientes/{nome}/onboarding/board-cliente.md
+  - .omgsys/clientes/{nome}/memoria/notas-sessao.md
 outputs:
   - .omgsys/clientes/{nome}/estrategia/plano-estrategico.md
 elicit: false
@@ -12,9 +13,13 @@ elicit: false
 
 # Criar Plano Estratégico
 
+## Playbook de Referência
+- Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de começar
+- Verificar score de maturidade no `board-cliente.md` — define qual plano propor (completo / essencial / onboarding)
+
 ## Objetivo
 
-Transformar o briefing e a análise em um plano estratégico que oriente todo o trabalho dos demais agentes — tráfego, copy, design e CS.
+Transformar o board e a análise em um plano estratégico que oriente todo o trabalho dos demais agentes — tráfego, copy, design e CS.
 
 ## Regra
 
@@ -27,13 +32,22 @@ Nenhuma campanha, copy ou criativo deve existir sem referência ao plano.
 
 ## Passo a passo
 
-### 1. Ler análise e briefing
+### 1. Ler análise e board
 
 Carregar:
 - `.omgsys/clientes/{nome}/estrategia/analise-briefing.md`
-- `.omgsys/clientes/{nome}/onboarding/briefing-final.md`
+- `.omgsys/clientes/{nome}/onboarding/board-cliente.md`
 
-### 2. Gerar o plano estratégico
+### 2. Definir escopo do plano pelo score de maturidade
+
+| Score | Plano a criar |
+|-------|---------------|
+| 80-100 | Plano completo — Meta + Google + UGC |
+| 50-79 | Plano essencial — 1 canal principal |
+| 30-49 | Plano de onboarding técnico + 1 canal após setup |
+| < 30 | Não avançar — escalar para @cs recomendar produto diferente |
+
+### 3. Gerar o plano estratégico
 
 Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 
@@ -43,6 +57,7 @@ Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 **Versão:** 1.0
 **Data:** {data}
 **Elaborado por:** Vera (Estrategista)
+**Score de maturidade:** {X}/100
 **Status:** RASCUNHO | VALIDADO
 
 ---
@@ -50,7 +65,7 @@ Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 ## 1. Resumo Executivo
 
 | Item | Definição |
-|------|-----------|
+|------|----------|
 | Objetivo principal | {leads / vendas / agendamentos / awareness} |
 | Meta primária (30 dias) | {número concreto — ex: 100 leads com CPL até R$30} |
 | Budget de mídia | R$ {valor}/mês |
@@ -81,7 +96,7 @@ Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 - Gênero: {homem/mulher/ambos}
 - Localização: {cidade/região/online}
 
-**Nível de consciência:** {inconsciente do problema / consciente do problema / consciente da solução / consciente do produto}
+**Nível de consciência:** {inconsciente / consciente do problema / consciente da solução / consciente do produto}
 
 **Dores que mais movem:**
 1. {dor 1 — nas palavras dela}
@@ -102,9 +117,9 @@ Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 
 **O que estamos vendendo:** {descrição direta}
 **Promessa central:** {transformação entregue em 1 linha}
-**Mecanismo que viabiliza a promessa:** {como você entrega — o diferencial do método}
-**Prova de que funciona:** {depoimentos, números, resultados}
-**Ângulo de entrada:** {como vamos apresentar a oferta — dor / desejo / oportunidade}
+**Mecanismo:** {como você entrega — o diferencial do método}
+**Prova:** {depoimentos, números, resultados}
+**Ângulo de entrada:** {dor / desejo / oportunidade}
 
 ---
 
@@ -129,17 +144,17 @@ Criar `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md`:
 ## 7. Funil Macro
 
 ```
-TOPO    → {o que faz: awareness, alcance, impacto)
+TOPO    → {awareness, alcance, impacto}
         → Canal: {canal} | Tipo: {tipo de campanha}
 
-MEIO    → {o que faz: consideração, engajamento, nutrição}
+MEIO    → {consideração, engajamento, nutrição}
         → Canal: {canal} | Tipo: {tipo de campanha}
 
-FUNDO   → {o que faz: conversão, compra, agendamento}
+FUNDO   → {conversão, compra, agendamento}
         → Canal: {canal} | Tipo: {tipo de campanha}
 
-RETENÇÃO → {o que faz: recompra, indicação, fidelização}
-         → Canal: {canal} | Tipo: {tipo de campanha}
+RETENÇÃO → {recompra, indicação, fidelização}
+          → Canal: {canal} | Tipo: {tipo de campanha}
 ```
 
 ---
@@ -151,14 +166,12 @@ RETENÇÃO → {o que faz: recompra, indicação, fidelização}
 | CP-001 — {nome} | {objetivo} | {audiência} | R$ {valor} |
 | CP-002 — {nome} | {objetivo} | {audiência} | R$ {valor} |
 
-**Nomenclatura das campanhas:** `{CLIENTE}_{OBJETIVO}_{CANAL}_{TIPO}_{ID}`
-
 ---
 
 ## 9. KPIs e Metas
 
-| Métrica | Meta | Considerado Crítico se... |
-|---------|------|--------------------------|
+| Métrica | Meta | Crítico se... |
+|---------|------|---------------|
 | CPL | R$ {valor} | > R$ {valor crítico} |
 | CPA | R$ {valor} | > R$ {valor crítico} |
 | CTR | {%} | < {% mínimo} |
@@ -169,9 +182,9 @@ RETENÇÃO → {o que faz: recompra, indicação, fidelização}
 ## 10. Hipóteses Iniciais
 
 ```
-H1: {hipótese de ângulo — ex: "ângulo de dor vai converter mais do que desejo neste mercado"}
-H2: {hipótese de canal — ex: "Meta vai performar melhor que Google neste segmento"}
-H3: {hipótese de formato — ex: "vídeo curto vai ter CPL menor que imagem estática"}
+H1: {hipótese de ângulo}
+H2: {hipótese de canal}
+H3: {hipótese de formato}
 ```
 
 ---
@@ -194,11 +207,47 @@ H3: {hipótese de formato — ex: "vídeo curto vai ter CPL menor que imagem est
 3. {ação 3} — Responsável: {agente} — Prazo: {data}
 ```
 
-### 3. Marcar status
+### 4. Marcar status
 
 Iniciar como `RASCUNHO`. Marcar como `VALIDADO` após revisão interna ou alinhamento com o cliente.
 
-## Output esperado
+## Em caso de falha
 
-- `plano-estrategico.md` completo e assinado pela Estrategista
-- Handoff disponível para: Max (`*ler-cliente`), Cal (`*analisar-icp`), Lux (`*ler-branding`)
+Se análise de briefing tiver lacunas críticas que impeçam o plano:
+
+```
+Problema identificado: {ex: ICP não definido / objetivo real ambíguo / budget insuficiente}
+Causa-raiz provável: board-cliente.md incompleto | análise de briefing rasa
+Agente responsável: @cs para lacunas de board | @strategist para lacunas de análise
+Ação corretiva: solicitar complemento ao @cs antes de prosseguir
+Prioridade: CRÍTICO
+Retestar após: board e análise completos
+```
+
+## Handoff para agentes de execução
+
+**Arquivos que eles DEVEM ler:**
+- `board-cliente.md` (sempre)
+- `estrategia/plano-estrategico.md` (este arquivo)
+
+**Resumo do que foi feito:** plano estratégico v{X} — ICP, oferta, canais, KPIs e cronograma definidos
+
+**O que precisa de atenção:** {hipóteses principais | restrições de budget | risks identificados}
+
+**Próximas tasks em paralelo:**
+- @traffic: `*auditar-contas {nome}`
+- @copywriter: `*analisar-icp {nome}`
+- @designer: `*ler-branding {nome}`
+
+## Atualizar memória
+
+Ao terminar, adicionar entrada em `.omgsys/clientes/{nome}/memoria/notas-sessao.md`:
+
+```
+## Sessão {data}
+**Agente:** @strategist
+**Task executada:** criar-plano-estrategico
+**O que foi feito:** plano v{X} criado — {canais definidos} | {meta principal}
+**Decisões importantes:** {ângulo de entrada escolhido | distribuição de budget}
+**Atenção para próxima sessão:** {hipóteses a validar | riscos mapeados}
+```

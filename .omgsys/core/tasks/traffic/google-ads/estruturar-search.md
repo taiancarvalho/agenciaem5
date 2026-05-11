@@ -3,6 +3,10 @@
 # Input: keywords-{data}.md + estrutura-base-campanhas.yaml
 # Output: clientes/{nome}/trafego/estrutura-campanhas.md (seção Google Ads)
 
+## Playbook de Referência
+- Ler `.omgsys/playbooks/traffic-google.md` (seção SEARCH) antes de executar
+- Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+
 ## Objetivo
 Montar a estrutura de campanhas de Search no Google Ads:
 hierarquia campanha → grupo de anúncio → keywords → anúncios.
@@ -77,7 +81,27 @@ Atualizar: `.omgsys/clientes/{nome}/trafego/estrutura-campanhas.md`
 [itens acima]
 ```
 
-## Handoff
-- Estrutura documentada → @qa valida antes de subir
-- Subir campanhas via Composio (Google Ads) após aprovação do @qa
-- Registrar data de subida no `log-operacional.md`
+## Em caso de falha
+
+Se bloqueado por @qa, gerar `diagnosis.md` em `.omgsys/clientes/{nome}/trafego/`:
+
+```
+Problema identificado: {descrição precisa}
+Causa-raiz provável: {hipótese}
+Agente responsável: @traffic
+Ação corretiva: {instrução específica}
+Prioridade: CRÍTICO / NORMAL / BAIXO
+Retestar após: {condição}
+```
+
+## Handoff para @qa
+
+**Arquivos que ele DEVE ler:**
+- `board-cliente.md` (sempre)
+- `trafego/estrutura-campanhas.md`
+
+**Resumo do que foi feito:** estrutura de Search configurada — campanhas, grupos, keywords e RSAs documentados
+
+**O que precisa de atenção:** negativas aplicadas? conversões configuradas? QS verificado?
+
+**Próxima task:** validar-campanha → publicar

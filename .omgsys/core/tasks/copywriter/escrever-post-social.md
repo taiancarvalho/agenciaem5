@@ -3,6 +3,10 @@
 # Input: pauta do post + plano-estrategico.md + branding/tom-de-voz
 # Output: clientes/{nome}/copy/social/{data}-{tipo}-post.md
 
+## Playbook de Referência
+- Ler `.omgsys/playbooks/copywriter-frameworks.md` (seção INSTAGRAM ORGÂNICO + seção canal relevante) antes de executar
+- Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+
 ## Objetivo
 Escrever copy de post para redes sociais: Instagram, Facebook ou LinkedIn.
 Formato adaptado por canal, seguindo o branding e ângulo estratégico.
@@ -10,16 +14,30 @@ Formato adaptado por canal, seguindo o branding e ângulo estratégico.
 ## Inputs necessários
 1. Pauta do post (tema, objetivo, formato: feed/stories/reels)
 2. `.omgsys/clientes/{nome}/estrategia/plano-estrategico.md` — ângulo e posicionamento
-3. Tom de voz do cliente (branding/guia-estilo.md ou briefing-final.md)
+3. Tom de voz do cliente (branding/guia-estilo.md ou board-cliente.md seção Brand)
 
 ## Execução
 
-### 1. Entender o objetivo do post
+### 1. Escolher o ângulo antes de escrever
+
+Consultar `playbooks/copywriter-frameworks.md` — tabela de 5 ângulos:
+
+| Ângulo | Quando usar |
+|--------|-------------|
+| DOR | Produto resolutivo, problema claro |
+| PROVA SOCIAL | Histórico de resultados, depoimentos disponíveis |
+| URGÊNCIA | Promoção, lançamento, vagas limitadas |
+| ASPIRAÇÃO | Transformação, lifestyle, resultado financeiro |
+| CONVENIÊNCIA | Produto complexo simplificado, objeção de esforço |
+
+Nunca usar hook genérico — reler ICP do plano-estrategico.md antes de escolher.
+
+### 2. Entender o objetivo do post
 - Qual é o papel no funil? (topo: educar/entreter | meio: engajar | fundo: converter)
 - Qual é o CTA? (salvar, comentar, clicar no link, DM, comprar)
 - Qual é o formato? (carrossel, imagem única, vídeo, stories, reels)
 
-### 2. Estrutura por formato
+### 3. Estrutura por formato
 
 **Post de feed (imagem/carrossel):**
 ```
@@ -45,18 +63,45 @@ Máximo 5-7 palavras por slide
 CTA via sticker (enquete, pergunta, link, DM)
 ```
 
-### 3. Regras de copy social
+### 4. Regras de copy social
 
-- Primeira linha decide se vão ler o resto — escreva 3 opções de hook, escolha o mais forte
+- Primeira linha decide se vão ler o resto — escrever 3 opções de hook, escolher o mais forte
 - Parágrafos curtos (2-3 linhas máximo) — mobile first
 - Emojis com moderação e coerência com o tom do cliente
 - CTA específico, não genérico ("comenta aqui embaixo X" > "curte se você gostou")
 - Hashtags relevantes, não spam
 
-### 4. Salvar output
+### 5. Salvar output
 Criar arquivo em: `.omgsys/clientes/{nome}/copy/social/`
 Nomear: `{YYYY-MM-DD}-{tipo}-{tema-slug}.md`
 
-## Handoff
-- Entregar para @designer com brief visual embutido no arquivo
-- Submeter para @qa antes de agendar publicação
+Incluir no arquivo:
+- Ângulo escolhido e justificativa
+- 3 opções de hook (indicar qual foi escolhido)
+- Copy final
+- Brief visual para @designer (formato, conceito sugerido, referência de UGC se aplicável)
+
+## Em caso de falha
+
+Se o ângulo não parecer adequado ao nicho ou tom do cliente:
+
+```
+Problema identificado: {ex: hook genérico / ângulo não condiz com tom do cliente}
+Causa-raiz provável: pauta vaga / briefing de branding incompleto
+Agente responsável: @copywriter
+Ação corretiva: revisar board-cliente.md seção Brand | pedir pauta mais detalhada ao CS
+Prioridade: NORMAL
+Retestar após: pauta revisada disponível
+```
+
+## Handoff para @designer
+
+**Arquivos que ele DEVE ler:**
+- `board-cliente.md` (sempre)
+- `copy/social/{data}-{tipo}-{tema}.md`
+
+**Resumo do que foi feito:** copy de post {tipo} escrita com ângulo {X} — hook, desenvolvimento e CTA definidos
+
+**O que precisa de atenção:** {formato visual sugerido no arquivo | tom específico para este post}
+
+**Próxima task:** definir-conceito-visual → produzir-criativos

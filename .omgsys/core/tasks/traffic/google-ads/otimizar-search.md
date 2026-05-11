@@ -3,6 +3,10 @@
 # Input: dados da conta (Composio) + janelas-analise.yaml
 # Output: atualização em log-performance-criativa.md + ajustes na conta
 
+## Playbook de Referência
+- Ler `.omgsys/playbooks/traffic-google.md` (seção OTIMIZAR) antes de executar
+- Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+
 ## Objetivo
 Otimizar campanhas de Search ativas: ajustar lances, pausar termos ruins,
 expandir termos bons, melhorar Quality Score.
@@ -66,7 +70,26 @@ Atualizar: `.omgsys/clientes/{nome}/operacao/log-performance-criativa.md`
 **Impacto esperado:** {estimativa}
 ```
 
-## Handoff
-- Otimizações executadas via Composio (Google Ads)
-- Registrar no log antes de encerrar
-- Escalar achados relevantes para @coo se impacto > 20% no CPL
+## Em caso de falha
+
+Se dados insuficientes ou campanha sem volume para análise:
+
+```
+Problema identificado: {ex: menos de 7 dias de dados / menos de 1000 impressões}
+Causa-raiz provável: {campanha nova / budget muito baixo / audiência restrita}
+Agente responsável: @traffic
+Ação corretiva: aguardar {X} dias | aumentar budget temporariamente
+Prioridade: NORMAL
+Retestar após: {data ou condição — ex: "7 dias ou 1000 impressões acumuladas"}
+```
+
+## Handoff para @coo
+
+**Arquivos que ele DEVE ler:**
+- `operacao/log-performance-criativa.md`
+
+**Resumo do que foi feito:** análise semanal de Search — termos negativados, lances ajustados, QS monitorado
+
+**O que precisa de atenção:** {achados relevantes ou alertas críticos}
+
+**Escalar se:** impacto estimado > 20% no CPL | campanha sem conversões após 14 dias

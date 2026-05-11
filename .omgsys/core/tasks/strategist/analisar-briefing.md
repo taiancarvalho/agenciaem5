@@ -1,9 +1,10 @@
 ---
 name: analisar-briefing
 agent: strategist
-description: Ler e analisar o briefing final do cliente para extrair o objetivo real, ICP, oferta e contexto estratégico
+description: Ler e analisar o board do cliente para extrair o objetivo real, ICP, oferta e contexto estratégico
 inputs:
-  - .omgsys/clientes/{nome}/onboarding/briefing-final.md
+  - .omgsys/clientes/{nome}/onboarding/board-cliente.md
+  - .omgsys/clientes/{nome}/memoria/notas-sessao.md
 outputs:
   - análise estruturada em memória (base para as tarefas seguintes)
   - .omgsys/clientes/{nome}/estrategia/analise-briefing.md
@@ -12,9 +13,13 @@ elicit: false
 
 # Analisar Briefing
 
+## Playbook de Referência
+- Ler `.omgsys/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de qualquer análise
+- Verificar se já existe `analise-briefing.md` de versão anterior — se sim, identificar o que mudou
+
 ## Objetivo
 
-Ler o briefing final com olhos estratégicos — separar o que o cliente declarou do que ele realmente precisa, e identificar os elementos que vão guiar o plano.
+Ler o board do cliente com olhos estratégicos — separar o que o cliente declarou do que ele realmente precisa, e identificar os elementos que vão guiar o plano.
 
 ## Regra
 
@@ -27,9 +32,9 @@ A Estrategista confirma o objetivo real antes de montar qualquer plano.
 
 ## Passo a passo
 
-### 1. Ler o briefing completo
+### 1. Ler o board completo
 
-Acessar `.omgsys/clientes/{nome}/onboarding/briefing-final.md` e ler do início ao fim antes de extrair qualquer insight.
+Acessar `.omgsys/clientes/{nome}/onboarding/board-cliente.md` e ler do início ao fim antes de extrair qualquer insight. Verificar score de maturidade calculado pelo @cs — ele define o que é viável propor.
 
 ### 2. Extrair análise estruturada
 
@@ -40,6 +45,7 @@ Gerar `.omgsys/clientes/{nome}/estrategia/analise-briefing.md` com:
 
 **Data:** {data}
 **Analisado por:** Vera (Estrategista)
+**Score de maturidade do cliente:** {X}/100
 
 ---
 
@@ -64,7 +70,7 @@ Gerar `.omgsys/clientes/{nome}/estrategia/analise-briefing.md` com:
 
 ## ICP — Análise
 
-**Clareza do ICP no briefing:** Alta / Média / Baixa
+**Clareza do ICP no board:** Alta / Média / Baixa
 **Dores mais fortes identificadas:**
 1. {dor principal — extraída das palavras do cliente}
 2. {dor secundária}
@@ -73,7 +79,7 @@ Gerar `.omgsys/clientes/{nome}/estrategia/analise-briefing.md` com:
 **Nível de consciência estimado:** Inconsciente / Consciente do problema / Consciente da solução / Consciente do produto
 
 **Linguagem do ICP para usar na copy:**
-> {citações ou paráfrases do briefing}
+> {citações ou paráfrases do board}
 
 ---
 
@@ -112,12 +118,25 @@ Gerar `.omgsys/clientes/{nome}/estrategia/analise-briefing.md` com:
 
 ### 3. Identificar o que está faltando
 
-Se o briefing tiver lacunas críticas, registrar e solicitar ao CS que colete antes de avançar:
+Se o board tiver lacunas críticas, registrar e solicitar ao CS que colete antes de avançar:
 
 ```
 ⚠️ Lacunas críticas identificadas:
 - {item faltando}
-- Solicitar ao CS: *coletar-briefing {nome} — perguntas adicionais
+- Solicitar ao CS: *coletar-board {nome} — perguntas adicionais
+```
+
+## Em caso de falha
+
+Se board incompleto ou score de maturidade < 30 (cliente não está pronto):
+
+```
+Problema identificado: board incompleto / cliente sem maturidade para avançar
+Causa-raiz provável: @cs não coletou informações obrigatórias | cliente não sabe responder
+Agente responsável: @cs
+Ação corretiva: retornar ao @cs para coletar seções faltantes | recomendar produto diferente se score < 30
+Prioridade: CRÍTICO
+Retestar após: board completo com todos os campos obrigatórios preenchidos
 ```
 
 ## Output esperado
@@ -126,3 +145,16 @@ Se o briefing tiver lacunas críticas, registrar e solicitar ao CS que colete an
 - Clareza sobre objetivo real, ICP e oferta
 - Alertas de risco documentados
 - Pronto para: `*criar-plano-estrategico {nome}`
+
+## Atualizar memória
+
+Ao terminar, adicionar entrada em `.omgsys/clientes/{nome}/memoria/notas-sessao.md`:
+
+```
+## Sessão {data}
+**Agente:** @strategist
+**Task executada:** analisar-briefing
+**O que foi feito:** {resumo da análise}
+**Decisões importantes:** {objetivo real identificado | score de maturidade | riscos principais}
+**Atenção para próxima sessão:** {o que o próximo agente precisa saber}
+```
