@@ -1,14 +1,12 @@
-# AgencyOS — Guia de Construcao
+# OMG.sys — Guia de Construção
 
-> Este documento existe para que qualquer agente possa retomar a construcao do AgencyOS de onde parou, sem perder contexto. Sempre leia antes de trabalhar no projeto.
+> Este documento existe para que qualquer agente possa retomar a construção do OMG.sys de onde parou, sem perder contexto. Sempre leia antes de trabalhar no projeto.
 
 ---
 
-## Visao Geral
+## Visão Geral
 
-**AgencyOS** é um framework operacional para agências de marketing digital, distribuído como **pacote NPM** instalável via `npx agencyos-core install`.
-
-**Modelo:** Inspirado no AIOX-FullStack (SynkraAI), mas voltado para operar uma agência de marketing — não para desenvolver software.
+**OMG.sys** (One Man Gang) é um framework operacional para agências de marketing digital, distribuído como **pacote NPM** instalável via `npx omgsys-core install`.
 
 **Princípios fundamentais:**
 - `AGENTE = PAPEL, TASK = EXECUÇÃO`
@@ -16,368 +14,318 @@
 - Filesystem = fonte da verdade
 - Agentes se conectam por artefatos, não por conversa
 - Executor trabalha com contexto reduzido
+- **Composio MCP** = gateway único para todas as integrações externas
+- **Context7** = lookup de documentação quando agente não sabe parâmetros de ferramenta
 
 ---
 
 ## Arquitetura: 3 Camadas
 
-| Camada | AIOX | AgencyOS | Responsabilidade |
-|--------|------|----------|------------------|
-| 1 — Orquestracao | aiox-master | agency-master (Atlas) | Governança, criação de componentes, workflow |
-| 2 — Definição | PM | estrategista (Vera) + cs (Sol) | Estratégia, briefing, ICP, posicionamento |
-| 3 — Execucao | DEV | gestor-trafego, copywriter, designer | Operacao pratica — midia, copy, criativos |
-
-O AgencyOS **NÃO copia** o AIOX. Ele replica a **estrutura** (agentes → tasks → templates → data → workflows → checklists) mas com conteúdo e dominio completamente diferentes.
+| Camada | ID Funcional | Nome Padrão | Responsabilidade |
+|--------|-------------|-------------|------------------|
+| 1 — Estratégia | @ceo | Atlas | Governança, decisões de negócio, portfólio |
+| 1 — Operacional | @coo | Marcos | Orquestração, leitura de workflows, delegação |
+| 2 — Definição | @cs | Sol | Onboarding, setup técnico, gestão do cliente |
+| 2 — Definição | @strategist | Vera | Estratégia, briefing, ICP, posicionamento |
+| 3 — Execução | @traffic | Max | Mídia paga, campanhas, otimização |
+| 3 — Execução | @copywriter | Cal | Copy, ângulos, adaptação por canal |
+| 3 — Execução | @designer | Lux | Criativos visuais, vídeos, UGC |
+| 3 — Qualidade | @qa | Zara | Validação obrigatória antes da publicação |
 
 ---
 
-## Produtos: O que esta sendo construido
+## Estrutura do Produto
 
-### Produto Final (distribuido)
+### Instalado na agência do usuário
 
 ```
 agencia-do-usuario/
-├── .agencyos/                    ← Framework instalado
-│   ├── agents/                   ← 7 agentes (definicoes)
+├── omgsys-config.yaml            ← Configuração gerada no setup
+├── .agencyos/
+│   ├── agents/                   ← 8 agentes (definições completas)
+│   ├── setup/
+│   │   ├── system-onboarding.md  ← Wizard de setup inicial
+│   │   └── omgsys-config.yaml    ← Template de configuração
 │   ├── core/
-│   │   ├── constitution.md       ← Principios inegociaveis
-│   │   ├── tasks/                ← Tasks executaveis por agente
-│   │   ├── templates/            ← Templates de documentos
-│   │   ├── data/                 ← Dados de referencia (YAML)
-│   │   ├── workflows/            ← Workflows multi-step
-│   │   └── checklists/           ← Checklists de validacao
-│   └── clientes/                 ← Workspaces dos clientes
+│   │   ├── constitution.md       ← Princípios inegociáveis
+│   │   ├── tasks/                ← 53 tasks por agente
+│   │   ├── templates/            ← 14 templates
+│   │   ├── data/                 ← 8 data files YAML
+│   │   ├── workflows/            ← 6 workflows
+│   │   └── checklists/           ← 3 checklists
+│   └── clientes/                 ← Workspaces
 │       └── _template/
-├── .claude/
-│   └── CLAUDE.md                 ← Configuracao do framework
-└── contexto/                     ← Referencias externas (nao distribuidas)
-    ├── ugc-system/
-    └── avora-skills/
+└── .claude/
+    ├── CLAUDE.md                 ← Gerado pelo setup, personalizado
+    ├── settings.json             ← MCP servers configurados
+    ├── agents/                   ← 8 arquivos leves (apontam para .agencyos/agents/)
+    │   └── ceo.md / coo.md / ...
+    └── commands/                 ← 10 skills
+        └── setup.md / novo-cliente.md / ...
 ```
 
-### Pacote NPM (publicar)
+### Pacote NPM
 
 ```
-agencyos-core/
-├── package.json                  ← name: "agencyos-core"
-├── bin/agencyos.js               ← CLI installer
-├── agents/                       ← 7 agentes
-├── core/                         ← Constitution + tasks + templates + data + workflows
-├── clientes/_template/           ← Estrutura base de cliente
+omgsys-core/
+├── package.json                  ← name: "omgsys-core"
+├── bin/omgsys.js                 ← CLI installer
+├── agents/
+├── core/
+├── clientes/_template/
 └── README.md
 ```
-
-### Installer (`npx agencyos-core install`)
-
-Deve seguir o padrao AIOX:
-1. Wizard interativo (inquirer.js): canais operados, IDEs, modulos extras
-2. Copiar `.agencyos/` para o projeto
-3. Configurar `.claude/CLAUDE.md`
-4. Configurar MCP servers (opcional)
-5. Criar `install-manifest.yaml`
-6. Pos-instalacao: sugerir `@agency-master *setup-agencia`
 
 ---
 
 ## Agentes
 
-### Definidos e Prontos
+### Prontos
 
-| Agente | Persona | Camada | Responsabilidade |
-|--------|---------|--------|------------------|
-| `agency-master` | Atlas | Orquestracao | Governança, setup do sistema, health check |
-| `cs` | Sol | Definição | Onboarding, setup tecnico, gestao do cliente |
-| `estrategista` | Vera | Definição | Posicionamento, estrategia, plano de campanha |
-| `gestor-trafego` | Max | Execucao | Midia paga, campanhas, otimizacao, relatorios |
-| `copywriter` | Cal | Execucao | Copy, angulos, adaptacao por canal |
-| `designer` | Lux | Execucao | Criativos visuais, videos, UGC |
-| `qa-campanha` | Zara | Execucao | Validacao antes da publicacao (gate obrigatoria) |
+| ID | Arquivo `.agencyos/agents/` | Arquivo `.claude/agents/` | Status |
+|----|----------------------------|--------------------------|--------|
+| @ceo | `ceo.md` | `ceo.md` | ✅ |
+| @coo | `coo.md` | `coo.md` | ✅ |
+| @cs | `cs.md` | `cs.md` | ✅ |
+| @strategist | `strategist.md` | `strategist.md` | ✅ |
+| @traffic | `traffic.md` | `traffic.md` | ✅ |
+| @copywriter | `copywriter.md` | `copywriter.md` | ✅ |
+| @designer | `designer.md` | `designer.md` | ✅ |
+| @qa | `qa.md` | `qa.md` | ✅ |
 
-### Arquivos
+> Arquivos legados (`agency-master.md`, `gerente.md`, `estrategista.md`, `gestor-trafego.md`, `qa-campanha.md`) mantidos como aliases durante transição.
 
-Todos em `.agencyos/agents/`. Cada arquivo segue o padrao:
+### Padrão de arquivo `.claude/agents/`
 
-```yaml
-activation-instructions: (STEP 1-5: ler arquivo, adotar persona, greeting, HALT)
-agent: (name, id, title, icon, whenToUse)
-persona_profile: (archetype, communication)
-persona: (role, identity, core_principles)
-commands: (lista de comandos com *)
-dependencies: (tasks, templates, data, workflows, checklists)
+Arquivo leve — não duplica conteúdo:
+
+```markdown
+---
+name: {id}
+description: |
+  {2-3 linhas para o Claude decidir quando ativar automaticamente}
+---
+
+Leia `.agencyos/agents/{id}.md` e adote a persona completamente.
+Leia `omgsys-config.yaml` para saber nome fantasia, agência, serviços.
+
+**Ferramentas externas:** use Composio MCP para todas as integrações.
+Se não souber como usar: consulte Context7 primeiro.
 ```
-
-**CRITICO:** Cada agente tem `dependencies` que mapeiam para `.agencyos/core/tasks/{agente}/`, `.agencyos/core/templates/`, etc. Agentes **SO** carregam dependencias quando o usuario executa o comando correspondente. Nunca carregar tudo na ativacao.
 
 ---
 
 ## Tasks
 
-### Padrao de Arquivo
+### Padrão de arquivo
 
 ```markdown
 ---
 name: nome-da-task
-agent: nome-do-agente
+agent: id-do-agente
 description: O que essa task faz
 inputs:
-  - arquivo de entrada necessario
+  - arquivo de entrada necessário
 outputs:
   - arquivo produzido ao final
-elicit: true/false  # requer interacao do usuario?
+elicit: true/false
 ---
 
-# Titulo da Task
+# Título da Task
 
 ## Objetivo
-...
-
 ## Passo a passo
-1. ...
-2. ...
-3. ...
-
 ## Output esperado
-...
 ```
 
 ### Status por Agente
 
-**CS (Sol) — 9 tasks planejadas:**
-- [ ] iniciar-onboarding.md
-- [ ] coletar-briefing.md
-- [ ] gerar-briefing-final.md
-- [ ] listar-acessos.md
-- [ ] validar-tracking.md
-- [ ] registrar-status-tecnico.md
-- [ ] registrar-interacao.md
-- [ ] gerar-proximos-passos.md
-- [ ] enviar-relatorio.md
+**@ceo — 4 tasks:**
+- [x] criar-pasta-cliente.md
+- [x] listar-clientes.md
+- [x] status-cliente.md
+- [x] health-sistema.md
 
-**Estrategista (Vera) — 7 tasks planejadas:**
-- [ ] analisar-briefing.md
-- [ ] validar-objetivo-real.md
-- [ ] definir-posicionamento.md
-- [ ] criar-plano-estrategico.md
-- [ ] definir-funil-macro.md
-- [ ] criar-hipoteses.md
-- [ ] analisar-call.md
+**@coo — tasks de orquestração:**
+- [x] Lógica embutida no agente via workflows
 
-**Gestor de Trafego (Max) — 9 tasks planejadas:**
-- [ ] auditar-conta.md
-- [ ] mapear-publicos.md
-- [ ] estruturar-campanha.md
-- [ ] solicitar-criativos.md
-- [ ] monitorar-performance.md
-- [ ] otimizar-campanha.md
-- [ ] gerar-relatorio.md
-- [ ] modo-cro.md
-- [ ] modo-growth.md
+**@cs — 11 tasks:**
+- [x] iniciar-onboarding.md
+- [x] coletar-briefing.md
+- [x] gerar-briefing-final.md
+- [x] listar-acessos.md
+- [x] validar-tracking.md
+- [x] registrar-status-tecnico.md
+- [x] registrar-interacao.md
+- [x] gerar-proximos-passos.md
+- [x] enviar-relatorio.md
+- [x] preparar-reuniao.md  ← novo
+- [x] gerar-proposta.md  ← novo
 
-**Copywriter (Cal) — 7 tasks planejadas:**
-- [ ] analisar-icp.md
-- [ ] criar-angulos.md
-- [ ] criar-conceitos.md
-- [ ] escrever-copy.md
-- [ ] adaptar-canal.md
-- [ ] registrar-peca-log.md
-- [ ] iterar-com-base-em-performance.md
+**@strategist — 8 tasks:**
+- [x] analisar-briefing.md
+- [x] validar-objetivo-real.md
+- [x] definir-posicionamento.md
+- [x] criar-plano-estrategico.md
+- [x] definir-funil-macro.md
+- [x] criar-hipoteses.md
+- [x] analisar-call.md
+- [x] analisar-concorrentes.md  ← novo
 
-**Designer (Lux) — 8 tasks planejadas:**
-- [ ] ler-branding.md
-- [ ] definir-conceito-visual.md
-- [ ] gerar-imagem.md
-- [ ] gerar-video.md
-- [ ] gerar-ugc.md
-- [ ] versionar-criativo.md
-- [ ] registrar-log-criativo.md
-- [ ] iterar-criativo.md
+**@traffic — 11 tasks:**
+- [x] auditar-conta.md
+- [x] mapear-publicos.md
+- [x] estruturar-campanha.md
+- [x] solicitar-criativos.md
+- [x] monitorar-performance.md
+- [x] otimizar-campanha.md
+- [x] gerar-relatorio.md
+- [x] modo-cro.md
+- [x] modo-growth.md
+- [x] auditar-conta-google.md  ← novo
+- [x] mapear-keywords.md
 
-**QA Campanha (Zara) — 6 tasks planejadas:**
-- [ ] validar-copy.md
-- [ ] validar-criativo.md
-- [ ] validar-campanha.md
-- [ ] validar-landing-page.md
-- [ ] emitir-veredicto.md
-- [ ] registrar-qa.md
+**@copywriter — 7 tasks:**
+- [x] analisar-icp.md
+- [x] criar-angulos.md
+- [x] criar-conceitos.md
+- [x] escrever-copy.md
+- [x] adaptar-canal.md
+- [x] registrar-peca-log.md
+- [x] iterar-com-base-em-performance.md
 
-**Agency Master (Atlas) — 4 tasks planejadas:**
-- [ ] criar-pasta-cliente.md
-- [ ] listar-clientes.md
-- [ ] status-cliente.md
-- [ ] health-sistema.md
+**@designer — 8 tasks:**
+- [x] ler-branding.md
+- [x] definir-conceito-visual.md
+- [x] gerar-imagem.md
+- [x] gerar-video.md
+- [x] gerar-ugc.md
+- [x] versionar-criativo.md
+- [x] registrar-log-criativo.md
+- [x] iterar-criativo.md
 
-### Fonte de Conteudo
-
-TODO conteudo de negocio ja existe nos docs originais:
-```
-original docs/Agency OS — Flow 1 Onboarding.md      → Tasks do CS
-original docs/Agency OS — Flow 1.5 Setup Tecnico.md  → Tasks do CS (setup)
-original docs/Agency OS — Flow 2 Estrategia.md       → Tasks do Estrategista
-original docs/Agency OS — Flow 3 Gestao de Trafego.md → Tasks do Gestor de Trafego
-original docs/Agency OS — Flow 4 Gestao do Cliente.md → Tasks do CS (gestao)
-original docs/Agency OS — Flow 5 CRO.md              → Tasks do Gestor de Trafego (CRO)
-original docs/Agency OS — Flow 6 Expansao Growth.md  → Tasks do Gestor de Trafego (Growth)
-original docs/Agency OS — Flow Copywriter.md         → Tasks do Copywriter
-original docs/Agency OS — Flow Designer.md           → Tasks do Designer
-```
-
-**REGRA:** Nao inventar conteudo. Toda logica de negocio esta nos docs originais ou nos agentes ja construidos.
-
----
-
-## Templates
-
-Criar em `.agencyos/core/templates/` conforme BUILD-PLAN:
-- `briefing/briefing-final.md` — template de briefing
-- `briefing/briefing-perguntas.md` — script de perguntas
-- `estrategia/plano-estrategico.md` — plano estrategico do cliente
-- `logs/log-operacional.md` — log vivo
-- `logs/log-performance-criativa.md` — log criativo com performance
-- `logs/log-growth.md` — log de acoes de growth
-- `relatorios/relatorio-whatsapp.md` — relatorio simplificado
-- `relatorios/relatorio-completo.md` — relatorio detalhado
-- `contratos/contrato-base.md` — template de contrato
-- `copy/copy-anuncio.md`, `copy/roteiro-video.md`, `copy/copy-landing-page.md`, `copy/copy-whatsapp.md`, `copy/headline-banco.md`
-- `setup-tecnico/checklist-tracking.md`, `setup-tecnico/status-tecnico.md`
+**@qa — 6 tasks:**
+- [x] validar-copy.md
+- [x] validar-criativo.md
+- [x] validar-campanha.md
+- [x] validar-landing-page.md
+- [x] emitir-veredicto.md
+- [x] registrar-qa.md
 
 ---
 
 ## Data Files
 
-Criar em `.agencyos/core/data/`:
-- `estrutura-pastas.yaml` — estrutura canonica de pastas do cliente
-- `canais-suportados.yaml` — canais com suas configs (Meta, Google, WhatsApp, Email)
-- `kpis-por-objetivo.yaml` — KPIs esperados por objetivo
-- `gatilhos-mentais.yaml` — gatilhos com exemplos de aplicacao
-- `nomenclatura-campanhas.yaml` — padrao de naming de campanhas
+Em `.agencyos/core/data/`:
+
+| Arquivo | Status |
+|---------|--------|
+| `estrutura-pastas.yaml` | ✅ |
+| `canais-suportados.yaml` | ✅ |
+| `kpis-por-objetivo.yaml` | ✅ |
+| `gatilhos-mentais.yaml` | ✅ |
+| `nomenclatura-campanhas.yaml` | ✅ |
+| `estrutura-base-campanhas.yaml` | ✅ novo |
+| `janelas-analise.yaml` | ✅ novo |
+| `tipos-publicos.yaml` | ✅ novo |
 
 ---
 
 ## Workflows
 
-Criar em `.agencyos/core/workflows/`:
-- `onboarding-cliente.yaml` — CS onboarding ponta a ponta
-- `ciclo-campanha.yaml` — Estrategista → Trafego → Copy → Design → QA → Publicacao
-- `iteracao-criativa.yaml` — Performance baixa → Nova copy → Novo criativo → QA
+Em `.agencyos/core/workflows/`:
 
-### Regra de Workflow
+| Arquivo | Status | Observação |
+|---------|--------|------------|
+| `onboarding-cliente.yaml` | ✅ | |
+| `ciclo-campanha.yaml` | ✅ | v1.1 — ordem corrigida (solicitar-criativos antes de produzir-criativos) |
+| `iteracao-criativa.yaml` | ✅ | |
+| `google-ads.yaml` | ✅ novo | Fluxo específico para Google Ads |
+| `social-media.yaml` | ✅ novo | Conteúdo orgânico |
+| `lancamento.yaml` | ✅ novo | Pré/durante/pós-lançamento |
 
-Cada workflow define:
-```yaml
-nome: nome-do-workflow
-descricao: O que esse workflow faz
-gatilho: Quando e ativado
-agente_responsavel: Quem orquestra
-sequencia:
-  - etapa: "nome"
-    agente: "quem executa"
-    entrada: "o que precisa"
-    saida: "o que produz"
-    dependencia: "o que precisa estar pronto antes"
-```
+---
+
+## Skills
+
+Em `.claude/commands/`:
+
+| Arquivo | Status |
+|---------|--------|
+| `setup.md` | ✅ |
+| `novo-cliente.md` | ✅ |
+| `onboarding.md` | ✅ |
+| `status-cliente.md` | ✅ |
+| `relatorio.md` | ✅ |
+| `criar-campanha.md` | ✅ |
+| `auditoria-conta.md` | ✅ |
+| `iterar-criativo.md` | ✅ |
+| `briefing.md` | ✅ |
+| `saude-sistema.md` | ✅ |
+
+---
+
+## Templates
+
+Em `.agencyos/core/templates/` — **14/14 ✅**
 
 ---
 
 ## Checklists
 
-Criar em `.agencyos/core/checklists/`:
-- `checklist-pre-lancamento.md` — Antes de subir campanha
-- `checklist-onboarding-completo.md` — Validar onboarding
-- `checklist-relatorio-mensal.md` — Validar relatorio antes de enviar
-
----
-
-## Integracoes Externas
-
-### Ja disponiveis (referencias locais)
-
-| Integracao | Local | Agente | Status |
-|-----------|-------|--------|--------|
-| UGC System (WaveSpeed AI) | `contexto/ugc-system/` | Designer | Tasks precisam usar os JSON templates da pasta `outputs/` |
-| Avora Skills (~20 selecionadas) | `contexto/avora-skills/` | Todos | Skills filtradas por relevancia — referenciar nas tasks |
-
-### Planejadas (nao bloqueiam construcao)
-
-| Integracao | Tipo | Agente |
-|-----------|------|--------|
-| Meta Ads MCP (pipeboard-co/meta-ads-mcp) | MCP Server | Gestor de Trafego |
-| Agent Media Skill (agent-media.ai) | Skill de video IA | Designer |
-| Awesome Design Patterns (VoltAgent/awesome-design-md) | Referencia | Designer |
-
----
-
-## Roadmap de Construcao
-
-```
-Fase 1 — CONTEUDO OPERACIONAL (agora)
-  1. Completar todas as tasks (51 restantes)
-  2. Criar todos os templates
-  3. Criar data files (YAML)
-  4. Criar workflows
-  5. Criar checklists
-
-Fase 2 — PACOTE NPM
-  6. package.json (name: agencyos-core)
-  7. bin/agencyos.js (CLI installer)
-  8. bin/agency-os-new-client.js (criador de cliente)
-  9. README.md
-  10. AGENTS.md (raiz)
-
-Fase 3 — PUBLICACAO
-  11. Publish no NPM
-  12. Documentacao publica
-  13. GitHub open-source
-```
+Em `.agencyos/core/checklists/` — **3/3 ✅**
 
 ---
 
 ## Estado Atual do Projeto
 
-### Concluido
+### Concluído
 - [x] Constitution (`.agencyos/core/constitution.md`)
-- [x] CLAUDE.md (`.claude/CLAUDE.md`)
-- [x] Rules (agent-authority, agent-handoff, workflow-execution)
-- [x] 7 agentes (`.agencyos/agents/`)
+- [x] CLAUDE.md (`.claude/CLAUDE.md`) — personalizado com sistema de aliases
+- [x] omgsys-config.yaml — template de configuração
+- [x] system-onboarding.md — wizard de setup inicial
+- [x] 8 agentes em `.agencyos/agents/` (IDs funcionais)
+- [x] 8 agentes em `.claude/agents/` (arquivos leves)
+- [x] 10 skills em `.claude/commands/`
+- [x] Tasks — **53/53 ✅**
+- [x] Templates — **14/14 ✅**
+- [x] Data files — **8/8 ✅**
+- [x] Workflows — **6/6 ✅**
+- [x] Checklists — **3/3 ✅**
 - [x] Estrutura de pastas de clientes (`.agencyos/clientes/_template/`)
-- [x] BUILD-PLAN (`.agencyos/BUILD-PLAN.md`)
-
-### Em progresso
-- [x] Tasks — **49/49 concluidas** ✅
-- [x] Templates — **14/14 concluidos** ✅
-- [x] Data files — **5/5 concluidos** ✅
-- [x] Workflows — **3/3 concluidos** ✅
-- [x] Checklists — **3/3 concluidos** ✅
-- [x] Scripts locais + AGENTS.md + package.json (Fase 2) ✅
+- [x] package.json (name: omgsys-core)
+- [x] README.md atualizado
+- [x] AGENTS.md atualizado
 
 ### Pendente
+- [ ] Renomear `.agencyos/` → `.omgsys/` (requer atualizar todos os paths)
+- [ ] Atualizar `constitution.md` mencionando Composio como gateway padrão
 - [ ] Package NPM com wizard interativo (Fase 3)
-- [ ] Publicar no NPM
+- [ ] Publicar no NPM como `omgsys-core`
 
 ---
 
-## Regras de Construcao
+## Regras de Construção
 
-1. **Nao inventar conteudo.** Toda logica esta nos docs originais.
-2. **Seguir o padrao de task.** Frontmatter YAML + objetivo + passo-a-passo.
-3. **Seguir o padrao de agente.** YAML completo com activation-instructions.
-4. **Manter contexto enxuto.** Executor so carrega o que precisa.
-5. **Atualizar o BUILD-PLAN.** Sempre marcar o que foi feito.
-6. **Nao modificar agents ja prontos** sem motivo valido.
-7. **Filesystem First.** Tudo vira arquivo, arquivo tem lugar previsivel.
-8. **O QA gate e obrigatorio.** Nada vai para o cliente sem validacao.
+1. **Não inventar conteúdo.** Toda lógica está nos docs originais ou nos agentes já construídos.
+2. **Seguir o padrão de task.** Frontmatter YAML + objetivo + passo-a-passo.
+3. **Seguir o padrão de agente.** `.claude/agents/` é leve; `.agencyos/agents/` é completo.
+4. **Manter contexto enxuto.** @coo só envia ao agente: cliente + objetivo + 1-2 arquivos.
+5. **Atualizar o BUILD-GUIDE.** Marcar sempre o que foi feito.
+6. **Filesystem First.** Tudo vira arquivo, arquivo tem lugar previsível.
+7. **QA gate é obrigatório.** BLOQUEADO significa bloqueado.
+8. **Composio como gateway.** Nenhuma integração externa sem Composio.
 
 ---
 
 ## Como Retomar
 
-1. Leia este arquivo (voce esta aqui).
-2. Leia o `BUILD-PLAN.md` para o plano detalhado.
-3. Verifique o BUILD-PLAN secao "Estado atual" para saber onde parou.
-4. Continue pela proxima task/template pendente.
-5. Use os "original docs" como fonte de conteudo.
-6. Ao terminar cada arquivo, atualize o checklist neste arquivo e no BUILD-PLAN.
+1. Leia este arquivo (você está aqui).
+2. Verifique a seção "Estado Atual" para saber onde parou.
+3. Use os docs originais como fonte de conteúdo de negócio.
+4. Ao terminar cada arquivo, atualize os checklists neste arquivo.
 
 ---
 
-*AgencyOS Builder — Documento de construcao do framework*
-*Ultima atualizacao: 2026-04-11*
+*OMG.sys Builder — Documento de construção do framework*
+*Última atualização: 2026-05-11*

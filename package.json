@@ -1,10 +1,10 @@
 {
-  "name": "agencyos-core",
+  "name": "omgsys-core",
   "version": "0.1.0",
-  "description": "Sistema Operacional para Agencias de Marketing Digital — framework de agentes, tasks, templates e workflows",
+  "description": "OMG.sys — One Man Gang. Sistema Operacional para Agências de Marketing Digital — framework de agentes, tasks, templates e workflows",
   "main": "index.js",
   "bin": {
-    "agencyos": "bin/agencyos.js"
+    "omgsys": "bin/omgsys.js"
   },
   "files": [
     "lib/",
@@ -19,6 +19,8 @@
     "test": "echo \"No tests yet\" && exit 0"
   },
   "keywords": [
+    "omgsys",
+    "one-man-gang",
     "agency",
     "marketing",
     "automation",
