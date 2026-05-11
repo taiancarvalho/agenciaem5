@@ -5,6 +5,33 @@
 
 ---
 
+## 0. Nomenclatura e Estrutura de Conta
+
+```
+Campanha:   {CLIENTE}_{OBJETIVO}_{CANAL}_{FUNIL}_{seq}
+Conjunto:   {AUDIÊNCIA}_{TIPO}_{seq}
+Anúncio:    CR-{id}-v{n}
+
+Exemplos:
+  BELEZA_LEADS_META_FUNDO_001
+  LOOKALIKE1PCT_FRIO_001
+  CR-047-v2
+```
+
+**Alocação por fase:**
+
+| Fase | Proven | Testes |
+|------|--------|--------|
+| Primeiras 2-4 semanas | 70% | 30% |
+| Escalando | Consolidar nos vencedores | +20-30% por vez |
+| Regra de escala | Aguardar 3-5 dias entre aumentos | — |
+
+**Frio vs Quente:**
+- Cliente novo: 60% frio / 40% quente
+- Cliente com histórico: 40% frio / 60% quente
+
+---
+
 ## 1. Subir Campanha Nova
 
 ### Pré-requisitos
@@ -87,7 +114,41 @@ Nomenclatura: {CLIENTE}_{OBJETIVO}_META_FUNDO_{seq}
 
 ---
 
-## 2. Otimizar Campanha (Revisão Semanal)
+## 2. Testar Criativos — Hierarquia e Ondas
+
+### Hierarquia de Teste (maior impacto primeiro)
+
+```
+1. Conceito/ângulo         ← maior impacto
+2. Hook/headline
+3. Estilo visual
+4. Corpo do texto
+5. CTA
+```
+
+Testar um nível por vez. Não mudar ângulo e visual ao mesmo tempo.
+
+### Waves de Geração de Criativos
+
+```
+Wave 1 (core):     3-5 ângulos × 2 variações cada — base do teste
+Wave 2 (extend):   dobrar nos 2 ângulos com melhor CTR inicial
+Wave 3 (wild):     1-2 ângulos não testados ainda — contrarian, emocional, ultra-específico
+```
+
+### ICE Score para priorizar próximos testes
+
+| Dimensão | Pergunta |
+|----------|----------|
+| **Impact** | Se funcionar, quanto move CPL/CPA? |
+| **Confidence** | Baseado em dados, não intuição |
+| **Ease** | Quão rápido consegue produzir e medir? |
+
+**ICE Score = (Impact + Confidence + Ease) / 3** — rodar os de maior score primeiro.
+
+---
+
+## 3. Otimizar Campanha (Revisão Semanal)
 
 ### CPL/CPA Decision Matrix
 
@@ -139,7 +200,33 @@ Antes de pausar, identificar:
 
 ---
 
-## 3. Auditoria de Conta
+## 4. Retargeting — Janelas e Frequência
+
+| Estágio | Audiência | Janela | Frequência |
+|---------|-----------|--------|------------|
+| Quente | Carrinho abandonado / iniciou cadastro | 1-7 dias | Alta OK |
+| Morno | Visitantes de página-chave (preço, produto) | 7-30 dias | 3-5x/semana |
+| Frio | Qualquer visita ao site | 30-90 dias | 1-2x/semana |
+
+**Exclusões obrigatórias:**
+- Clientes atuais (exceto upsell intencional)
+- Conversores recentes (janela de 7-14 dias)
+- Visitantes com bounce < 10s
+
+---
+
+## 5. Atribuição
+
+```
+Dado de plataforma é inflado — sempre comparar com GA4/Analytics.
+Usar UTMs consistentes em todos os anúncios.
+Olhar CAC blended, não só CPA por plataforma.
+Plataforma conta view-through; Analytics conta apenas click-through.
+```
+
+---
+
+## 6. Auditoria de Conta
 
 ### Puxar histórico via Composio
 
@@ -163,7 +250,7 @@ composio.meta_ads.get_campaign_insights(
 
 ---
 
-## 4. Handoff
+## 7. Handoff
 
 Ao terminar, adicionar em `memoria/notas-sessao.md`:
 

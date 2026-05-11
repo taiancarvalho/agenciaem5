@@ -37,6 +37,15 @@ RSA (anúncio responsivo):
   → Pinnar: H1 = oferta principal, H2 = diferencial
 ```
 
+### Progressão de Bidding
+
+```
+Fase 1 (0-30 conv):   Maximizar Cliques com CPC máximo
+Fase 2 (30-100 conv): Target CPA — usar histórico para definir o target
+Fase 3 (100+ conv):   Target ROAS ou Maximizar Conversões
+Regra: não mudar bidding mais de uma vez por semana — deixar o algoritmo aprender.
+```
+
 ### Via Composio
 
 ```
@@ -72,7 +81,9 @@ composio.google_ads.create_ad_group(
 ### Quando usar PMax
 - E-commerce com catálogo de produtos
 - Budget > R$150/dia (abaixo disso, dados insuficientes)
-- Combinado com Search para clientes com histórico de conversões
+- Mínimo 30 conversões no histórico do último mês
+- Pixel ativo com conversões recentes
+- Combinado com Search para clientes com histórico
 
 ### Assets obrigatórios
 ```
@@ -83,6 +94,13 @@ composio.google_ads.create_ad_group(
 → 5 headlines longos (≤ 90 chars)
 → 5 descriptions
 Signals de audiência: lista de compradores + visitantes site + lookalike
+```
+
+### Período de aprendizado PMax
+```
+Primeiros 14 dias: NÃO pausar mesmo se CPA alto — algoritmo aprendendo.
+Avaliação real começa na semana 3.
+Se CPA > 3x meta após 14 dias: gerar diagnosis.md, não pausar imediatamente.
 ```
 
 ---
@@ -97,6 +115,16 @@ Signals de audiência: lista de compradores + visitantes site + lookalike
 | Keyword: CPA > 2x meta (50+ cliques) | Pausar, criar nova variação |
 | Search term fora do escopo do produto | Adicionar como negativa |
 | Quality Score < 5 | Reescrever anúncio ou criar LP dedicada |
+| CPA < meta por 7 dias consecutivos | Aumentar target CPA bid em 10-15% |
+
+### Framework de Negativas
+
+```
+Negativas imediatas: termos sem intenção de compra (ex: grátis, curso, tutorial)
+Negativas por performance: gasto > R$50 sem conversão
+Negativas de marca concorrente: só adicionar se CPC muito alto
+Revisar search terms: semanal nas primeiras 4 semanas, quinzenal depois
+```
 
 ### Puxar Search Terms (semanal)
 
@@ -118,7 +146,19 @@ Horários de baixa conv:    → reduzir -20% a -50%
 
 ---
 
-## 5. Handoff
+## 5. Atribuição Google
+
+```
+Usar conversões do Google Ads + comparar com Analytics.
+Google Ads usa last-click por padrão — mudar para data-driven após 50+ conv.
+UTMs em todas as URLs finais — padrão:
+  utm_source=google&utm_medium=cpc&utm_campaign={nome}&utm_content={adgroup}
+Comparar CPA do Google com CAC real no CRM mensalmente.
+```
+
+---
+
+## 6. Handoff
 
 ```markdown
 ## Sessão {data}
