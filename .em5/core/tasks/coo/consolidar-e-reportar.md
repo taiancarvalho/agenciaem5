@@ -94,7 +94,7 @@ Substituir as etapas concluídas por:
 ### 4. Fechar log operacional
 
 ```
-| {data} | CONCLUSÃO | Marcos (COO) | Workflow {nome} concluído. Resumo enviado ao CEO. | CONCLUÍDO | {próxima ação} |
+| {data} | CONCLUSÃO | Nexus (COO) | Workflow {nome} concluído. Resumo enviado ao CEO. | CONCLUÍDO | {próxima ação} |
 ```
 
 ### 5. Reportar ao CEO

@@ -5,7 +5,7 @@
 **Duracao estimada:** 30 segundos
 **Angulo:** Medo → Confianca
 **Data:** 2026-04-11
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

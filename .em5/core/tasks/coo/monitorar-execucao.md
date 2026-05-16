@@ -70,7 +70,7 @@ Se uma entrega está atrasada ou com problema:
 ### 5. Atualizar log operacional
 
 ```
-| {data} | MONITOR | Marcos (COO) | {etapa} entregue: {arquivo}. Próximo: {agente} acionado. | ANDAMENTO | {próxima ação} |
+| {data} | MONITOR | Nexus (COO) | {etapa} entregue: {arquivo}. Próximo: {agente} acionado. | ANDAMENTO | {próxima ação} |
 ```
 
 ## Output esperado

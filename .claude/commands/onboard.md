@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/onboard\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /onboarding — Iniciar onboarding de cliente
 
 **Argumento:** `/onboarding $ARGUMENTS` (ex: `/onboarding clinica-sao-paulo`)

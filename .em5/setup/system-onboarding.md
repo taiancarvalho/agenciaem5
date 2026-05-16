@@ -32,13 +32,13 @@ Pode usar os nomes sugeridos ou inventar os seus proprios.
 | ID | Papel | Sugestao | Seu nome |
 |----|-------|----------|----------|
 | @ceo | Estrategia da agencia | Atlas | ? |
-| @coo | Orquestrador operacional | Marcos | ? |
+| @coo | Orquestrador operacional | Nexus | ? |
 | @cs | Customer Success | Sol | ? |
 | @strategist | Estrategista de marketing | Vera | ? |
-| @traffic | Gestor de Trafego | Max | ? |
-| @copywriter | Copywriter | Cal | ? |
+| @traffic | Gestor de Trafego | Pulse | ? |
+| @copywriter | Copywriter | Eco | ? |
 | @designer | Designer | Lux | ? |
-| @qa | QA de Campanha | Zara | ? |
+| @qa | QA de Campanha | Crivo | ? |
 
 *Ambos funcionam: `@ceo` e `@{nome-configurado}` sao equivalentes.*
 

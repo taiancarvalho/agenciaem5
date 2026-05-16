@@ -94,8 +94,8 @@ Criar `.em5/clientes/{nome}/operacao/proximos-passos.md`:
 
 | Item | Responsavel | Previsao | Status |
 |------|-------------|----------|--------|
-| {criacao de campanhas} | Max | {data} | Em andamento |
-| {copy dos anuncios} | Cal | {data} | Em andamento |
+| {criacao de campanhas} | Pulse | {data} | Em andamento |
+| {copy dos anuncios} | Eco | {data} | Em andamento |
 | {criativos} | Lux | {data} | Em andamento |
 
 ---

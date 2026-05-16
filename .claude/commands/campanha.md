@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/campanha\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /criar-campanha — Ciclo completo de campanha
 
 **Argumento:** `/criar-campanha $ARGUMENTS` (ex: `/criar-campanha clinica-sao-paulo`)

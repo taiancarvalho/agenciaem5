@@ -57,7 +57,7 @@ Abrir `.em5/clientes/{nome}/operacao/log-operacional.md` e adicionar ao final:
 **Exemplo:**
 
 ```markdown
-| 2026-04-11 | REUNIÃO | CS | Alinhamento semanal com cliente. Aprovação do plano estratégico. Solicitado ajuste na copy do anúncio A. | CONCLUÍDO | Cal ajustar copy CR-003 até 13/04 |
+| 2026-04-11 | REUNIÃO | CS | Alinhamento semanal com cliente. Aprovação do plano estratégico. Solicitado ajuste na copy do anúncio A. | CONCLUÍDO | Eco ajustar copy CR-003 até 13/04 |
 | 2026-04-11 | PENDÊNCIA | CS | Cliente não enviou logo em alta resolução. | PENDENTE | Lux aguardando. CS cobrar até 12/04 |
 ```
 

@@ -1,8 +1,8 @@
 # Log de Performance Criativa — odontovital-sp
 
 **Criado em:** 2026-04-11
-**Dono:** Cal (Copywriter)
-**Colaboradores:** Lux (visual + versao), Max (status + resultado)
+**Dono:** Eco (Copywriter)
+**Colaboradores:** Lux (visual + versao), Pulse (status + resultado)
 
 ---
 

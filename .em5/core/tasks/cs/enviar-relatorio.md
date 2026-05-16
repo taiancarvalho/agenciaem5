@@ -30,7 +30,7 @@ O Gestor de Tráfego NUNCA envia diretamente ao cliente.
 
 ### 1. Ler o relatório técnico
 
-Acessar `.em5/clientes/{nome}/relatorios/` e ler o relatório mais recente gerado pelo Max.
+Acessar `.em5/clientes/{nome}/relatorios/` e ler o relatório mais recente gerado pelo Pulse.
 
 ### 2. Confirmar tom com o usuário
 

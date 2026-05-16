@@ -79,8 +79,8 @@ mkdir -p .em5/clientes/{nome}/operacao/historico
 # Log de Performance Criativa — {Nome do Cliente}
 
 **Criado em:** {data}
-**Dono:** Cal (Copywriter)
-**Colaboradores:** Lux (visual + versão), Max (status + resultado)
+**Dono:** Eco (Copywriter)
+**Colaboradores:** Lux (visual + versão), Pulse (status + resultado)
 
 ---
 

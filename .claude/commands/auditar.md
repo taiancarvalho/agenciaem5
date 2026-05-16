@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/auditar\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /auditoria-conta — Auditar conta de anúncios
 
 **Argumento:** `/auditoria-conta $ARGUMENTS` (ex: `/auditoria-conta clinica-sao-paulo meta`)

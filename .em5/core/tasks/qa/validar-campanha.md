@@ -127,7 +127,7 @@ Após executar o checklist, emitir:
 ## Veredicto QA — {Nome do Cliente} — {Data}
 
 **Item validado:** {copy CR-{id} / criativo CR-{id} / campanha CP-{id} / landing page}
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 
 ### Resultado
 
@@ -155,7 +155,7 @@ Escalada necessária: {Estrategista / CS / Gestor de Tráfego / Agency Master}
 ### 4. Registrar no log operacional
 
 ```markdown
-| {data} | QA | Zara | Validação: {item}. Veredicto: {APROVADO/REVISÃO/BLOQUEADO}. {resumo em 1 linha} | CONCLUÍDO | {próxima ação} |
+| {data} | QA | Crivo | Validação: {item}. Veredicto: {APROVADO/REVISÃO/BLOQUEADO}. {resumo em 1 linha} | CONCLUÍDO | {próxima ação} |
 ```
 
 ## Output esperado

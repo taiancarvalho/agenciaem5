@@ -1,7 +1,7 @@
 # Validacao QA — OdontoVital SP
 
 **Data:** 2026-04-11
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 
 ---
 

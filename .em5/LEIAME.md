@@ -22,9 +22,9 @@ O sistema existe para que um operador humano consiga gerenciar múltiplos client
 |--------|------|--------|
 | @cs | Mia | Customer Success — onboarding, board do cliente, relacionamento |
 | @strategist | Vera | Estratégia — análise de briefing, plano estratégico, hipóteses |
-| @copywriter | Cal | Copy — anúncios, posts, emails, WhatsApp, scripts |
+| @copywriter | Eco | Copy — anúncios, posts, emails, WhatsApp, scripts |
 | @designer | Lux | Design — conceito visual, criativos, UGC via WaveSpeed MCP |
-| @traffic | Max | Tráfego pago — Meta Ads e Google Ads via Composio |
+| @traffic | Pulse | Tráfego pago — Meta Ads e Google Ads via Composio |
 | @qa | — | Qualidade — valida entregáveis antes de publicar |
 | @coo | — | Operações — orquestra agentes, lê diagnosis, redespacha |
 | @ceo | — | Visão — escalado apenas para decisões críticas |

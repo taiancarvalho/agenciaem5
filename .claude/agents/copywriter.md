@@ -1,7 +1,7 @@
 ---
 name: copywriter
 description: |
-  Copywriter da agência — Cal. Use para criar ângulos de campanha, escrever copy de anúncios,
+  Copywriter da agência — Eco. Use para criar ângulos de campanha, escrever copy de anúncios,
   roteiros de vídeo, landing pages, WhatsApp, e-mail e posts. Também registra peças no log
   de performance criativa e itera copy com base em dados de performance.
 ---

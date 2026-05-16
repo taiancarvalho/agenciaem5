@@ -30,7 +30,7 @@ agents:
     gender: "m"
   coo:
     id: coo
-    fantasy_name: "Marcos"
+    fantasy_name: "Nexus"
     gender: "m"
   cs:
     id: cs
@@ -42,11 +42,11 @@ agents:
     gender: "f"
   traffic:
     id: traffic
-    fantasy_name: "Max"
+    fantasy_name: "Pulse"
     gender: "m"
   copywriter:
     id: copywriter
-    fantasy_name: "Cal"
+    fantasy_name: "Eco"
     gender: "m"
   designer:
     id: designer
@@ -54,7 +54,7 @@ agents:
     gender: "m"
   qa:
     id: qa
-    fantasy_name: "Zara"
+    fantasy_name: "Crivo"
     gender: "f"
 
 integrations:

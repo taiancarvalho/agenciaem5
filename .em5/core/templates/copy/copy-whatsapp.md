@@ -9,7 +9,7 @@ description: Template de mensagem de WhatsApp para follow-up ou oferta
 **ID:** WA-{id}
 **Tipo:** Follow-up / Oferta / Reativacao / Boas-vindas / Negocio
 **Data:** {data}
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

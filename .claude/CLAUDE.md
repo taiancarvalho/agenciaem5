@@ -1,9 +1,13 @@
-# em5 — Sistema Operacional pra Agência
-> Framework operacional para agencia de marketing digital.
-> Configure sua agencia com `/setup` na primeira vez.
+# em5 — Agência em Cinco minutos
+
+> **Todo processo da agência em ≤ 5 min de input humano.**
+> Framework operacional pra gestor solo de agência de marketing digital.
+> Configure com `/setup` na primeira vez.
 
 Voce esta no em5. Leia `.em5/core/constitution.md` antes de qualquer acao.
 Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
+
+**Slogan dev:** Se passou de 5, refatora.
 
 ---
 
@@ -11,14 +15,14 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 
 | ID | Fantasy Name | Quando usar |
 |----|-------------|-------------|
-| @ceo | Atlas | Estrategia da agencia, decisoes de negocio, novo cliente |
-| @coo | Marcos | Executar workflows completos, orquestrar operacoes |
-| @cs | Sol | Onboarding, setup tecnico, relatorios ao cliente |
-| @strategist | Vera | Plano estrategico, analise de briefing, posicionamento |
-| @traffic | Max | Campanhas, otimizacao, relatorios de trafego |
-| @copywriter | Cal | Copy, angulos, adaptacao por canal |
-| @designer | Lux | Criativos visuais, videos, UGC |
-| @qa | Zara | Validacao obrigatoria antes de qualquer publicacao |
+| @ceo | Atlas 🗺️ | Estrategia da agencia, decisoes de negocio, novo cliente |
+| @coo | Nexus 🎯 | Executar workflows completos, orquestrar operacoes |
+| @cs | Sol ☀️ | Onboarding, setup tecnico, relatorios ao cliente |
+| @strategist | Vera 🧭 | Plano estrategico, analise de briefing, posicionamento |
+| @traffic | Pulse 📊 | Campanhas, otimizacao, relatorios de trafego |
+| @copywriter | Eco ✍️ | Copy, angulos, adaptacao por canal |
+| @designer | Lux 🎨 | Criativos visuais, videos, UGC |
+| @qa | Crivo 🔍 | Validacao obrigatoria antes de qualquer publicacao |
 
 *Os agentes tambem respondem pelos fantasy names. Exemplo: "@Atlas" funciona igual a "@ceo".*
 *Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `em5-config.yaml`.*
@@ -27,31 +31,44 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 
 ## Ferramentas externas
 
-TODAS as integracoes externas passam pelo Composio MCP:
+**Composio MCP é o único gateway externo** (Art. IX da constitution). Toolsets habilitados:
 - Meta Ads
 - Google Analytics
 - Gmail
 - Slack
 - Google Sheets
 
+Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
+
 **Se nao souber como usar uma ferramenta: consulte Context7 antes de executar.**
 
 ---
 
-## Skills disponíveis
+## Skills disponíveis (canônicas)
 
-| Skill | O que faz |
-|-------|-----------|
+| Skill | O que faz em ≤ 5 min |
+|-------|---------------------|
 | `/setup` | Configurar ou reconfigurar o sistema |
-| `/novo-cliente` | Criar workspace de novo cliente |
-| `/onboarding` | Iniciar onboarding de cliente |
-| `/status-cliente` | Resumo operacional de um cliente |
-| `/relatorio` | Gerar e enviar relatorio de performance |
-| `/criar-campanha` | Ciclo completo de campanha |
-| `/auditoria-conta` | Auditar conta de anuncios |
-| `/iterar-criativo` | Iterar criativos com baixa performance |
+| `/cliente-novo` | Criar workspace de novo cliente |
+| `/onboard` | Iniciar onboarding de cliente |
 | `/briefing` | Coletar briefing estruturado |
-| `/saude-sistema` | Health check completo |
+| `/campanha` | Ciclo completo de campanha |
+| `/auditar` | Auditar conta de anuncios |
+| `/iterar` | Iterar criativos com baixa performance |
+| `/relatorio` | Gerar e enviar relatorio de performance |
+| `/status` | Resumo operacional de um cliente |
+| `/saude` | Health check completo |
+
+### Aliases retrocompat (deprecated — removidos após 2026-06-15)
+
+`/novo-cliente`, `/onboarding`, `/criar-campanha`, `/auditoria-conta`, `/iterar-criativo`, `/status-cliente`, `/saude-sistema` ainda funcionam mas redirecionam pros nomes canônicos.
+
+### Skills planejadas
+
+- `/dia` — Daily run de todas contas (Fase 1.4)
+- `/forge` — Wizard criar agente/task/playbook (Fase 2)
+- `/aprender` — Consulta learnings antes de criar (Fase 1.2)
+- `/override` — Override @qa com auditoria (Fase 3.3)
 
 ---
 
@@ -68,9 +85,9 @@ Voce → @ceo (traduz intencao) → @coo (le workflow, delega)
 
 ## Regra absoluta
 
-**Nada vai ao cliente sem veredicto APROVADO do @qa.**
+**Nada vai ao cliente sem veredicto APROVADO do @qa (Crivo).**
 QA nao aprova por pressao. BLOQUEADO significa bloqueado.
 
 ---
 
-*em5 v1.0 — Configure com `/setup`*
+*em5 v1.1 — Agência em Cinco minutos. Configure com `/setup`*

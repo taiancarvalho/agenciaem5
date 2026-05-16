@@ -1,5 +1,5 @@
 # Task: criar-calendario-conteudo
-# Agente: copywriter (Cal) + strategist (Vera)
+# Agente: copywriter (Eco) + strategist (Vera)
 # Input: plano-estrategico.md + canais do cliente
 # Output: clientes/{nome}/copy/social/calendario-{mes}.md
 

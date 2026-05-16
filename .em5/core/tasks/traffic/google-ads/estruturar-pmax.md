@@ -1,5 +1,5 @@
 # Task: estruturar-pmax
-# Agente: traffic (Max)
+# Agente: traffic (Pulse)
 # Input: board-cliente.md + plano-estrategico.md + criativos aprovados
 # Output: clientes/{nome}/trafego/estrutura-campanhas.md (seção PMax)
 

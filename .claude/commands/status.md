@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/status\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /status-cliente — Resumo operacional de um cliente
 
 **Argumento:** `/status-cliente $ARGUMENTS` (ex: `/status-cliente clinica-sao-paulo`)

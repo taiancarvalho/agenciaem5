@@ -1,4 +1,5 @@
 # em5 — Configuracao da Agencia
+# Tagline: "Agência em Cinco minutos." — todo processo em <= 5 min de input humano.
 # Execute /setup para preencher este arquivo com os dados reais da sua agencia.
 # Gerado automaticamente pelo wizard de configuracao.
 
@@ -6,7 +7,8 @@ agency:
   name: "{AGENCY_NAME}"
   owner: "{USER_NAME}"
   installed_at: "{DATA}"
-  version: "1.0"
+  version: "1.1"
+  tagline: "Agência em Cinco minutos."
 
 services:
   traffic_paid_meta: false
@@ -30,7 +32,7 @@ agents:
     gender: "m"
   coo:
     id: coo
-    fantasy_name: "Marcos"
+    fantasy_name: "Nexus"
     gender: "m"
   cs:
     id: cs
@@ -42,11 +44,11 @@ agents:
     gender: "f"
   traffic:
     id: traffic
-    fantasy_name: "Max"
+    fantasy_name: "Pulse"
     gender: "m"
   copywriter:
     id: copywriter
-    fantasy_name: "Cal"
+    fantasy_name: "Eco"
     gender: "m"
   designer:
     id: designer
@@ -54,8 +56,8 @@ agents:
     gender: "m"
   qa:
     id: qa
-    fantasy_name: "Zara"
-    gender: "f"
+    fantasy_name: "Crivo"
+    gender: "m"
 
 integrations:
   composio:

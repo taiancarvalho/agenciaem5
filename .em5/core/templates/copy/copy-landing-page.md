@@ -8,7 +8,7 @@ description: Template de copy para landing page
 
 **ID:** LP-{id}
 **Data:** {data}
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

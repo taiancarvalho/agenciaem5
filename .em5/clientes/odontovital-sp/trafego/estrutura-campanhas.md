@@ -1,7 +1,7 @@
 # Estrutura de Campanhas — OdontoVital SP
 
 **Data:** 2026-04-11
-**Por:** Max (Gestor de Trafego)
+**Por:** Pulse (Gestor de Trafego)
 
 ---
 

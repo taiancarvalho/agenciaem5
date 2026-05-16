@@ -1,5 +1,5 @@
 # Task: estruturar-search
-# Agente: traffic (Max)
+# Agente: traffic (Pulse)
 # Input: keywords-{data}.md + estrutura-base-campanhas.yaml
 # Output: clientes/{nome}/trafego/estrutura-campanhas.md (seção Google Ads)
 
@@ -28,7 +28,7 @@ Conta Google Ads
 ├── Campanha: [CLIENTE] | Search | Conversão
 │   Orçamento: 60-70% do budget total
 │   Objetivo: Leads / Vendas
-│   Bidding: Target CPA (após 30+ conv.) ou Max Conversions
+│   Bidding: Target CPA (após 30+ conv.) ou Pulse Conversions
 │   ├── Grupo: {Tema Principal}
 │   ├── Grupo: {Problema/Solução}
 │   └── Grupo: Concorrentes
@@ -36,7 +36,7 @@ Conta Google Ads
 └── Campanha: [CLIENTE] | Search | Marca
     Orçamento: 10-15% do budget total
     Objetivo: Proteger marca, capturar demand
-    Bidding: Max Clicks ou Target Impression Share
+    Bidding: Pulse Clicks ou Target Impression Share
     └── Grupo: Marca
 ```
 

@@ -23,13 +23,13 @@
 | Camada | ID | Fantasy Name | Responsabilidade |
 |--------|----|-------------|-----------------|
 | 1 — Estratégia | @ceo | Atlas | Negócio, decisões, portfólio, delega para @coo |
-| 2 — Orquestração | @coo | Marcos | Lê workflow, delega com contexto mínimo |
+| 2 — Orquestração | @coo | Nexus | Lê workflow, delega com contexto mínimo |
 | 2 — Definição | @strategist | Vera | Estratégia, briefing, posicionamento |
 | 2 — Relacionamento | @cs | Sol | Onboarding, setup técnico, cliente |
-| 3 — Execução | @traffic | Max | Mídia paga, campanhas, otimização |
-| 3 — Execução | @copywriter | Cal | Copy, ângulos, adaptação por canal |
+| 3 — Execução | @traffic | Pulse | Mídia paga, campanhas, otimização |
+| 3 — Execução | @copywriter | Eco | Copy, ângulos, adaptação por canal |
 | 3 — Execução | @designer | Lux | Criativos visuais, vídeos, UGC |
-| 3 — Gate | @qa | Zara | Validação obrigatória antes de publicar |
+| 3 — Gate | @qa | Crivo | Validação obrigatória antes de publicar |
 
 ---
 

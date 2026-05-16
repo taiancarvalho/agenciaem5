@@ -131,10 +131,10 @@ agenciaem5/
 │       ├── ceo.md         ✅ (Atlas 🗺️)
 │       ├── cs.md                    ✅ (Sol ☀️)
 │       ├── strategist.md          ✅ (Vera 🎯)
-│       ├── traffic.md        ✅ (Max 📊)
-│       ├── copywriter.md            ✅ (Cal ✍️)
+│       ├── traffic.md        ✅ (Pulse 📊)
+│       ├── copywriter.md            ✅ (Eco ✍️)
 │       ├── designer.md              ✅ (Lux 🎨)
-│       └── qa.md           ✅ (Zara 🔍)
+│       └── qa.md           ✅ (Crivo 🔍)
 ├── .em5/core/
 │   ├── constitution.md              ✅ FEITO
 │   ├── tasks/                       ❌ PENDENTE — ver Tarefa 5
@@ -168,10 +168,10 @@ agenciaem5/
 | ceo | Atlas 🗺️ | Orquestrador geral, health do sistema | Flow 0 (Setup) |
 | cs | Sol ☀️ | Onboarding, setup técnico, gestão do cliente | Flows 1, 1.5, 4 |
 | strategist | Vera 🎯 | Estratégia, posicionamento, plano de campanha | Flow 2 + Sales Optimizer |
-| traffic | Max 📊 | Tráfego pago, otimização, relatórios | Flow 3 + CRO + Growth |
-| copywriter | Cal ✍️ | Copy, ângulos, adaptação por canal | Log de performance (criador) |
+| traffic | Pulse 📊 | Tráfego pago, otimização, relatórios | Flow 3 + CRO + Growth |
+| copywriter | Eco ✍️ | Copy, ângulos, adaptação por canal | Log de performance (criador) |
 | designer | Lux 🎨 | Criativos visuais, vídeos, UGC | Stack WaveSpeed AI |
-| qa | Zara 🔍 | Validação de tudo antes de publicar | Gate obrigatório |
+| qa | Crivo 🔍 | Validação de tudo antes de publicar | Gate obrigatório |
 
 ---
 
@@ -238,21 +238,21 @@ elicit: true/false  # se requer input interativo do usuário
 | `criar-hipoteses.md` | Documenta hipóteses de campanha antes da execução |
 | `analisar-call.md` | (Modo Vendas) Analisa transcrição/resumo de call de vendas |
 
-#### Tasks do Gestor de Tráfego (Max) — `.em5/core/tasks/traffic/`
+#### Tasks do Gestor de Tráfego (Pulse) — `.em5/core/tasks/traffic/`
 
 | Arquivo | O que faz |
 |---------|-----------|
 | `auditar-conta.md` | Audita conta de anúncios: campanhas ativas, histórico, segmentação, budget |
 | `mapear-publicos.md` | Mapeia audiências disponíveis e recomenda estrutura |
 | `estruturar-campanha.md` | Cria estrutura inicial: mínimo Campanha 1 (audiência) + Campanha 2 (objetivo) |
-| `solicitar-criativos.md` | Gera briefing de criativos para Cal e Lux com contexto de performance |
+| `solicitar-criativos.md` | Gera briefing de criativos para Eco e Lux com contexto de performance |
 | `monitorar-performance.md` | Lê métricas atuais e avalia contra KPIs definidos |
 | `otimizar-campanha.md` | Propõe otimizações baseadas em janela de 7 dias |
 | `gerar-relatorio.md` | Monta relatório de performance para CS entregar ao cliente |
 | `modo-cro.md` | Ativa análise de conversão: coleta dados, propõe hipóteses, define testes |
 | `modo-growth.md` | Ativa modo de escala: identifica vencedores, propõe estratégia vertical/horizontal |
 
-#### Tasks do Copywriter (Cal) — `.em5/core/tasks/copywriter/`
+#### Tasks do Copywriter (Eco) — `.em5/core/tasks/copywriter/`
 
 | Arquivo | O que faz |
 |---------|-----------|
@@ -277,7 +277,7 @@ elicit: true/false  # se requer input interativo do usuário
 | `registrar-log-criativo.md` | Adiciona linha no log-performance-criativa.md com referência visual |
 | `iterar-criativo.md` | Cria nova versão baseada em feedback ou dados de performance |
 
-#### Tasks do QA (Zara) — `.em5/core/tasks/qa/`
+#### Tasks do QA (Crivo) — `.em5/core/tasks/qa/`
 
 | Arquivo | O que faz |
 |---------|-----------|
@@ -571,27 +571,27 @@ tipos:
 ```yaml
 # Sequência:
 # Estrategista cria plano →
-# Max audita conta e estrutura campanha →
-# Max solicita criativos →
-# Cal cria ângulos e copy →
+# Pulse audita conta e estrutura campanha →
+# Pulse solicita criativos →
+# Eco cria ângulos e copy →
 # Lux produz criativos →
-# Zara valida tudo →
-# Max sobe campanha →
-# Max monitora →
-# Max gera relatório →
+# Crivo valida tudo →
+# Pulse sobe campanha →
+# Pulse monitora →
+# Pulse gera relatório →
 # Sol envia relatório ao cliente
 ```
 
 **`iteracao-criativa.yaml`** — Workflow de iteração baseada em performance
 ```yaml
 # Ativado quando: performance ruim ou oportunidade de melhoria
-# Max identifica lacuna de performance →
-# Max briefia Cal com dados →
-# Cal cria novo ângulo/copy →
+# Pulse identifica lacuna de performance →
+# Pulse briefia Eco com dados →
+# Eco cria novo ângulo/copy →
 # Lux produz variação →
-# Zara valida →
-# Max sobe variação →
-# Max compara resultados
+# Crivo valida →
+# Pulse sobe variação →
+# Pulse compara resultados
 ```
 
 #### Checklists — `.em5/core/checklists/`
@@ -647,10 +647,10 @@ Ative um agente usando `@nome-do-agente` ou lendo o arquivo `.em5/agents/{nome}.
 | @ceo | Atlas 🗺️ | Setup do sistema, novo cliente, status geral |
 | @cs | Sol ☀️ | Onboarding, setup técnico, gestão do relacionamento |
 | @strategist | Vera 🎯 | Estratégia, posicionamento, plano de campanha |
-| @traffic | Max 📊 | Campanhas pagas, otimização, relatórios |
-| @copywriter | Cal ✍️ | Copy, ângulos, adaptação por canal |
+| @traffic | Pulse 📊 | Campanhas pagas, otimização, relatórios |
+| @copywriter | Eco ✍️ | Copy, ângulos, adaptação por canal |
 | @designer | Lux 🎨 | Criativos, vídeos, UGC, layout visual |
-| @qa | Zara 🔍 | Validação antes de publicar qualquer coisa |
+| @qa | Crivo 🔍 | Validação antes de publicar qualquer coisa |
 ```
 
 ---

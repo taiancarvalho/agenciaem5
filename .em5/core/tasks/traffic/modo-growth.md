@@ -98,7 +98,7 @@ Gerar documento em `.em5/clientes/{nome}/trafego/plano-growth.md`:
 # Plano de Growth — {Nome do Cliente}
 
 **Data:** {data}
-**Criado por:** Max (Gestor de Trafego)
+**Criado por:** Pulse (Gestor de Trafego)
 **Gatilho:** {CPA X dias na meta / ROAS Y}
 
 ## Situacao Atual

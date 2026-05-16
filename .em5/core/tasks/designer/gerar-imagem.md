@@ -114,11 +114,11 @@ Versão: v1
 ```
 ✅ Criativo gerado: CR-{id}-v1.png
 
-→ Zara: *validar-criativo {nome} CR-{id}
+→ Crivo: *validar-criativo {nome} CR-{id}
 ```
 
 ## Output esperado
 
 - Imagem salva com ID e versão
 - Log de performance criativa atualizado com referência ao arquivo
-- Pronto para validação do QA (Zara)
+- Pronto para validação do QA (Crivo)

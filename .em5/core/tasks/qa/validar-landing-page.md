@@ -77,7 +77,7 @@ Simular o percurso de um lead:
 ## Validacao de Landing Page — {Nome do Cliente} — {Data}
 
 **URL:** {url da landing page}
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 
 ### Checklist
 - Obrigatorios atendidos: X/Y
@@ -96,7 +96,7 @@ Simular o percurso de um lead:
 ### 5. Registrar no log operacional
 
 ```markdown
-| {data} | VALIDACAO | Zara | Validacao de LP {url resumida}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. | CONCLUÍDO | {proximo passo} |
+| {data} | VALIDACAO | Crivo | Validacao de LP {url resumida}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. | CONCLUÍDO | {proximo passo} |
 ```
 
 ## Output esperado

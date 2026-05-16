@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/saude\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /saude-sistema — Health check completo do em5
 
 ## O que este comando faz

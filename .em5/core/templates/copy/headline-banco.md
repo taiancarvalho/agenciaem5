@@ -7,7 +7,7 @@ description: Banco de headlines por angulo para teste A/B
 # Banco de Headlines — {Nome do Cliente}
 
 **Criado em:** {data}
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

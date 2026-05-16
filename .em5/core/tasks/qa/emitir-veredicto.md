@@ -54,7 +54,7 @@ Se todos itens obrigatorios = atendidos → Veredicto = APROVADO
 ```markdown
 # Veredicto QA Final — {Nome do Cliente} — {Data}
 
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 **Referencia:** Validacoes de copy, criativo, campanhao, LP
 
 ---
@@ -102,7 +102,7 @@ Revalidar apos correcao: *validar-campanha {nome}
 ### 4. Registrar no log operacional
 
 ```markdown
-| {data} | VALIDACAO | Zara | Veredicto QA final: {APROVADO/REVISAO/BLOQUEADO}. {resumo 1 linha}. | CONCLUÍDO | {proximo passo} |
+| {data} | VALIDACAO | Crivo | Veredicto QA final: {APROVADO/REVISAO/BLOQUEADO}. {resumo 1 linha}. | CONCLUÍDO | {proximo passo} |
 ```
 
 ### 5. Notificar agente responsavel

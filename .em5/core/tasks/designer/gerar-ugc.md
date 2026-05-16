@@ -167,7 +167,7 @@ Atualizar `log-performance-criativa.md` e adicionar entrada em `memoria/notas-se
 **O que foi feito:** {UGC gerado, tipo, ator, cenário}
 **Atenção:** {variações geradas, qual a versão recomendada}
 
-**Próxima task:** validar-copy (Zara/QA)
+**Próxima task:** validar-copy (Crivo/QA)
 ```
 
 ## Output esperado

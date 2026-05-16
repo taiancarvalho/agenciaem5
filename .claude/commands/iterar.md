@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/iterar\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /iterar-criativo — Iterar criativos com baixa performance
 
 **Argumento:** `/iterar-criativo $ARGUMENTS` (ex: `/iterar-criativo clinica-sao-paulo`)

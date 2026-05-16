@@ -1,7 +1,7 @@
 # Analise de ICP — OdontoVital SP
 
 **Data:** 2026-04-11
-**Elaborado por:** Cal (Copywriter)
+**Elaborado por:** Eco (Copywriter)
 
 ---
 

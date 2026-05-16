@@ -76,7 +76,7 @@ composio.google_ads.create_ad_group(
 
 ---
 
-## 3. Performance Max (PMax)
+## 3. Performance Pulse (PMax)
 
 ### Quando usar PMax
 - E-commerce com catálogo de produtos

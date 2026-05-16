@@ -10,7 +10,7 @@ description: Template de copy para anuncios de midia paga
 **Canal:** Meta Ads / Google Ads / TikTok Ads / LinkedIn
 **Angulo:** {angulo}
 **Data:** {data}
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

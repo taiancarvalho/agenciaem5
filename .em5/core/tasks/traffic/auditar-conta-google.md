@@ -1,5 +1,5 @@
 # Task: auditar-conta-google
-# Agente: traffic (Max)
+# Agente: traffic (Pulse)
 # Input: acesso a conta Google Ads do cliente
 # Output: relatorio de auditoria + lista de acoes priorizadas
 
@@ -24,7 +24,7 @@ Via Composio MCP (Google Ads API):
 Para cada campanha ativa, verificar:
 
 **Estrutura:**
-- Tipo de campanha (Search, Performance Max, Display, Video)
+- Tipo de campanha (Search, Performance Pulse, Display, Video)
 - Numero de grupos de anuncios
 - Qualidade dos anuncios (Ad Strength para Search)
 - Extensoes configuradas (sitelinks, callouts, etc.)

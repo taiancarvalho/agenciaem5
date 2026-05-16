@@ -56,7 +56,7 @@ TASK = EXECUÇÃO
 
 ---
 
-### @traffic — Max (Tráfego)
+### @traffic — Pulse (Tráfego)
 
 | Permitido | Bloqueado |
 |----------|---------|
@@ -76,7 +76,7 @@ TASK = EXECUÇÃO
 
 ---
 
-### @copywriter — Cal (Copy)
+### @copywriter — Eco (Copy)
 
 | Permitido | Bloqueado |
 |----------|---------|
@@ -108,7 +108,7 @@ TASK = EXECUÇÃO
 
 ---
 
-### @qa — Zara (QA)
+### @qa — Crivo (QA)
 
 | Permitido | Bloqueado |
 |----------|---------|

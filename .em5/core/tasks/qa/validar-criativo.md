@@ -74,7 +74,7 @@ Consultar `.em5/clientes/{nome}/branding/cores.yaml`, `fontes.yaml` e `guia-esti
 ## Validacao de Criativo — {Nome do Cliente} — {Data}
 
 **Peca:** CR-{id} — {tipo: imagem/video/carrossel}
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 
 ### Checklist
 - Obrigatorios atendidos: X/Y
@@ -87,7 +87,7 @@ Consultar `.em5/clientes/{nome}/branding/cores.yaml`, `fontes.yaml` e `guia-esti
 ### 5. Registrar no log operacional
 
 ```markdown
-| {data} | VALIDACAO | Zara | Validacao de criativo CR-{id}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. | CONCLUÍDO | {proximo passo} |
+| {data} | VALIDACAO | Crivo | Validacao de criativo CR-{id}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. | CONCLUÍDO | {proximo passo} |
 ```
 
 ## Output esperado

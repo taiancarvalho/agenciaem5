@@ -40,7 +40,7 @@ Criar `.em5/clientes/{nome}/copy/analise-icp.md`:
 # Analise de ICP — {Nome do Cliente}
 
 **Data:** {data}
-**Elaborado por:** Cal (Copywriter)
+**Elaborado por:** Eco (Copywriter)
 
 ---
 

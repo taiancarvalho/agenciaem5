@@ -1,5 +1,5 @@
 # Task: escrever-post-social
-# Agente: copywriter (Cal)
+# Agente: copywriter (Eco)
 # Input: pauta do post + plano-estrategico.md + branding/tom-de-voz
 # Output: clientes/{nome}/copy/social/{data}-{tipo}-post.md
 

@@ -1,5 +1,5 @@
 # Task: escrever-copy-email
-# Agente: copywriter (Cal)
+# Agente: copywriter (Eco)
 # Input: objetivo do email + segmento da lista + plano-estrategico.md
 # Output: clientes/{nome}/copy/email/{data}-{tipo}-email.md
 

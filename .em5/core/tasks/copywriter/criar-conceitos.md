@@ -20,7 +20,7 @@ Transformar ângulos estratégicos em conceitos de campanha executáveis. Concei
 
 ```
 Ângulo sem conceito = direção sem tradução prática.
-Conceito é o que Cal entrega para Lux entender o que o visual precisa reforçar.
+Conceito é o que Eco entrega para Lux entender o que o visual precisa reforçar.
 ```
 
 ---
@@ -50,7 +50,7 @@ Criar `.em5/clientes/{nome}/copy/conceitos-campanha.md`:
 # Conceitos de Campanha — {Nome do Cliente}
 
 **Data:** {data}
-**Elaborado por:** Cal (Copywriter)
+**Elaborado por:** Eco (Copywriter)
 
 ---
 

@@ -1,5 +1,3 @@
-> ⚠️ **ALIAS DEPRECATED** — use \`/cliente-novo\`. Este alias será removido em 30 dias (após 2026-06-15).
-
 # /novo-cliente — Criar workspace de novo cliente
 
 **Argumento:** `/novo-cliente $ARGUMENTS` (ex: `/novo-cliente clinica-sao-paulo`)

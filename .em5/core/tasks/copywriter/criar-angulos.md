@@ -58,7 +58,7 @@ Criar `.em5/clientes/{nome}/copy/angulos.md`:
 # Ângulos de Comunicação — {Nome do Cliente}
 
 **Data:** {data}
-**Elaborado por:** Cal (Copywriter)
+**Elaborado por:** Eco (Copywriter)
 
 ---
 

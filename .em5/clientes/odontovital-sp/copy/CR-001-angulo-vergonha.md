@@ -4,7 +4,7 @@
 **Canal:** Meta Ads (Feed)
 **Angulo:** Vergonha → Confianca
 **Data:** 2026-04-11
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 

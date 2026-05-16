@@ -1,5 +1,5 @@
 # Task: mapear-keywords
-# Agente: traffic (Max)
+# Agente: traffic (Pulse)
 # Input: briefing-final.md + plano-estrategico.md
 # Output: clientes/{nome}/trafego/keywords-{data}.md
 

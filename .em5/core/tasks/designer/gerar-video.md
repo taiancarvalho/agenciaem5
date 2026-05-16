@@ -150,7 +150,7 @@ Conceito visual: {nome}
 ```
 Video gerado: CR-{id}-v1.mp4
 
-→ Zara: *validar-criativo {nome} CR-{id}
+→ Crivo: *validar-criativo {nome} CR-{id}
 ```
 
 ## Output esperado
@@ -158,4 +158,4 @@ Video gerado: CR-{id}-v1.mp4
 - Video MP4 salvo com ID e versao
 - JSON de prompt estruturado registrado
 - Log de performance criativa atualizado
-- Pronto para validacao do QA (Zara)
+- Pronto para validacao do QA (Crivo)

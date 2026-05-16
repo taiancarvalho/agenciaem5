@@ -20,9 +20,9 @@ Consolidar os dados do período em um relatório técnico completo que o CS vai 
 ## Regra
 
 ```
-Max gera o relatório técnico.
+Pulse gera o relatório técnico.
 CS transforma em comunicação.
-Cliente NUNCA recebe relatório diretamente do Max.
+Cliente NUNCA recebe relatório diretamente do Pulse.
 ```
 
 ---
@@ -52,7 +52,7 @@ Criar `.em5/clientes/{nome}/relatorios/{periodo}-relatorio.md`:
 ```markdown
 # Relatório de Performance — {Nome do Cliente}
 **Período:** {data_inicio} a {data_fim}
-**Elaborado por:** Max (Gestor de Tráfego)
+**Elaborado por:** Pulse (Gestor de Tráfego)
 **Para:** Sol (CS) — entregar ao cliente
 
 ---
@@ -129,7 +129,7 @@ Criar `.em5/clientes/{nome}/relatorios/{periodo}-relatorio.md`:
 - {hipótese nova a ser testada}
 
 **Solicitações para a equipe:**
-- Cal: {nova copy / novo ângulo necessário}
+- Eco: {nova copy / novo ângulo necessário}
 - Lux: {novo criativo / variação necessária}
 ```
 

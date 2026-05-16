@@ -157,4 +157,4 @@ Se a copy não puder ser entregue (dados insuficientes, ICP não analisado):
 
 - `CR-{id}.md` com copy completa e brief visual
 - Linha criada no log de performance criativa
-- Pronto para: Lux (`*gerar-imagem` ou `*gerar-video`) + Zara (`*validar-copy`)
+- Pronto para: Lux (`*gerar-imagem` ou `*gerar-video`) + Crivo (`*validar-copy`)

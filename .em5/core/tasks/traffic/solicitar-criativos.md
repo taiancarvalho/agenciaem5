@@ -21,7 +21,7 @@ Briefar Copywriter e Designer com contexto suficiente para produzirem criativos 
 
 ```
 Briefing vago = criativo genérico = resultado ruim.
-Max não improvisa o brief. Max usa dados.
+Pulse não improvisa o brief. Pulse usa dados.
 ```
 
 ---
@@ -55,8 +55,8 @@ Criar/atualizar `.em5/clientes/{nome}/trafego/briefing-criativos.md`:
 # Briefing de Criativos — {Nome do Cliente}
 
 **Data:** {data}
-**Solicitado por:** Max (Gestor de Tráfego)
-**Para:** Cal (Copywriter) + Lux (Designer)
+**Solicitado por:** Pulse (Gestor de Tráfego)
+**Para:** Eco (Copywriter) + Lux (Designer)
 
 ---
 
@@ -104,7 +104,7 @@ Criar/atualizar `.em5/clientes/{nome}/trafego/briefing-criativos.md`:
 
 ## Prazo
 
-Cal entrega copy até: {data}
+Eco entrega copy até: {data}
 Lux entrega criativo até: {data}
 QA valida até: {data}
 Publicação prevista: {data}
@@ -116,25 +116,25 @@ Publicação prevista: {data}
 {qualquer contexto adicional relevante}
 ```
 
-### 3. Notificar Cal e Lux
+### 3. Notificar Eco e Lux
 
 Informar ao usuário:
 
 ```
 Briefing criado em .em5/clientes/{nome}/trafego/briefing-criativos.md
 
-Cal: *ler-cliente {nome} → *criar-angulos → *escrever-copy
-Lux: aguarda copy do Cal antes de produzir o visual
+Eco: *ler-cliente {nome} → *criar-angulos → *escrever-copy
+Lux: aguarda copy do Eco antes de produzir o visual
 ```
 
 ### 4. Atualizar log operacional
 
 ```markdown
-| {data} | SOLICITAÇÃO | Max | Briefing de {N} criativos enviado para Cal e Lux. Prazo de entrega: {data}. | EM ANDAMENTO | Aguardar entrega dos criativos |
+| {data} | SOLICITAÇÃO | Pulse | Briefing de {N} criativos enviado para Eco e Lux. Prazo de entrega: {data}. | EM ANDAMENTO | Aguardar entrega dos criativos |
 ```
 
 ## Output esperado
 
 - `briefing-criativos.md` com especificação clara de cada peça
-- Cal e Lux com direção para produzir
+- Eco e Lux com direção para produzir
 - Prazo estabelecido

@@ -5,7 +5,7 @@ description: Criar nova versao de criativo baseado em feedback humano ou dados d
 inputs:
   - .em5/clientes/{nome}/operacao/log-performance-criativa.md (dados de performance)
   - .em5/clientes/{nome}/design/criativos/ ou /videos/ (criativo original)
-  - Feedback do QA (Zara), Gestor de Tráfego (Max) ou Copywriter (Cal)
+  - Feedback do QA (Crivo), Gestor de Tráfego (Pulse) ou Copywriter (Eco)
 outputs:
   - Nova versao versionada (CR-{id}-v2, v3, etc.)
   - Log de performance criativa atualizado com observacao de iteracao
@@ -43,9 +43,9 @@ Ler `.em5/clientes/{nome}/operacao/log-performance-criativa.md` e localizar o CR
 
 ```
 Motivo da iteracao (um destes):
-- feedback_QA: Zara identificou problema na validacao
-- feedback_tráfego: Max reportou performance ruim ou pedido de variacao
-- feedback_copy: Cal sugeriu ajuste visual para alinhar com nova copy
+- feedback_QA: Crivo identificou problema na validacao
+- feedback_tráfego: Pulse reportou performance ruim ou pedido de variacao
+- feedback_copy: Eco sugeriu ajuste visual para alinhar com nova copy
 - variacao_a_testar: criar variacao voluntaria para split test
 - problema_tecnico: formato errado, proporcao incorreta, etc.
 ```
@@ -73,15 +73,15 @@ Se variacoes anteriores ja falharam com o mesmo conceito:
 
 ### 3. Ler feedback recebido
 
-Se veio do QA (Zara):
+Se veio do QA (Crivo):
 - O que foi flagged como problema?
 - Quais correcoes sao obrigatorias vs. sugestoes?
 
-Se veio do Gestor de Tráfego (Max):
+Se veio do Gestor de Tráfego (Pulse):
 - Quais dados justificam a iteracao?
 - Qual e o benchmark de referencia para o canal?
 
-Se veio do Copywriter (Cal):
+Se veio do Copywriter (Eco):
 - A copy mudou? Se sim, o visual precisa de ajuste de enquadramento.
 
 ### 4. Criar a nova versao
@@ -147,4 +147,4 @@ Observacao: v{n+1} criada em {data}
 - Nova versao do criativo salva com ID e versao corretos
 - Log de performance criativa atualizado com motivo e detalhe da mudanca
 - Versao anterior preservada (nunca sobrescrita)
-- Pronto para revalidacao do QA (Zara)
+- Pronto para revalidacao do QA (Crivo)

@@ -1,5 +1,5 @@
 # Task: otimizar-search
-# Agente: traffic (Max)
+# Agente: traffic (Pulse)
 # Input: dados da conta (Composio) + janelas-analise.yaml
 # Output: atualização em log-performance-criativa.md + ajustes na conta
 

@@ -31,8 +31,8 @@ Verificar qual workflow se aplica ao pedido recebido:
 | Onboarding de novo cliente | `onboarding-cliente.yaml` |
 | Lançar campanha | `ciclo-campanha.yaml` |
 | Analisar/otimizar criativos | `iteracao-criativa.yaml` |
-| Análise de tráfego | Sequência: `auditar-conta` → `gerar-relatorio` (Max) |
-| Relatório mensal | Sequência: `gerar-relatorio` (Max) → `enviar-relatorio` (CS) |
+| Análise de tráfego | Sequência: `auditar-conta` → `gerar-relatorio` (Pulse) |
+| Relatório mensal | Sequência: `gerar-relatorio` (Pulse) → `enviar-relatorio` (CS) |
 
 Ler o arquivo do workflow em `.em5/core/workflows/{nome}.yaml`.
 
@@ -77,7 +77,7 @@ Seguir a ordem do workflow. Atenção às regras de paralelismo:
 Adicionar entrada no `log-operacional.md` do cliente:
 
 ```
-| {data} | OPERAÇÃO | Marcos (COO) | Iniciado: {nome-workflow}. Agentes acionados: {lista}. | EM ANDAMENTO | Aguardar entregas |
+| {data} | OPERAÇÃO | Nexus (COO) | Iniciado: {nome-workflow}. Agentes acionados: {lista}. | EM ANDAMENTO | Aguardar entregas |
 ```
 
 ## Output esperado

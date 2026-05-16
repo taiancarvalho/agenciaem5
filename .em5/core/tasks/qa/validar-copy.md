@@ -69,7 +69,7 @@ Para cada peca de copy validada:
 ## Validacao de Copy — {Nome do Cliente} — {Data}
 
 **Peca:** {CR-{id} — tipo de copy}
-**Auditado por:** Zara (QA de Campanha)
+**Auditado por:** Crivo (QA de Campanha)
 
 ### Checklist
 - Obrigatorios atendidos: X/Y
@@ -85,7 +85,7 @@ Itens a corrigir:
 ### 4. Registrar no log operacional
 
 ```markdown
-| {data} | VALIDACAO | Zara | Validacao de copy {CR-{id}}. Resultado: {APROVADO/REVISAO}. | CONCLUÍDO | {proximo passo} |
+| {data} | VALIDACAO | Crivo | Validacao de copy {CR-{id}}. Resultado: {APROVADO/REVISAO}. | CONCLUÍDO | {proximo passo} |
 ```
 
 ## Output esperado

@@ -42,12 +42,12 @@ Coletar:
 Adicionar linha em `.em5/clientes/{nome}/operacao/log-operacional.md`:
 
 ```markdown
-| {data} | VALIDACAO | Zara | QA: {tipo} de {item}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. {detalhe 1 linha}. | CONCLUÍDO | {proximo passo} |
+| {data} | VALIDACAO | Crivo | QA: {tipo} de {item}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. {detalhe 1 linha}. | CONCLUÍDO | {proximo passo} |
 ```
 
 **Exemplo:**
 ```markdown
-| 2026-04-11 | VALIDACAO | Zara | QA: Copy de CR-003 (Meta Feed — angulo prova social). Resultado: APROVADO. Hook forte, CTA claro. | CONCLUÍDO | Designer produzir criativo visual |
+| 2026-04-11 | VALIDACAO | Crivo | QA: Copy de CR-003 (Meta Feed — angulo prova social). Resultado: APROVADO. Hook forte, CTA claro. | CONCLUÍDO | Designer produzir criativo visual |
 ```
 
 ### 3. Confirmar registro

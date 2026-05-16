@@ -25,10 +25,10 @@ Ou copie `.em5/` para seu projeto manualmente.
 | @ceo | Atlas 🗺️ | Orquestracao, setup, health check |
 | @cs | Sol ☀️ | Onboarding, setup tecnico, gestao do cliente |
 | @strategist | Vera 🎯 | Estrategia, posicionamento, plano de campanha |
-| @traffic | Max 📊 | Midia paga, campanha, otimizacao |
-| @copywriter | Cal ✍️ | Copy, angulos, adaptacao por canal |
+| @traffic | Pulse 📊 | Midia paga, campanha, otimizacao |
+| @copywriter | Eco ✍️ | Copy, angulos, adaptacao por canal |
 | @designer | Lux 🎨 | Criativos visuais, videos, UGC |
-| @qa | Zara 🔍 | Validacao antes de publicar |
+| @qa | Crivo 🔍 | Validacao antes de publicar |
 
 ## Como Usar
 
@@ -47,7 +47,7 @@ node .em5/bin/agency-os-new-client.js nome-do-cliente
 ### 3. Flu
 
 ```
-Onboarding (CS) → Estrategia (Vera) → Trafego + Copy + Design → QA (Zara) → Publicacao
+Onboarding (CS) → Estrategia (Vera) → Trafego + Copy + Design → QA (Crivo) → Publicacao
 ```
 
 ## Estrutura

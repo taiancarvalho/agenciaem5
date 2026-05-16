@@ -76,7 +76,7 @@ Criar `.em5/clientes/{nome}/copy/CR-{NNN}-adaptada-{canal}.md`:
 **Peça original:** CR-{NNN} ({tipo original})
 **Canal de destino:** {canal}
 **Data:** {data}
-**Adaptado por:** Cal (Copywriter)
+**Adaptado por:** Eco (Copywriter)
 
 ---
 

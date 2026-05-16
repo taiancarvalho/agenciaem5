@@ -11,7 +11,7 @@ description: Template de roteiro de video para anuncios
 **Duracao estimada:** {segundos}
 **Angulo:** {angulo}
 **Data:** {data}
-**Por:** Cal (Copywriter)
+**Por:** Eco (Copywriter)
 
 ---
 
