@@ -9,22 +9,45 @@ inputs:
   - .em5/clientes/{nome}/setup-tecnico/status.md
   - estrutura de campanha descrita pelo Gestor de Tráfego
 outputs:
-  - veredicto formal: APROVADO / REVISÃO / BLOQUEADO
+  - veredicto formal: APROVADO / APROVADO_COM_RESSALVA / REVISÃO / BLOQUEADO
   - registro no log operacional
+  - auditoria em .em5/learnings/{ano-mes}/qa-* quando aplicável
 elicit: true
+model_tier: frontier  # validação final = Opus sempre
+gate_matrix: .em5/core/data/gate-matrix.yaml
 ---
 
-# Validar Campanha
+# Validar Campanha (Severity-Based — em5 v1.1)
 
 ## Objetivo
 
 Ser a última barreira entre o rascunho e o resultado. Verificar que copy, criativo, estrutura técnica e alinhamento estratégico estão corretos antes de qualquer publicação.
 
-## Regra Crítica
+## Sistema de Severidade (Fase 3)
+
+Carrega `.em5/core/data/gate-matrix.yaml` pra classificar cada issue:
+
+| Severidade | Ação | Override |
+|------------|------|----------|
+| 🔴 `crítico` | **Bloqueia absoluto** | **NUNCA** |
+| 🟠 `alto` | Bloqueia | Role específica (ver gate-matrix) |
+| 🟡 `médio` | Revisão solicitada | Auto-fix pelo agente original |
+| 🟢 `baixo` | Aprovado com ressalva | Publica + log em learnings |
+
+## Verdictos possíveis
+
+| Verdict | Quando | Ação |
+|---------|--------|------|
+| **APROVADO** ✅ | Zero issues `medio`+ | Publica imediatamente |
+| **APROVADO_COM_RESSALVA** ⚠️ | Só issues `baixo` | Publica + log em `.em5/learnings/{ano-mes}/qa-overrides.md` |
+| **REVISÃO** 🔄 | Issues `medio` (auto_fix=true) | Volta pro agente original |
+| **BLOQUEADO** 🚫 | Issues `alto` ou `critico` | Bloqueia. `alto` overridável via `/override` |
+
+## Regra Crítica (mantida)
 
 ```
-BLOQUEADO significa bloqueado.
-Não existe "publicar assim mesmo".
+BLOQUEADO com severity=critico = NUNCA tem override.
+Pixel ausente, copy sem CTA, promessa irreal, formulário quebrado: BLOQUEIO ABSOLUTO.
 QA não aprova por pressão de prazo.
 ```
 

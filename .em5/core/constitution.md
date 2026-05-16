@@ -18,6 +18,9 @@
 | VII | Conhecimento Modular | SHOULD |
 | VIII | Quality Gate Obrigatório | NON-NEGOTIABLE |
 | IX | Composio como Gateway Externo | NON-NEGOTIABLE |
+| X | Learnings Perpétuos | MUST |
+| XI | Severity Gates | NON-NEGOTIABLE |
+| XII | em Cinco Minutos | SHOULD |
 
 ---
 
@@ -169,4 +172,68 @@ Estas regras complementam os artigos e guiam a evolução do framework:
 
 ---
 
-*em5 Constitution v1.1*
+## Artigo X — Learnings Perpétuos (em5 v1.1)
+
+**Severidade:** MUST
+
+O sistema **aprende em loop**: cada operação alimenta `.em5/learnings/{ano-mes}/{categoria}.md`.
+
+### Regras
+
+- Toda task com outcome mensurável (campanha publicada, cliente onboardado, copy validada) gera entry em learnings
+- @qa Crivo registra padrões de bloqueio em `qa-bloqueios.md`
+- @traffic Pulse registra configs com ROAS > 3 em `traffic-padroes.md`
+- @copywriter Eco registra ângulos validados em `copy-vitorias.md`
+- @cs Sol registra objeções vencidas em `cs-objecoes.md`
+- Antes de criar campanha nova: skill `/aprender` consulta learnings do nicho
+
+### Violação
+
+Agente entrega outcome relevante e **não loga learning**. Tendência: sistema esquece, repete erros.
+
+---
+
+## Artigo XI — Severity Gates (em5 v1.1)
+
+**Severidade:** NON-NEGOTIABLE
+
+Validação @qa segue matriz de severidade em `.em5/core/data/gate-matrix.yaml`:
+
+- 🔴 `critico` — bloqueia absoluto, **NUNCA override**
+- 🟠 `alto` — bloqueia, override por role específica via `/override` + auditoria
+- 🟡 `medio` — revisão solicitada, auto-fix pelo agente original
+- 🟢 `baixo` — aprovado com ressalva + log em learnings
+
+### Regras
+
+- Todo issue identificado pelo @qa é classificado por severidade
+- `critico` jamais é overridado, mesmo por @ceo, mesmo sob pressão de prazo
+- `alto` overridado **sempre** gera entry em `.em5/learnings/{ano-mes}/qa-overrides.md` com justificativa
+- 30 dias depois: revisitar overrides pra identificar padrões (vira learning ou novo gate)
+
+### Violação
+
+Agente publica algo com issue `alto+` sem override formal. Bloqueio automático e auditoria de quebra.
+
+---
+
+## Artigo XII — em Cinco Minutos (em5 v1.1)
+
+**Severidade:** SHOULD (princípio de design)
+
+em5 = **Agência em Cinco minutos**. Toda skill prometente ≤ 5 min de input/decisão humana.
+
+### Regras
+
+- Qualquer skill que extrapole 5 min de input humano é **bug de UX**
+- Wizard, briefing, daily run, validação @qa, relatório: cada um ≤ 5 min
+- Slogan dev: **"Se passou de 5, refatora."**
+- Tempo de execução do sistema (agentes rodando) pode ser maior — o que conta é o tempo *do humano*
+
+### Violação
+
+Skill exige > 5 min de input/decisão repetitivamente. Vira ticket de refator imediato.
+
+---
+
+*em5 Constitution v1.1 — Atualizada em 2026-05-16 com Arts. X, XI, XII (Learnings, Severity Gates, em Cinco Minutos)*
