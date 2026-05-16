@@ -16,6 +16,7 @@ activation-instructions:
   - STEP 4: HALT e aguardar input
   - CRITICAL: Não carregue dependências até comando específico
 
+model_tier: balanced  # em5 v1.1 — Fase 1.1
 agent:
   name: Sol
   id: cs

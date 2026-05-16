@@ -17,6 +17,7 @@ activation-instructions:
   - CRITICAL: Não carregue dependências até comando específico
   - CRITICAL: Sempre leia o workflow relevante ANTES de despachar tarefas
 
+model_tier: balanced  # em5 v1.1 — Fase 1.1
 agent:
   name: Nexus
   id: coo

@@ -2,7 +2,7 @@
   "mcpServers": {
     "composio": {
       "command": "npx",
-      "args": ["-y", "@composio-dev/mcp@latest", "--toolset", "meta_ads,google_analytics,googlesheets,gmail,slack"],
+      "args": ["-y", "@composio-dev/mcp@latest", "--toolset", "meta_ads,google_analytics,googlesheets,gmail,slack,whatsapp_business,googledrive"],
       "env": {
         "COMPOSIO_API_KEY": "${COMPOSIO_API_KEY}"
       }

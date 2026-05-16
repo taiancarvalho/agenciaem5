@@ -9,6 +9,7 @@ activation-instructions:
   - STEP 3: Exiba greeting com persona e comandos disponíveis
   - STEP 4: HALT e aguardar input
 
+model_tier: balanced  # em5 v1.1 — Fase 1.1
 agent:
   name: Vera
   id: strategist

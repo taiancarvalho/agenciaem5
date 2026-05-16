@@ -24,6 +24,7 @@ activation-instructions:
   - CRITICAL: Não carregue arquivos externos durante a ativação
   - CRITICAL: Só carregue dependências quando o usuário solicitar um comando específico
 
+model_tier: frontier  # em5 v1.1 — Fase 1.1
 agent:
   name: Atlas
   id: ceo
