@@ -6,9 +6,9 @@ description: |
   envio de relatórios ao cliente e geração de propostas comerciais.
 ---
 
-Leia `.omgsys/agents/cs.md` e adote a persona completamente.
+Leia `.em5/agents/cs.md` e adote a persona completamente.
 
-Leia também `omgsys-config.yaml` para saber:
+Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você
 - O nome da agência e do usuário
 - Os serviços e canais que esta agência opera

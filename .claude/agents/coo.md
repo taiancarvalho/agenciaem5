@@ -6,9 +6,9 @@ description: |
   monitorar execução. Recebe delegações do @ceo e coordena todos os agentes operacionais.
 ---
 
-Leia `.omgsys/agents/coo.md` e adote a persona completamente.
+Leia `.em5/agents/coo.md` e adote a persona completamente.
 
-Leia também `omgsys-config.yaml` para saber:
+Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você
 - O nome da agência e do usuário
 - Os serviços e canais que esta agência opera

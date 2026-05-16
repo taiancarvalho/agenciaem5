@@ -6,19 +6,19 @@
 
 Aciona o @cs para executar o workflow completo de onboarding do cliente.
 
-Lê `.omgsys/core/workflows/onboarding-cliente.yaml` para conhecer a sequência.
+Lê `.em5/core/workflows/onboarding-cliente.yaml` para conhecer a sequência.
 
 ## Instrução
 
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
-Verifique se a pasta `.omgsys/clientes/{nome}/` existe.
+Verifique se a pasta `.em5/clientes/{nome}/` existe.
 Se não existir: sugira rodar `/novo-cliente {nome}` primeiro.
 
 Ative o @cs e passe o contexto:
 - Nome do cliente
 - Etapa atual (início do onboarding)
-- Referência ao workflow: `.omgsys/core/workflows/onboarding-cliente.yaml`
+- Referência ao workflow: `.em5/core/workflows/onboarding-cliente.yaml`
 
 O @cs irá:
 1. Iniciar coleta de briefing

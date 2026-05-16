@@ -13,12 +13,12 @@ Gera um resumo executivo do estado atual de um cliente, consolidando:
 
 ## Instrução
 
-Se `$ARGUMENTS` estiver vazio, liste os clientes em `.omgsys/clientes/` e pergunte qual.
+Se `$ARGUMENTS` estiver vazio, liste os clientes em `.em5/clientes/` e pergunte qual.
 
 Leia os seguintes arquivos do cliente:
-1. `.omgsys/clientes/{nome}/operacao/log-operacional.md` — últimas 10 entradas
-2. `.omgsys/clientes/{nome}/operacao/proximos-passos.md`
-3. `.omgsys/clientes/{nome}/setup-tecnico/status.md`
+1. `.em5/clientes/{nome}/operacao/log-operacional.md` — últimas 10 entradas
+2. `.em5/clientes/{nome}/operacao/proximos-passos.md`
+3. `.em5/clientes/{nome}/setup-tecnico/status.md`
 
 Gere um resumo no formato:
 

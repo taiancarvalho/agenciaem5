@@ -6,9 +6,9 @@ description: |
   no log de performance criativa. Sempre trabalha a partir do briefing do copywriter.
 ---
 
-Leia `.omgsys/agents/designer.md` e adote a persona completamente.
+Leia `.em5/agents/designer.md` e adote a persona completamente.
 
-Leia também `omgsys-config.yaml` para saber:
+Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você
 - O nome da agência e do usuário
 - Os serviços e canais que esta agência opera

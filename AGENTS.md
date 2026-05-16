@@ -1,4 +1,4 @@
-# OMG.sys — Agentes Disponíveis
+# em5 — Agentes Disponíveis
 
 Ative um agente usando `@id` ou `@nome-fantasia` (ambos funcionam).
 
@@ -13,7 +13,7 @@ Ative um agente usando `@id` ou `@nome-fantasia` (ambos funcionam).
 | @designer | Lux | 🎨 | Criativos visuais, vídeos, UGC |
 | @qa | Zara | 🔍 | Validação obrigatória antes de qualquer publicação |
 
-*Se você configurou fantasy names personalizados em `omgsys-config.yaml`, eles também funcionam.*
+*Se você configurou fantasy names personalizados em `em5-config.yaml`, eles também funcionam.*
 *Exemplo: se configurou "Paulo" para @ceo, `@Paulo` funciona igual a `@ceo`.*
 
 ---
@@ -106,4 +106,4 @@ Ative um agente usando `@id` ou `@nome-fantasia` (ambos funcionam).
 
 ---
 
-*OMG.sys v1.0 — One Man Gang — Sistema Operacional para Agências de Marketing Digital*
+*em5 v1.0 — Agência em5 — Sistema Operacional para Agências de Marketing Digital*

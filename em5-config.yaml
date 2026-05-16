@@ -1,0 +1,68 @@
+# em5 — Configuracao da Agencia
+# Execute /setup para preencher este arquivo com os dados reais da sua agencia.
+# Gerado automaticamente pelo wizard de configuracao.
+
+agency:
+  name: "{AGENCY_NAME}"
+  owner: "{USER_NAME}"
+  installed_at: "{DATA}"
+  version: "1.0"
+
+services:
+  traffic_paid_meta: false
+  traffic_paid_google: false
+  copywriting: false
+  design: false
+  social_media: false
+  seo: false
+  email_marketing: false
+  whatsapp_crm: false
+
+channels:
+  meta_ads: false
+  google_ads: false
+  google_analytics: false
+
+agents:
+  ceo:
+    id: ceo
+    fantasy_name: "Atlas"
+    gender: "m"
+  coo:
+    id: coo
+    fantasy_name: "Marcos"
+    gender: "m"
+  cs:
+    id: cs
+    fantasy_name: "Sol"
+    gender: "f"
+  strategist:
+    id: strategist
+    fantasy_name: "Vera"
+    gender: "f"
+  traffic:
+    id: traffic
+    fantasy_name: "Max"
+    gender: "m"
+  copywriter:
+    id: copywriter
+    fantasy_name: "Cal"
+    gender: "m"
+  designer:
+    id: designer
+    fantasy_name: "Lux"
+    gender: "m"
+  qa:
+    id: qa
+    fantasy_name: "Zara"
+    gender: "f"
+
+integrations:
+  composio:
+    api_key: "${COMPOSIO_API_KEY}"
+    tools:
+      meta_ads: false
+      google_analytics: false
+      gmail: false
+      slack: false
+      google_sheets: false

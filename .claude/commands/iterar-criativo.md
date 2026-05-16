@@ -13,16 +13,16 @@
 
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
-Leia `.omgsys/core/workflows/iteracao-criativa.yaml` para a sequência completa.
+Leia `.em5/core/workflows/iteracao-criativa.yaml` para a sequência completa.
 
 Leia o contexto do cliente:
-- `.omgsys/clientes/{nome}/operacao/log-performance-criativa.md` — o que está rodando e como
+- `.em5/clientes/{nome}/operacao/log-performance-criativa.md` — o que está rodando e como
 
 Acione @coo com:
 - Cliente: {nome}
 - Workflow: iteracao-criativa
-- Referência: `.omgsys/core/workflows/iteracao-criativa.yaml`
-- Dados: `.omgsys/clientes/{nome}/operacao/log-performance-criativa.md`
+- Referência: `.em5/core/workflows/iteracao-criativa.yaml`
+- Dados: `.em5/clientes/{nome}/operacao/log-performance-criativa.md`
 
 **Regra:** Iteração é baseada em dados — nunca em achismo.
 Janela mínima de análise: 7 dias de dados antes de propor mudança.

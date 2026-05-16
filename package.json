@@ -1,18 +1,18 @@
 {
-  "name": "omgsys-core",
+  "name": "em5-core",
   "version": "1.0.0",
-  "description": "OMG.sys — One Man Gang. Sistema Operacional para Agencias de Marketing Digital via agentes Claude Code.",
+  "description": "em5 — Agência em5. Sistema Operacional para Agencias de Marketing Digital via agentes Claude Code.",
   "main": "index.js",
   "bin": {
-    "omgsys": "bin/omgsys.js"
+    "em5": "bin/em5.js"
   },
   "files": [
     "lib/",
     "bin/",
-    ".omgsys/agents/",
-    ".omgsys/core/",
-    ".omgsys/setup/",
-    ".omgsys/clientes/_template/",
+    ".em5/agents/",
+    ".em5/core/",
+    ".em5/setup/",
+    ".em5/clientes/_template/",
     ".claude/agents/",
     ".claude/commands/",
     "index.js",
@@ -22,8 +22,8 @@
     "test": "echo \"No tests yet\" && exit 0"
   },
   "keywords": [
-    "omgsys",
-    "one-man-gang",
+    "em5",
+    "agencia-em5",
     "agency",
     "marketing",
     "automation",

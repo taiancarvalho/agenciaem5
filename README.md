@@ -1,4 +1,4 @@
-# OMG.sys — One Man Gang
+# em5 — Agência em5
 
 > Sistema Operacional para Agência de Marketing Digital.
 > Instale em qualquer projeto e opere com 8 agentes especializados via Claude Code.
@@ -7,7 +7,7 @@
 
 ## O que é
 
-OMG.sys é um framework operacional que transforma qualquer pasta em uma agência de marketing digital funcionando com agentes Claude Code especializados.
+em5 é um framework operacional que transforma qualquer pasta em uma agência de marketing digital funcionando com agentes Claude Code especializados.
 
 **Você → @ceo → @coo → agentes → arquivos → @qa → cliente**
 
@@ -18,13 +18,13 @@ Cada agente tem um papel fixo, opera por arquivos e passa handoffs via documento
 ## Instalação
 
 ```bash
-npx omgsys-core@latest install
+npx em5-core@latest install
 ```
 
 Ou clone e configure manualmente:
 
 ```bash
-git clone https://github.com/taiancarvalho/AgencyOS.git minha-agencia
+git clone https://github.com/taiancarvalho/agenciaem5.git minha-agencia
 cd minha-agencia
 # Abra no Claude Code e digite:
 /setup
@@ -100,7 +100,7 @@ Se não souber os parâmetros: consulte **Context7** antes de executar.
 ## Estrutura do Projeto
 
 ```
-.omgsys/
+.em5/
 ├── agents/          ← 8 agentes completos (personas, comandos, dependências)
 ├── core/
 │   ├── constitution.md
@@ -116,10 +116,10 @@ Se não souber os parâmetros: consulte **Context7** antes de executar.
 .claude/
 ├── CLAUDE.md        ← entry point do sistema
 ├── settings.json    ← Composio + Context7 MCPs
-├── agents/          ← 8 wrappers leves (apontam para .omgsys/agents/)
+├── agents/          ← 8 wrappers leves (apontam para .em5/agents/)
 └── commands/        ← 10 skills operacionais
 
-omgsys-config.yaml   ← configuração da agência (gerado pelo /setup)
+em5-config.yaml   ← configuração da agência (gerado pelo /setup)
 ```
 
 ---
@@ -152,4 +152,4 @@ omgsys-config.yaml   ← configuração da agência (gerado pelo /setup)
 
 ---
 
-*OMG.sys v1.0 — One Man Gang*
+*em5 v1.0 — Agência em5*

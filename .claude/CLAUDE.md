@@ -1,9 +1,9 @@
-# OMG.sys — One Man Gang
+# em5 — Sistema Operacional pra Agência
 > Framework operacional para agencia de marketing digital.
 > Configure sua agencia com `/setup` na primeira vez.
 
-Voce esta no OMG.sys. Leia `.omgsys/core/constitution.md` antes de qualquer acao.
-Leia `omgsys-config.yaml` para conhecer a configuracao desta agencia.
+Voce esta no em5. Leia `.em5/core/constitution.md` antes de qualquer acao.
+Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 
 ---
 
@@ -21,7 +21,7 @@ Leia `omgsys-config.yaml` para conhecer a configuracao desta agencia.
 | @qa | Zara | Validacao obrigatoria antes de qualquer publicacao |
 
 *Os agentes tambem respondem pelos fantasy names. Exemplo: "@Atlas" funciona igual a "@ceo".*
-*Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `omgsys-config.yaml`.*
+*Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `em5-config.yaml`.*
 
 ---
 
@@ -73,4 +73,4 @@ QA nao aprova por pressao. BLOQUEADO significa bloqueado.
 
 ---
 
-*OMG.sys v1.0 — Configure com `/setup`*
+*em5 v1.0 — Configure com `/setup`*
