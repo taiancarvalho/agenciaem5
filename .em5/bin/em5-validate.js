@@ -26,11 +26,25 @@ function check(name, severity, fn) {
 
 // === CHECKS ===
 
-check('Composio é único MCP (Art. IX)', 'NON-NEGOTIABLE', () => {
+check('Composio é gateway default + exceções Art. IX documentadas (v1.3)', 'NON-NEGOTIABLE', () => {
   const s = JSON.parse(fs.readFileSync(path.join(ROOT, '.claude/settings.json'), 'utf8'));
   const mcps = Object.keys(s.mcpServers || {});
-  const externals = mcps.filter((m) => !['composio', 'context7'].includes(m));
-  if (externals.length > 0) return `MCPs externos detectados: ${externals.join(', ')}. Apenas composio e context7 permitidos.`;
+  const allowedDefault = ['composio', 'context7'];
+  const externals = mcps.filter((m) => !allowedDefault.includes(m));
+
+  if (externals.length === 0) return; // só default = OK
+
+  // Tem MCPs adicionais — checar se estão documentados em excecoes.yaml
+  const excecoesPath = path.join(ROOT, '.em5/integracoes/excecoes.yaml');
+  if (!fs.existsSync(excecoesPath)) {
+    return `MCPs adicionais detectados (${externals.join(', ')}) mas .em5/integracoes/excecoes.yaml ausente. Art. IX v1.3 exige documentação formal.`;
+  }
+  const excecoesContent = fs.readFileSync(excecoesPath, 'utf8');
+  const naoDocumentados = externals.filter((mcp) => !excecoesContent.includes(`mcp_id: ${mcp}`));
+  if (naoDocumentados.length > 0) {
+    return `MCPs sem entrada em excecoes.yaml: ${naoDocumentados.join(', ')}. Adicione + aprove via @ceo.`;
+  }
+  // OK — todas excecoes documentadas
 });
 
 check('Todos agentes têm model_tier (Fase 1.1)', 'MUST', () => {

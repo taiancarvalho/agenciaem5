@@ -11,6 +11,14 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"],
       "env": {}
+    },
+    "asaas": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://docs.asaas.com/mcp"],
+      "env": {
+        "ASAAS_TOKEN": "${ASAAS_TOKEN}"
+      },
+      "_excecao_art_ix": "Aprovada em .em5/integracoes/excecoes.yaml — financeiro BR (PIX/boleto/cartão)"
     }
   },
   "permissions": {

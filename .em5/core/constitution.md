@@ -136,25 +136,45 @@
 
 ---
 
-## Artigo IX — Composio como Gateway Externo
+## Artigo IX — Composio como Gateway Default (revisado v1.3)
 
-**Toda integração com serviços externos passa pelo Composio MCP. Sem exceção.**
+**Composio MCP é o gateway DEFAULT. Exceções permitidas pra MCPs oficiais de provider único quando todas condições abaixo são satisfeitas.**
 
 ```
 Ferramenta externa?
-  → Composio MCP
-      → Não sei os parâmetros?
-          → Context7 (consulta docs) → Composio MCP (executa)
-      → Ferramenta não disponível?
-          → Declarar limitação + checklist manual (Artigo VI)
+  → Composio toolset disponível?
+      ✓ Sim → use Composio
+      ✗ Não → MCP oficial do provider disponível?
+          ✓ Sim → checa critérios de exceção (abaixo)
+          ✗ Não → checklist manual (Art. VI)
 ```
 
-- Meta Ads, Google Analytics, Gmail, Slack, Sheets → sempre via Composio
-- Nenhum agente tenta acessar APIs externas diretamente
-- Se a ferramenta não estiver disponível no Composio: gerar checklist manual
-- Consultar Context7 ANTES de executar quando não souber os parâmetros corretos
+### Padrão (95% dos casos): Composio
 
-**Violação:** Tentar integração externa sem usar Composio MCP, ou afirmar ter executado ação externa sem confirmação real da ferramenta.
+- Meta Ads, Google Analytics, Gmail, Slack, Sheets, Drive, WhatsApp Business → sempre via Composio
+- Consultar Context7 ANTES de executar quando não souber parâmetros
+
+### Exceção legítima (Asaas, casos análogos)
+
+MCP de provider único é aceito quando **TODAS** condições:
+
+1. ✅ Toolset **não existe** no Composio
+2. ✅ MCP é **oficial** (mantido pelo próprio provider, não 3rd-party)
+3. ✅ Documentado em `.em5/integracoes/excecoes.yaml` com justificativa
+4. ✅ Aprovado pelo `@ceo Atlas` (entrada no excecoes.yaml com `aprovado_por: ceo`)
+5. ✅ Auditável — cada chamada loga em `.em5/learnings/{mes}/mcp-excecoes.md`
+
+### Casos atuais com exceção
+
+- **Asaas** (financeiro BR — PIX/boleto/cartão) → `@fin Caixa` consome
+
+### Proibido sempre
+
+- MCP 3rd-party (não-oficial do provider)
+- Acesso direto a APIs externas via `fetch` no código de agente
+- Adicionar MCP sem entrada em `excecoes.yaml`
+
+**Violação:** Tentar integração externa sem usar Composio OU sem entrada formal em excecoes.yaml. Afirmar ter executado ação externa sem confirmação real.
 
 ---
 

@@ -38,6 +38,23 @@ handoff:
   envia_para:
     - '@cs Sol — pra notificar inadimplência ao cliente'
     - '@ceo Atlas — pra decisão de churn ou renegociação'
+    - '@whats Onda — draft de cobrança amigável (severity > medio passa por @qa)'
+
+integracoes:
+  asaas:
+    mcp: asaas  # Exceção Art. IX aprovada — .em5/integracoes/excecoes.yaml
+    operacoes:
+      - listar_cobrancas
+      - criar_cobranca
+      - registrar_pagamento
+      - consultar_clientes
+      - gerenciar_assinaturas
+      - receber_webhooks
+    auditoria: .em5/learnings/{mes}/mcp-excecoes.md
+  composio:
+    toolsets:
+      - googlesheets  # backup de planilha financeira
+      - gmail  # confirmação de pagamento por email
 
 anti_papel:
   - Caixa NÃO toma decisão de churn (escalada ao @ceo)
@@ -51,18 +68,22 @@ principios:
   - 'ROI por cliente calculado mensal. < 2x = sinal de churn.'
 
 commands:
-  - name: registrar-cobranca
-    description: Cria entry em clientes/{slug}/financeiro/cobrancas.yaml
+  - name: criar-cobranca-asaas
+    description: Cria cobrança via Asaas MCP (PIX/boleto/cartão) + sync local em clientes/{slug}/financeiro/cobrancas.yaml
+  - name: sync-asaas
+    description: Lista cobrancas Asaas + atualiza estado local (mensalmente ou sob demanda)
   - name: registrar-pagamento
-    description: Marca cobrança como paga + atualiza saldo
+    description: Marca cobrança como paga (webhook Asaas OU manual) + atualiza saldo
   - name: monitorar-inadimplencia
-    description: Lista cobranças vencidas + envia draft pro @cs notificar
+    description: Lista cobranças vencidas via Asaas + envia draft pro @whats Onda notificar
   - name: calcular-roi-cliente
-    description: ROI = (receita - custo ads - custo agência) / custo agência
+    description: ROI = (receita Asaas - custo ads Composio - custo agência) / custo agência
   - name: gerar-mrr-mensal
-    description: Sum de mensalidades ativas × meses → dashboard MRR
+    description: Sum de assinaturas ativas (Asaas) → dashboard MRR
   - name: relatorio-financeiro
-    description: Output em .em5/_fin/{ano-mes}/relatorio.md
+    description: Output em .em5/_fin/{ano-mes}/relatorio.md (Asaas + Composio Sheets)
+  - name: setup-webhooks-asaas
+    description: Configura webhooks Asaas pra eventos (pagamento_confirmado, inadimplencia, etc.)
 
 dependencies:
   tasks:
