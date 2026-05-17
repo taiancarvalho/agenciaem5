@@ -4,9 +4,11 @@
 > Sistema operacional pra gestor solo de agência de marketing digital.
 > 8 agentes especializados via Claude Code + Composio MCP único.
 
-[![v1.2.0](https://img.shields.io/badge/version-1.2.0-blue)](https://github.com/taiancarvalho/agenciaem5)
+[![v1.3.0](https://img.shields.io/badge/version-1.3.0-blue)](https://github.com/taiancarvalho/agenciaem5)
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Free Forever](https://img.shields.io/badge/free-forever-22c55e)](LICENSE)
+[![15 agents](https://img.shields.io/badge/agents-15-5b8dee)](.em5/agents/)
+[![Asaas](https://img.shields.io/badge/asaas-BR-yellow)](.em5/integracoes/excecoes.yaml)
 
 ---
 
@@ -192,5 +194,6 @@ MIT © Taian Carvalho. Free forever. Open source. Contribuições bem-vindas.
 
 ---
 
-*em5 v1.2.0 — Agência em Cinco minutos.*
-*12 agentes (Atlas, Nexus, Sol, Vera, Pulse, Eco, Lux, Crivo, Arq, Cunha, Lima, Vendas/Caça, Fin/Caixa, Scout/Espia, Whats/Onda) + 18 skills + 13 artigos constitucionais.*
+*em5 v1.3.0 — Agência em Cinco minutos.*
+*15 agentes + 19 skills + 13 artigos constitucionais.*
+*Composio default + Asaas exceção (BR financeiro). Hooks ativos (learnings auto + model tier).*

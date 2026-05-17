@@ -94,17 +94,17 @@ class HookRegistry {
 function defaultHooks() {
   const reg = new HookRegistry();
 
-  // Captura learnings após @qa retornar veredicto
+  // Captura learnings após Write (qa veredicto, copy aprovada, relatório, etc.)
   reg.register('PostToolUse', {
     matcher: 'Write',
     command: 'bash .claude/hooks/learnings-capture.sh',
-    description: 'Captura veredicto @qa e padrões em .em5/learnings/',
+    description: 'Captura padrões em .em5/learnings/{mes}/ (Art. X)',
   });
 
-  // Validação leve no SessionStart
+  // Model tier routing reminder no início da sessão
   reg.register('SessionStart', {
-    command: 'echo "em5 v$(cat package.json | grep version | head -1 | cut -d \\" -f4) ativo — Agência em Cinco minutos"',
-    description: 'Identifica versão em5 no início da sessão',
+    command: 'bash .claude/hooks/model-router.sh',
+    description: 'Mostra model_tier dos agentes (lembrete pra /model switch)',
   });
 
   return reg;

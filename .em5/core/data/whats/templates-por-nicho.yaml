@@ -1,0 +1,66 @@
+# em5 — Templates WhatsApp por Nicho
+# Overrides nicho-específicos pros templates base em whatsapp-templates.yaml.
+# @whats Onda usa esta camada quando cliente.nicho match.
+
+versao: "1.0"
+
+clinica_odonto:
+  briefing_inicial_override: |
+    Olá {nome_cliente}! 👋
+    Sou {persona_cs} da {nome_agencia} — especialista em odontologia.
+    Pra montar tua campanha respeitando o CRO (sem prometer milagre, claro),
+    preciso de 5 min seus. Posso te mandar 3 perguntas?
+  alerta_compliance:
+    severity: critico
+    template: |
+      ⚠️ Detectamos copy potencialmente fora das normas do CRO.
+      Pausei o anúncio. Vou ajustar e te mando versão revisada em 24h.
+
+clinica_estetica:
+  briefing_inicial_override: |
+    Oi {nome_cliente}! ✨
+    Sou {persona_cs} da {nome_agencia}.
+    Vou cuidar do tráfego respeitando todas as normas (CFM, antes/depois, etc.).
+    Posso te mandar 3 perguntas curtas pra começar?
+
+saas_b2b:
+  weekly_report_override: |
+    📊 Sales pipeline — {nome_cliente}
+
+    SQLs gerados: {sqls_count} ({delta_pct})
+    Custo por SQL: R$ {cpl_sql}
+    CAC pipeline: R$ {cac_pipeline}
+
+    Top conteúdo da semana: {top_conteudo}
+    Reunião de pipeline: {data_proxima_call}
+
+ecommerce:
+  weekly_report_override: |
+    🛒 ROAS semanal — {nome_cliente}
+
+    ROAS: {roas}x ({delta_pct} vs semana passada)
+    Receita Meta Ads: R$ {receita_meta}
+    Receita Google Ads: R$ {receita_google}
+    Total: R$ {total}
+
+    Top produto: {top_sku}
+
+info_produto:
+  briefing_inicial_override: |
+    {nome_cliente}, tudo certo? 🚀
+    Sou {persona_cs} da {nome_agencia}.
+    Especialista em lançamento de produto digital.
+    Antes do CPL ficar barato precisa ter mensagem certa.
+    Posso te mandar 3 perguntas pra entender o lançamento?
+
+servicos_locais:
+  weekly_report_override: |
+    📞 Agendamentos — {nome_cliente}
+
+    Esta semana: {agendamentos_count} ({delta_pct})
+    Taxa de comparecimento: {tx_comparecimento}%
+    Custo por agendamento: R$ {cpa}
+
+    Próxima ação: {proxima_acao}
+
+# Fallback — se nicho não tem override, usa whatsapp-templates.yaml base

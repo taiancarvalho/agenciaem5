@@ -1,0 +1,16 @@
+# Template — Cobrança individual em clientes/{slug}/financeiro/cobrancas.yaml
+# @fin Caixa append este shape pra cada cobrança criada.
+
+- id_asaas: pay_xxx  # ID retornado pelo Asaas
+  data_criacao: 2026-05-16
+  vencimento: 2026-06-15
+  valor: 4500.00
+  tipo: PIX  # PIX | BOLETO | CREDIT_CARD
+  status: PENDING  # PENDING | PAID | OVERDUE | DELETED | REFUNDED
+  description: "Mensalidade em5 - 06/2026"
+  url_pagamento: "https://www.asaas.com/i/xxx"
+  pago_em: null
+  metodo_pagamento: null
+  observacoes: ""  # campo livre — não sobrescrito por sync
+  recorrente: false
+  subscription_id: null  # se vier de assinatura recorrente

@@ -1,7 +1,7 @@
 {
   "name": "em5-core",
-  "version": "1.1.0",
-  "description": "em5 — Agência em Cinco minutos. Sistema operacional pra gestor solo de agência de marketing digital. Agentes Claude Code, Composio unified MCP, severity gates, learnings perpétuos.",
+  "version": "1.3.0",
+  "description": "em5 — Agência em Cinco minutos. Sistema operacional pra gestor solo de agência de marketing digital. 15 agentes Claude Code, Composio gateway default + exceções, severity gates, learnings perpétuos, meta-time construção, Asaas BR.",
   "main": "index.js",
   "bin": {
     "em5": "bin/em5.js"

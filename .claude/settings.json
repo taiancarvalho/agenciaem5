@@ -2,19 +2,31 @@
   "mcpServers": {
     "composio": {
       "command": "npx",
-      "args": ["-y", "@composio-dev/mcp@latest", "--toolset", "meta_ads,google_analytics,googlesheets,gmail,slack,whatsapp_business,googledrive"],
+      "args": [
+        "-y",
+        "@composio-dev/mcp@latest",
+        "--toolset",
+        "meta_ads,google_analytics,googlesheets,gmail,slack,whatsapp_business,googledrive"
+      ],
       "env": {
         "COMPOSIO_API_KEY": "${COMPOSIO_API_KEY}"
       }
     },
     "context7": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
       "env": {}
     },
     "asaas": {
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://docs.asaas.com/mcp"],
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://docs.asaas.com/mcp"
+      ],
       "env": {
         "ASAAS_TOKEN": "${ASAAS_TOKEN}"
       },
@@ -35,6 +47,30 @@
       "Bash(date:*)",
       "Bash(node:*)",
       "Bash(npx:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/model-router.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/learnings-capture.sh"
+          }
+        ]
+      }
     ]
   }
 }
