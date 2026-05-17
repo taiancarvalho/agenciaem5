@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadClienteCompleto, listClienteSlugs } from '../../lib/loader.js';
+
+// Astro static — gera 1 página por cliente em build time
+export async function getStaticPaths() {
+  const slugs = listClienteSlugs();
+  return slugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const cliente = loadClienteCompleto(slug);
+
+if (!cliente) {
+  return Astro.redirect('/');
+}
+
+const fmtBRL = (v) => v
+  ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
+  : '—';
+---
+<Base title={cliente.nome}>
+  <nav style="margin-bottom: 1.5rem; font-size: 0.9rem;">
+    <a href="/" style="color: var(--accent);">← Painel</a>
+    <span style="color: var(--text-dim); margin: 0 0.5rem;">/</span>
+    <span style="color: var(--text);">{cliente.nome}</span>
+  </nav>
+
+  <header style="margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between;">
+    <div>
+      <h2 style="font-size: 1.75rem; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span style={`display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: ${cliente.branding_cor};`}></span>
+        {cliente.nome}
+      </h2>
+      <div style="color: var(--text-dim); font-size: 0.9rem;">
+        {cliente.nicho} · estágio: <strong style="color: var(--text);">{cliente.estagio}</strong>
+      </div>
+    </div>
+
+    {cliente.alerta_severidade && (
+      <div class={`badge ${cliente.alerta_severidade}`} style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+        {cliente.alerta_severidade.toUpperCase()}
+      </div>
+    )}
+  </header>
+
+  {cliente.alerta_mensagem && (
+    <div class="alert" style="margin-bottom: 2rem;">
+      <strong>Alerta:</strong> {cliente.alerta_mensagem}
+    </div>
+  )}
+
+  <!-- KPIs operacionais -->
+  <section class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">ROAS semanal</div>
+      <div class="kpi-value">{cliente.roas_semanal ? `${cliente.roas_semanal}x` : '—'}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">CPA</div>
+      <div class="kpi-value">{fmtBRL(cliente.cpa_atual)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Mensalidade</div>
+      <div class="kpi-value">{fmtBRL(cliente.mensalidade)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Cobranças</div>
+      <div class="kpi-value">{cliente.cobrancas.length}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Inadimplência</div>
+      <div class="kpi-value" style={cliente.inadimplencia_dias > 0 ? 'color: var(--alto)' : 'color: var(--ok)'}>
+        {cliente.inadimplencia_dias > 0 ? `${cliente.inadimplencia_dias}d` : 'ok'}
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Asaas</div>
+      <div class="kpi-value" style="font-size: 1rem;">
+        {cliente.asaas_customer_id ? '✓ Conectado' : '⚠️ Sem ID'}
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN.md presence (Fase 13) -->
+  <section style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
+    <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+      🎨 Brand Identity (DESIGN.md)
+    </h3>
+
+    {cliente.design.has_design_md ? (
+      <>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <div class="metric-label">DESIGN.md</div>
+            <div style="color: var(--ok); font-weight: 600;">✓ Disponível</div>
+          </div>
+          <div>
+            <div class="metric-label">preview.html</div>
+            <div style={cliente.design.has_preview ? 'color: var(--ok); font-weight: 600;' : 'color: var(--text-dim);'}>
+              {cliente.design.has_preview ? '✓ Disponível' : '— Ausente'}
+            </div>
+          </div>
+          <div>
+            <div class="metric-label">tokens.json</div>
+            <div style={cliente.design.has_tokens ? 'color: var(--ok); font-weight: 600;' : 'color: var(--text-dim);'}>
+              {cliente.design.has_tokens ? '✓ Disponível' : '— Ausente'}
+            </div>
+          </div>
+        </div>
+
+        {cliente.design.content_preview && (
+          <details style="margin-top: 1rem;">
+            <summary style="cursor: pointer; color: var(--accent); font-size: 0.9rem;">Preview do DESIGN.md (800 chars)</summary>
+            <pre style="background: var(--bg); padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.8rem; line-height: 1.6; margin-top: 0.75rem;">{cliente.design.content_preview}…</pre>
+          </details>
+        )}
+
+        {cliente.design.has_preview && (
+          <a href={`/clientes/${slug}/branding/preview.html`}
+             target="_blank"
+             style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--accent); color: white; border-radius: 6px; font-size: 0.9rem;">
+            Abrir preview completo →
+          </a>
+        )}
+      </>
+    ) : (
+      <div style="text-align: center; padding: 1.5rem;">
+        <div style="color: var(--text-dim); margin-bottom: 1rem;">
+          ⚠️ Nenhum DESIGN.md gerado pra este cliente.
+        </div>
+        <div style="color: var(--text-dim); font-size: 0.85rem;">
+          @designer Lux e @copywriter Eco <strong>não opera</strong> sem brand definida (Art. XIII).
+        </div>
+        <div style="margin-top: 1rem; padding: 0.75rem; background: var(--bg); border-radius: 8px; font-family: monospace; font-size: 0.85rem;">
+          /extrair-design {slug} {`{url ou caminho}`}
+        </div>
+      </div>
+    )}
+  </section>
+
+  <!-- Próxima ação -->
+  <section style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin: 2rem 0;">
+    <div class="metric-label" style="margin-bottom: 0.5rem;">Próxima ação</div>
+    <div style="font-size: 1.1rem;">{cliente.proxima_acao}</div>
+  </section>
+
+  <!-- Cobranças recentes -->
+  {cliente.cobrancas.length > 0 && (
+    <section style="margin-top: 2rem;">
+      <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">💰 Cobranças recentes</h3>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden;">
+          <thead>
+            <tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
+              <th style="padding: 0.75rem 1rem; text-align: left; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Data</th>
+              <th style="padding: 0.75rem 1rem; text-align: right; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Valor</th>
+              <th style="padding: 0.75rem 1rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Tipo</th>
+              <th style="padding: 0.75rem 1rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cliente.cobrancas.slice(0, 12).map((c) => (
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;">{c.vencimento || c.data_criacao || '—'}</td>
+                <td style="padding: 0.75rem 1rem; text-align: right; font-weight: 500;">{fmtBRL(c.valor)}</td>
+                <td style="padding: 0.75rem 1rem; text-align: center; font-size: 0.85rem;">{c.tipo || '—'}</td>
+                <td style="padding: 0.75rem 1rem; text-align: center;">
+                  <span class={`badge ${c.status === 'PAID' ? 'ok' : c.status === 'OVERDUE' ? 'critico' : 'medio'}`}>
+                    {c.status || 'PENDING'}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )}
+
+  <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-card); border-radius: 8px; font-size: 0.85rem; color: var(--text-dim);">
+    <strong style="color: var(--text);">📁 Workspace:</strong> <code>.em5/clientes/{slug}/</code>
+    <br />
+    Última atualização: <code>{cliente.ultima_atualizacao || '—'}</code>
+  </div>
+</Base>

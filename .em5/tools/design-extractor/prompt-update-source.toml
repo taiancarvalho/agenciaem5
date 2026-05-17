@@ -1,0 +1,29 @@
+description = "Update an existing brandbook preview without redoing the full extraction."
+
+prompt = """
+Use the brandbook-extractor skill.
+
+Update the existing brandbook project:
+
+{{args}}
+
+Rules:
+- Do not reanalyze the original source unless necessary.
+- Use designs/{{args}}/DESIGN.md as the source of truth.
+- Update only designs/{{args}}/preview.html and designs/{{args}}/source/analysis-notes.md unless explicitly needed.
+- Do not alter source project folders.
+- Preserve existing tokens unless there is clear evidence they are wrong.
+- **MANDATORY**: Re-generate `preview.html` using the standard templates in `templates/design-board-preview.html`, `.css`, and `.js`.
+- **MANDATORY**: Ensure "Design Prompt Add-on" includes the "Copy Full Design Direction" button.
+- **PROHIBITED**: Simplified previews or omitting the visual direction section.
+- **PROHIBITED**: Over-coloring. Shell headings must be neutral; brand color is for accents only.
+
+Focus:
+- improve preview completeness by populating ALL standard sections
+- improve Design Prompt Add-on (Visual direction only)
+- improve section density
+- fix broken links/copy buttons
+- preserve and enforce the Brandbook Preview LP structure from the standard template
+
+At the end, report changed files and the open command.
+"""

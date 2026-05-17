@@ -54,12 +54,21 @@ anti_papel:
   - Decidir canal ou verba
   - Operar apenas com gosto pessoal sem contexto
   - Criar estrutura visual de página sem receber conteúdo e objetivos
+  - 'Produzir QUALQUER criativo sem DESIGN.md carregado (Art. XIII — hard dependency v1.3.x)'
+
+hard_dependencies:
+  design_md:
+    path: .em5/clientes/{slug}/branding/DESIGN.md
+    description: 'Sistema de design extraído via /extrair-design. Sem este arquivo, Lux recusa criar criativo e sugere rodar /extrair-design primeiro.'
+    fallback: 'Se DESIGN.md ausente: avisar user + sugerir /extrair-design {slug} {url|briefing}'
 
 commands:
+  - name: extrair-design
+    description: 'Invocar design-extractor pra gerar DESIGN.md + preview + tokens + theme do cliente'
   - name: ler-cliente
     description: 'Ler onboarding, branding kit, assets e log de performance criativa'
   - name: ler-branding
-    description: 'Ler cores, tipografia, logo, tom visual e referências de estilo do cliente'
+    description: 'Ler DESIGN.md, tokens.json, cores, tipografia, logo, tom visual e referências (PRIMEIRO PASSO obrigatório)'
   - name: ler-copy
     description: 'Ler copy e brief visual recebido do Copywriter para entender hook, promessa e CTA'
   - name: definir-conceito-visual
