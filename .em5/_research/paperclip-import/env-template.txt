@@ -1,0 +1,58 @@
+# Paperclip + em5 — Environment Vars
+# Copie pra .env no diretório onde rodou `npx paperclipai onboard`
+
+# ============================================
+# Paperclip
+# ============================================
+DATABASE_URL=                       # Deixa vazio = PGlite embedded (recomendado dev)
+PORT=3100
+SERVE_UI=false
+BETTER_AUTH_SECRET=                 # Gera com: openssl rand -base64 32
+
+# ============================================
+# Paperclip API (após onboard)
+# ============================================
+PAPERCLIP_API_URL=http://localhost:3100
+PAPERCLIP_API_KEY=                  # Cria em Settings → API Keys após UI ativo
+PAPERCLIP_COMPANY_ID=               # Pega após criar empresa "Agência em Cinco"
+
+# ============================================
+# em5 root
+# ============================================
+EM5_ROOT=/Users/taiancarvalho/Documents/Vibe Coding/AgenciaEm5/.claude/worktrees/affectionate-northcutt-2714b1
+
+# ============================================
+# Claude Code (precisa estar instalado + autenticado)
+# ============================================
+# Verifica: claude --version
+# Login: claude login
+
+# ============================================
+# Composio (Art. IX — gateway default)
+# ============================================
+COMPOSIO_API_KEY=                   # https://app.composio.dev/
+
+# ============================================
+# Asaas (Art. IX exceção — financeiro BR)
+# ============================================
+ASAAS_TOKEN=                        # https://sandbox.asaas.com pra testes, https://www.asaas.com prod
+ASAAS_SANDBOX=true                  # true em dev, false em prod
+
+# ============================================
+# WhatsApp (provider = composio | waha)
+# ============================================
+# Se composio: vai pelo COMPOSIO_API_KEY (whatsapp_business toolset)
+# Se waha selfhosted:
+WAHA_URL=http://localhost:3000
+WAHA_API_KEY=
+
+# ============================================
+# Anthropic (opcional — Claude Code já cobre)
+# ============================================
+# ANTHROPIC_API_KEY=
+
+# ============================================
+# em5 Owner (handoff humano @whats)
+# ============================================
+EM5_OWNER_PHONE=
+EM5_OWNER_EMAIL=

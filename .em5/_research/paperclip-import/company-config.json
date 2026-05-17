@@ -1,0 +1,91 @@
+{
+  "_comment": "Config inicial da empresa 'Agência em Cinco' no Paperclip. Usado no setup via UI ou API.",
+  "_paperclip_endpoint": "POST /api/companies",
+
+  "name": "Agência em Cinco",
+  "slug": "agencia-em-cinco",
+  "goal": "Operar agência de marketing digital com gestor solo. Todo processo da agência executado em ≤ 5 min de input humano. Atender clientes via Composio + Asaas + WhatsApp dual.",
+
+  "tagline": "Agência em Cinco minutos.",
+  "slogan_dev": "Se passou de 5, refatora.",
+
+  "monthlyBudgetCents": 200000,
+  "_budget_note": "$2000 USD/mês em tokens LLM. Ajustar conforme volume real de clientes.",
+
+  "constitution": {
+    "source": ".em5/core/constitution.md",
+    "version": "1.3",
+    "articles_count": 13,
+    "critical_arts": [
+      "I - Filesystem First (NON-NEGOTIABLE)",
+      "VIII - Quality Gate Obrigatório @qa (NON-NEGOTIABLE)",
+      "IX - Composio Gateway + Exceções (NON-NEGOTIABLE)",
+      "XI - Severity Gates (NON-NEGOTIABLE)",
+      "XII - em Cinco Minutos (SHOULD)",
+      "XIII - Construção Self-Service (MUST)"
+    ]
+  },
+
+  "external_integrations": {
+    "composio": {
+      "type": "default_gateway",
+      "art_ix": "permitido",
+      "toolsets": ["meta_ads", "google_analytics", "googlesheets", "gmail", "slack", "whatsapp_business", "googledrive"]
+    },
+    "asaas": {
+      "type": "exception_documented",
+      "art_ix_v1_3": "permitido (excecao formal)",
+      "documented_in": ".em5/integracoes/excecoes.yaml",
+      "approved_by": "ceo",
+      "reason": "Financeiro BR — Composio não cobre, MCP oficial Asaas"
+    }
+  },
+
+  "governance": {
+    "board": "Taian (solo operator)",
+    "require_hire_approval": true,
+    "require_budget_increase_approval": true,
+    "require_external_communication_approval_above_severity": "medio",
+    "qa_veto_critical_severity_no_override": true,
+    "qa_veto_high_severity_role_override": true
+  },
+
+  "default_adapter": {
+    "type": "claude_local",
+    "cwd": "~/Documents/Vibe Coding/AgenciaEm5/.claude/worktrees/affectionate-northcutt-2714b1",
+    "_cwd_note": "Todos agentes operam no mesmo worktree em5"
+  },
+
+  "model_tiers": {
+    "frontier": "claude-opus-4-7",
+    "balanced": "claude-sonnet-4-6",
+    "haiku": "claude-haiku-4-5"
+  },
+
+  "_tiers_by_agent": {
+    "frontier": ["atlas", "qa-crivo", "arq", "reviewer-lima"],
+    "balanced": ["coo-nexus", "cs-sol", "strategist-vera", "traffic-pulse", "copywriter-eco", "designer-lux", "builder-cunha", "vendas-caca", "fin-caixa", "scout-espia", "whats-onda"],
+    "haiku": []
+  },
+
+  "workspaces_pattern": {
+    "description": "Cada cliente em5 vira workspace Paperclip apontando pro diretório real",
+    "base_path": ".em5/clientes/",
+    "naming": "{cliente-slug}",
+    "examples": [
+      ".em5/clientes/clinica-x/",
+      ".em5/clientes/saas-y/"
+    ]
+  },
+
+  "skills_to_install": [
+    "em5-cliente-novo",
+    "em5-extrair-design",
+    "em5-criar-campanha",
+    "em5-validate-campaign",
+    "em5-relatorio-financeiro",
+    "em5-dia-daily-run"
+  ],
+
+  "_skills_note": "Skills custom em5 — precisam ser criadas no Paperclip via skill creator API. Detalhe em skills-mapping.md."
+}

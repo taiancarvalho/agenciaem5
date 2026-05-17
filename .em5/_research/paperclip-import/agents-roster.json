@@ -1,0 +1,242 @@
+{
+  "_comment": "em5 v1.3.x → Paperclip agents roster. Consumido por import-agents.sh. Ordem hierárquica: atlas primeiro (CEO), depois descendentes.",
+  "_source": ".em5/agents/*.md",
+  "_paperclip_format": "POST /api/companies/{id}/agent-hires",
+  "_adapter_default": "claude_local",
+  "_cwd_default": "~/Documents/Vibe Coding/AgenciaEm5/.claude/worktrees/affectionate-northcutt-2714b1",
+
+  "agents": [
+    {
+      "_em5_id": "ceo",
+      "name": "Atlas",
+      "role": "ceo",
+      "title": "CEO — Estratégia, Decisões Irreversíveis, Conflitos",
+      "icon": "crown",
+      "reportsTo": null,
+      "capabilities": "Setup sistema, novo cliente, status portfolio, decisões irreversíveis, conflitos cross-domínio",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "cwd": "~/Documents/Vibe Coding/AgenciaEm5/.claude/worktrees/affectionate-northcutt-2714b1",
+        "model": "claude-opus-4-7"
+      },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": false,
+          "wakeOnAssignment": true,
+          "wakeOnDemand": true
+        }
+      },
+      "instructionsBundle_source": ".em5/agents/ceo.md"
+    },
+    {
+      "_em5_id": "coo",
+      "name": "Nexus",
+      "role": "coo",
+      "title": "COO — Orquestrador Operacional, Workflows Completos",
+      "icon": "compass",
+      "reportsTo": "Atlas",
+      "capabilities": "Executar workflows completos, delegar a especialistas, monitorar execução, consolidar entregas",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "cwd": "~/Documents/Vibe Coding/AgenciaEm5/.claude/worktrees/affectionate-northcutt-2714b1",
+        "model": "claude-sonnet-4-6"
+      },
+      "runtimeConfig": {
+        "heartbeat": { "enabled": false, "wakeOnAssignment": true, "wakeOnDemand": true }
+      },
+      "instructionsBundle_source": ".em5/agents/coo.md"
+    },
+    {
+      "_em5_id": "cs",
+      "name": "Sol",
+      "role": "cs",
+      "title": "Customer Success — Onboarding, Relatórios, Relacionamento",
+      "icon": "sun",
+      "reportsTo": "Nexus",
+      "capabilities": "Onboarding cliente, setup técnico, preparação reuniões, envio relatórios, relacionamento, gerar propostas",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/cs.md"
+    },
+    {
+      "_em5_id": "strategist",
+      "name": "Vera",
+      "role": "strategist",
+      "title": "Estrategista — Posicionamento, Plano de Campanha, Hipóteses",
+      "icon": "target",
+      "reportsTo": "Nexus",
+      "capabilities": "Análise briefing, definição posicionamento, escolha de canais, estrutura funil, hipóteses, análise concorrência",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/strategist.md"
+    },
+    {
+      "_em5_id": "traffic",
+      "name": "Pulse",
+      "role": "traffic",
+      "title": "Gestor Tráfego — Meta Ads, Google Ads, Otimização",
+      "icon": "chart-line",
+      "reportsTo": "Vera",
+      "capabilities": "Auditar conta, estruturar campanhas, monitorar performance, otimizar com base em dados, solicitar criativos, relatórios",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": true,
+          "intervalSec": 86400,
+          "_comment": "Daily heartbeat pra /dia auto",
+          "wakeOnAssignment": true
+        }
+      },
+      "instructionsBundle_source": ".em5/agents/traffic.md"
+    },
+    {
+      "_em5_id": "copywriter",
+      "name": "Eco",
+      "role": "copywriter",
+      "title": "Copywriter — Copy, Ângulos, Adaptação por Canal",
+      "icon": "pencil",
+      "reportsTo": "Vera",
+      "capabilities": "Criar ângulos, escrever copy ads/email/whatsapp/lp, adaptar por canal, log performance criativa, iterar com base em dados",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/copywriter.md"
+    },
+    {
+      "_em5_id": "designer",
+      "name": "Lux",
+      "role": "designer",
+      "title": "Designer — Criativos, Vídeos, UGC, LP Visual",
+      "icon": "palette",
+      "reportsTo": "Vera",
+      "capabilities": "Extrair DESIGN.md, gerar imagem (NanoBanana), gerar vídeo (Kling), criar UGC, layout LP, versionar criativos",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/designer.md"
+    },
+    {
+      "_em5_id": "qa",
+      "name": "Crivo",
+      "role": "qa",
+      "title": "QA — Validação Obrigatória, Severity Gates",
+      "icon": "shield-check",
+      "reportsTo": "Atlas",
+      "capabilities": "Validar campanhas/copy/criativos/landing-pages antes de publicar. Severity gates 4 níveis. Veredicto APROVADO/RESSALVA/REVISÃO/BLOQUEADO",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-opus-4-7" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/qa.md"
+    },
+    {
+      "_em5_id": "arq",
+      "name": "Arq",
+      "role": "system-architect",
+      "title": "Arquiteto Meta-Time — Entrevista, Spec, Construção Self-Service",
+      "icon": "compass-tool",
+      "reportsTo": "Nexus",
+      "capabilities": "Meta-time CONSTRUÇÃO. Entrevista user (≤5min), desenha spec.md de componentes novos. Art. XIII",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-opus-4-7" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnDemand": true } },
+      "instructionsBundle_source": ".em5/agents/arq.md"
+    },
+    {
+      "_em5_id": "builder",
+      "name": "Cunha",
+      "role": "system-builder",
+      "title": "Builder Meta-Time — Implementação via Forge Templates",
+      "icon": "hammer",
+      "reportsTo": "Nexus",
+      "capabilities": "Meta-time. Implementa componente conforme spec do Arq. Usa forge-templates. Atualiza configs centrais.",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/builder.md"
+    },
+    {
+      "_em5_id": "reviewer",
+      "name": "Lima",
+      "role": "system-reviewer",
+      "title": "Revisor Meta-Time — Validação Constitution + Boas Práticas",
+      "icon": "flask",
+      "reportsTo": "Nexus",
+      "capabilities": "Meta-time. Valida componente novo vs Constitution v1.3 (13 artigos). Bloqueia ou sugere ajustes.",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-opus-4-7" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/reviewer.md"
+    },
+    {
+      "_em5_id": "vendas",
+      "name": "Caça",
+      "role": "sales",
+      "title": "Vendedor/SDR — Prospect → Diagnóstico → Proposta → Fechamento",
+      "icon": "target-arrow",
+      "reportsTo": "Atlas",
+      "capabilities": "Pesquisar prospect, gerar diagnóstico, criar proposta, follow-up (5 touchpoints), fechar cliente, registrar perdas",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/vendas.md"
+    },
+    {
+      "_em5_id": "fin",
+      "name": "Caixa",
+      "role": "cfo",
+      "title": "CFO — Mensalidades, Inadimplência, MRR, ROI por Cliente (Asaas)",
+      "icon": "wallet",
+      "reportsTo": "Atlas",
+      "capabilities": "Cadastrar cliente Asaas, criar/sync cobranças, registrar pagamentos, monitorar inadimplência, calcular ROI, MRR mensal",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": true,
+          "intervalSec": 86400,
+          "_comment": "Daily — sync Asaas + monitor inadimplência",
+          "wakeOnAssignment": true
+        }
+      },
+      "instructionsBundle_source": ".em5/agents/fin.md",
+      "_secret_required": "ASAAS_TOKEN"
+    },
+    {
+      "_em5_id": "scout",
+      "name": "Espia",
+      "role": "intelligence",
+      "title": "Inteligência Competitiva — Scrape, SWOT, Alertas",
+      "icon": "binoculars",
+      "reportsTo": "Vera",
+      "capabilities": "Mapear concorrência, scrape sites + ads, gerar SWOT, alerta de movimentação, relatório semanal",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": true,
+          "intervalSec": 604800,
+          "_comment": "Weekly scrape",
+          "wakeOnAssignment": true
+        }
+      },
+      "instructionsBundle_source": ".em5/agents/scout.md"
+    },
+    {
+      "_em5_id": "whats",
+      "name": "Onda",
+      "role": "communications",
+      "title": "Orquestrador WhatsApp — Templates, Stop Rules, Handoff Humano",
+      "icon": "phone",
+      "reportsTo": "Sol",
+      "capabilities": "Envia template/draft WhatsApp (composio OR waha), recebe mensagem + classifica intenção, handoff humano se severity > medio, transcrever áudio",
+      "adapterType": "claude_local",
+      "adapterConfig": { "cwd": "...", "model": "claude-sonnet-4-6" },
+      "runtimeConfig": { "heartbeat": { "enabled": false, "wakeOnAssignment": true } },
+      "instructionsBundle_source": ".em5/agents/whats.md",
+      "_secret_required": "COMPOSIO_API_KEY (whatsapp_business toolset)"
+    }
+  ]
+}
