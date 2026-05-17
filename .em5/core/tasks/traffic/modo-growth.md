@@ -9,6 +9,7 @@ inputs:
 outputs:
   - plano de escalacao vertical/horizontal
   - entradas no log-growth.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

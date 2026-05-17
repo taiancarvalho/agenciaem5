@@ -1,3 +1,11 @@
+---
+name: otimizar-search
+agent: traffic
+model_tier: balanced  # auto-set Fase 12.AAA — pre-v1.1 legacy migration
+description: "Ver corpo do arquivo (formato legacy pre-v1.1, mantido por compatibilidade)"
+elicit: false
+---
+
 # Task: otimizar-search
 # Agente: traffic (Pulse)
 # Input: dados da conta (Composio) + janelas-analise.yaml

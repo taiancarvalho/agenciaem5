@@ -10,6 +10,7 @@ inputs:
 outputs:
   - registro das decisoes no log operacional
   - atualizacao no log de performance criativa
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

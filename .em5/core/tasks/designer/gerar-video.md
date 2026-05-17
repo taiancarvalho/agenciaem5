@@ -9,6 +9,7 @@ inputs:
 outputs:
   - .em5/clientes/{nome}/design/videos/CR-{id}-v1.mp4
   - JSON de prompt em .em5/clientes/{nome}/design/videos/prompts/CR-{id}-prompt.json
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

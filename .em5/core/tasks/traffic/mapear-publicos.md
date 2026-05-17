@@ -8,6 +8,7 @@ inputs:
   - acesso a conta de anuncios
 outputs:
   - secao de publicos dentro de auditoria.md ou arquivo publicos-mapeados.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

@@ -7,6 +7,7 @@ inputs:
   - dados do criativo (ID, canal, tipo, angulo, versao)
 outputs:
   - linha adicionada no log-performance-criativa.md
+model_tier: haiku  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

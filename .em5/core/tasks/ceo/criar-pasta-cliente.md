@@ -6,6 +6,7 @@ inputs:
   - nome do cliente (slug — sem espacos, sem acentos)
 outputs:
   - .em5/clientes/{nome}/ com estrutura completa de diretorios
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

@@ -7,6 +7,7 @@ inputs:
 outputs:
   - .em5/clientes/{nome}/ com estrutura completa
   - arquivos iniciais de operação criados
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

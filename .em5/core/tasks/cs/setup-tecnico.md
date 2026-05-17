@@ -8,6 +8,7 @@ outputs:
   - .em5/clientes/{nome}/setup-tecnico/acessos.md
   - .em5/clientes/{nome}/setup-tecnico/checklist-tracking.md
   - .em5/clientes/{nome}/setup-tecnico/status.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

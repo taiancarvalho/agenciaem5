@@ -8,6 +8,7 @@ inputs:
   - próxima ação
 outputs:
   - nova linha em .em5/clientes/{nome}/operacao/log-operacional.md
+model_tier: haiku  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

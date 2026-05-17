@@ -1,3 +1,11 @@
+---
+name: escrever-post-social
+agent: copywriter
+model_tier: balanced  # auto-set Fase 12.AAA — pre-v1.1 legacy migration
+description: "Ver corpo do arquivo (formato legacy pre-v1.1, mantido por compatibilidade)"
+elicit: false
+---
+
 # Task: escrever-post-social
 # Agente: copywriter (Eco)
 # Input: pauta do post + plano-estrategico.md + branding/tom-de-voz

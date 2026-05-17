@@ -93,3 +93,67 @@ export function loadLearningsCount(month) {
   if (!fs.existsSync(monthDir)) return 0;
   return fs.readdirSync(monthDir).filter((f) => f.endsWith('.md')).length;
 }
+
+// ============================================
+// FINANCEIRO — leitura para /financeiro page
+// ============================================
+
+export function loadClienteFinanceiro(slug) {
+  const finDir = path.join(CLIENTES_DIR, slug, 'financeiro');
+  if (!fs.existsSync(finDir)) return null;
+
+  const mensalidade = safeReadYAML(path.join(finDir, 'mensalidade.yaml')) || {};
+  const cobrancasPath = path.join(finDir, 'cobrancas.yaml');
+  const cobrancas = safeReadYAML(cobrancasPath) || [];
+
+  // Calcula totais
+  const pagas = Array.isArray(cobrancas) ? cobrancas.filter((c) => c.status === 'PAID') : [];
+  const pendentes = Array.isArray(cobrancas) ? cobrancas.filter((c) => c.status === 'PENDING') : [];
+  const vencidas = Array.isArray(cobrancas) ? cobrancas.filter((c) => c.status === 'OVERDUE') : [];
+
+  const totalRecebido = pagas.reduce((sum, c) => sum + (c.valor || 0), 0);
+  const totalPendente = pendentes.reduce((sum, c) => sum + (c.valor || 0), 0);
+  const totalVencido = vencidas.reduce((sum, c) => sum + (c.valor || 0), 0);
+
+  return {
+    slug,
+    nome: mensalidade.nome || slug,
+    valor_mensal: mensalidade.valor_mensal || 0,
+    billing_type: mensalidade.billing_type || '—',
+    asaas_customer_id: mensalidade.asaas_customer_id || null,
+    inadimplencia_dias: mensalidade.inadimplencia_dias || 0,
+    cobrancas_total: cobrancas.length || 0,
+    pagas: pagas.length,
+    pendentes: pendentes.length,
+    vencidas: vencidas.length,
+    total_recebido: totalRecebido,
+    total_pendente: totalPendente,
+    total_vencido: totalVencido,
+  };
+}
+
+export function loadFinanceiroGlobal() {
+  const clientes = listClientes();
+  const financeiros = clientes
+    .map((c) => loadClienteFinanceiro(c.slug))
+    .filter(Boolean);
+
+  const mrr = financeiros.reduce((sum, f) => sum + (f.valor_mensal || 0), 0);
+  const recebidoMes = financeiros.reduce((sum, f) => sum + (f.total_recebido || 0), 0);
+  const pendenteTotal = financeiros.reduce((sum, f) => sum + (f.total_pendente || 0), 0);
+  const vencidoTotal = financeiros.reduce((sum, f) => sum + (f.total_vencido || 0), 0);
+  const inadimplentes = financeiros.filter((f) => f.inadimplencia_dias > 7);
+
+  return {
+    clientes: financeiros,
+    kpis: {
+      mrr,
+      arr_projetado: mrr * 12,
+      recebido_mes: recebidoMes,
+      pendente: pendenteTotal,
+      vencido: vencidoTotal,
+      inadimplentes_count: inadimplentes.length,
+      total_clientes: financeiros.length,
+    },
+  };
+}

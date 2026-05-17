@@ -9,6 +9,7 @@ inputs:
 outputs:
   - .em5/clientes/{nome}/copy/CR-{id}.md
   - nova linha em .em5/clientes/{nome}/operacao/log-performance-criativa.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

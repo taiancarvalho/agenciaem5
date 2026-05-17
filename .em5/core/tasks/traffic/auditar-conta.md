@@ -8,6 +8,7 @@ inputs:
   - acesso a conta de anuncios (Meta Ads ou Google Ads)
 outputs:
   - .em5/clientes/{nome}/trafego/auditoria.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

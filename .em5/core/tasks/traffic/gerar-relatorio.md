@@ -8,6 +8,7 @@ inputs:
   - .em5/clientes/{nome}/estrategia/plano-estrategico.md (para comparar com as metas)
 outputs:
   - .em5/clientes/{nome}/relatorios/{periodo}-relatorio.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

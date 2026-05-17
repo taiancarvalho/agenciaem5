@@ -8,6 +8,7 @@ inputs:
 outputs:
   - .em5/clientes/{nome}/setup-tecnico/checklist-tracking.md
   - atualiza log-operacional.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

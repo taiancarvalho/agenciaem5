@@ -8,6 +8,7 @@ inputs:
   - briefing-final
 outputs:
   - secao de hipoteses no plano-estrategico.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

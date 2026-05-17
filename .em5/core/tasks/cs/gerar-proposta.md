@@ -44,6 +44,7 @@ Criar arquivo em: `.em5/prospects/{nome}/proposta-{YYYY-MM-DD}.md`
 
 {2-3 paragrafos sobre o cenario do prospect e oportunidade identificada}
 
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 ---
 
 ## Solucao Proposta

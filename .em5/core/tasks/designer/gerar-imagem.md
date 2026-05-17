@@ -9,6 +9,7 @@ inputs:
 outputs:
   - .em5/clientes/{nome}/design/criativos/CR-{id}-v1.{ext}
   - atualização no log de performance criativa
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

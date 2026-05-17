@@ -10,6 +10,7 @@ inputs:
 outputs:
   - diagnostico de conversao no log-performance-criativa.md
   - hipoteses e testes definidos
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

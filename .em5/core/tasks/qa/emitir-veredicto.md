@@ -7,6 +7,7 @@ inputs:
 outputs:
   - documento de veredicto formal
   - registro no log-operacional.md
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

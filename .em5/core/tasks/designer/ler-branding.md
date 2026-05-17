@@ -7,6 +7,7 @@ inputs:
   - .em5/clientes/{nome}/assets/
 outputs:
   - mentalizacao do brand para uso nas tasks subsequentes
+model_tier: haiku  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

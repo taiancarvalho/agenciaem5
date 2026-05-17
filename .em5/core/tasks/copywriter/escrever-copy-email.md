@@ -1,3 +1,11 @@
+---
+name: escrever-copy-email
+agent: copywriter
+model_tier: balanced  # auto-set Fase 12.AAA — pre-v1.1 legacy migration
+description: "Ver corpo do arquivo (formato legacy pre-v1.1, mantido por compatibilidade)"
+elicit: false
+---
+
 # Task: escrever-copy-email
 # Agente: copywriter (Eco)
 # Input: objetivo do email + segmento da lista + plano-estrategico.md

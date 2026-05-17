@@ -10,6 +10,7 @@ outputs:
   - resumo executivo para o CEO
   - log operacional atualizado com conclusão
   - proximos-passos.md atualizado
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

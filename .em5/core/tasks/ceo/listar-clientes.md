@@ -6,6 +6,7 @@ inputs:
   - .em5/clientes/ (diretorio de clientes)
 outputs:
   - lista de clientes com status de cada um
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

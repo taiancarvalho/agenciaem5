@@ -10,6 +10,7 @@ inputs:
   - copy e criativos disponiveis (ou em producao)
 outputs:
   - .em5/clientes/{nome}/trafego/campanhas-ativas.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

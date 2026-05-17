@@ -47,6 +47,7 @@ Criar arquivo em: `.em5/clientes/{nome}/reunioes/pauta-{YYYY-MM-DD}.md`
 - {insight positivo}
 - {ponto de atencao}
 
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 ---
 
 ## 2. Pendencias

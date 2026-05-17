@@ -6,6 +6,7 @@ inputs:
   - .em5/clientes/{nome}/onboarding/briefing-respostas.md
 outputs:
   - .em5/clientes/{nome}/onboarding/briefing-final.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

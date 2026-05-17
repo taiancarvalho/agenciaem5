@@ -8,6 +8,7 @@ inputs:
   - .em5/clientes/{nome}/operacao/log-performance-criativa.md (se existir)
 outputs:
   - .em5/clientes/{nome}/trafego/briefing-criativos.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

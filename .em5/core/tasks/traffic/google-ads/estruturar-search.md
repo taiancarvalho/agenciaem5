@@ -1,3 +1,11 @@
+---
+name: estruturar-search
+agent: traffic
+model_tier: balanced  # auto-set Fase 12.AAA — pre-v1.1 legacy migration
+description: "Ver corpo do arquivo (formato legacy pre-v1.1, mantido por compatibilidade)"
+elicit: false
+---
+
 # Task: estruturar-search
 # Agente: traffic (Pulse)
 # Input: keywords-{data}.md + estrutura-base-campanhas.yaml

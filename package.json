@@ -19,9 +19,11 @@
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"No tests yet\" && exit 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "install:em5": "node bin/em5.js install",
-    "upgrade:em5": "node bin/em5.js upgrade"
+    "upgrade:em5": "node bin/em5.js upgrade",
+    "validate": "node .em5/bin/em5-validate.js"
   },
   "keywords": [
     "em5",
@@ -52,5 +54,8 @@
     "inquirer": "^8.2.6",
     "js-yaml": "^4.1.0",
     "glob": "^10.4.4"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.0"
   }
 }

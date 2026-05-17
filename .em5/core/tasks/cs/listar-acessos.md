@@ -7,6 +7,7 @@ inputs:
   - canais selecionados (Meta Ads, Google Ads, Instagram, site, GA4, etc.)
 outputs:
   - .em5/clientes/{nome}/setup-tecnico/acessos.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

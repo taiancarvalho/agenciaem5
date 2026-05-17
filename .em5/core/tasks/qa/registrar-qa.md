@@ -7,6 +7,7 @@ inputs:
   - .em5/clientes/{nome}/operacao/log-operacional.md
 outputs:
   - entrada registrada no log-operacional.md
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

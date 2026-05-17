@@ -8,6 +8,7 @@ inputs:
 outputs:
   - .em5/clientes/agencia/vendas/analise-call-{id}.md
   - atualização em .em5/clientes/agencia/vendas/script-vendas.md (se aplicável)
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

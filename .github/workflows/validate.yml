@@ -52,6 +52,9 @@ jobs:
       - name: List agents
         run: node .em5/infrastructure/index.js agents
 
+      - name: Smoke tests (Vitest)
+        run: npm test
+
   build-painel:
     name: Build Astro Painel
     runs-on: ubuntu-latest

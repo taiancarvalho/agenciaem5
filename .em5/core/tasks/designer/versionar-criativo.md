@@ -8,6 +8,7 @@ inputs:
 outputs:
   - arquivo salvo em .em5/clientes/{nome}/design/criativos/ com nomenclatura correta
   - log de performance criativa atualizado
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

@@ -9,6 +9,7 @@ inputs:
 outputs:
   - delegações enviadas para agentes operacionais com contexto correto
   - registro de operação aberta no log do cliente
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

@@ -7,6 +7,7 @@ inputs:
   - .em5/clientes/{nome}/estrategia/plano-estrategico.md (se existir)
 outputs:
   - .em5/clientes/{nome}/copy/analise-icp.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

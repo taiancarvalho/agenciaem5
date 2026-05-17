@@ -6,6 +6,7 @@ inputs:
   - estrutura .em5/ completa
 outputs:
   - relatorio de saude do sistema
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

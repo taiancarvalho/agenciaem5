@@ -8,6 +8,7 @@ inputs:
 outputs:
   - pasta do cliente criada em .em5/clientes/{nome}/
   - primeiro registro no log-operacional.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

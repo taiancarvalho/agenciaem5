@@ -8,6 +8,7 @@ inputs:
 outputs:
   - análise estruturada em memória (base para as tarefas seguintes)
   - .em5/clientes/{nome}/estrategia/analise-briefing.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

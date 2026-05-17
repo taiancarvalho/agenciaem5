@@ -59,6 +59,7 @@ Salvar em: `.em5/clientes/{nome}/estrategia/analise-concorrentes.md`
 
 {1 paragrafo com visao geral do mercado}
 
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 ---
 
 ## Concorrentes Mapeados

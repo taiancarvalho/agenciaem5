@@ -8,6 +8,7 @@ inputs:
   - .em5/clientes/{nome}/estrategia/plano-estrategico.md (KPIs de referencia)
 outputs:
   - nota de monitoramento no log-operacional.md ou alerta de acao
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

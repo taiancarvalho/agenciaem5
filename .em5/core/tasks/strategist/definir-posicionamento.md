@@ -8,6 +8,7 @@ inputs:
   - objetivo real (confirmado via validar-objetivo-real)
 outputs:
   - .em5/clientes/{nome}/estrategia/posicionamento.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

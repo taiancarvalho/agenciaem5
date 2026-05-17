@@ -9,6 +9,7 @@ outputs:
   - confirmação de entregas recebidas
   - acionamento do próximo agente na sequência
   - registro de status no log operacional
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

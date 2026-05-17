@@ -10,6 +10,7 @@ inputs:
 outputs:
   - JSON de prompt estruturado
   - Imagem ou video UGC gerado
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

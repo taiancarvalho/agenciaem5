@@ -8,6 +8,7 @@ inputs:
 outputs:
   - mensagem de WhatsApp formatada para envio
   - registro no log operacional
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

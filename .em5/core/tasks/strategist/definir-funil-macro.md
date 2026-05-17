@@ -8,6 +8,7 @@ inputs:
   - objetivo real confirmado
 outputs:
   - secao de funil dentro do plano-estrategico.md ou arquivo proprio
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

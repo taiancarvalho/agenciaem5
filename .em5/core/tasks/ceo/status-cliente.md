@@ -6,6 +6,7 @@ inputs:
   - nome do cliente (slug)
 outputs:
   - resumo completo do status do cliente
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

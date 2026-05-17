@@ -67,6 +67,7 @@ Salvar em: `.em5/clientes/{nome}/trafego/auditoria-google-{YYYY-MM-DD}.md`
 - CPA medio: R$ {valor}
 - Meta de CPA: R$ {valor do plano}
 
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 ---
 
 ## Status por Campanha

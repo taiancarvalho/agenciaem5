@@ -8,6 +8,7 @@ inputs:
   - .em5/clientes/{nome}/memoria/notas-sessao.md
 outputs:
   - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

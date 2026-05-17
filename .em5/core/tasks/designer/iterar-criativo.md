@@ -9,6 +9,7 @@ inputs:
 outputs:
   - Nova versao versionada (CR-{id}-v2, v3, etc.)
   - Log de performance criativa atualizado com observacao de iteracao
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

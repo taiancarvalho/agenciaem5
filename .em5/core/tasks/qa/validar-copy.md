@@ -9,6 +9,7 @@ inputs:
 outputs:
   - resultado da validacao de copy
   - itens a corrigir (se houver)
+model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 

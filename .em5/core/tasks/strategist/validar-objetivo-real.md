@@ -7,6 +7,7 @@ inputs:
   - .em5/clientes/{nome}/estrategia/analise-briefing.md (se existir)
 outputs:
   - objetivo-real-confirmado registrado no briefing-final e no log-operacional
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 

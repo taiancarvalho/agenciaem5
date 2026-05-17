@@ -9,6 +9,7 @@ inputs:
 outputs:
   - conceito visual definido e documentado
   - direcao visual clara para producao
+model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
 
