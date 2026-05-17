@@ -90,6 +90,12 @@ agents:
     fantasy_name: "Espia"
     gender: "m"
     layer: definicao
+  # Fase 8 — WhatsApp
+  whats:
+    id: whats
+    fantasy_name: "Onda"
+    gender: "m"
+    layer: execucao
 
 integrations:
   composio:

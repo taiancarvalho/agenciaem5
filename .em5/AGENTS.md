@@ -24,6 +24,7 @@ Pra ativar um agente, use `@nome-do-agente` ou leia o arquivo `.em5/agents/{nome
 | `@vendas` | Caça 🎯 | Definição | Prospect → diagnóstico → proposta → fechamento de cliente |
 | `@fin` | Caixa 💰 | Execução | Mensalidades, inadimplência, ROI por cliente, MRR |
 | `@scout` | Espia 🔍 | Definição | Inteligência competitiva, scrape concorrência, SWOT, alertas |
+| `@whats` | Onda 📱 | Execução | Orquestrador WhatsApp — templates, stop rules, handoff humano |
 
 ---
 

@@ -1,0 +1,65 @@
+# em5 — WhatsApp Templates
+# Templates de mensagens. Variáveis em {snake_case}.
+# Severity define se passa por @qa antes de enviar.
+
+briefing_inicial:
+  severity: baixo
+  template: |
+    Olá {nome_cliente}! 👋
+    Sou {persona_cs} da {nome_agencia}. Vamos começar?
+    Pra montar tua estratégia certa, preciso de 5 min seus.
+    Posso te mandar 3 perguntas curtas agora?
+
+alerta_roas_critico:
+  severity: alto
+  trigger: roas_desvio > 30%
+  template: |
+    ⚠️ {nome_cliente}, ROAS da campanha "{nome_campanha}" caiu pra {roas_atual}x (era {roas_anterior}x).
+    Investiguei aqui — provável causa: {causa}.
+    Posso pausar e ajustar agora ou prefere ver os números primeiro?
+
+weekly_report:
+  severity: medio
+  trigger: domingo_20h
+  template: |
+    Resumo semanal da {nome_agencia} pro {nome_cliente} 📊
+    {kpi_principal}: {valor_atual} ({delta_pct} vs semana passada)
+    Top criativo: {top_criativo}
+    Próxima semana: {proxima_acao}
+    Quer detalhar algo?
+
+objecao_padrao_preco:
+  severity: medio
+  trigger: mensagem_cliente_contains:[caro,muito,preco]
+  template: |
+    Entendo {nome_cliente}. Antes da gente continuar:
+    Hoje você paga quanto por lead/cliente novo?
+    Pergunto porque nosso valor faz sentido só se cobrir esse custo + sobrar margem.
+
+handoff_humano:
+  severity: critico  # sempre passa por @cs Sol
+  trigger: sentiment_negativo OR pergunta_fora_template
+  template: |
+    {nome_cliente}, deixa eu chamar {persona_cs} aqui pra responder isso direito.
+    Ele/Ela retorna em até 1h. 🙏
+
+stop_confirmacao:
+  severity: alto
+  template: |
+    Entendido {nome_cliente}. Removi da lista de mensagens automáticas.
+    Quando quiser retomar, é só me chamar. 🤝
+
+cobrança_amigavel:
+  severity: alto  # @fin Caixa + @qa antes
+  trigger: inadimplencia_dias = 3
+  template: |
+    Oi {nome_cliente}! 💰
+    Notei que a mensalidade de {mes_ref} ainda não foi compensada.
+    Tudo certo? Se precisar, posso reenviar o boleto/PIX.
+
+cobrança_critica:
+  severity: critico  # SEMPRE passa @ceo Atlas + @qa
+  trigger: inadimplencia_dias = 15
+  template: |
+    {nome_cliente}, preciso falar com você sobre {mes_ref}.
+    Não consegui processar 2 cobranças. Pode me chamar pra alinhar?

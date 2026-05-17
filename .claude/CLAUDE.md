@@ -29,6 +29,7 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 | @vendas | Caça 🎯 | Prospect → diagnóstico → proposta → fechamento de cliente |
 | @fin | Caixa 💰 | Mensalidades, inadimplência, ROI por cliente, MRR |
 | @scout | Espia 🔍 | Inteligência competitiva, scrape concorrência, SWOT, alertas |
+| @whats | Onda 📱 | Orquestrador WhatsApp — templates, stop rules, handoff humano |
 
 *Os agentes tambem respondem pelos fantasy names. Exemplo: "@Atlas" funciona igual a "@ceo".*
 *Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `em5-config.yaml`.*
