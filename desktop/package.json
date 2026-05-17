@@ -1,0 +1,71 @@
+{
+  "name": "em5-desktop",
+  "version": "1.2.0",
+  "description": "em5 Desktop — Painel da Agência em Cinco minutos (Electron wrapper)",
+  "main": "main.js",
+  "author": "Taian Carvalho",
+  "license": "MIT",
+  "homepage": "https://github.com/taiancarvalho/agenciaem5",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder -mwl",
+    "pack": "electron-builder --dir"
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.0"
+  },
+  "build": {
+    "appId": "agency.em5.desktop",
+    "productName": "em5 Painel",
+    "copyright": "Copyright © 2026 Taian Carvalho — MIT",
+    "directories": {
+      "output": "dist-app",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "../painel/dist/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../painel/dist",
+        "to": "painel"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.business",
+      "target": [
+        { "target": "dmg", "arch": ["x64", "arm64"] }
+      ],
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": [
+        { "target": "AppImage", "arch": ["x64"] }
+      ],
+      "category": "Office",
+      "icon": "build/icon.png"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "taiancarvalho",
+      "repo": "agenciaem5"
+    }
+  }
+}
