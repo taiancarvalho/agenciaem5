@@ -21,6 +21,9 @@ Pra ativar um agente, use `@nome-do-agente` ou leia o arquivo `.em5/agents/{nome
 | `@arq` | Arq 🏛️ | Construção | Meta-time — entrevista user + desenha spec de componentes novos |
 | `@builder` | Cunha 🔨 | Construção | Meta-time — implementa componentes via Forge templates |
 | `@reviewer` | Lima 🧪 | Construção | Meta-time — valida componentes contra Constitution |
+| `@vendas` | Caça 🎯 | Definição | Prospect → diagnóstico → proposta → fechamento de cliente |
+| `@fin` | Caixa 💰 | Execução | Mensalidades, inadimplência, ROI por cliente, MRR |
+| `@scout` | Espia 🔍 | Definição | Inteligência competitiva, scrape concorrência, SWOT, alertas |
 
 ---
 

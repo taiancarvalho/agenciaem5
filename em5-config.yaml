@@ -74,6 +74,22 @@ agents:
     fantasy_name: "Lima"
     gender: "m"
     layer: construcao
+  # Fase 7 — agentes high-value
+  vendas:
+    id: vendas
+    fantasy_name: "Caça"
+    gender: "m"
+    layer: definicao
+  fin:
+    id: fin
+    fantasy_name: "Caixa"
+    gender: "m"
+    layer: execucao
+  scout:
+    id: scout
+    fantasy_name: "Espia"
+    gender: "m"
+    layer: definicao
 
 integrations:
   composio:

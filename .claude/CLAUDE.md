@@ -26,6 +26,9 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 | @arq | Arq 🏛️ | Meta-time: entrevista user + desenha spec de componentes novos |
 | @builder | Cunha 🔨 | Meta-time: implementa componentes via Forge templates |
 | @reviewer | Lima 🧪 | Meta-time: valida componentes contra Constitution antes de commit |
+| @vendas | Caça 🎯 | Prospect → diagnóstico → proposta → fechamento de cliente |
+| @fin | Caixa 💰 | Mensalidades, inadimplência, ROI por cliente, MRR |
+| @scout | Espia 🔍 | Inteligência competitiva, scrape concorrência, SWOT, alertas |
 
 *Os agentes tambem respondem pelos fantasy names. Exemplo: "@Atlas" funciona igual a "@ceo".*
 *Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `em5-config.yaml`.*
