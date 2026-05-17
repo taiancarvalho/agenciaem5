@@ -1,0 +1,8 @@
+# SIMULAÇÃO — Não chamou Asaas real
+customer_id: cus_SIMULATED_xxx
+nome_fiscal: "Teste Piloto Ltda"
+documento: "00000000000191"  # CNPJ fake
+email: "contato@teste-piloto.example.com"
+telefone: "+5511999999999"
+cadastrado_em: 2026-05-17
+_simulation: true
