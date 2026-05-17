@@ -1,0 +1,20 @@
+# em5 — Status do cliente (consumido pelo painel/)
+# Atualizado por @coo Nexus / @traffic Pulse / @qa Crivo conforme operação.
+
+nome: "{NOME_CLIENTE}"
+slug: "{slug-cliente}"
+nicho: ""  # ex: clinica-odonto, saas-b2b, ecommerce
+estagio: onboarding  # onboarding | ativo | pausado | churn
+
+# KPIs operacionais (atualizados via /dia ou manual)
+roas_semanal: null
+cpa_atual: null
+proxima_acao: "Iniciar onboarding"
+
+# Alertas (severity-based — alimenta painel)
+alerta_severidade: null  # critico | alto | medio | baixo | null
+alerta_mensagem: null
+
+# Tracking
+ultima_atualizacao: null
+data_inicio: null
