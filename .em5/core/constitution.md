@@ -21,6 +21,7 @@
 | X | Learnings Perpétuos | MUST |
 | XI | Severity Gates | NON-NEGOTIABLE |
 | XII | em Cinco Minutos | SHOULD |
+| XIII | Construção Self-Service | MUST |
 
 ---
 
@@ -237,3 +238,36 @@ Skill exige > 5 min de input/decisão repetitivamente. Vira ticket de refator im
 ---
 
 *em5 Constitution v1.1 — Atualizada em 2026-05-16 com Arts. X, XI, XII (Learnings, Severity Gates, em Cinco Minutos)*
+
+---
+
+## Artigo XIII — Construção Self-Service (em5 v1.2)
+
+**Severidade:** MUST
+
+User nunca edita código manualmente do em5. **Toda extensão passa pelo meta-time CONSTRUÇÃO** (@arq Arq + @builder Cunha + @reviewer Lima).
+
+### Regras
+
+- Componente novo (agente, task, playbook, skill, data) é criado via `/construir` ou `/forge`
+- @arq Arq entrevista user (≤ 5 min) e gera spec.md
+- @builder Cunha implementa via templates `.em5/setup/forge-templates/`
+- @reviewer Lima valida contra constitution antes de commit
+- Configs centrais (CLAUDE.md, AGENTS.md, em5-config.yaml) sempre atualizadas pelo @builder
+- Audit trail completo em `.em5/construcao/{ticket}/`
+
+### Benefícios
+
+1. **Consistência:** todo componente segue padrão (model_tier, anti-papel, signature)
+2. **Auditoria:** ticket completo com entrevista + spec + build-log + review
+3. **Zero drift:** configs centrais nunca ficam desatualizadas
+4. **Aprendizado:** padrões de construção viram learnings (Art. X)
+5. **Distribuível:** sistema novo pode ser construído pelo próprio em5
+
+### Violação
+
+User editando `.em5/agents/*.md` ou `.claude/commands/*.md` manualmente sem ticket de construção. Resulta em drift, breaking changes em produção, inconsistência.
+
+### Exceção legítima
+
+Fix de typo em comentário, ajuste de wording em greeting de agente existente — sem mudança de comportamento. Tudo que altera **escopo, comportamento, dependências, ou interface** precisa passar pelo meta-time.

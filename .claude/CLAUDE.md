@@ -23,6 +23,9 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 | @copywriter | Eco ✍️ | Copy, angulos, adaptacao por canal |
 | @designer | Lux 🎨 | Criativos visuais, videos, UGC |
 | @qa | Crivo 🔍 | Validacao obrigatoria antes de qualquer publicacao |
+| @arq | Arq 🏛️ | Meta-time: entrevista user + desenha spec de componentes novos |
+| @builder | Cunha 🔨 | Meta-time: implementa componentes via Forge templates |
+| @reviewer | Lima 🧪 | Meta-time: valida componentes contra Constitution antes de commit |
 
 *Os agentes tambem respondem pelos fantasy names. Exemplo: "@Atlas" funciona igual a "@ceo".*
 *Se voce configurou nomes personalizados, eles tambem sao reconhecidos — leia `em5-config.yaml`.*
@@ -69,6 +72,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 - `/forge` — Wizard criar agente/task/playbook (Fase 2)
 - `/aprender` — Consulta learnings antes de criar (Fase 1.2)
 - `/override` — Override @qa com auditoria (Fase 3.3)
+- `/validate-em5` — Conformidade contra Constitution (Fase 5.3)
+- `/construir` — Meta-time descobre + cria componente novo (Fase 6)
 
 ---
 

@@ -18,6 +18,9 @@ Pra ativar um agente, use `@nome-do-agente` ou leia o arquivo `.em5/agents/{nome
 | `@copywriter` | Eco ✍️ | Execução | Copy, ângulos, adaptação por canal, log de performance criativa |
 | `@designer` | Lux 🎨 | Execução | Criativos, vídeos, UGC, layout visual de páginas |
 | `@qa` | Crivo 🔍 | Validação | Validação de tudo antes de publicar — gate obrigatório |
+| `@arq` | Arq 🏛️ | Construção | Meta-time — entrevista user + desenha spec de componentes novos |
+| `@builder` | Cunha 🔨 | Construção | Meta-time — implementa componentes via Forge templates |
+| `@reviewer` | Lima 🧪 | Construção | Meta-time — valida componentes contra Constitution |
 
 ---
 

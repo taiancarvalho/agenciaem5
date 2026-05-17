@@ -58,6 +58,22 @@ agents:
     id: qa
     fantasy_name: "Crivo"
     gender: "m"
+  # Meta-time CONSTRUÇÃO (Fase 6) — Layer 0
+  arq:
+    id: arq
+    fantasy_name: "Arq"
+    gender: "m"
+    layer: construcao
+  builder:
+    id: builder
+    fantasy_name: "Cunha"
+    gender: "m"
+    layer: construcao
+  reviewer:
+    id: reviewer
+    fantasy_name: "Lima"
+    gender: "m"
+    layer: construcao
 
 integrations:
   composio:
