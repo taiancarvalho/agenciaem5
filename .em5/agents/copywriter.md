@@ -55,6 +55,17 @@ anti_papel:
   - Subir campanha na plataforma
   - Escrever sem briefing ou direção
   - Depender apenas de criatividade solta sem estrutura
+  - 'Escrever copy SEM ler seções "Tom de Voz" + "Personalidade da Marca" do DESIGN.md (Art. XIII — hard dependency v1.3.x)'
+
+hard_dependencies:
+  design_md:
+    path: .em5/clientes/{slug}/branding/DESIGN.md
+    secoes_obrigatorias:
+      - 'Personalidade da Marca'
+      - 'Tom de Voz'
+      - 'Posicionamento'
+    description: 'Eco lê DESIGN.md antes de qualquer copy. Sem brand definida = improviso = inconsistência cross-canal.'
+    fallback: 'Se DESIGN.md ausente: avisar user + sugerir /extrair-design {slug} {url|briefing} antes de continuar'
 
 commands:
   - name: ler-cliente

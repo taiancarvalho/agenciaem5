@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="system" data-hud="on">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{{name}} · Brandbook Master Ultra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family={{typography.heading.fontFamily}}:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../templates/design-board-preview.css">
+    <link rel="stylesheet" href="./theme.css">
+</head>
+<body class="aiox-body">
+<div class="brandbook-layout">
+
+    <!-- ═══════════════════════════════════════
+         SIDEBAR NAVIGATION
+    ═══════════════════════════════════════ -->
+    <aside class="brandbook-nav">
+        <div class="nav-header">
+            <span class="hud-label">_thebrandbook</span>
+            <h1 style="font-size:1.5rem;margin-top:0.5rem;font-weight:600;">{{name}}</h1>
+        </div>
+
+        <nav class="nav-list" style="margin-top:3rem;flex:1;overflow-y:auto;padding-right:8px;">
+            <div class="nav-section-label">01 // IDENTITY</div>
+            <a href="#overview"   class="nav-link active">Overview</a>
+            <a href="#strategy"   class="nav-link">Brand Strategy</a>
+            <a href="#scenarios"  class="nav-link">Brand in Wild</a>
+
+            <div class="nav-section-label">02 // FOUNDATIONS</div>
+            <a href="#typography"      class="nav-link">Typography</a>
+            <a href="#color-tokens"    class="nav-link">Colors & A11y</a>
+            <a href="#semantic-tokens" class="nav-link">Semantics</a>
+            <a href="#spacing"         class="nav-link">Spacing</a>
+            <a href="#surfaces"        class="nav-link">Surfaces</a>
+
+            <div class="nav-section-label">03 // INVENTORY</div>
+            <a href="#components"  class="nav-link">Components</a>
+            <a href="#iconography" class="nav-link">Icons & Emojis</a>
+            <a href="#effects"     class="nav-link">Visual Effects</a>
+            <a href="#motion"      class="nav-link">Motion</a>
+            <a href="#structures"  class="nav-link">Structures</a>
+
+            <div class="nav-section-label">04 // DIGITAL</div>
+            <a href="#web-guidelines" class="nav-link">Web Guidelines</a>
+            <a href="#social-formats" class="nav-link">Social Formats</a>
+            <a href="#ad-formats"     class="nav-link">Ad Formats</a>
+            <a href="#photography"    class="nav-link">Photography</a>
+
+            <div class="nav-section-label">05 // OPS</div>
+            <a href="#design-direction" class="nav-link highlight">Design Direction</a>
+            <a href="#logo-rules"       class="nav-link">Logo Rules</a>
+            <a href="#evidence"         class="nav-link">Evidence</a>
+            <a href="#rules"            class="nav-link">Do's & Don'ts</a>
+            <a href="#raw"              class="nav-link">Raw Assets</a>
+        </nav>
+
+        <div class="nav-footer" style="padding-top:1.5rem;border-top:1px solid var(--shell-hairline);margin-top:1.5rem;">
+            <button id="theme-toggle-btn" style="background:var(--shell-surface-strong);color:var(--shell-ink);border:1px solid var(--shell-hairline);padding:0.75rem;width:100%;border-radius:12px;font-family:var(--font-mono);font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s ease;">
+                <i data-lucide="monitor" style="width:14px;height:14px;"></i> <span>Tema: System</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════
+         MAIN CONTENT
+    ═══════════════════════════════════════ -->
+    <main class="brandbook-content">
+    <div class="container">
+
+        <!-- ══ 00 HERO ══ -->
+        <header id="overview" style="margin-bottom:6rem;position:relative;">
+            <div style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,{{colors.primary}}12 0%,transparent 70%);filter:blur(60px);z-index:-1;pointer-events:none;"></div>
+            <span class="hud-label">00 BRAND_OVERVIEW</span>
+            <div style="margin-top:2rem;display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;">
+                <h2 style="font-family:'{{typography.heading.fontFamily}}';font-size:84px;font-weight:700;line-height:0.9;letter-spacing:-4px;color:var(--shell-ink);">{{name}}</h2>
+                <span style="font-family:'{{typography.heading.fontFamily}}';font-size:1.25rem;font-weight:400;color:{{colors.primary}};letter-spacing:2px;text-transform:uppercase;">{{tagline}}</span>
+            </div>
+            <p style="font-family:'Inter';font-size:1.5rem;color:var(--shell-body);line-height:1.4;max-width:750px;margin-top:1.5rem;font-weight:400;">{{description}}</p>
+
+            <!-- Quick-stats strip -->
+            <div style="display:flex;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--shell-hairline);flex-wrap:wrap;">
+                <div><div class="hud-label" style="margin-bottom:4px;">SECTOR</div><span style="font-weight:600;">{{sector}}</span></div>
+                <div><div class="hud-label" style="margin-bottom:4px;">AUDIENCE</div><span style="font-weight:600;">{{audience}}</span></div>
+                <div><div class="hud-label" style="margin-bottom:4px;">PERSONALITY</div><span style="font-weight:600;">{{personality}}</span></div>
+                <div><div class="hud-label" style="margin-bottom:4px;">PRIMARY COLOR</div><span style="font-weight:600;font-family:var(--font-mono);">{{colors.primary}}</span></div>
+            </div>
+        </header>
+
+        <!-- ══ 00.1 BRAND SOUL & STRATEGY ══ -->
+        <section id="strategy" class="aiox-section" style="border-top:none;padding-top:0;">
+            <div class="hud-label">00.1 BRAND_STRATEGY_SOUL</div>
+            <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:var(--spacing-xxl);margin-top:var(--spacing-lg);">
+                <div>
+                    <div style="margin-bottom:3rem;">
+                        <h3 class="hud-label" style="background:none;padding:0;color:var(--shell-muted);margin-bottom:1rem;">MISSION_STATEMENT</h3>
+                        <p style="font-family:'{{typography.heading.fontFamily}}';font-size:2.25rem;font-weight:500;line-height:1.2;color:var(--shell-ink);">{{strategy.mission}}</p>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xl);">
+                        <div>
+                            <h4 class="hud-label" style="background:none;padding:0;color:var(--shell-muted);margin-bottom:0.5rem;">VISION</h4>
+                            <p style="font-size:0.95rem;line-height:1.6;">{{strategy.vision}}</p>
+                        </div>
+                        <div>
+                            <h4 class="hud-label" style="background:none;padding:0;color:var(--shell-muted);margin-bottom:0.5rem;">PURPOSE</h4>
+                            <p style="font-size:0.95rem;line-height:1.6;">{{strategy.purpose}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clay-card" style="padding:var(--spacing-xl);background:var(--shell-ink);color:#fff;">
+                    <h3 class="hud-label" style="background:rgba(255,255,255,0.1);color:#fff;margin-bottom:1.5rem;">VERBAL_IDENTITY</h3>
+                    <div style="margin-bottom:1.5rem;">
+                        <div style="font-family:'{{typography.heading.fontFamily}}';font-weight:600;color:{{colors.primary}};font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;">Tone of Voice</div>
+                        <p style="font-size:1.1rem;margin-top:4px;font-weight:500;">{{strategy.voice_tone}}</p>
+                    </div>
+                    <div style="font-size:0.9rem;line-height:1.6;opacity:0.7;">{{{strategy.voice_description_html}}}</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ 00.2 BRAND IN WILD ══ -->
+        <section id="scenarios" class="aiox-section">
+            <div class="hud-label">00.2 BRAND_IN_WILD</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--spacing-xl);margin-top:var(--spacing-lg);">
+                {{#each scenarios}}
+                <div class="clay-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;background:{{background}};">
+                    {{{html}}}
+                    <div style="padding:1rem;background:rgba(255,255,255,0.9);font-size:0.8rem;color:var(--shell-muted);">
+                        <strong>{{label}}:</strong> {{description}}
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 01 TYPOGRAPHY ══ -->
+        <section id="typography" class="aiox-section">
+            <div class="hud-label">01 TYPE_SYSTEM_GLYPHS</div>
+            <div style="margin-top:var(--spacing-lg);">
+                {{#each fontFamilies}}
+                <div class="clay-card" style="padding:0;overflow:hidden;margin-bottom:3rem;">
+                    <div style="padding:2rem;background:var(--shell-surface-strong);border-bottom:1px solid var(--shell-hairline);">
+                        <h3 class="display-sm" style="margin:0;">{{name}}</h3>
+                        <p style="color:var(--shell-muted);margin-top:4px;">{{usage}}</p>
+                    </div>
+                    <div style="padding:3rem;">
+                        <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:4rem;">
+                            <div>
+                                <div style="font-family:'{{fontFamily}}';font-size:120px;font-weight:700;line-height:1;color:var(--shell-ink);">Aa</div>
+                                <div style="margin-top:2rem;">
+                                    <div class="hud-label" style="margin-bottom:8px;">WEIGHTS_AVAIL</div>
+                                    <div style="font-family:'{{fontFamily}}';font-size:1.25rem;display:flex;gap:1rem;flex-wrap:wrap;">
+                                        {{#each weights}}<span style="font-weight:{{this}};">{{this}}</span>{{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="hud-label" style="margin-bottom:1.5rem;">GLYPH_SET</div>
+                                <div style="font-family:'{{fontFamily}}';font-size:1.5rem;line-height:1.4;color:var(--shell-ink);letter-spacing:2px;">
+                                    ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+                                    abcdefghijklmnopqrstuvwxyz<br>
+                                    0123456789 !@#$%&*()_+-={}
+                                </div>
+                                {{#if technical_rules}}
+                                <div style="margin-top:2rem;background:var(--shell-surface-soft);padding:1.5rem;border-radius:12px;">
+                                    <div class="hud-label" style="margin-bottom:8px;font-size:8px;">TECHNICAL_RULES</div>
+                                    <p style="font-size:0.85rem;line-height:1.5;">{{{technical_rules}}}</p>
+                                </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+                <!-- Type Scale Table -->
+                <div class="clay-card" style="padding:0;overflow:hidden;">
+                    <div style="padding:2rem;background:var(--shell-surface-strong);border-bottom:1px solid var(--shell-hairline);">
+                        <h3 class="display-sm" style="margin:0;font-size:1.25rem;">Type Scale — Digital</h3>
+                        <p style="color:var(--shell-muted);margin-top:4px;">Escala responsiva para web e mobile</p>
+                    </div>
+                    <table class="type-scale-table">
+                        <thead>
+                            <tr>
+                                <th>ROLE</th>
+                                <th>PREVIEW</th>
+                                <th>SIZE / LINE-HEIGHT</th>
+                                <th>TRACKING</th>
+                                <th>WEIGHT</th>
+                                <th>USE CASE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each typescale}}
+                            <tr>
+                                <td><span class="hud-label" style="margin:0;">{{role}}</span></td>
+                                <td><span class="type-scale-row-preview" style="font-family:'{{fontFamily}}';font-size:{{size}};font-weight:{{weight}};letter-spacing:{{tracking}};">{{name}}</span></td>
+                                <td><code>{{size}} / {{lineheight}}</code></td>
+                                <td><code>{{tracking}}</code></td>
+                                <td><code>{{weight}}</code></td>
+                                <td style="font-size:0.8rem;color:var(--shell-muted);">{{usecase}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ 02 COLOR SYSTEM ══ -->
+        <section id="color-tokens" class="aiox-section">
+            <div class="hud-label">02 COLOR_SYSTEM_SPECS</div>
+            <div style="margin-top:var(--spacing-lg);">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--spacing-xl);">
+                    {{#each colors.branding}}
+                    <div class="clay-card" style="padding:0;overflow:hidden;">
+                        <div style="height:160px;background:{{hex}};display:flex;align-items:center;justify-content:center;color:{{contrast_color}};font-family:'{{../typography.heading.fontFamily}}';font-size:2rem;font-weight:700;">Aa</div>
+                        <div style="padding:1.5rem;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;">
+                                <span style="font-weight:600;">{{name}}</span>
+                                <span class="hud-label" style="margin:0;">{{type}}</span>
+                            </div>
+                            <div style="margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                                <div><div class="hud-label" style="font-size:8px;margin-bottom:4px;">HEX</div><code style="font-size:0.85rem;">{{hex}}</code></div>
+                                {{#if rgb}}<div><div class="hud-label" style="font-size:8px;margin-bottom:4px;">RGB</div><code style="font-size:0.85rem;">{{rgb}}</code></div>{{/if}}
+                                {{#if cmyk}}<div><div class="hud-label" style="font-size:8px;margin-bottom:4px;">CMYK</div><code style="font-size:0.85rem;">{{cmyk}}</code></div>{{/if}}
+                                {{#if hsl}}<div><div class="hud-label" style="font-size:8px;margin-bottom:4px;">HSL</div><code style="font-size:0.85rem;">{{hsl}}</code></div>{{/if}}
+                            </div>
+                            {{#if a11y}}
+                            <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--shell-hairline);">
+                                <div class="hud-label" style="font-size:8px;margin-bottom:8px;">WCAG_ACCESSIBILITY</div>
+                                <div style="display:flex;gap:1rem;font-size:0.75rem;flex-wrap:wrap;">
+                                    {{#each a11y}}
+                                    <div style="display:flex;align-items:center;gap:4px;">
+                                        <span style="color:{{#if pass}}var(--shell-success){{else}}var(--shell-error){{/if}};">{{#if pass}}✓{{else}}✕{{/if}}</span>
+                                        {{label}}
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- Color usage intent bar -->
+                <div style="margin-top:var(--spacing-xl);background:var(--shell-surface-card);border-radius:var(--radius-xl);padding:var(--spacing-xl);border:1px solid var(--shell-hairline);">
+                    <div class="hud-label" style="margin-bottom:1.5rem;">COLOR_INTENT_MAP</div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+                        {{#each colors.intent_map}}
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="width:12px;height:12px;border-radius:3px;background:{{hex}};flex-shrink:0;"></div>
+                            <div>
+                                <div style="font-size:0.8rem;font-weight:600;">{{role}}</div>
+                                <div style="font-size:0.75rem;color:var(--shell-muted);">{{usage}}</div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ 03 SEMANTIC TOKENS ══ -->
+        <section id="semantic-tokens" class="aiox-section">
+            <div class="hud-label">03 SEMANTIC_MAPPING</div>
+            <div style="margin-top:var(--spacing-lg);background:var(--shell-surface-card);border-radius:var(--radius-xl);border:1px solid var(--shell-hairline);overflow:hidden;">
+                <div style="display:flex;padding:var(--spacing-md);border-bottom:1px solid var(--shell-hairline);background:var(--shell-surface-strong);font-family:var(--font-mono);font-size:10px;color:var(--shell-muted);">
+                    <div style="flex:2;">SEMANTIC_USE</div>
+                    <div style="flex:1;">TOKEN</div>
+                    <div style="flex:1;">CSS_VAR</div>
+                    <div style="width:40px;text-align:right;">VAL</div>
+                </div>
+                {{#each semantic_tokens}}
+                <div style="display:flex;align-items:center;padding:var(--spacing-lg);border-bottom:1px solid var(--shell-hairline);">
+                    <div style="flex:2;">
+                        <div style="font-weight:600;">{{semantic_key}}</div>
+                        <div style="font-size:0.8rem;color:var(--shell-muted);margin-top:4px;">{{description}}</div>
+                    </div>
+                    <div style="flex:1;"><code class="mono" style="font-size:0.8rem;">{{raw_token}}</code></div>
+                    <div style="flex:1;"><code class="mono" style="font-size:0.8rem;color:var(--shell-muted);">{{css_var}}</code></div>
+                    <div style="width:40px;display:flex;justify-content:flex-end;">
+                        <div style="width:24px;height:24px;border-radius:6px;background:{{raw_value}};border:1px solid rgba(0,0,0,0.1);"></div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 04 SPACING ══ -->
+        <section id="spacing" class="aiox-section">
+            <div class="hud-label">04 SPACING_RHYTHM</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--spacing-lg);margin-top:var(--spacing-lg);">
+                {{#each spacing}}
+                <div class="clay-card" style="padding:var(--spacing-md);text-align:center;">
+                    <div style="height:{{value}}px;width:40px;background:{{../colors.primary}};border-radius:2px;margin:0 auto 12px;max-height:80px;"></div>
+                    <div class="mono" style="font-size:0.7rem;color:var(--shell-muted);">{{key}}</div>
+                    <div style="font-weight:600;margin-top:4px;">{{value}}px</div>
+                    <div style="font-size:0.7rem;color:var(--shell-muted);margin-top:2px;">{{rem}}rem</div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 05 SURFACES ══ -->
+        <section id="surfaces" class="aiox-section">
+            <div class="hud-label">05 SURFACE_ARCHITECTURE</div>
+            <div style="display:grid;gap:var(--spacing-lg);margin-top:var(--spacing-lg);">
+                {{#each surfaces}}
+                <div class="clay-card" style="background:{{backgroundColor}};padding:var(--spacing-xl);border:1px solid {{borderColor}};display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+                    <div>
+                        <h4 style="color:{{textColor}};font-size:1.25rem;">{{name}}</h4>
+                        <p style="color:{{textColor}};opacity:0.6;font-size:0.9rem;margin-top:4px;">{{usage}}</p>
+                    </div>
+                    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+                        <span class="hud-label" style="background:{{textColor}}15;color:{{textColor}};margin:0;">RADIUS: {{rounded}}</span>
+                        <span class="hud-label" style="background:{{textColor}}15;color:{{textColor}};margin:0;">{{hex}}</span>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 06 COMPONENTS ══ -->
+        <section id="components" class="aiox-section">
+            <div class="hud-label">06 COMPONENT_INVENTORY</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:var(--spacing-lg);margin-top:var(--spacing-lg);">
+                {{#each components}}
+                <div class="clay-card" style="padding:var(--spacing-xl);padding-bottom:0;overflow:hidden;">
+                    <span class="hud-label">{{key}}</span>
+                    <div style="margin:2rem 0;display:flex;justify-content:center;align-items:center;min-height:120px;">
+                        {{{preview_html}}}
+                    </div>
+                    <div class="code-block" data-code="{{code_snippet}}">
+                        <button class="copy-code-btn">COPY</button>
+                        <code>{{tokens_used}}</code>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 07 ICONOGRAPHY & EMOJIS ══ -->
+        <section id="iconography" class="aiox-section">
+            <div class="hud-label">07 VISUAL_METAPHORS</div>
+
+            <!-- Icon grid -->
+            <div style="margin-top:var(--spacing-lg);">
+                <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">ICON_SET — {{icon_libraries}}</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:var(--spacing-md);">
+                    {{#each icons}}
+                    <div class="clay-card" style="padding:var(--spacing-lg);text-align:center;">
+                        <div style="width:40px;height:40px;background:var(--shell-surface-strong);border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:{{../colors.primary}};">
+                            <i data-lucide="{{value}}" style="width:20px;height:20px;"></i>
+                        </div>
+                        <div class="mono" style="font-size:0.65rem;color:var(--shell-muted);">{{name}}</div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- Emoji palette -->
+            {{#if emojis}}
+            <div style="margin-top:var(--spacing-xxl);">
+                <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">BRAND_EMOJI_PALETTE</div>
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-bottom:1.5rem;">
+                        {{#each emojis}}
+                        <div style="text-align:center;">
+                            <div style="font-size:2.5rem;line-height:1;">{{emoji}}</div>
+                            <div class="mono" style="font-size:0.65rem;color:var(--shell-muted);margin-top:6px;">{{name}}</div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <p style="font-size:0.85rem;color:var(--shell-muted);">{{emoji_usage_note}}</p>
+                </div>
+            </div>
+            {{/if}}
+
+            <!-- Icon sizing rules -->
+            <div style="margin-top:var(--spacing-xl);background:var(--shell-surface-card);border-radius:var(--radius-xl);padding:var(--spacing-xl);border:1px solid var(--shell-hairline);">
+                <div class="hud-label" style="margin-bottom:1.5rem;font-size:8px;">SIZING_RULES</div>
+                <div style="display:flex;gap:3rem;align-items:flex-end;flex-wrap:wrap;">
+                    <div style="text-align:center;"><div style="width:16px;height:16px;background:var(--shell-ink);border-radius:3px;margin:0 auto 8px;"></div><div class="mono" style="font-size:0.7rem;">16px</div><div style="font-size:0.75rem;color:var(--shell-muted);margin-top:2px;">Inline</div></div>
+                    <div style="text-align:center;"><div style="width:20px;height:20px;background:var(--shell-ink);border-radius:4px;margin:0 auto 8px;"></div><div class="mono" style="font-size:0.7rem;">20px</div><div style="font-size:0.75rem;color:var(--shell-muted);margin-top:2px;">UI</div></div>
+                    <div style="text-align:center;"><div style="width:24px;height:24px;background:var(--shell-ink);border-radius:5px;margin:0 auto 8px;"></div><div class="mono" style="font-size:0.7rem;">24px</div><div style="font-size:0.75rem;color:var(--shell-muted);margin-top:2px;">Standard</div></div>
+                    <div style="text-align:center;"><div style="width:32px;height:32px;background:var(--shell-ink);border-radius:7px;margin:0 auto 8px;"></div><div class="mono" style="font-size:0.7rem;">32px</div><div style="font-size:0.75rem;color:var(--shell-muted);margin-top:2px;">Feature</div></div>
+                    <div style="text-align:center;"><div style="width:48px;height:48px;background:var(--shell-ink);border-radius:10px;margin:0 auto 8px;"></div><div class="mono" style="font-size:0.7rem;">48px</div><div style="font-size:0.75rem;color:var(--shell-muted);margin-top:2px;">Hero</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ 08 VISUAL EFFECTS ══ -->
+        <section id="effects" class="aiox-section">
+            <div class="hud-label">08 ATMOSPHERE_DEPTH</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--spacing-lg);margin-top:var(--spacing-lg);">
+                {{#each effects}}
+                <div class="clay-card" style="padding:var(--spacing-xl);overflow:hidden;position:relative;{{#if background}}background:{{background}};{{/if}}">
+                    {{{preview_html}}}
+                    <div style="position:relative;z-index:2;">
+                        <h4 class="display-sm" style="font-size:1.5rem;{{#if textColor}}color:{{textColor}};{{/if}}">{{name}}</h4>
+                        <p style="font-size:0.9rem;opacity:0.7;margin-top:1rem;{{#if textColor}}color:{{textColor}};{{/if}}">{{usage}}</p>
+                        <code class="mono" style="display:block;margin-top:1.5rem;font-size:11px;opacity:0.6;">{{technical_spec}}</code>
+                    </div>
+                    {{#if css_snippet}}
+                    <div class="code-block" data-code="{{css_snippet}}" style="margin-top:1.5rem;position:relative;z-index:2;">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>{{css_snippet}}</code>
+                    </div>
+                    {{/if}}
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══ 09 MOTION — LIVE DEMOS ══ -->
+        <section id="motion" class="aiox-section">
+            <div class="hud-label">09 TEMPORAL_LOGIC</div>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--shell-muted);">Passe o mouse nos cards para ver as animações. Copie o CSS pronto.</p>
+
+            <!-- Motion tokens table -->
+            <div style="margin-top:var(--spacing-lg);background:var(--shell-surface-card);border-radius:var(--radius-xl);border:1px solid var(--shell-hairline);overflow:hidden;margin-bottom:var(--spacing-xxl);">
+                <div style="display:flex;padding:var(--spacing-md);border-bottom:1px solid var(--shell-hairline);background:var(--shell-surface-strong);font-family:var(--font-mono);font-size:10px;color:var(--shell-muted);">
+                    <div style="flex:2;">ANIMATION</div><div style="flex:1;">DURATION</div><div style="flex:1;">EASING</div><div style="flex:1;">USE CASE</div>
+                </div>
+                {{#each motion}}
+                <div style="display:flex;align-items:center;padding:var(--spacing-lg);border-bottom:1px solid var(--shell-hairline);">
+                    <div style="flex:2;font-weight:600;">{{key}}</div>
+                    <div style="flex:1;"><code class="mono" style="font-size:0.8rem;color:{{../colors.primary}};">{{duration}}</code></div>
+                    <div style="flex:1;"><code class="mono" style="font-size:0.8rem;">{{easing}}</code></div>
+                    <div style="flex:1;font-size:0.8rem;color:var(--shell-muted);">{{usecase}}</div>
+                </div>
+                {{/each}}
+            </div>
+
+            <!-- Live animation demos -->
+            <div class="motion-demo-grid">
+                <!-- Fade In -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage">
+                        <div class="motion-box bb-anim bb-fade-in">Aa</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Fade In</h4>
+                        <p>Entrada suave por opacidade. Ideal para modais, tooltips e conteúdo secundário.</p>
+                    </div>
+                    <div class="code-block" data-code="@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in {
+  animation: fade-in 0.6s ease-out both;
+}">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation: fade-in <span style="color:#f97583;">0.6s</span> ease-out both;</code>
+                    </div>
+                </div>
+
+                <!-- Slide Up -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage">
+                        <div class="motion-box bb-anim bb-slide-up">Aa</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Slide Up</h4>
+                        <p>Entrada com deslocamento vertical. Para cards, listas e seções ao scroll.</p>
+                    </div>
+                    <div class="code-block" data-code="@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.33,1,0.68,1) both;
+}">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation: slide-up <span style="color:#f97583;">0.5s</span> cubic-bezier(0.33,1,0.68,1) both;</code>
+                    </div>
+                </div>
+
+                <!-- Scale In -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage">
+                        <div class="motion-box bb-anim bb-scale-in">Aa</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Scale In</h4>
+                        <p>Entrada com overshoot elástico. CTAs, botões de ação e badges de destaque.</p>
+                    </div>
+                    <div class="code-block" data-code="@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation: scale-in <span style="color:#f97583;">0.4s</span> cubic-bezier(0.34,1.56,0.64,1) both;</code>
+                    </div>
+                </div>
+
+                <!-- Slide Left -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage">
+                        <div class="motion-box bb-anim bb-slide-left">Aa</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Slide Left</h4>
+                        <p>Entrada horizontal. Drawers, sidebars, notificações laterais.</p>
+                    </div>
+                    <div class="code-block" data-code="@keyframes slide-left {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-left {
+  animation: slide-left 0.5s cubic-bezier(0.33,1,0.68,1) both;
+}">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation: slide-left <span style="color:#f97583;">0.5s</span> cubic-bezier(0.33,1,0.68,1) both;</code>
+                    </div>
+                </div>
+
+                <!-- Blur In -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage">
+                        <div class="motion-box bb-anim bb-blur-in">Aa</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Blur In</h4>
+                        <p>Entrada com desfoque. Overlays, fundo de modal, transição entre telas.</p>
+                    </div>
+                    <div class="code-block" data-code="@keyframes blur-in {
+  from { opacity: 0; filter: blur(8px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+.blur-in {
+  animation: blur-in 0.7s ease-out both;
+}">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation: blur-in <span style="color:#f97583;">0.7s</span> ease-out both;</code>
+                    </div>
+                </div>
+
+                <!-- Stagger Pattern -->
+                <div class="motion-demo-card">
+                    <div class="motion-stage" style="gap:8px;">
+                        <div class="motion-box bb-anim bb-slide-up" style="width:32px;height:32px;font-size:0.8rem;animation-delay:0s;">1</div>
+                        <div class="motion-box bb-anim bb-slide-up" style="width:32px;height:32px;font-size:0.8rem;animation-delay:0.08s;">2</div>
+                        <div class="motion-box bb-anim bb-slide-up" style="width:32px;height:32px;font-size:0.8rem;animation-delay:0.16s;">3</div>
+                        <div class="motion-box bb-anim bb-slide-up" style="width:32px;height:32px;font-size:0.8rem;animation-delay:0.24s;">4</div>
+                    </div>
+                    <div class="motion-demo-meta">
+                        <h4>Stagger</h4>
+                        <p>Filhos entram em sequência com delay progressivo. Features, listas, grids.</p>
+                    </div>
+                    <div class="code-block" data-code="/* Apply to children with nth-child delay */
+.stagger-list > * {
+  animation: slide-up 0.5s cubic-bezier(0.33,1,0.68,1) both;
+}
+.stagger-list > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-list > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-list > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-list > *:nth-child(4) { animation-delay: 240ms; }">
+                        <button class="copy-code-btn">COPY CSS</button>
+                        <code>animation-delay: <span style="color:#f97583;">0, 80, 160, 240ms</span></code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ 10 STRUCTURES ══ -->
+        <section id="structures" class="aiox-section">
+            <div class="hud-label">10 SPATIAL_RHYTHM_&_GRID</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xxl);margin-top:var(--spacing-lg);">
+                <div>
+                    <h3 class="display-sm" style="font-size:1.5rem;margin-bottom:1.5rem;">{{grid_rule.title}}</h3>
+                    <p style="font-size:0.95rem;line-height:1.6;color:var(--shell-muted);margin-bottom:2rem;">{{{grid_rule.description_html}}}</p>
+                    <div style="background:var(--shell-surface-strong);padding:2rem;border-radius:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+                        <div style="aspect-ratio:1/1;background:{{colors.primary}};opacity:0.1;border:1px dashed {{colors.primary}};"></div>
+                        <div style="aspect-ratio:1/1;background:{{colors.primary}};opacity:0.2;border:1px dashed {{colors.primary}};"></div>
+                        <div style="aspect-ratio:1/1;background:{{colors.primary}};opacity:0.35;border:1px dashed {{colors.primary}};"></div>
+                        <div style="aspect-ratio:1/1;background:{{colors.primary}};opacity:0.5;border:1px dashed {{colors.primary}};"></div>
+                    </div>
+                </div>
+                {{#each layout_patterns}}
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div class="hud-label" style="margin-bottom:1rem;">{{label}}</div>
+                    <div style="background:var(--shell-surface-strong);border-radius:12px;padding:2rem;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
+                        {{{wireframe_svg}}}
+                    </div>
+                    <p style="font-size:0.85rem;margin-top:1.5rem;line-height:1.5;">{{description}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             04 // DIGITAL PLAYBOOK
+        ══════════════════════════════════════ -->
+
+        <!-- ── 11 WEB GUIDELINES ── -->
+        <section id="web-guidelines" class="aiox-section">
+            <div class="hud-label">11 WEB_GUIDELINES</div>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--shell-muted);max-width:650px;">Padrões técnicos para implementação web. Breakpoints, grid, padrões de componentes de alto impacto.</p>
+
+            <!-- Breakpoints -->
+            <div style="margin-top:var(--spacing-xl);">
+                <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">RESPONSIVE_BREAKPOINTS</div>
+                <table class="breakpoint-table" style="border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--shell-hairline);">
+                    <thead>
+                        <tr>
+                            <th>BREAKPOINT</th>
+                            <th>MIN-WIDTH</th>
+                            <th>COLUMNS</th>
+                            <th>GUTTER</th>
+                            <th>USE CASE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each web.breakpoints}}
+                        <tr>
+                            <td><span class="hud-label" style="margin:0;">{{name}}</span></td>
+                            <td><code>{{minWidth}}</code></td>
+                            <td><code>{{columns}}</code></td>
+                            <td><code>{{gutter}}</code></td>
+                            <td style="font-size:0.8rem;color:var(--shell-muted);">{{usecase}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Nav Pattern -->
+            <div style="margin-top:var(--spacing-xxl);">
+                <div class="hud-label" style="font-size:8px;margin-bottom:1.5rem;">NAVIGATION_PATTERN</div>
+                <div class="clay-card" style="padding:0;overflow:hidden;">
+                    <!-- Browser chrome -->
+                    <div class="browser-toolbar">
+                        <div style="display:flex;gap:6px;">
+                            <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57;"></div>
+                            <div style="width:12px;height:12px;border-radius:50%;background:#febc2e;"></div>
+                            <div style="width:12px;height:12px;border-radius:50%;background:#28c840;"></div>
+                        </div>
+                        <div class="browser-address">{{web.domain}}</div>
+                        <div></div>
+                    </div>
+                    <!-- Nav mockup -->
+                    <div style="background:{{web.nav.background}};padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(0,0,0,0.08);">
+                        <div style="font-family:'{{typography.heading.fontFamily}}';font-weight:700;font-size:1.1rem;color:{{web.nav.logoColor}};">{{name}}</div>
+                        <div style="display:flex;gap:1.5rem;align-items:center;">
+                            {{#each web.nav.links}}
+                            <span style="font-size:0.85rem;color:{{color}};font-weight:{{weight}};">{{label}}</span>
+                            {{/each}}
+                        </div>
+                        <div style="background:{{colors.primary}};color:#fff;padding:8px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;">{{web.nav.cta}}</div>
+                    </div>
+                    <!-- Hero area preview -->
+                    <div style="background:{{web.hero.background}};padding:4rem 2rem;min-height:200px;display:flex;flex-direction:column;justify-content:center;">
+                        <div style="max-width:600px;">
+                            <span style="font-family:var(--font-mono);font-size:10px;color:{{colors.primary}};font-weight:700;letter-spacing:1px;">{{web.hero.eyebrow}}</span>
+                            <h2 style="font-family:'{{typography.heading.fontFamily}}';font-size:2.5rem;font-weight:700;line-height:1.1;color:{{web.hero.headlineColor}};margin-top:0.75rem;letter-spacing:-1.5px;">{{web.hero.headline}}</h2>
+                            <p style="font-size:1rem;color:{{web.hero.bodyColor}};margin-top:1rem;line-height:1.6;max-width:480px;">{{web.hero.body}}</p>
+                            <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+                                <div style="background:{{colors.primary}};color:#fff;padding:12px 28px;border-radius:10px;font-weight:600;font-size:0.9rem;">{{web.hero.cta_primary}}</div>
+                                <div style="border:1px solid {{colors.primary}};color:{{colors.primary}};padding:12px 28px;border-radius:10px;font-weight:600;font-size:0.9rem;">{{web.hero.cta_secondary}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding:1rem 2rem;background:var(--shell-surface-soft);font-family:var(--font-mono);font-size:9px;color:var(--shell-muted);">PATTERN: Hero com eyebrow + headline + body + dual CTA — max-width 600px</div>
+                </div>
+            </div>
+
+            <!-- Web code snippet -->
+            <div style="margin-top:var(--spacing-xl);">
+                <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">CSS_VARIABLES_READY</div>
+                <div class="code-block" data-code="{{web.css_vars}}">
+                    <button class="copy-code-btn">COPY CSS</button>
+                    <code>{{{web.css_vars_display}}}</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 12 SOCIAL MEDIA FORMATS ── -->
+        <section id="social-formats" class="aiox-section">
+            <div class="hud-label">12 SOCIAL_MEDIA_FORMATS</div>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--shell-muted);max-width:650px;">Dimensões, zonas de segurança e mockups prontos para cada canal. Copie o frame em HTML/CSS.</p>
+
+            <!-- Tab bar -->
+            <div class="format-tab-bar" style="margin-top:var(--spacing-lg);" data-tab-group="social">
+                <button class="format-tab active" data-tab="feed">INSTAGRAM FEED</button>
+                <button class="format-tab" data-tab="stories">STORIES / REELS</button>
+                <button class="format-tab" data-tab="linkedin">LINKEDIN</button>
+                <button class="format-tab" data-tab="twitter">TWITTER / X</button>
+                <button class="format-tab" data-tab="youtube">YOUTUBE</button>
+            </div>
+
+            <!-- Instagram Feed 1:1 -->
+            <div data-tab-panel="social" data-panel="feed" class="format-panel active">
+                <div class="format-spec-grid">
+                    <!-- 1:1 -->
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:1/1;background:{{social.feed.background}};">
+                            <div class="dim-badge">1080 × 1080px</div>
+                            <div class="safe-zone-ring" style="inset:8%;"></div>
+                            <div class="format-mockup-body" style="background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 60%);">
+                                <span style="font-family:var(--font-mono);font-size:8px;color:rgba(255,255,255,0.5);font-weight:700;">SAFE ZONE INSET 8%</span>
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.5rem;font-weight:700;line-height:1.1;margin-top:0.5rem;">{{social.feed.headline}}</h3>
+                                <p style="color:rgba(255,255,255,0.8);font-size:0.75rem;margin-top:0.5rem;">{{social.feed.subline}}</p>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Feed 1:1 (Square)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1080 × 1080 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">SAFE ZONE</span><span class="spec-val">Inset 8% (86px)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">FILE</span><span class="spec-val">JPG/PNG ≤ 30MB</span></div>
+                            <div class="format-spec-row"><span class="spec-key">TEXT LIMIT</span><span class="spec-val">20% max da área</span></div>
+                        </div>
+                    </div>
+
+                    <!-- 4:5 -->
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:4/5;background:{{social.feed.background}};">
+                            <div class="dim-badge">1080 × 1350px</div>
+                            <div class="safe-zone-ring" style="inset:8%;"></div>
+                            <div class="format-mockup-body" style="background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 50%);">
+                                <div style="width:40px;height:3px;background:{{colors.primary}};margin-bottom:0.75rem;"></div>
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.75rem;font-weight:700;line-height:1.1;">{{social.feed.headline}}</h3>
+                                <p style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-top:0.5rem;">{{name}}</p>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Feed 4:5 (Portrait)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1080 × 1350 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">SAFE ZONE</span><span class="spec-val">Inset 8%</span></div>
+                            <div class="format-spec-row"><span class="spec-key">IDEAL FOR</span><span class="spec-val">Maior reach orgânico</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Code -->
+                    <div class="format-spec-card" style="padding:var(--spacing-xl);">
+                        <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">FRAME_HTML_READY</div>
+                        <div class="code-block" style="margin-top:0;" data-code='<div style="width:1080px;height:1080px;position:relative;background:{{social.feed.background}};overflow:hidden;">
+  <!-- Safe zone: inset 86px all sides -->
+  <div style="position:absolute;inset:86px;">
+    <!-- Your content here -->
+  </div>
+</div>'>
+                            <button class="copy-code-btn">COPY HTML</button>
+                            <code><span style="color:#79b8ff;">div</span> <span style="color:#a8d8a0;">style</span>=<span style="color:#f97583;">"width:1080px;height:1080px;
+  position:relative;overflow:hidden;"</span>
+  <span style="color:#666;">// safe zone: padding 86px</span>
+</code>
+                        </div>
+                        <div style="margin-top:1.5rem;">
+                            <div class="hud-label" style="font-size:8px;margin-bottom:0.75rem;">CAPTION_RULES</div>
+                            <p style="font-size:0.8rem;color:var(--shell-muted);line-height:1.6;">{{social.caption_rules}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Stories / Reels -->
+            <div data-tab-panel="social" data-panel="stories" class="format-panel">
+                <div class="format-spec-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:9/16;background:{{social.stories.background}};">
+                            <div class="dim-badge">1080 × 1920px</div>
+                            <div class="safe-zone-ring" style="inset:0;top:14%;bottom:20%;left:4%;right:4%;"></div>
+                            <!-- Top UI chrome -->
+                            <div style="position:absolute;top:12px;left:0;right:0;padding:0 1rem;z-index:15;">
+                                <div style="height:3px;background:rgba(255,255,255,0.4);border-radius:2px;margin-bottom:10px;"></div>
+                                <div style="display:flex;align-items:center;gap:8px;">
+                                    <div style="width:24px;height:24px;border-radius:50%;background:{{colors.primary}};border:2px solid #fff;"></div>
+                                    <span style="color:#fff;font-size:0.65rem;font-weight:600;">{{name}}</span>
+                                </div>
+                            </div>
+                            <!-- Content zone -->
+                            <div class="format-mockup-body" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 40%);justify-content:flex-end;padding:2.5rem 1.5rem 4rem;">
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.75rem;font-weight:700;line-height:1.1;">{{social.stories.headline}}</h3>
+                                <div style="margin-top:1rem;background:{{colors.primary}};color:#fff;padding:10px 20px;border-radius:24px;font-weight:600;font-size:0.8rem;text-align:center;">{{social.stories.cta}}</div>
+                            </div>
+                            <!-- Bottom safe zone label -->
+                            <div style="position:absolute;bottom:1rem;left:0;right:0;text-align:center;z-index:15;">
+                                <span style="font-family:var(--font-mono);font-size:7px;color:rgba(255,255,255,0.4);">SAFE ZONE: TOP 14% / BOTTOM 20%</span>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Stories / Reels 9:16</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1080 × 1920 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">TOP SAFE</span><span class="spec-val">268px (14%)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">BOTTOM SAFE</span><span class="spec-val">384px (20%)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">VIDEO</span><span class="spec-val">MP4 ≤ 60s</span></div>
+                        </div>
+                    </div>
+
+                    <div class="format-spec-card" style="padding:var(--spacing-xl);">
+                        <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">REELS_RULES</div>
+                        <ul style="font-size:0.85rem;color:var(--shell-muted);line-height:2;list-style:none;padding:0;">
+                            <li>→ Primeiros 3s determinam retenção</li>
+                            <li>→ Texto central, nunca nos bordos</li>
+                            <li>→ Logo no canto superior esquerdo</li>
+                            <li>→ CTA visual aos 75% do vídeo</li>
+                            <li>→ Legendas obrigatórias (85% sem som)</li>
+                            <li>→ Aspect ratio: fixo 9:16</li>
+                        </ul>
+                        <div class="code-block" style="margin-top:1.5rem;" data-code='<div style="width:1080px;height:1920px;position:relative;overflow:hidden;">
+  <!-- Safe content area -->
+  <div style="position:absolute;top:268px;bottom:384px;left:43px;right:43px;">
+    <!-- Content here -->
+  </div>
+</div>'>
+                            <button class="copy-code-btn">COPY HTML</button>
+                            <code><span style="color:#666;">// Stories safe zone frame</span>
+top: <span style="color:#f97583;">268px</span>; bottom: <span style="color:#f97583;">384px</span>;</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div data-tab-panel="social" data-panel="linkedin" class="format-panel">
+                <div class="format-spec-grid">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:1200/628;background:{{social.linkedin.background}};">
+                            <div class="dim-badge">1200 × 628px</div>
+                            <div class="safe-zone-ring" style="inset:6%;"></div>
+                            <div class="format-mockup-body" style="background:linear-gradient(135deg,rgba(0,0,0,0.7) 0%,transparent 100%);padding:2rem;">
+                                <div style="margin-bottom:auto;">
+                                    <div style="font-family:var(--font-mono);font-size:9px;color:{{colors.primary}};font-weight:700;letter-spacing:1px;text-transform:uppercase;">{{name}}</div>
+                                    <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.75rem;font-weight:700;line-height:1.15;margin-top:0.75rem;max-width:400px;">{{social.linkedin.headline}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">LinkedIn Post 1.91:1</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1200 × 628 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">SAFE ZONE</span><span class="spec-val">Inset 6% (~75px)</span></div>
+                            <div class="format-spec-row"><span class="spec-key">FILE</span><span class="spec-val">JPG/PNG ≤ 5MB</span></div>
+                            <div class="format-spec-row"><span class="spec-key">TOM</span><span class="spec-val">Profissional, sem emojis</span></div>
+                        </div>
+                    </div>
+
+                    <div class="format-spec-card" style="padding:var(--spacing-xl);">
+                        <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">LINKEDIN_CAPTION_STRUCTURE</div>
+                        <div style="background:var(--shell-surface-strong);border-radius:var(--radius-md);padding:1.5rem;font-size:0.85rem;line-height:1.8;color:var(--shell-ink);">
+                            <div style="font-weight:700;margin-bottom:0.5rem;">Hook (1ª linha) — aparece antes do "ver mais"</div>
+                            <div style="color:var(--shell-muted);margin-bottom:1rem;">Frase provocativa ou dado surpreendente</div>
+                            <div style="font-weight:700;margin-bottom:0.5rem;">Corpo (3–7 linhas)</div>
+                            <div style="color:var(--shell-muted);margin-bottom:1rem;">Contexto + valor + prova</div>
+                            <div style="font-weight:700;margin-bottom:0.5rem;">CTA final + hashtags</div>
+                            <div style="color:var(--shell-muted);">3–5 hashtags relevantes de nicho</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Twitter / X -->
+            <div data-tab-panel="social" data-panel="twitter" class="format-panel">
+                <div class="format-spec-grid">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:16/9;background:{{social.twitter.background}};">
+                            <div class="dim-badge">1600 × 900px</div>
+                            <div class="safe-zone-ring" style="inset:5%;"></div>
+                            <div class="format-mockup-body" style="padding:2rem;">
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.5rem;font-weight:700;">{{social.twitter.headline}}</h3>
+                                <div style="margin-top:1rem;display:flex;align-items:center;gap:8px;">
+                                    <div style="width:20px;height:20px;border-radius:50%;background:{{colors.primary}};"></div>
+                                    <span style="color:rgba(255,255,255,0.7);font-size:0.8rem;">@{{social.twitter.handle}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Twitter/X Card 16:9</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1600 × 900 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">LIMITE</span><span class="spec-val">280 chars, 4 imagens</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube -->
+            <div data-tab-panel="social" data-panel="youtube" class="format-panel">
+                <div class="format-spec-grid">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:16/9;background:{{social.youtube.background}};">
+                            <div class="dim-badge">1280 × 720px</div>
+                            <div class="safe-zone-ring" style="inset:4%;"></div>
+                            <div class="format-mockup-body" style="padding:2rem;background:linear-gradient(135deg,rgba(0,0,0,0.75) 0%,transparent 100%);">
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:2rem;font-weight:800;line-height:1.1;max-width:60%;">{{social.youtube.headline}}</h3>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Thumbnail 16:9</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1280 × 720 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">FILE</span><span class="spec-val">JPG/PNG/GIF ≤ 2MB</span></div>
+                            <div class="format-spec-row"><span class="spec-key">REGRA</span><span class="spec-val">Texto legível em 40px</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 13 AD FORMATS ── -->
+        <section id="ad-formats" class="aiox-section">
+            <div class="hud-label">13 AD_FORMAT_SPECS</div>
+            <p style="margin-top:1rem;font-size:0.9rem;color:var(--shell-muted);max-width:650px;">Especificações técnicas e mockups para Meta Ads e Google Display. Prontos para entregar ao design.</p>
+
+            <!-- Meta Ads tabs -->
+            <div class="format-tab-bar" style="margin-top:var(--spacing-lg);" data-tab-group="ads">
+                <button class="format-tab active" data-tab="meta-feed">META FEED</button>
+                <button class="format-tab" data-tab="meta-story">META STORY</button>
+                <button class="format-tab" data-tab="google">GOOGLE DISPLAY</button>
+            </div>
+
+            <!-- Meta Feed Ads -->
+            <div data-tab-panel="ads" data-panel="meta-feed" class="format-panel active">
+                <div class="format-spec-grid">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:1/1;background:{{ads.meta.feed.background}};">
+                            <div class="dim-badge">1080 × 1080px</div>
+                            <div class="safe-zone-ring" style="inset:15%;"></div>
+                            <div class="format-mockup-body" style="background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 50%);">
+                                <div style="background:{{colors.primary}};color:#fff;padding:6px 14px;border-radius:20px;font-size:0.7rem;font-weight:700;width:fit-content;margin-bottom:0.75rem;">PATROCINADO</div>
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.5rem;font-weight:700;line-height:1.1;">{{ads.meta.headline}}</h3>
+                                <p style="color:rgba(255,255,255,0.8);font-size:0.75rem;margin-top:0.4rem;">{{ads.meta.description}}</p>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Meta Feed 1:1</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1080 × 1080 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">SAFE ZONE</span><span class="spec-val">15% (162px) — CTA area</span></div>
+                            <div class="format-spec-row"><span class="spec-key">HEADLINE</span><span class="spec-val">≤ 40 caracteres</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DESCRIPTION</span><span class="spec-val">≤ 125 caracteres</span></div>
+                            <div class="format-spec-row"><span class="spec-key">CTA BUTTON</span><span class="spec-val">Escolha no Ads Manager</span></div>
+                        </div>
+                    </div>
+
+                    <div class="format-spec-card" style="padding:var(--spacing-xl);">
+                        <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">AD_COPY_STRUCTURE</div>
+                        <div style="display:flex;flex-direction:column;gap:1rem;">
+                            <div style="background:var(--shell-surface-strong);padding:1rem;border-radius:var(--radius-md);">
+                                <div class="mono" style="font-size:8px;color:var(--shell-muted);margin-bottom:4px;">PRIMARY TEXT (≤ 125 chars)</div>
+                                <p style="font-size:0.85rem;">{{ads.meta.primary_text}}</p>
+                            </div>
+                            <div style="background:var(--shell-surface-strong);padding:1rem;border-radius:var(--radius-md);">
+                                <div class="mono" style="font-size:8px;color:var(--shell-muted);margin-bottom:4px;">HEADLINE (≤ 40 chars)</div>
+                                <p style="font-size:0.85rem;font-weight:600;">{{ads.meta.headline}}</p>
+                            </div>
+                            <div style="background:var(--shell-surface-strong);padding:1rem;border-radius:var(--radius-md);">
+                                <div class="mono" style="font-size:8px;color:var(--shell-muted);margin-bottom:4px;">DESCRIPTION (≤ 30 chars)</div>
+                                <p style="font-size:0.85rem;">{{ads.meta.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meta Story Ads -->
+            <div data-tab-panel="ads" data-panel="meta-story" class="format-panel">
+                <div class="format-spec-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:9/16;background:{{ads.meta.story.background}};">
+                            <div class="dim-badge">1080 × 1920px</div>
+                            <div class="safe-zone-ring" style="inset:0;top:14%;bottom:20%;left:4%;right:4%;"></div>
+                            <div class="format-mockup-body" style="background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 40%);padding:2rem 1.5rem 5rem;">
+                                <h3 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.75rem;font-weight:700;">{{ads.meta.headline}}</h3>
+                                <div style="margin-top:1rem;background:{{colors.primary}};color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:600;font-size:0.85rem;">{{ads.meta.cta}}</div>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Meta Story 9:16</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">1080 × 1920 px</span></div>
+                            <div class="format-spec-row"><span class="spec-key">TOP SAFE</span><span class="spec-val">250px — UI Chrome</span></div>
+                            <div class="format-spec-row"><span class="spec-key">BOTTOM SAFE</span><span class="spec-val">310px — CTA Button</span></div>
+                            <div class="format-spec-row"><span class="spec-key">VIDEO</span><span class="spec-val">MP4 ≤ 15s</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Google Display -->
+            <div data-tab-panel="ads" data-panel="google" class="format-panel">
+                <div style="display:flex;flex-direction:column;gap:var(--spacing-lg);">
+                    <!-- Leaderboard 728x90 -->
+                    <div class="format-spec-card">
+                        <div class="format-mockup" style="aspect-ratio:728/90;background:{{ads.google.leaderboard.background}};">
+                            <div class="dim-badge">728 × 90px</div>
+                            <div class="format-mockup-body" style="flex-direction:row;align-items:center;justify-content:space-between;padding:0 1.5rem;">
+                                <div style="font-family:'{{typography.heading.fontFamily}}';font-weight:700;font-size:1rem;color:{{ads.google.leaderboard.textColor}};">{{name}}</div>
+                                <div style="font-size:0.85rem;color:{{ads.google.leaderboard.textColor}};opacity:0.8;">{{ads.google.leaderboard.headline}}</div>
+                                <div style="background:{{colors.primary}};color:#fff;padding:8px 16px;border-radius:6px;font-weight:600;font-size:0.8rem;white-space:nowrap;">{{ads.google.cta}}</div>
+                            </div>
+                        </div>
+                        <div class="format-spec-meta">
+                            <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Leaderboard</span></div>
+                            <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">728 × 90 px</span></div>
+                        </div>
+                    </div>
+
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--spacing-lg);">
+                        <!-- Medium Rectangle 300x250 -->
+                        <div class="format-spec-card">
+                            <div class="format-mockup" style="aspect-ratio:300/250;background:{{ads.google.rectangle.background}};">
+                                <div class="dim-badge">300 × 250px</div>
+                                <div class="format-mockup-body" style="padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 60%);">
+                                    <h4 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.1rem;font-weight:700;">{{ads.google.rectangle.headline}}</h4>
+                                    <div style="margin-top:0.75rem;background:{{colors.primary}};color:#fff;padding:7px 14px;border-radius:6px;font-size:0.75rem;font-weight:600;display:inline-block;">{{ads.google.cta}}</div>
+                                </div>
+                            </div>
+                            <div class="format-spec-meta">
+                                <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Medium Rectangle</span></div>
+                                <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">300 × 250 px</span></div>
+                                <div class="format-spec-row"><span class="spec-key">MAIS USADO</span><span class="spec-val">GDN top performer</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Half Page 300x600 -->
+                        <div class="format-spec-card">
+                            <div class="format-mockup" style="aspect-ratio:300/600;background:{{ads.google.halfpage.background}};">
+                                <div class="dim-badge">300 × 600px</div>
+                                <div class="format-mockup-body" style="padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 50%);">
+                                    <h4 style="font-family:'{{typography.heading.fontFamily}}';color:#fff;font-size:1.25rem;font-weight:700;line-height:1.2;">{{ads.google.halfpage.headline}}</h4>
+                                    <p style="color:rgba(255,255,255,0.7);font-size:0.75rem;margin-top:0.5rem;">{{ads.google.halfpage.body}}</p>
+                                    <div style="margin-top:1rem;background:{{colors.primary}};color:#fff;padding:10px 16px;border-radius:8px;font-size:0.8rem;font-weight:600;display:inline-block;">{{ads.google.cta}}</div>
+                                </div>
+                            </div>
+                            <div class="format-spec-meta">
+                                <div class="format-spec-row"><span class="spec-key">FORMAT</span><span class="spec-val">Half Page</span></div>
+                                <div class="format-spec-row"><span class="spec-key">DIMENSIONS</span><span class="spec-val">300 × 600 px</span></div>
+                                <div class="format-spec-row"><span class="spec-key">IMPACT</span><span class="spec-val">Alto — maior viewability</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 14 PHOTOGRAPHY & IMAGERY ── -->
+        <section id="photography" class="aiox-section">
+            <div class="hud-label">14 PHOTOGRAPHY_DIRECTION</div>
+
+            <!-- Mood palettes -->
+            <div style="margin-top:var(--spacing-lg);">
+                <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">MOOD_PALETTE</div>
+                <div class="imagery-mood-grid" style="aspect-ratio:auto;height:200px;">
+                    {{#each photography.mood_palette}}
+                    <div class="imagery-swatch" style="background:{{color}};">
+                        <span class="imagery-swatch-label">{{label}}</span>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- Direction cards -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--spacing-lg);margin-top:var(--spacing-xl);">
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">LIGHTING</div>
+                    <p style="font-size:0.95rem;line-height:1.7;color:var(--shell-body);">{{photography.lighting}}</p>
+                </div>
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">COMPOSITION</div>
+                    <p style="font-size:0.95rem;line-height:1.7;color:var(--shell-body);">{{photography.composition}}</p>
+                </div>
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">COLOR_TREATMENT</div>
+                    <p style="font-size:0.95rem;line-height:1.7;color:var(--shell-body);">{{photography.color_treatment}}</p>
+                </div>
+                <div class="clay-card" style="padding:var(--spacing-xl);">
+                    <div class="hud-label" style="margin-bottom:1rem;font-size:8px;">SUBJECTS</div>
+                    <p style="font-size:0.95rem;line-height:1.7;color:var(--shell-body);">{{photography.subjects}}</p>
+                </div>
+            </div>
+
+            <!-- Photo Do's & Don'ts -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xl);margin-top:var(--spacing-xl);">
+                <div style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:var(--radius-xl);padding:var(--spacing-xl);">
+                    <h4 style="color:var(--shell-success);font-family:var(--font-mono);font-size:11px;margin-bottom:1.5rem;">PHOTO_DOS</h4>
+                    <ul style="list-style:none;padding:0;">
+                        {{#each photography.dos}}
+                        <li style="margin-bottom:12px;display:flex;gap:12px;font-size:0.9rem;">
+                            <span style="color:var(--shell-success);">✓</span><span>{{this}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.15);border-radius:var(--radius-xl);padding:var(--spacing-xl);">
+                    <h4 style="color:var(--shell-error);font-family:var(--font-mono);font-size:11px;margin-bottom:1.5rem;">PHOTO_DONTS</h4>
+                    <ul style="list-style:none;padding:0;">
+                        {{#each photography.donts}}
+                        <li style="margin-bottom:12px;display:flex;gap:12px;font-size:0.9rem;">
+                            <span style="color:var(--shell-error);">✕</span><span>{{this}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AI image prompt -->
+            <div style="margin-top:var(--spacing-xl);">
+                <div class="hud-label" style="font-size:8px;margin-bottom:1rem;">AI_IMAGE_GENERATION_PROMPT</div>
+                <div class="code-block" data-code="{{photography.ai_prompt}}">
+                    <button class="copy-code-btn">COPY PROMPT</button>
+                    <code style="white-space:pre-wrap;color:#e0e0e0;">{{photography.ai_prompt}}</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════
+             05 // OPS
+        ══════════════════════════════════════ -->
+
+        <!-- ── 15 DESIGN DIRECTION — 10 BLOCKS ── -->
+        <section id="design-direction" class="aiox-section">
+            <div class="hud-label">15 DESIGN_OPS_PROMPTS</div>
+
+            <!-- Master CTA -->
+            <div style="background:{{colors.black}};color:#fff;border-radius:var(--radius-xl);padding:var(--spacing-xxl);margin-top:var(--spacing-lg);position:relative;overflow:hidden;border:1px solid {{colors.primary}};">
+                <div style="position:absolute;top:-50px;right:-50px;width:300px;height:300px;background:radial-gradient(circle,{{colors.primary}}25 0%,transparent 70%);filter:blur(50px);z-index:1;"></div>
+                <div style="position:relative;z-index:2;">
+                    <h2 style="color:#fff;font-family:'{{typography.heading.fontFamily}}';font-size:2rem;margin-bottom:1rem;">Brand Intelligence Copy</h2>
+                    <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem;max-width:600px;">10 blocos de direção visual para Midjourney, Sora, DALL-E e qualquer IA generativa. Copie todos ou individualmente.</p>
+                    <button id="copy-full-prompt-btn" style="background:{{colors.primary}};color:#fff;font-family:var(--font-mono);font-size:11px;padding:16px 32px;border-radius:12px;border:none;cursor:pointer;font-weight:700;">COPY_MASTER_DIRECTION_PROMPT</button>
+                </div>
+            </div>
+
+            <!-- 10 Prompt Blocks -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--spacing-lg);margin-top:var(--spacing-lg);">
+                {{#each prompts}}
+                <div class="clay-card master-prompt-card" data-label="{{label}}" data-copy="{{content}}" style="border-top:4px solid {{color}};background:var(--shell-canvas);">
+                    <span class="hud-label" style="margin-bottom:0.5rem;font-size:8px;">{{index}}</span>
+                    <h3 class="display-sm" style="color:var(--shell-ink);margin-bottom:1rem;font-size:1.1rem;font-weight:600;">{{label}}</h3>
+                    <p class="p-card-body" style="font-size:0.875rem;line-height:1.7;color:var(--shell-body);">{{content}}</p>
+                    <div class="p-card-footer" style="margin-top:1.5rem;font-family:var(--font-mono);font-size:9px;color:{{color}};font-weight:700;letter-spacing:0.5px;">CLICK_TO_COPY</div>
+                </div>
+                {{/each}}
+            </div>
+        </section>
+
+        <!-- ── 16 LOGO GOVERNANCE ── -->
+        <section id="logo-rules" class="aiox-section">
+            <div class="hud-label">16 LOGO_GOVERNANCE</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xxl);margin-top:var(--spacing-lg);">
+                <div>
+                    <h4 class="hud-label" style="margin-bottom:1.5rem;">CLEAR_SPACE_RULE</h4>
+                    <div style="background:#fff;padding:4rem;border-radius:16px;border:1px solid var(--shell-hairline);position:relative;display:flex;align-items:center;justify-content:center;">
+                        <div style="position:absolute;inset:2rem;border:1px dashed {{colors.primary}};opacity:0.3;"></div>
+                        <div style="font-family:'{{typography.heading.fontFamily}}';font-weight:700;font-size:2.5rem;letter-spacing:-2px;">{{name}}</div>
+                        <div style="position:absolute;top:1.2rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:8px;color:{{colors.primary}};">{{logo_rules.clear_space_label}}</div>
+                    </div>
+                    <p style="font-size:0.85rem;margin-top:1.5rem;color:var(--shell-muted);">{{logo_rules.clear_space_description}}</p>
+                </div>
+                <div style="background:{{colors.black}};color:#fff;padding:var(--spacing-xl);border-radius:16px;">
+                    <h4 class="hud-label" style="background:rgba(255,255,255,0.1);color:#fff;margin-bottom:2rem;">SIGNATURE_DONTS</h4>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+                        {{#each logo_rules.donts}}
+                        <div style="opacity:0.5;text-align:center;">
+                            <div style="font-family:'{{../typography.heading.fontFamily}}';font-weight:700;font-size:1.2rem;{{{style}}}">{{../name}}</div>
+                            <div style="color:var(--shell-error);font-size:8px;margin-top:8px;font-weight:700;">{{label}}</div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 17 EVIDENCE ── -->
+        <section id="evidence" class="aiox-section">
+            <div class="hud-label">17 EXTRACTED_REFERENCES</div>
+            <div style="margin-top:var(--spacing-lg);">
+                {{#if screenshots}}
+                <div class="evidence-grid">
+                    {{#each screenshots}}
+                    <div class="clay-card" style="padding:0;overflow:hidden;">
+                        <img src="source/screenshots/{{filename}}" alt="{{caption}}" style="width:100%;display:block;">
+                        <div style="padding:1rem;font-size:0.75rem;background:var(--shell-surface-soft);">{{caption}}</div>
+                    </div>
+                    {{/each}}
+                </div>
+                {{else}}
+                <div class="clay-card" style="padding:4rem;text-align:center;border:1px dashed var(--shell-hairline);background:var(--shell-surface-soft);">
+                    <div style="color:var(--shell-muted);font-size:0.9rem;max-width:400px;margin:0 auto;">
+                        <i data-lucide="image-off" style="width:32px;height:32px;margin-bottom:1rem;opacity:0.3;"></i>
+                        <p>{{evidence_placeholder}}</p>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </section>
+
+        <!-- ── 18 DO'S & DON'TS ── -->
+        <section id="rules" class="aiox-section">
+            <div class="hud-label">18 OPERATIONAL_GUARDRAILS</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--spacing-xl);margin-top:var(--spacing-lg);">
+                <div style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.1);border-radius:var(--radius-xl);padding:var(--spacing-xl);">
+                    <h4 style="color:var(--shell-success);font-family:var(--font-mono);font-size:11px;margin-bottom:1.5rem;">DO_STEPS</h4>
+                    <ul style="list-style:none;padding:0;">
+                        {{#each rules.dos}}
+                        <li style="margin-bottom:12px;display:flex;gap:12px;font-size:0.9rem;">
+                            <span style="color:var(--shell-success);">✓</span><span>{{this}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.1);border-radius:var(--radius-xl);padding:var(--spacing-xl);">
+                    <h4 style="color:var(--shell-error);font-family:var(--font-mono);font-size:11px;margin-bottom:1.5rem;">DONT_STEPS</h4>
+                    <ul style="list-style:none;padding:0;">
+                        {{#each rules.donts}}
+                        <li style="margin-bottom:12px;display:flex;gap:12px;font-size:0.9rem;">
+                            <span style="color:var(--shell-error);">✕</span><span>{{this}}</span>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── 19 RAW ASSETS ── -->
+        <footer id="raw" class="aiox-section" style="margin-top:4rem;border-top:1px solid var(--shell-hairline);">
+            <div class="hud-label">19 SYSTEM_EXPORTS</div>
+            <div style="display:flex;gap:2rem;margin-top:1.5rem;flex-wrap:wrap;">
+                <a href="DESIGN.md" class="mono" style="color:{{colors.primary}};font-weight:700;text-decoration:none;font-size:0.85rem;">DESIGN.md</a>
+                <a href="tokens.json" class="mono" style="color:{{colors.primary}};font-weight:700;text-decoration:none;font-size:0.85rem;">TOKENS.JSON</a>
+                <a href="theme.css" class="mono" style="color:{{colors.primary}};font-weight:700;text-decoration:none;font-size:0.85rem;">THEME.CSS</a>
+            </div>
+        </footer>
+
+    </div><!-- /container -->
+
+    <footer class="shell-footer" style="margin-top:6rem;padding:4rem 0;border-top:1px solid var(--shell-hairline);">
+        <div class="container" style="padding:0;">
+            <span class="hud-label">METADATA</span>
+            <div style="font-size:14px;color:var(--shell-muted);margin-top:1rem;">
+                Extracted by DESIGN.md v3.0 — _thebrandbook Master Ultra<br>
+                Template: Digital Playbook Edition v3.0 · {{extraction_date}}
+            </div>
+        </div>
+    </footer>
+
+    </main><!-- /brandbook-content -->
+</div><!-- /brandbook-layout -->
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="../../templates/design-board-preview.js"></script>
+</body>
+</html>

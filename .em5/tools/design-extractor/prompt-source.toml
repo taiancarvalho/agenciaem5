@@ -1,0 +1,51 @@
+description = "Create a complete operational brandbook from a website URL, local folder, screenshots, HTML, CSS, or briefing."
+
+prompt = """
+Use the brandbook-extractor skill.
+
+User request:
+Create a complete operational brandbook for:
+
+{{args}}
+
+Interpret {{args}} as either:
+- a public website URL
+- a local project folder
+- a project name with existing files under references/
+- a briefing/source already present in this workspace
+
+Hard rules:
+- Do not alter the original source.
+- Save all outputs only under designs/[project-slug]/.
+- If the source is a local folder, treat it as read-only.
+- If the source is a URL and screenshots/HTML are not available, mark the analysis as lower confidence.
+- Do not invent tokens, screenshots, iconography, or motion.
+- Mark approximations clearly in source/analysis-notes.md.
+- **MANDATORY**: Use `templates/design-board-preview.html`, `.css`, and `.js` as the base for `preview.html`.
+- **MANDATORY**: Include "Design Prompt Add-on" with the "Copy Full Design Direction" button.
+- **PROHIBITED**: Creating a simplified or shallow `preview.html`.
+- **PROHIBITED**: Over-coloring the documentation. Shell headings MUST remain neutral; use brand color only for accents.
+
+Required outputs:
+designs/[project-slug]/
+├── DESIGN.md
+├── preview.html
+├── tokens.json
+├── theme.css
+└── source/
+    ├── source-url.txt or source-path.txt
+    ├── analysis-notes.md
+    └── screenshots/
+
+Process:
+1. Determine project name and slug.
+2. Inspect available source evidence surgical and deep.
+3. Extract colors, typography, spacing, radius, surfaces, borders, components, iconography, effects, motion, and layout structures.
+4. Generate DESIGN.md compatible with @google/design.md.
+5. Run: npx @google/design.md lint designs/[project-slug]/DESIGN.md
+6. Fix real lint errors only.
+7. Export tokens.json and theme.css.
+8. Generate the visual Brandbook Preview LP in `preview.html` by populating ALL sections of the standard template.
+9. Ensure the "Design Prompt Add-on" section contains high-quality visual direction blocks.
+10. Report final files, lint result, limitations, and open command.
+"""

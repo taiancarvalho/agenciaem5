@@ -98,6 +98,66 @@ export function loadLearningsCount(month) {
 // FINANCEIRO — leitura para /financeiro page
 // ============================================
 
+// ============================================
+// CLIENTE INDIVIDUAL — /cliente/[slug] page (Fase 13.4)
+// ============================================
+
+export function loadClienteCompleto(slug) {
+  const dir = path.join(CLIENTES_DIR, slug);
+  if (!fs.existsSync(dir)) return null;
+
+  const status = safeReadYAML(path.join(dir, 'operacao/status.yaml')) || {};
+  const mensalidade = safeReadYAML(path.join(dir, 'financeiro/mensalidade.yaml')) || {};
+  const branding = safeReadYAML(path.join(dir, 'branding/cores.yaml')) || {};
+  const cobrancas = safeReadYAML(path.join(dir, 'financeiro/cobrancas.yaml')) || [];
+
+  const designPath = path.join(dir, 'branding/DESIGN.md');
+  const previewPath = path.join(dir, 'branding/preview.html');
+  const tokensPath = path.join(dir, 'branding/tokens.json');
+
+  let designContent = null;
+  if (fs.existsSync(designPath)) {
+    designContent = fs.readFileSync(designPath, 'utf8');
+  }
+
+  let tokens = null;
+  if (fs.existsSync(tokensPath)) {
+    try { tokens = JSON.parse(fs.readFileSync(tokensPath, 'utf8')); } catch (e) {}
+  }
+
+  return {
+    slug,
+    nome: status.nome || slug,
+    nicho: status.nicho || '—',
+    estagio: status.estagio || 'desconhecido',
+    roas_semanal: status.roas_semanal,
+    cpa_atual: status.cpa_atual,
+    proxima_acao: status.proxima_acao || '—',
+    alerta_severidade: status.alerta_severidade,
+    alerta_mensagem: status.alerta_mensagem,
+    ultima_atualizacao: status.ultima_atualizacao,
+    mensalidade: mensalidade.valor_mensal || 0,
+    billing_type: mensalidade.billing_type,
+    asaas_customer_id: mensalidade.asaas_customer_id,
+    inadimplencia_dias: mensalidade.inadimplencia_dias || 0,
+    cobrancas: Array.isArray(cobrancas) ? cobrancas : [],
+    branding_cor: branding.primaria || '#5b8dee',
+    design: {
+      has_design_md: !!designContent,
+      has_preview: fs.existsSync(previewPath),
+      has_tokens: !!tokens,
+      content_preview: designContent ? designContent.slice(0, 800) : null,
+      tokens: tokens,
+    },
+  };
+}
+
+export function listClienteSlugs() {
+  if (!fs.existsSync(CLIENTES_DIR)) return [];
+  return fs.readdirSync(CLIENTES_DIR)
+    .filter((d) => !d.startsWith('_') && fs.statSync(path.join(CLIENTES_DIR, d)).isDirectory());
+}
+
 export function loadClienteFinanceiro(slug) {
   const finDir = path.join(CLIENTES_DIR, slug, 'financeiro');
   if (!fs.existsSync(finDir)) return null;

@@ -59,7 +59,8 @@ const fmtBRL = (v) => v
   ) : (
     <div class="clients-grid">
       {clientesOrdenados.map((c) => (
-        <div class={`client-card severity-${c.alerta_severidade || 'none'}`}>
+        <a href={`/cliente/${c.slug}`} style="text-decoration: none; color: inherit;">
+        <div class={`client-card severity-${c.alerta_severidade || 'none'}`} style="cursor: pointer;">
           {c.alerta_severidade && (
             <div class="alert">
               <span class={`badge ${c.alerta_severidade}`}>{c.alerta_severidade.toUpperCase()}</span>
@@ -90,6 +91,7 @@ const fmtBRL = (v) => v
             <strong>Próximo:</strong> {c.proxima_acao}
           </div>
         </div>
+        </a>
       ))}
     </div>
   )}
