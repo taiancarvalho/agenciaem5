@@ -1,0 +1,70 @@
+# Tipos de Publicos para Segmentacao
+# Versao: 1.0
+# Usado por: @traffic ao mapear e estruturar campanhas
+
+frio:
+  descricao: "Pessoas que nao conhecem a marca. Objetivo: atrair e qualificar."
+  tipos:
+    interesses_amplos:
+      descricao: "Interesses relacionados ao produto/servico do cliente"
+      quando_usar: "inicio de operacao, construcao de base"
+      tamanho_tipico: "500k-5M pessoas"
+
+    lookalike_1_3pct:
+      descricao: "Publico semelhante aos melhores clientes (1% = mais preciso, 3% = maior alcance)"
+      quando_usar: "quando ha base de clientes ou leads suficiente (min 100 pessoas)"
+      fonte_recomendada: "lista de clientes pagantes ou leads qualificados"
+
+    prospeccao_video_view:
+      descricao: "Pessoas que assistiram pelo menos 25% de um video da campanha de audiencia"
+      quando_usar: "apos 30+ dias de campanha de audiencia ativa"
+      posicao_no_funil: "topo-meio (semi-frio)"
+
+quente:
+  descricao: "Pessoas que ja interagiram com a marca. Objetivo: converter."
+  tipos:
+    retargeting_site_7d:
+      descricao: "Visitantes do site nos ultimos 7 dias"
+      quando_usar: "sempre que pixel estiver instalado e com dados"
+      volume_necessario: "minimo 100 pessoas para funcionar"
+      prioridade: alta
+
+    retargeting_site_30d:
+      descricao: "Visitantes do site nos ultimos 30 dias (excluindo 7d)"
+      quando_usar: "quando o 7d for muito pequeno"
+      prioridade: media
+
+    engajamento_instagram_30d:
+      descricao: "Pessoas que interagiram com o perfil no Instagram em 30 dias"
+      quando_usar: "quando ha perfil ativo com engajamento regular"
+      inclui:
+        - curtidas e comentarios em posts
+        - mensagens diretas
+        - cliques no perfil
+        - salvamentos
+
+    lista_leads:
+      descricao: "Lista de leads que nao converteram"
+      quando_usar: "quando ha lista de emails ou telefones de leads frios"
+      objetivo: "reativar ou nutrir"
+
+    lista_clientes:
+      descricao: "Lista de clientes existentes"
+      quando_usar: "upsell, cross-sell, retencao, LTV"
+      tambem_usar_para: "criar lookalike de alta qualidade"
+
+estrutura_recomendada_por_campanha:
+  campanha_audiencia:
+    - interesses_amplos
+    - lookalike_1_3pct
+    obs: "publico frio — objetivo alcance e engajamento"
+
+  campanha_resultado:
+    publico_frio: "40% da verba — lookalike 1% ou interesses qualificados"
+    publico_quente: "60% da verba — retargeting site + engajamento"
+
+regras:
+  - "Sempre excluir clientes existentes de campanhas de prospeccao"
+  - "Lookalike precisa de minimo 100 pessoas na fonte (ideal 1000+)"
+  - "Retargeting abaixo de 100 pessoas nao funciona — ampliar janela ou fonte"
+  - "Nao misturar frio e quente na mesma campanha — performance nao e mensuravel"

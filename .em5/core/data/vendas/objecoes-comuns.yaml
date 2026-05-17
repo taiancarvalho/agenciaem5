@@ -1,0 +1,74 @@
+# em5 — Objeções Comuns (Vendas)
+# @vendas Caça consulta antes de responder ao prospect.
+# Adicionar nova objeção: append + tag por nicho se específica.
+
+objecoes:
+  preco_caro:
+    tag: "[#preco]"
+    sinais: ["caro", "muito alto", "fora do orçamento", "consigo mais barato"]
+    resposta_padrao: |
+      Entendo. Antes de comparar valor, vale entender:
+      Hoje você paga quanto por cliente novo (CAC)?
+      Nosso preço só faz sentido se cobrir esse custo + sobrar margem.
+    contra_pergunta: "Quanto cliente novo vale pro seu negócio nos próximos 12 meses?"
+    nao_fazer: "Dar desconto imediato. Discutir valor, não preço."
+
+  tempo_avaliar:
+    tag: "[#tempo]"
+    sinais: ["preciso pensar", "vou conversar com sócio", "depois te falo"]
+    resposta_padrao: |
+      Faz sentido. Só pra eu te ajudar melhor:
+      O que especificamente você quer discutir?
+      Posso te mandar 1 material que cobre essa dúvida.
+    timing_follow_up: 7  # dias
+    nao_fazer: "Pressionar fechamento imediato."
+
+  ja_tenho_agencia:
+    tag: "[#concorrente]"
+    sinais: ["já tenho agência", "estou com outra", "tenho gestor"]
+    resposta_padrao: |
+      Massa. Pergunta franca: o que está funcionando bem com eles?
+      E o que poderia estar melhor?
+    objetivo: descobrir gap, não atacar concorrente
+    nao_fazer: "Falar mal do concorrente. Discutir o resultado."
+
+  faz_internamente:
+    tag: "[#interno]"
+    sinais: ["minha equipe faz", "tenho funcionário", "gerencio eu mesmo"]
+    resposta_padrao: |
+      Show. Quanto tempo da sua semana isso consome?
+      E se você recuperasse 80% desse tempo focando no que só você faz?
+    objetivo: explicitar custo de oportunidade
+    nao_fazer: "Desvalorizar o trabalho interno."
+
+  resultado_garantido:
+    tag: "[#garantia]"
+    sinais: ["garante X leads?", "garante ROAS Y?"]
+    resposta_padrao: |
+      Não garanto número específico (quem garante mente).
+      Garanto método, transparência e ajuste rápido se desviar.
+      Em 90 dias, se não houver evolução clara, você sai sem multa.
+    nao_fazer: "Garantir número (Art. VI honestidade)."
+
+  precisa_caso_nicho:
+    tag: "[#case]"
+    sinais: ["tem case no meu nicho?", "alguém parecido comigo?"]
+    resposta_padrao: |
+      Sim/Não (honesto). {Se sim:} mando o case. {Se não:} mas tenho case análogo em {nicho próximo} — quer ver?
+    nao_fazer: "Inventar case (Art. VI). Buscar case real ou recusar."
+
+# Por nicho — objeções específicas
+por_nicho:
+  clinica_odonto:
+    - "CRO não deixa anunciar tratamento"
+      resposta: "Sei. Trabalhamos com mensagem informativa, não promocional."
+    - "Resultado depende do dentista, não do tráfego"
+      resposta: "Verdade. Tráfego trás interessado. Conversão é arte do consultório. Treinamos roteiro de pré-atendimento."
+
+  saas_b2b:
+    - "Ciclo de venda é longo"
+      resposta: "Por isso medimos lead qualificado + SQL, não fechamento direto."
+
+  info_produto:
+    - "Lançamento é orgânico, não pago"
+      resposta: "Beleza. Tráfego pago acelera lista pré-lançamento. Quer testar 30 dias?"

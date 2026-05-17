@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadFinanceiroGlobal } from '../lib/loader.js';
+
+const { clientes, kpis } = loadFinanceiroGlobal();
+
+// Ordena clientes: vencidos primeiro, depois inadimplência, depois MRR
+const clientesOrdenados = [...clientes].sort((a, b) => {
+  if (a.total_vencido !== b.total_vencido) return b.total_vencido - a.total_vencido;
+  if (a.inadimplencia_dias !== b.inadimplencia_dias) return b.inadimplencia_dias - a.inadimplencia_dias;
+  return b.valor_mensal - a.valor_mensal;
+});
+
+const fmtBRL = (v) => v
+  ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
+  : 'R$ 0,00';
+
+const inadimplenciaSeverity = (dias) => {
+  if (dias === 0) return 'ok';
+  if (dias <= 7) return 'baixo';
+  if (dias <= 14) return 'medio';
+  if (dias <= 29) return 'alto';
+  return 'critico';
+};
+---
+<Base title="Financeiro">
+  <nav style="margin-bottom: 2rem;">
+    <a href="/" style="color: var(--accent); font-size: 0.9rem;">← Painel</a>
+    <span style="color: var(--text-dim); margin: 0 0.5rem;">/</span>
+    <span style="color: var(--text);">Financeiro</span>
+  </nav>
+
+  <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem;">💰 Financeiro</h2>
+
+  <!-- KPIs -->
+  <section class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">MRR</div>
+      <div class="kpi-value">{fmtBRL(kpis.mrr)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">ARR projetado</div>
+      <div class="kpi-value">{fmtBRL(kpis.arr_projetado)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Recebido (acumulado)</div>
+      <div class="kpi-value" style="color: var(--ok)">{fmtBRL(kpis.recebido_mes)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Pendente</div>
+      <div class="kpi-value">{fmtBRL(kpis.pendente)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Vencido</div>
+      <div class="kpi-value" style={kpis.vencido > 0 ? 'color: var(--critico)' : ''}>{fmtBRL(kpis.vencido)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Inadimplentes (&gt;7d)</div>
+      <div class="kpi-value" style={kpis.inadimplentes_count > 0 ? 'color: var(--alto)' : ''}>{kpis.inadimplentes_count}</div>
+    </div>
+  </section>
+
+  <h3 style="margin: 2rem 0 1rem; font-size: 1.15rem;">Por cliente</h3>
+
+  {clientesOrdenados.length === 0 ? (
+    <p style="color: var(--text-dim); text-align: center; padding: 2rem;">
+      Nenhum cliente com dados financeiros ainda.
+      Use <code>@fin Caixa *cadastrar-cliente-asaas {`{slug}`}</code> pra começar.
+    </p>
+  ) : (
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden;">
+        <thead>
+          <tr style="background: var(--bg); border-bottom: 1px solid var(--border);">
+            <th style="padding: 0.75rem 1rem; text-align: left; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Cliente</th>
+            <th style="padding: 0.75rem 1rem; text-align: right; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Mensalidade</th>
+            <th style="padding: 0.75rem 1rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Cobranças</th>
+            <th style="padding: 0.75rem 1rem; text-align: right; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Recebido</th>
+            <th style="padding: 0.75rem 1rem; text-align: right; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Pendente</th>
+            <th style="padding: 0.75rem 1rem; text-align: right; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Vencido</th>
+            <th style="padding: 0.75rem 1rem; text-align: center; font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase;">Inadimplência</th>
+          </tr>
+        </thead>
+        <tbody>
+          {clientesOrdenados.map((c) => (
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 0.85rem 1rem;">
+                <div style="font-weight: 600;">{c.nome}</div>
+                <div style="font-size: 0.75rem; color: var(--text-dim);">
+                  {c.billing_type} {c.asaas_customer_id ? '· Asaas ✓' : '· sem Asaas'}
+                </div>
+              </td>
+              <td style="padding: 0.85rem 1rem; text-align: right; font-weight: 600;">{fmtBRL(c.valor_mensal)}</td>
+              <td style="padding: 0.85rem 1rem; text-align: center; font-size: 0.85rem;">
+                <span style="color: var(--ok);">{c.pagas} ✓</span>
+                {' · '}
+                <span>{c.pendentes}</span>
+                {c.vencidas > 0 && <span style="color: var(--critico);"> · {c.vencidas} ✗</span>}
+              </td>
+              <td style="padding: 0.85rem 1rem; text-align: right; color: var(--ok); font-weight: 500;">{fmtBRL(c.total_recebido)}</td>
+              <td style="padding: 0.85rem 1rem; text-align: right;">{fmtBRL(c.total_pendente)}</td>
+              <td style="padding: 0.85rem 1rem; text-align: right;" style={c.total_vencido > 0 ? 'color: var(--critico); font-weight: 600;' : ''}>{fmtBRL(c.total_vencido)}</td>
+              <td style="padding: 0.85rem 1rem; text-align: center;">
+                {c.inadimplencia_dias === 0 ? (
+                  <span class="badge ok">OK</span>
+                ) : (
+                  <span class={`badge ${inadimplenciaSeverity(c.inadimplencia_dias)}`}>{c.inadimplencia_dias}d</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+
+  <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-card); border-radius: 8px; font-size: 0.85rem; color: var(--text-dim);">
+    <strong style="color: var(--text);">💡 Tip:</strong>
+    Dados vêm de <code>.em5/clientes/{`{slug}`}/financeiro/</code>.
+    Sync com Asaas via <code>@fin Caixa *sync-asaas</code>.
+    Inadimplência atualiza no <code>/dia</code>.
+  </div>
+</Base>

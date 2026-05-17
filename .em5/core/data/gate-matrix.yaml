@@ -1,0 +1,170 @@
+# em5 — Gate Matrix (Severity-Based)
+# Substitui validação binária (APROVADO/BLOQUEADO) por sistema de severidade.
+# Lido por @qa (Crivo) em validar-campanha.md.
+# Activated via em5-config.yaml: gates.severity_matrix.enabled = true
+
+version: "1.0"
+date: "2026-05-16"
+
+# Níveis de severidade e ações
+severity_levels:
+  critico:
+    label: "🔴 CRÍTICO"
+    action: bloqueia
+    override: never  # NUNCA pode ser overridado
+    description: "Issues que quebram a operação ou põem risco direto. Não negociável."
+  alto:
+    label: "🟠 ALTO"
+    action: bloqueia
+    override: role_specific  # role específica pode overridar
+    description: "Issues importantes. Permite override por role específica com justificativa em learnings."
+  medio:
+    label: "🟡 MÉDIO"
+    action: revisao_solicitada
+    auto_fix: true  # agente original pode auto-corrigir
+    description: "Issues corrigíveis. Volta pro agente que fez."
+  baixo:
+    label: "🟢 BAIXO"
+    action: aprovado_com_ressalva
+    log: true
+    description: "Pequenas inconsistências. Publica + loga em learnings."
+
+# Gates por domínio
+gates:
+  copy:
+    sem_cta:
+      severity: critico
+      reason: "Sem CTA = sem conversão. Não negociável."
+
+    erro_ortografico:
+      severity: alto
+      override_role: ceo
+      reason: "Marca não pode publicar erro. Override só se for intencional (ex: gíria do nicho)."
+
+    promessa_irreal:
+      severity: critico
+      reason: "Promessa sem entrega = mentira. Bloqueio absoluto."
+
+    sem_icp_identificavel:
+      severity: alto
+      override_role: strategist
+      reason: "Copy genérica não converte. Override pra teste de hipótese de público amplo."
+
+    tom_levemente_off:
+      severity: medio
+      auto_fix: true
+      reason: "@copywriter ajusta sem precisar de re-validação."
+
+    formatacao_emoji:
+      severity: baixo
+      log: true
+      reason: "Não trava publicação. Log pra padronização futura."
+
+  trafego:
+    pixel_ausente:
+      severity: critico
+      reason: "Sem pixel = sem mensuração = sem otimização. Bloqueio absoluto."
+
+    pixel_evento_zero:
+      severity: critico
+      reason: "Pixel instalado mas não disparando = mesma situação."
+
+    objetivo_campanha_errado:
+      severity: critico
+      reason: "Otimizando errado = queima budget. Bloqueio."
+
+    publico_amplo_demais:
+      severity: alto
+      override_role: strategist
+      reason: "Geralmente erro. Override pra teste de hipótese A/B documentado."
+
+    budget_acima_briefing:
+      severity: alto
+      override_role: ceo
+      reason: "Compromisso financeiro com cliente. Só CEO override."
+
+    nomenclatura_fora_padrao:
+      severity: medio
+      auto_fix: true
+      reason: "@traffic renomeia. Comparabilidade entre clientes importa."
+
+    horario_publicacao_subotimo:
+      severity: baixo
+      log: true
+      reason: "Não trava. Log pra otimização de janela."
+
+  landing:
+    sem_pixel:
+      severity: critico
+      reason: "LP sem pixel = campanha cega. Bloqueio."
+
+    formulario_quebrado:
+      severity: critico
+      reason: "Lead não chega = campanha inútil. Bloqueio."
+
+    message_match_baixo:
+      severity: alto
+      override_role: strategist
+      reason: "Copy do ad ≠ copy da LP = perda de conversão. Override só pra teste."
+
+    load_lento_3s:
+      severity: medio
+      auto_fix: false  # @cs negocia com cliente pra otimizar
+      reason: "> 3s prejudica conversão mobile. Revisão antes de subir budget."
+
+    cta_pouco_visivel:
+      severity: medio
+      auto_fix: true
+      reason: "@designer ajusta cor/posição."
+
+    favicon_ausente:
+      severity: baixo
+      log: true
+      reason: "Profissionalismo, não conversão."
+
+  design:
+    logo_baixa_resolucao:
+      severity: alto
+      override_role: ceo
+      reason: "Marca não pode aparecer pixelada."
+
+    cores_fora_branding:
+      severity: alto
+      override_role: strategist
+      reason: "Override só se for campanha sazonal aprovada."
+
+    cta_invisivel_no_creative:
+      severity: critico
+      reason: "Criativo sem CTA legível = lead perdido."
+
+    formato_errado_plataforma:
+      severity: alto
+      override_role: traffic
+      reason: "Story 1080x1920, Feed 1080x1080, etc. Override só pra fallback documentado."
+
+    texto_excessivo_meta:
+      severity: medio
+      auto_fix: true
+      reason: "Meta penaliza ads com > 20% texto. @designer reduz."
+
+# Mapping pros 4 verdictos do @qa
+verdicts:
+  APROVADO:
+    icon: "✅"
+    triggers: "Zero issues medio+ encontrados"
+    action: "Publica imediatamente"
+
+  APROVADO_COM_RESSALVA:
+    icon: "⚠️"
+    triggers: "Apenas issues baixo encontrados"
+    action: "Publica + log em learnings/qa-overrides.md"
+
+  REVISAO:
+    icon: "🔄"
+    triggers: "Issues medio (com auto_fix)"
+    action: "Volta pro agente original pra corrigir"
+
+  BLOQUEADO:
+    icon: "🚫"
+    triggers: "Issues alto ou critico"
+    action: "Bloqueia. critico = nunca override. alto = override por role específica."

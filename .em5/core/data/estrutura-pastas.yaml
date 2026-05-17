@@ -1,0 +1,90 @@
+# Estrutura de pastas do cliente
+# Versao: 1.1
+# Usado por: @ceo (novo-cliente), @cs (onboarding), todos os agentes
+
+raiz_sistema: ".em5/"
+raiz_clientes: ".em5/clientes/{nome}/"
+
+cliente:
+  onboarding:
+    path: ".em5/clientes/{nome}/onboarding/"
+    arquivos:
+      - briefing-respostas.md
+      - briefing-final.md
+      - contrato.md
+      - contato.md
+
+  estrategia:
+    path: ".em5/clientes/{nome}/estrategia/"
+    arquivos:
+      - plano-estrategico.md
+      - analise-briefing.md
+      - analise-concorrentes.md
+
+  copy:
+    path: ".em5/clientes/{nome}/copy/"
+    descricao: "Pecas de copy organizadas por ID (CR-XXX)"
+    arquivos_padrao:
+      - analise-icp.md
+      - (CR-XXX por tipo)
+
+  design:
+    path: ".em5/clientes/{nome}/design/"
+    diretorios:
+      - criativos/
+      - videos/
+      - landing-pages/
+      - exports/
+    arquivos_padrao:
+      - (CR-XXX por tipo com versionamento v1, v2...)
+
+  assets:
+    path: ".em5/clientes/{nome}/assets/"
+    diretorios:
+      - logo/
+      - fotos/
+      - videos/
+      - produtos/
+
+  branding:
+    path: ".em5/clientes/{nome}/branding/"
+    arquivos:
+      - cores.yaml
+      - fontes.yaml
+      - guia-estilo.md
+
+  setup-tecnico:
+    path: ".em5/clientes/{nome}/setup-tecnico/"
+    arquivos:
+      - acessos.md
+      - checklist-tracking.md
+      - status.md
+
+  trafego:
+    path: ".em5/clientes/{nome}/trafego/"
+    arquivos_padrao:
+      - estrutura-campanhas.md
+      - auditoria-meta-{data}.md
+      - auditoria-google-{data}.md
+      - plano-growth.md (se growth ativo)
+
+  relatorios:
+    path: ".em5/clientes/{nome}/relatorios/"
+    descricao: "Relatorios por periodo"
+    arquivos_padrao:
+      - relatorio-{YYYY-MM}.md
+
+  reunioes:
+    path: ".em5/clientes/{nome}/reunioes/"
+    arquivos_padrao:
+      - pauta-{YYYY-MM-DD}.md
+
+  operacao:
+    path: ".em5/clientes/{nome}/operacao/"
+    arquivos:
+      - log-operacional.md        # dono: @cs
+      - log-performance-criativa.md  # dono: @copywriter, colabora: @designer, @traffic
+      - log-growth.md             # usado em modo-growth
+      - proximos-passos.md        # atualizado por @cs
+    diretorios:
+      - historico/

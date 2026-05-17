@@ -1,0 +1,16 @@
+# em5 — Branding do cliente
+# Cor primária consumida pelo painel pra customização visual (futuro).
+
+primaria: "#0066cc"
+secundaria: "#5b8dee"
+acento: "#22c55e"
+texto: "#0a0e1a"
+fundo: "#ffffff"
+
+# Tipografia
+fonte_titulo: "Inter"
+fonte_corpo: "Inter"
+
+# Logo
+logo_url: null  # caminho relativo a clientes/{slug}/assets/
+favicon_url: null

@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadAgencyConfig, listClientes, computeAgencyKPIs, listLearningsMonths, loadLearningsCount } from '../lib/loader.js';
+
+const config = loadAgencyConfig();
+const clientes = listClientes();
+const kpis = computeAgencyKPIs(clientes);
+const learningsMonths = listLearningsMonths();
+const learningsAtual = learningsMonths[0] ? loadLearningsCount(learningsMonths[0]) : 0;
+
+// Ordena: críticos primeiro
+const clientesOrdenados = [...clientes].sort((a, b) => {
+  const order = { critico: 0, alto: 1, medio: 2, baixo: 3, null: 4, undefined: 4 };
+  return (order[a.alerta_severidade] || 4) - (order[b.alerta_severidade] || 4);
+});
+
+const fmtBRL = (v) => v
+  ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v)
+  : '—';
+---
+<Base title={config.agency?.name || 'em5'}>
+  <section class="kpis">
+    <div class="kpi">
+      <div class="kpi-label">Clientes ativos</div>
+      <div class="kpi-value">{kpis.ativos}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Críticos</div>
+      <div class="kpi-value" style={kpis.criticos > 0 ? 'color: var(--critico)' : ''}>{kpis.criticos}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Inadimplentes (&gt;7d)</div>
+      <div class="kpi-value" style={kpis.inadimplentes > 0 ? 'color: var(--alto)' : ''}>{kpis.inadimplentes}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">ROAS médio semanal</div>
+      <div class="kpi-value">{kpis.roas_medio_semanal}{typeof kpis.roas_medio_semanal === 'string' && kpis.roas_medio_semanal !== '—' ? 'x' : ''}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">MRR</div>
+      <div class="kpi-value">{fmtBRL(kpis.mrr_brl)}</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Learnings ({learningsMonths[0] || '—'})</div>
+      <div class="kpi-value">{learningsAtual}</div>
+    </div>
+  </section>
+
+  <nav style="margin-bottom: 1.5rem;">
+    <a href="/financeiro" style="color: var(--accent); font-size: 0.9rem;">💰 Financeiro →</a>
+  </nav>
+
+  <h2 style="margin-bottom: 1rem; font-size: 1.25rem;">Clientes</h2>
+
+  {clientesOrdenados.length === 0 ? (
+    <p style="color: var(--text-dim); text-align: center; padding: 2rem;">
+      Nenhum cliente ainda. Use <code>/cliente-novo</code> pra começar.
+    </p>
+  ) : (
+    <div class="clients-grid">
+      {clientesOrdenados.map((c) => (
+        <div class={`client-card severity-${c.alerta_severidade || 'none'}`}>
+          {c.alerta_severidade && (
+            <div class="alert">
+              <span class={`badge ${c.alerta_severidade}`}>{c.alerta_severidade.toUpperCase()}</span>
+              <div style="margin-top: 0.25rem;">{c.alerta_mensagem || 'Sinal de atenção'}</div>
+            </div>
+          )}
+          <div class="client-name">{c.nome}</div>
+          <div class="client-nicho">{c.nicho}</div>
+          <div class="client-metrics">
+            <div>
+              <div class="metric-label">ROAS</div>
+              <div class="metric-value">{c.roas_semanal ? `${c.roas_semanal}x` : '—'}</div>
+            </div>
+            <div>
+              <div class="metric-label">CPA</div>
+              <div class="metric-value">{fmtBRL(c.cpa_atual)}</div>
+            </div>
+            <div>
+              <div class="metric-label">Mensalidade</div>
+              <div class="metric-value">{fmtBRL(c.mensalidade)}</div>
+            </div>
+            <div>
+              <div class="metric-label">Inadimplência</div>
+              <div class="metric-value">{c.inadimplencia_dias > 0 ? `${c.inadimplencia_dias}d` : 'ok'}</div>
+            </div>
+          </div>
+          <div class="client-next">
+            <strong>Próximo:</strong> {c.proxima_acao}
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+</Base>

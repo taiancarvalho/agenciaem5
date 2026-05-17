@@ -1,0 +1,80 @@
+# em5 — Concorrentes Conhecidos por Nicho
+# @scout Espia consulta antes de mapear concorrência nova.
+# Cresce com aprendizados — toda nova base de cliente alimenta este arquivo.
+
+versao: "1.0"
+data_atualizacao: "2026-05-16"
+
+# Estrutura: nicho → concorrentes nacionais + por região (se relevante)
+
+clinica_odonto:
+  nacionais_referencia:
+    - nome: "OdontoCompany"
+      url: https://www.odontocompany.com.br
+      diferenciador: "rede com 800+ unidades"
+      sinal_forca: alto
+    - nome: "Dental Clean"
+      url: https://www.dentalclean.com.br
+      sinal_forca: alto
+  ads_libraries_uteis:
+    - https://www.facebook.com/ads/library/?country=BR&q=clinica+odonto
+  observacoes:
+    - "CRO restringe palavras. Cuidado com 'milagre', 'sem dor', etc."
+    - "Maioria anuncia parcelamento e localização"
+
+clinica_estetica:
+  nacionais_referencia:
+    - nome: "Onodera"
+      url: https://www.onodera.com.br
+      sinal_forca: alto
+    - nome: "Esthetic Center"
+      sinal_forca: medio
+  ads_libraries_uteis:
+    - https://www.facebook.com/ads/library/?country=BR&q=clinica+estetica
+  observacoes:
+    - "Antes/depois é regulamentado (CFM). Anti-padrão pra ads."
+
+saas_b2b:
+  nacionais_referencia:
+    - nome: "RD Station"
+      url: https://www.rdstation.com.br
+      sinal_forca: alto
+    - nome: "Pipefy"
+      url: https://www.pipefy.com
+      sinal_forca: alto
+  observacoes:
+    - "Ciclo longo. Conteúdo > ad direto."
+    - "Webinar/ebook como lead magnet padrão"
+
+ecommerce:
+  marketplaces:
+    - "Shopee", "Mercado Livre", "Amazon BR" (não competir — usar como tráfego origem)
+  agencias_concorrentes:
+    - "Webedia", "iProspect", "Wavy"
+  observacoes:
+    - "ROAS 4x é benchmark mínimo. Abaixo = problema."
+
+info_produto:
+  plataformas_principais:
+    - "Hotmart", "Eduzz", "Kiwify", "Monetizze"
+  agencias_concorrentes:
+    - "Espanta Cliente", "Tray", "G4 Educação"
+  observacoes:
+    - "Lançamentos seguem fórmulas (PLF, lançamento meteórico, etc.)"
+    - "Saturação alta — diferencial é mecanismo único"
+
+servicos_locais:
+  observacoes:
+    - "Concorrência é hiperlocal — buscar no Google Maps pelo termo"
+    - "Reviews Google = maior diferencial"
+
+# Tags úteis pra alertas
+sinais_de_movimento:
+  - mudou_headline_homepage
+  - baixou_preco
+  - lancou_novo_servico
+  - mudou_proposta_valor
+  - subiu_ads_novos (>5 em 1 semana)
+  - parou_de_anunciar (zero ads por 7+ dias)
+  - mudou_publico_target (deduzível dos ads)
+  - mudou_canal_principal (saiu Meta, foi pro TikTok)

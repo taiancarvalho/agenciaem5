@@ -1,0 +1,45 @@
+# em5 — Preço por Serviço (custos internos + cobrança ao cliente)
+# Usado pelo @fin Caixa pra calcular margem por cliente.
+
+versao: "1.0"
+data_atualizacao: "2026-05-16"
+moeda: BRL
+
+# Custo interno da agência por hora (solo gestor)
+custo_hora_agencia: 80
+
+# Custo médio em horas por serviço (estimativa pra calcular margem)
+horas_por_servico:
+  estrategia_inicial: 4  # setup
+  estrategia_mensal: 2
+  copy_anuncio: 0.5  # por anúncio
+  copy_email: 1  # por sequência
+  design_estatico: 0.5  # por criativo
+  design_video: 1.5  # por video curto
+  gestao_meta_ads: 4  # mensal por conta
+  gestao_google_ads: 3  # mensal por conta
+  cs_relatorio_mensal: 2
+  qa_validacao: 0.5  # por campanha
+  reuniao_cliente: 1  # por hora real
+
+# Cobrança ao cliente (incluso no fee mensal)
+incluso_no_fee_mensal:
+  - estrategia
+  - copy_ate_8_anuncios
+  - design_ate_8_criativos
+  - gestao_meta_OR_google
+  - cs_relatorio_mensal
+  - qa_obrigatorio
+
+# Cobrança extra (fora do escopo padrão)
+cobranca_extra:
+  copy_email_sequence: 800  # por sequência adicional
+  design_video_profissional: 1500  # por vídeo > 60s
+  gestao_segundo_canal: 1500  # /mês (ex: TikTok além de Meta)
+  consultoria_avulsa: 250  # /hora
+  setup_pixel_custom: 500  # one-time
+
+# Calculadora — função de referência
+calcular_margem_servico:
+  formula: "margem = (cobranca - (horas × custo_hora_agencia)) / cobranca"
+  alerta_se_margem_abaixo_de: 30  # %

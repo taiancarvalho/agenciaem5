@@ -1,0 +1,81 @@
+name: construcao-ciclo-completo
+description: Ciclo completo do meta-time CONSTRUÇÃO — user → @arq → @builder → @reviewer → commit
+version: 1.0
+fase: 6
+
+stages:
+  - id: entrevista
+    agent: arq
+    task: entrevistar
+    inputs:
+      - user_input  # frase original
+    outputs:
+      - .em5/construcao/{ticket}/entrevista.md
+    success_criteria:
+      - ticket_id_gerado
+      - user_confirmou_entendimento
+      - tempo_input_humano <= 5min
+    next: design_spec
+    on_fail: abort_with_feedback
+
+  - id: design_spec
+    agent: arq
+    task: desenhar-spec
+    inputs:
+      - .em5/construcao/{ticket}/entrevista.md
+    outputs:
+      - .em5/construcao/{ticket}/spec.md
+    success_criteria:
+      - spec_status = approved
+      - constitution_checks_passed
+      - user_aprovou_spec
+    next: build
+    on_fail: revise_spec
+
+  - id: build
+    agent: builder
+    task: implementar-componente
+    inputs:
+      - .em5/construcao/{ticket}/spec.md
+    outputs:
+      - arquivos_componente
+      - .em5/construcao/{ticket}/build-log.md
+    success_criteria:
+      - todos_arquivos_secao_9_criados
+      - configs_centrais_atualizadas
+    next: review
+    on_fail: rollback
+
+  - id: review
+    agent: reviewer
+    task: validar-componente
+    inputs:
+      - .em5/construcao/{ticket}/spec.md
+      - .em5/construcao/{ticket}/build-log.md
+    outputs:
+      - .em5/construcao/{ticket}/review.md
+      - veredicto (APROVADO | AJUSTES | BLOQUEADO)
+    success_criteria:
+      - validate-em5_exit_0
+      - constitution_12_artigos_ok
+    next:
+      APROVADO: commit
+      AJUSTES: build  # volta pro builder corrigir
+      BLOQUEADO: design_spec  # volta pro arq re-especificar
+    on_fail: escalate
+
+  - id: commit
+    agent: builder
+    task: commit-componente
+    inputs:
+      - .em5/construcao/{ticket}/review.md (APROVADO)
+    outputs:
+      - git commit + push
+      - ticket status = done
+    success_criteria:
+      - commit_atomico
+      - push_ok
+    next: end
+
+  - id: end
+    description: Componente em produção. Notifica user com comando de teste.

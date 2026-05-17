@@ -1,0 +1,62 @@
+# Workflow: Social Media Organico
+# Versao: 1.0
+# Agentes: strategist → copywriter → designer → qa → cs
+
+nome: "social-media"
+descricao: "Fluxo de producao de conteudo organico para redes sociais"
+gatilho: "Cliente com servico de social media organico ativo"
+
+sequencia:
+  - etapa: "definir-calendario"
+    agente: "strategist"
+    entrada: "plano-estrategico.md + canais do cliente"
+    saida: "calendario editorial mensal (datas, temas, formatos)"
+    dependencia: nenhuma
+    frequencia: "mensal"
+
+  - etapa: "criar-pautas"
+    agente: "strategist"
+    entrada: "calendario editorial"
+    saida: "pautas detalhadas por post (tema, objetivo, formato, referencia)"
+    dependencia: "definir-calendario"
+
+  - etapa: "criar-copy-posts"
+    agente: "copywriter"
+    entrada: "pautas + plano-estrategico.md + branding/tom-de-voz"
+    saida: "copies finais por post (legenda, hashtags, CTA)"
+    dependencia: "criar-pautas"
+
+  - etapa: "criar-criativos"
+    agente: "designer"
+    entrada: "copies + branding kit + pautas"
+    saida: "criativos visuais por post (imagem/video + stories se aplicavel)"
+    dependencia: "criar-copy-posts"
+
+  - etapa: "validar-qa"
+    agente: "qa"
+    entrada: "copies + criativos + calendario"
+    saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
+    dependencia: "criar-criativos"
+
+  - etapa: "agendar-publicacao"
+    agente: "cs"
+    entrada: "conteudo APROVADO + calendario com datas"
+    saida: "posts agendados na ferramenta"
+    dependencia: "validar-qa"
+    notas: "Agendamento via ferramenta de scheduling — registrar no log operacional"
+
+  - etapa: "monitorar-engajamento"
+    agente: "cs"
+    entrada: "posts publicados"
+    saida: "registro de engajamento relevante no log operacional"
+    dependencia: "agendar-publicacao"
+    frequencia: "semanal"
+    notas: "Comentarios importantes, DMs relevantes, posts que viralizaram"
+
+frequencia_total: "mensal (planejamento) + semanal (producao e publicacao)"
+
+notas_importantes:
+  - "Calendario aprovado antes da producao — evitar retrabalho"
+  - "Copy e criativo produzidos juntos para coerencia"
+  - "QA valida coerencia visual + copy + branding antes de agendar"
+  - "Social media organico nao substitui trafego pago — e complementar"

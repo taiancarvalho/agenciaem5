@@ -1,0 +1,61 @@
+# Workflow: Iteracao Criativa Baseada em Performance
+# Versao: 1.0
+# Agentes: traffic → copywriter → designer → qa → traffic
+
+nome: "iteracao-criativa"
+descricao: "Quando a performance abaixo da meta, identificar a causa e produzir variacoes melhores"
+gatilho: "Campanha ativa com performance abaixo da KPI definada por 3-7 dias consecutivos"
+
+sequencia:
+  - etapa: "identificar-lacuna"
+    agente: "traffic"
+    entrada: "log-performance-criativa.md, metricas da plataforma"
+    saida: "diagnostico: problema e copy, criativo, publico ou canal"
+    dependencia: nenhuma
+
+  - etapa: "propor-nova-direcao"
+    agente: "traffic"
+    entrada: "diagnostico da lacuna"
+    saida: "briefing de iteracao para copy/design"
+    dependencia: "identificar-lacuna"
+
+  - etapa: "criar-novo-angulo-copy"
+    agente: "copywriter"
+    entrada: "briefing de iteracao, dados de performance"
+    saida: "nova copy ou variante de angulo"
+    dependencia: "propor-nova-direcao"
+
+  - etapa: "produzir-variacao-visual"
+    agente: "designer"
+    entrada: "nova copy, conceito atualizado"
+    saida: "novo criativo versionado (CR-XXX-v2)"
+    dependencia: "criar-novo-angulo-copy"
+
+  - etapa: "validar-iteracao"
+    agente: "qa"
+    entrada: "nova copy + novo criativo"
+    saida: "veredicto: APROVADO / REVISAO / BLOQUEADO"
+    dependencia: "produzir-variacao-visual"
+
+  - etapa: "subir-variacao"
+    agente: "traffic"
+    entrada: "veredicto APROVADO, variantes finais"
+    saida: "variacao ativa na plataforma em teste A/B"
+    dependencia: "validar-iteracao"
+
+  - etapa: "comparar-resultados"
+    agente: "traffic"
+    entrada: "metricas da variacao vs original (min. 3-7 dias)"
+    saida: "decisao: manter variacao, voltar a original ou iterar novamente"
+    dependencia: "subir-variacao"
+
+  - etapa: "registrar-aprendizado"
+    agente: "copywriter"
+    entrada: "resultado comparativo"
+    saida: "log-performance-criativa.md atualizado com resultado"
+    dependencia: "comparar-resultados"
+
+gatilho_iteracao_nova:
+  - "Variacao performou melhor → torna-se novo padrao"
+  - "Variacao performou pior ou igual → propor nova iteracao (max 3 ciclos)"
+  - "3 ciclos sem melhora → escalar para @strategist revisar direcao"

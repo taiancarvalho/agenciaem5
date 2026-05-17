@@ -1,0 +1,72 @@
+# Estrutura Base de Campanhas
+# Versao: 1.0
+# Usado por: @traffic ao estruturar campanhas
+
+meta_ads:
+  campanha_audiencia:
+    objetivo: REACH ou VIDEO_VIEWS
+    descricao: "Construir base de audiencia quente para retargeting futuro"
+    publico: "frio (interesse + lookalike 1-3%)"
+    verba_percentual: 40%
+    formatos_prioritarios:
+      - video (reels)
+      - carrossel
+    metricas_acompanhamento:
+      - alcance
+      - frequencia
+      - CPM
+      - ThruPlay (video)
+
+  campanha_resultado:
+    objetivo: LEAD_GENERATION ou CONVERSIONS ou MESSAGES
+    descricao: "Gerar o resultado direto acordado com o cliente"
+    publico:
+      frio_qualificado: "interesse + lookalike 1% (40% da verba da campanha)"
+      quente_retargeting: "site 7d, engajamento 30d, lista leads (60% da verba)"
+    verba_percentual: 60%
+    formatos_prioritarios:
+      - imagem estatica
+      - video curto
+      - carrossel
+    metricas_acompanhamento:
+      - CPL ou CPA
+      - ROAS (se e-commerce)
+      - taxa de conversao
+      - frequencia
+
+google_ads:
+  campanha_search:
+    objetivo: SEARCH
+    descricao: "Capturar demanda ativa — pessoas ja procurando o produto/servico"
+    match_types:
+      - exact
+      - phrase
+    estrutura_adgroups: "1 tema por grupo de anuncios"
+    metricas_acompanhamento:
+      - impressoes
+      - CTR
+      - CPC medio
+      - conversoes
+      - quality score
+
+  campanha_pmax:
+    objetivo: PERFORMANCE_MAX
+    descricao: "Alcance amplo com otimizacao automatica do Google"
+    assets_necessarios:
+      headlines: "minimo 15 (30 caracteres cada)"
+      descriptions: "minimo 4 (90 caracteres cada)"
+      images: "minimo 3 (varios formatos)"
+      videos: "recomendado (YouTube link)"
+      logo: "obrigatorio"
+      business_name: "obrigatorio"
+    metricas_acompanhamento:
+      - conversoes
+      - CPA
+      - ROAS
+      - parcela_de_impressoes
+
+regra_geral:
+  - "Nunca comecar com apenas uma campanha — estrutura minima sempre com 2"
+  - "Campanha de audiencia alimenta campanha de resultado (ciclo de 30-60 dias)"
+  - "Verba minima para aprendizado: R$30/dia por campanha"
+  - "Periodo de aprendizado: 7-14 dias antes de otimizacoes estruturais"

@@ -1,32 +1,51 @@
 {
-  "name": "agencyos-core",
-  "version": "0.1.0",
-  "description": "Sistema Operacional para Agencias de Marketing Digital — framework de agentes, tasks, templates e workflows",
+  "name": "em5-core",
+  "version": "1.3.0",
+  "description": "em5 — Agência em Cinco minutos. Sistema operacional pra gestor solo de agência de marketing digital. 15 agentes Claude Code, Composio gateway default + exceções, severity gates, learnings perpétuos, meta-time construção, Asaas BR.",
   "main": "index.js",
   "bin": {
-    "agencyos": "bin/agencyos.js"
+    "em5": "bin/em5.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "files": [
     "lib/",
     "bin/",
-    "agents/",
-    "core/",
-    "clientes/_template/",
-    "index.js",
+    ".em5/",
+    ".claude/",
+    "em5-config.yaml",
+    "AGENTS.md",
     "README.md"
   ],
   "scripts": {
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "install:em5": "node bin/em5.js install",
+    "upgrade:em5": "node bin/em5.js upgrade",
+    "validate": "node .em5/bin/em5-validate.js"
   },
   "keywords": [
+    "em5",
+    "agencia-em5",
+    "agencia-em-cinco-minutos",
     "agency",
     "marketing",
     "automation",
     "ai-agents",
     "claude",
-    "framework"
+    "framework",
+    "solo-operator"
   ],
-  "author": "",
+  "homepage": "https://github.com/taiancarvalho/agenciaem5",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taiancarvalho/agenciaem5.git"
+  },
+  "bugs": {
+    "url": "https://github.com/taiancarvalho/agenciaem5/issues"
+  },
+  "author": "Taian Carvalho",
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
@@ -35,5 +54,8 @@
     "inquirer": "^8.2.6",
     "js-yaml": "^4.1.0",
     "glob": "^10.4.4"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.0"
   }
 }

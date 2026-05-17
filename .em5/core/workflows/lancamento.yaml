@@ -1,0 +1,124 @@
+# Workflow: Lancamento
+# Versao: 1.0
+# Agentes: coo → strategist → copywriter → designer → traffic → qa → cs
+
+nome: "lancamento"
+descricao: "Fluxo pre/durante/pos-lancamento de produto ou servico"
+gatilho: "Cliente com lancamento programado ou pedido de campanha de lancamento"
+
+fases:
+  pre_lancamento:
+    descricao: "Preparacao completa antes da abertura de carrinho/inscricoes"
+    duracao_tipica: "2-4 semanas antes"
+    sequencia:
+      - etapa: "briefing-lancamento"
+        agente: "cs"
+        entrada: "briefing do cliente sobre o lancamento"
+        saida: "onboarding/briefing-lancamento.md"
+        campos_obrigatorios:
+          - produto/servico sendo lancado
+          - data de abertura e fechamento de carrinho
+          - meta de vendas/inscricoes
+          - publico-alvo
+          - preco e condicoes especiais
+          - materiais ja produzidos
+          - canais a usar
+
+      - etapa: "estrategia-lancamento"
+        agente: "strategist"
+        entrada: "briefing-lancamento.md"
+        saida: "estrategia/plano-lancamento.md"
+        dependencia: "briefing-lancamento"
+        inclui:
+          - sequencia de aquecimento (semanas antes)
+          - estrategia de abertura de carrinho
+          - estrategia de remarketing durante
+          - estrategia de recuperacao (ultimas horas/urgencia)
+          - canais e verbas por fase
+
+      - etapa: "preparar-criativos"
+        agente: "coo"
+        descricao: "Acionar copywriter e designer em paralelo"
+        delegacao:
+          copywriter: "criar-copy-lancamento — sequencia de emails, anuncios por fase, copy de vendas"
+          designer: "criar-criativos-lancamento — banners, videos, stories por fase"
+        dependencia: "estrategia-lancamento"
+
+      - etapa: "validar-qa"
+        agente: "qa"
+        entrada: "todos os materiais producidos (copy + criativos + LP)"
+        saida: "veredicto por material"
+        dependencia: "preparar-criativos"
+
+  durante_lancamento:
+    descricao: "Ativacao e monitoramento intensivo"
+    sequencia:
+      - etapa: "ativar-campanhas"
+        agente: "traffic"
+        entrada: "materiais APROVADOS + plano-lancamento.md"
+        saida: "campanhas ativas (Meta + Google se aplicavel)"
+        dependencia: "validar-qa"
+        ferramenta: "Composio MCP"
+
+      - etapa: "monitorar-intensivo"
+        agente: "traffic"
+        entrada: "campanhas ativas + metas do plano"
+        saida: "atualizacao diaria no log operacional"
+        dependencia: "ativar-campanhas"
+        frequencia: "2x por dia durante lancamento ativo"
+        alertas:
+          - gasto muito acima do normal: escalar para @coo
+          - CPL/CPA 2x acima da meta: otimizar urgente
+
+      - etapa: "otimizar-diario"
+        agente: "traffic"
+        entrada: "dados do dia anterior"
+        saida: "ajustes de campanha (pausar, escalar, redistribuir verba)"
+        dependencia: "monitorar-intensivo"
+        notas: "Durante lancamento, janela de analise e reduzida para 24-48h (excecao a regra dos 7 dias)"
+
+  pos_lancamento:
+    descricao: "Analise, aprendizados e otimizacao continua"
+    sequencia:
+      - etapa: "relatorio-lancamento"
+        agente: "traffic"
+        entrada: "dados completos do periodo"
+        saida: "relatorios/relatorio-lancamento-{data}.md"
+        dependencia: "ativar-campanhas"
+        conteudo:
+          - resultado versus meta
+          - custo de aquisicao realizado
+          - melhores criativos e angulos
+          - o que nao funcionou
+
+      - etapa: "otimizar-pos-lancamento"
+        agente: "traffic"
+        entrada: "relatorio de lancamento"
+        saida: "campanhas de retencao/upsell ativas (se aplicavel)"
+        dependencia: "relatorio-lancamento"
+
+      - etapa: "registrar-aprendizados"
+        agente: "strategist"
+        entrada: "relatorio de lancamento + dados de performance criativa"
+        saida: "estrategia/aprendizados-lancamento-{data}.md"
+        dependencia: "relatorio-lancamento"
+        conteudo:
+          - hipoteses confirmadas
+          - hipoteses refutadas
+          - insights de angulo e copy
+          - recomendacoes para proximo lancamento
+
+      - etapa: "enviar-relatorio-cliente"
+        agente: "cs"
+        entrada: "relatorio-lancamento.md + aprendizados"
+        saida: "relatorio enviado ao cliente"
+        dependencia:
+          - "relatorio-lancamento"
+          - "registrar-aprendizados"
+        ferramenta: "Composio MCP (Gmail)"
+
+notas_importantes:
+  - "Lancamento exige mais frequencia de monitoramento — ajustar expectativa do cliente"
+  - "QA obrigatorio em TODOS os materiais antes de qualquer publicacao"
+  - "Aprendizados registrados sao ativo estrategico para proximo lancamento"
+  - "Pos-lancamento: campanha de retencao para quem comprou e de recuperacao para quem nao comprou"

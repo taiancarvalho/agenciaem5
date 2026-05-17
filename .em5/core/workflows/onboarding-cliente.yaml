@@ -1,0 +1,53 @@
+# Workflow: Onboarding de Cliente
+# Versao: 1.0
+# Agente responsavel: CS (Sol)
+
+nome: "onboarding-cliente"
+descricao: "Recebe cliente fechado e entrega cliente documentado, organizado e pronto para estrategia"
+gatilho: "Cliente fechou com a agencia"
+agente_responsavel: "cs"
+
+sequencia:
+  - etapa: "coletar-dados-iniciais"
+    agente: "cs"
+    entrada: "nome do cliente, contato principal"
+    saida: "workspace criado em .em5/clientes/{nome}/"
+    dependencia: nenhuma
+
+  - etapa: "coletar-briefing"
+    agente: "cs"
+    entrada: "template briefing-perguntas.md, disponibilidade do cliente"
+    saida: "respostas estruturadas no briefing"
+    dependencia: "coletar-dados-iniciais"
+
+  - etapa: "gerar-briefing-final"
+    agente: "cs"
+    entrada: "respostas coletadas, template briefing-final.md"
+    saida: ".em5/clientes/{nome}/onboarding/briefing-final.md"
+    dependencia: "coletar-briefing"
+
+  - etapa: "listar-acessos"
+    agente: "cs"
+    entrada: "canais escolhidos (Meta, Google, etc.)"
+    saida: "lista de acessos necessarios enviada ao cliente"
+    dependencia: "gerar-briefing-final"
+
+  - etapa: "validar-tracking"
+    agente: "cs"
+    entrada: "acessos recebidos, checklist-tracking.md"
+    saida: "status-do-tracking.md preenchido"
+    dependencia: "listar-acessos"
+
+  - etapa: "registrar-status-tecnico"
+    agente: "cs"
+    entrada: "resultado validacao de tracking"
+    saida: "setup-tecnico/status.md atualizado"
+    dependencia: "validar-tracking"
+
+  - etapa: "entregar-para-estrategia"
+    agente: "cs"
+    entrada: "briefing-final.md + status-tecnico.md prontos"
+    saida: "handoff para @strategist"
+    dependencia:
+      - "gerar-briefing-final"
+      - "registrar-status-tecnico"

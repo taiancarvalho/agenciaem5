@@ -1,0 +1,69 @@
+name: em5 Validate
+
+on:
+  push:
+    branches: [main, 'claude/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Conformidade Constitution + Scripts
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm install --no-audit --no-fund
+
+      - name: Validate em5 conformity
+        run: node .em5/bin/em5-validate.js
+
+      - name: Syntax check bin scripts
+        run: |
+          node -c bin/em5.js
+          node -c bin/em5-upgrade.js
+          node -c lib/installer.js
+          node -c .em5/bin/em5-forge.js
+          node -c .em5/bin/em5-validate.js
+          node -c .em5/bin/em5-import-gpt.js
+          node -c .em5/bin/em5-init.js
+          node -c .em5/bin/em5-new-client.js
+          node -c .em5/hooks/registry.js
+          node -c .em5/infrastructure/index.js
+
+      - name: Validate hook scripts
+        run: |
+          bash -n .claude/hooks/learnings-capture.sh
+          bash -n .claude/hooks/model-router.sh
+
+      - name: Infrastructure health
+        run: node .em5/infrastructure/index.js health
+
+      - name: List agents
+        run: node .em5/infrastructure/index.js agents
+
+      - name: Smoke tests (Vitest)
+        run: npm test
+
+  build-painel:
+    name: Build Astro Painel
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: false  # ativar quando painel/ tiver fixtures de clientes pra build não falhar
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd painel && npm install --no-audit --no-fund
+      - run: cd painel && npm run build

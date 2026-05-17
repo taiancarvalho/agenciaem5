@@ -1,0 +1,108 @@
+# em5 — Configuracao da Agencia
+# Tagline: "Agência em Cinco minutos." — todo processo em <= 5 min de input humano.
+# Execute /setup para preencher este arquivo com os dados reais da sua agencia.
+# Gerado automaticamente pelo wizard de configuracao.
+
+agency:
+  name: "{AGENCY_NAME}"
+  owner: "{USER_NAME}"
+  installed_at: "{DATA}"
+  version: "1.3.0"
+  tagline: "Agência em Cinco minutos."
+
+services:
+  traffic_paid_meta: false
+  traffic_paid_google: false
+  copywriting: false
+  design: false
+  social_media: false
+  seo: false
+  email_marketing: false
+  whatsapp_crm: false
+
+channels:
+  meta_ads: false
+  google_ads: false
+  google_analytics: false
+
+agents:
+  ceo:
+    id: ceo
+    fantasy_name: "Atlas"
+    gender: "m"
+  coo:
+    id: coo
+    fantasy_name: "Nexus"
+    gender: "m"
+  cs:
+    id: cs
+    fantasy_name: "Sol"
+    gender: "f"
+  strategist:
+    id: strategist
+    fantasy_name: "Vera"
+    gender: "f"
+  traffic:
+    id: traffic
+    fantasy_name: "Pulse"
+    gender: "m"
+  copywriter:
+    id: copywriter
+    fantasy_name: "Eco"
+    gender: "m"
+  designer:
+    id: designer
+    fantasy_name: "Lux"
+    gender: "m"
+  qa:
+    id: qa
+    fantasy_name: "Crivo"
+    gender: "m"
+  # Meta-time CONSTRUÇÃO (Fase 6) — Layer 0
+  arq:
+    id: arq
+    fantasy_name: "Arq"
+    gender: "m"
+    layer: construcao
+  builder:
+    id: builder
+    fantasy_name: "Cunha"
+    gender: "m"
+    layer: construcao
+  reviewer:
+    id: reviewer
+    fantasy_name: "Lima"
+    gender: "m"
+    layer: construcao
+  # Fase 7 — agentes high-value
+  vendas:
+    id: vendas
+    fantasy_name: "Caça"
+    gender: "m"
+    layer: definicao
+  fin:
+    id: fin
+    fantasy_name: "Caixa"
+    gender: "m"
+    layer: execucao
+  scout:
+    id: scout
+    fantasy_name: "Espia"
+    gender: "m"
+    layer: definicao
+  # Fase 8 — WhatsApp
+  whats:
+    id: whats
+    fantasy_name: "Onda"
+    gender: "m"
+    layer: execucao
+
+integrations:
+  composio:
+    api_key: "${COMPOSIO_API_KEY}"
+    tools:
+      meta_ads: false
+      google_analytics: false
+      gmail: false
+      slack: false
+      google_sheets: false

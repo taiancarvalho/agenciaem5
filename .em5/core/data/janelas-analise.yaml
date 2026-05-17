@@ -1,0 +1,61 @@
+# Janelas de Analise de Performance
+# Versao: 1.0
+# Usado por: @traffic ao otimizar campanhas
+
+janelas:
+  diaria:
+    periodo: "1 dia"
+    uso: "apenas desvios graves — protecao de verba"
+    acoes_permitidas:
+      - pausar campanha gastando 2x acima do normal sem resultado
+      - pausar criativo com CPL 3x acima da meta
+      - alertar @coo se orcamento estiver sendo consumido anormalmente
+    acoes_proibidas:
+      - pausar criativo por performance ruim (precisa de mais dados)
+      - mudar segmentacao ou lance
+      - fazer conclusoes sobre o que funciona
+
+  semanal_7d:
+    periodo: "7 dias"
+    uso: "leitura principal para otimizacoes"
+    acoes_permitidas:
+      - pausar criativos com performance consistentemente ruim
+      - escalar criativos com performance acima da meta
+      - ajustar orcamento entre campanhas
+      - testar novo publico
+    minimo_para_decisao:
+      impressoes: 1000
+      cliques: 50
+      conversoes: 5 (se campanha de conversao)
+
+  confirmacao_14d:
+    periodo: "14 dias"
+    uso: "confirmar tendencias antes de decisoes grandes"
+    acoes_permitidas:
+      - desligar campanha inteira por baixa performance
+      - mudar objetivo de campanha
+      - reestruturar grupos de anuncio
+      - aumentar verba significativamente (>50%)
+
+  tendencia_30d:
+    periodo: "30 dias"
+    uso: "analise de padroes, sazonalidade, crescimento"
+    acoes_permitidas:
+      - revisao estrategica com @strategist
+      - relatorio mensal para @cs enviar ao cliente
+      - decisao sobre novos canais ou produtos
+
+regras_critico:
+  - "Nunca pausar criativo com menos de 3 dias de dados"
+  - "Nunca pausar campanha em periodo de aprendizado (primeiros 7 dias)"
+  - "Decisao de reestruturar campanha exige 14 dias de dados"
+  - "Variacao de menos de 20% nao e sinal — e ruido estatistico"
+  - "Comparar sempre periodos equivalentes (semana vs semana, nao dia vs semana)"
+
+alertas_urgentes:
+  - condicao: "gasto > 2x normal em 1 dia"
+    acao: "pausar e escalar para @coo"
+  - condicao: "CPL > 3x meta em 24h"
+    acao: "verificar criativo e landing page, pausar se confirmado"
+  - condicao: "conta suspensa ou reprovada"
+    acao: "escalar imediatamente para @coo e @cs"
