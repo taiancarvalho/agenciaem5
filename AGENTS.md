@@ -80,6 +80,7 @@ Ative um agente usando `@id` ou `@nome-fantasia` (ambos funcionam).
 - `*iterar-criativo {cliente}` — Nova versão baseada em performance
 
 ### @qa
+- `*verificar-lint` — **Sempre primeiro.** Confere se `/lint-pre-qa` rodou e aprovou
 - `*validar-copy` — Validar copy com checklist
 - `*validar-criativo` — Validar peça visual
 - `*validar-campanha` — Validar estrutura antes de subir
@@ -97,7 +98,8 @@ Ative um agente usando `@id` ou `@nome-fantasia` (ambos funcionam).
 | `/novo-cliente` | Criar workspace de novo cliente |
 | `/onboarding` | Iniciar onboarding de cliente |
 | `/status-cliente` | Resumo operacional de um cliente |
-| `/relatorio` | Gerar e enviar relatório |
+| `/relatorio` | Gerar relatório markdown + HTML (template `relatorio-cliente.html`) e enviar |
+| `/lint-pre-qa` | Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa |
 | `/criar-campanha` | Ciclo completo de campanha |
 | `/auditoria-conta` | Auditar conta de anúncios |
 | `/iterar-criativo` | Iterar criativos com baixa performance |

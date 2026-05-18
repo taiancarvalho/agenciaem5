@@ -1,0 +1,130 @@
+# em5 — Regras de Lint mecânico pré-@qa
+# Versão: 1.0
+# Uso: skill /lint-pre-qa lê este arquivo e aplica checagens antes do @qa subjetivo.
+# Objetivo: liberar @qa/Crivo de erro mecânico — Crivo julga só o subjetivo (gancho, oferta).
+#
+# Severidades:
+#   bloqueio — não passa pro @qa, devolve pro autor
+#   aviso    — passa pro @qa com alerta
+#   info     — nota informativa
+
+version: 1.0
+gates_que_complementa:
+  constitution_artigo: VIII  # Quality Gate Obrigatório
+
+copy:
+  meta_ads:
+    primary_text:
+      max_char: 2200
+      ideal_max: 125
+      severidade_ideal: aviso
+      severidade_max: bloqueio
+    headline:
+      max_char: 40
+      severidade: bloqueio
+    description:
+      max_char: 30
+      severidade: bloqueio
+  google_ads:
+    headline:
+      max_char: 30
+      severidade: bloqueio
+      min_count: 3
+      max_count: 15
+    description:
+      max_char: 90
+      severidade: bloqueio
+      min_count: 2
+      max_count: 4
+  whatsapp:
+    message:
+      max_char: 1024
+      severidade: aviso
+
+  obrigatorios_globais:
+    - regra: cta_presente
+      descricao: "Pelo menos 1 verbo de ação no imperativo (Clique, Agende, Toque, Baixe, Garanta, Descubra, Saiba, Compre)"
+      severidade: bloqueio
+    - regra: link_destino_presente
+      descricao: "URL de destino declarada ou WhatsApp como destino explícito"
+      severidade: aviso
+
+  palavras_proibidas:
+    - termo: "garantia 100%"
+      motivo: "Promessa exagerada, viola política Meta/Google"
+      severidade: bloqueio
+    - termo: "melhor do mercado"
+      motivo: "Superlativo sem prova, viola política"
+      severidade: bloqueio
+    - termo: "único(a) do mercado"
+      motivo: "Superlativo, requer prova"
+      severidade: aviso
+    - termo: "milagre"
+      motivo: "Promessa irrealista"
+      severidade: bloqueio
+    - termo: "cura"
+      motivo: "Risco regulatório (saúde)"
+      severidade: aviso
+
+criativo:
+  obrigatorios:
+    - regra: id_versionamento
+      descricao: "Arquivo nomeado com padrão CR-XXX-vN (ex: CR-001-v1.jpg)"
+      severidade: bloqueio
+    - regra: copy_associada
+      descricao: "Existe arquivo de copy correspondente (CR-XXX-*.md)"
+      severidade: bloqueio
+  formatos_aceitos:
+    meta_feed:
+      - aspect: "1:1"
+        min_resolution: "1080x1080"
+      - aspect: "4:5"
+        min_resolution: "1080x1350"
+    meta_stories:
+      - aspect: "9:16"
+        min_resolution: "1080x1920"
+    google_display:
+      - aspect: "1.91:1"
+        min_resolution: "1200x628"
+
+campanha:
+  nomenclatura:
+    padrao: "[CLIENTE]_[OBJETIVO]_[CANAL]_[TIPO]_[ID]"
+    exemplo: "ODONTOVITAL_LEAD_META_VIDEO_CR-001"
+    regex: '^[A-Z0-9]+_[A-Z]+_(META|GOOGLE|TIKTOK)_[A-Z]+_[A-Z]{2}-\d{3}$'
+    severidade: bloqueio
+  obrigatorios:
+    - regra: pixel_configurado
+      descricao: "Pixel ID declarado no setup-tecnico/status.md"
+      severidade: bloqueio
+    - regra: budget_definido
+      descricao: "Campo budget_diario presente e > 0"
+      severidade: bloqueio
+    - regra: url_destino_rastreada
+      descricao: "URL com UTMs declarados"
+      severidade: aviso
+    - regra: ao_menos_um_criativo_aprovado
+      descricao: "Pelo menos 1 CR-XXX-vN com veredicto APROVADO no log-operacional"
+      severidade: bloqueio
+
+landing_page:
+  obrigatorios:
+    - regra: cta_acima_dobra
+      descricao: "Botão de conversão presente no primeiro viewport"
+      severidade: bloqueio
+    - regra: formulario_funciona
+      descricao: "Formulário declarado e endpoint validado"
+      severidade: bloqueio
+    - regra: pixel_disparando
+      descricao: "Pixel + evento de conversão presente no <head>"
+      severidade: bloqueio
+    - regra: sem_links_quebrados
+      descricao: "Todos os <a href> resolvem para 200 OK"
+      severidade: bloqueio
+
+output:
+  arquivo: ".em5/clientes/{slug}/operacao/lint-{YYYY-MM-DD}.md"
+  formato_resultado:
+    aprovado: "✅ LINT APROVADO — pronto para @qa"
+    aviso: "⚠️ LINT COM AVISOS — passa pro @qa com lista de alertas"
+    bloqueio: "🚫 LINT BLOQUEADO — devolver para autor antes do @qa"
