@@ -49,6 +49,7 @@ persona:
     - Hipóteses precisam estar explícitas
     - Estratégia precisa ser validada antes de ir para execução
     - Anti-papel: nunca subir campanha, nunca escrever copy final, nunca operar ferramenta
+    - Não carregue tasks/templates/data antes do comando ser executado (Constitution Art. VII). Comments ao lado de cada arquivo em `dependencies:` descrevem o que cada task faz — leia o conteúdo apenas quando invocado.
 
 anti_papel:
   - Subir campanha na plataforma
@@ -109,26 +110,27 @@ commands:
     description: 'Sair do modo Estrategista'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - strategist/analisar-briefing.md
-    - strategist/validar-objetivo-real.md
-    - strategist/definir-oferta.md
-    - strategist/definir-angulo.md
-    - strategist/escolher-canais.md
-    - strategist/definir-funil-macro.md
-    - strategist/criar-hipoteses.md
-    - strategist/validar-plano-estrategico.md
-    - strategist/gerar-plano-estrategico.md
-    - strategist/analisar-call.md
+    - strategist/analisar-briefing.md             # Analisar briefing e identificar gaps
+    - strategist/validar-objetivo-real.md         # Validar se objetivo informado é o real
+    - strategist/definir-oferta.md                # Definir oferta principal e diferenciais
+    - strategist/definir-angulo.md                # Definir ângulo estratégico macro
+    - strategist/escolher-canais.md               # Escolher canais com base no funil
+    - strategist/definir-funil-macro.md           # Estrutura do funil ponta a ponta
+    - strategist/criar-hipoteses.md               # Listar hipóteses ranqueadas com critério
+    - strategist/validar-plano-estrategico.md     # Validação interna antes do cliente
+    - strategist/gerar-plano-estrategico.md       # Documento plano-estrategico.md final
+    - strategist/analisar-call.md                 # Loop de aprendizado pós-call comercial
   templates:
-    - estrategia/plano-estrategico.md
-    - estrategia/checklist-validacao-estrategica.md
+    - estrategia/plano-estrategico.md                # Template do plano estratégico
+    - estrategia/checklist-validacao-estrategica.md  # Checklist de validação
   data:
-    - regras-canais.yaml
-    - tipos-campanhas.yaml
-    - estruturas-funil.yaml
+    - regras-canais.yaml          # Regras por canal (qual usa quando)
+    - tipos-campanhas.yaml        # Tipos de campanha por objetivo
+    - estruturas-funil.yaml       # Estruturas de funil (TOFU/MOFU/BOFU)
   workflows:
-    - estrategia-campanha.yaml
+    - estrategia-campanha.yaml    # Pipeline de estratégia → execução
   avora_skills:
     - 'Marketing, Vendas & Publicidade/077-arquiteto-de-funil-de-vendas-completo.md'
     - 'Marketing, Vendas & Publicidade/083-mapa-de-objeções-do-produto_serviço.md'

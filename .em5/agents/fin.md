@@ -86,17 +86,18 @@ commands:
     description: Configura webhooks Asaas pra eventos (pagamento_confirmado, inadimplencia, etc.)
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - fin/registrar-cobranca
-    - fin/registrar-pagamento
-    - fin/monitorar-inadimplencia
-    - fin/calcular-roi-cliente
-    - fin/gerar-mrr-mensal
+    - fin/registrar-cobranca           # Registra cobrança mensal via Asaas
+    - fin/registrar-pagamento          # Confirma recebimento de pagamento
+    - fin/monitorar-inadimplencia      # Lista clientes em atraso e ações
+    - fin/calcular-roi-cliente         # Calcula ROI por cliente (receita vs custo)
+    - fin/gerar-mrr-mensal             # Dashboard MRR mensal consolidado
   templates:
-    - fin/cobranca.template.yaml
-    - fin/relatorio-financeiro.template.md
+    - fin/cobranca.template.yaml             # Template de cobrança Asaas
+    - fin/relatorio-financeiro.template.md   # Template de relatório financeiro
   data:
-    - fin/preco-por-servico.yaml
+    - fin/preco-por-servico.yaml       # Tabela de preços por serviço
 ```
 
 ---

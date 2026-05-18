@@ -124,27 +124,28 @@ commands:
     description: 'Sair do modo CS'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - cs/coletar-briefing.md
-    - cs/criar-estrutura-cliente.md
-    - cs/estruturar-briefing.md
-    - cs/gerar-onboarding-final.md
-    - cs/listar-acessos.md
-    - cs/validar-tracking.md
-    - cs/registrar-interacao.md
-    - cs/listar-pendencias.md
-    - cs/gerar-proximos-passos.md
-    - cs/enviar-relatorio-whatsapp.md
-    - cs/arquivar-log.md
+    - cs/coletar-briefing.md            # Wizard interativo coleta dados do cliente
+    - cs/criar-estrutura-cliente.md     # Cria .em5/clientes/{slug}/ completo
+    - cs/estruturar-briefing.md         # Consolida respostas em briefing-final.md
+    - cs/gerar-onboarding-final.md      # Documento final para enviar ao cliente
+    - cs/listar-acessos.md              # Lista acessos necessários (pixel, BM, etc)
+    - cs/validar-tracking.md            # Valida pixel + UTMs + eventos disparando
+    - cs/registrar-interacao.md         # Registra contato com cliente no log
+    - cs/listar-pendencias.md           # Lista pendências e dependências externas
+    - cs/gerar-proximos-passos.md       # Gera plano de ação semanal
+    - cs/enviar-relatorio-whatsapp.md   # Envia relatório formatado via WhatsApp
+    - cs/arquivar-log.md                # Arquiva log mensal e inicia novo período
   templates:
-    - contratos/contrato-base.md
-    - briefing/formulario-briefing.md
-    - briefing/briefing-final.md
-    - relatorios/relatorio-whatsapp.md
-    - logs/log-operacional.md
-    - logs/proximos-passos.md
+    - contratos/contrato-base.md        # Contrato padrão de prestação de serviço
+    - briefing/formulario-briefing.md   # Formulário estruturado de coleta
+    - briefing/briefing-final.md        # Template consolidado do briefing
+    - relatorios/relatorio-whatsapp.md  # Template de relatório formato WhatsApp
+    - logs/log-operacional.md           # Template do log operacional
+    - logs/proximos-passos.md           # Template de próximos passos
   data:
-    - estrutura-pastas.yaml
+    - estrutura-pastas.yaml             # Esqueleto canônico de pasta cliente
     - campos-briefing.yaml
     - integracoes-disponiveis.yaml
   workflows:

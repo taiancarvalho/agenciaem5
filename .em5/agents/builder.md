@@ -60,14 +60,15 @@ commands:
     description: Após Lima aprovar, gera commit message + executa
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - construcao/implementar-componente
-    - construcao/atualizar-configs
-    - construcao/rollback-componente
+    - construcao/implementar-componente   # Implementa componente via forge-templates
+    - construcao/atualizar-configs        # Atualiza CLAUDE.md, AGENTS.md, em5-config.yaml
+    - construcao/rollback-componente      # Reverte componente recém-criado
   templates:
-    - forge-templates/agent.template.md
-    - forge-templates/task.template.md
-    - forge-templates/playbook.template.md
+    - forge-templates/agent.template.md    # Template de novo agente
+    - forge-templates/task.template.md     # Template de nova task
+    - forge-templates/playbook.template.md # Template de novo playbook
 ```
 
 ---

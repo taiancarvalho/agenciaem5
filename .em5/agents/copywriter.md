@@ -48,6 +48,7 @@ persona:
     - Log de performance criativa é a memória viva do que funciona
     - Adaptar por canal não significa reescrever — significa reformatar com inteligência
     - Iteração com base em dados, não em achismo
+    - Não carregue tasks/templates/data antes do comando ser executado (Constitution Art. VII). Comments ao lado de cada arquivo em `dependencies:` descrevem o que cada task faz — leia o conteúdo apenas quando invocado.
 
 anti_papel:
   - Definir canal ou verba
@@ -199,34 +200,35 @@ pastas_que_escreve:
   - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - ler-cliente.md
-    - analisar-icp.md
-    - entender-oferta.md
-    - criar-angulos.md
-    - criar-conceitos.md
-    - escrever-copy.md
-    - adaptar-canal.md
-    - registrar-peca-log.md
-    - revisar-copy.md
-    - iterar-com-base-em-performance.md
-    - criar-headline-banco.md
+    - ler-cliente.md                       # Ler briefing + plano + ICP antes de operar
+    - analisar-icp.md                      # Estruturar ICP a partir do briefing
+    - entender-oferta.md                   # Mapear oferta principal e diferenciais
+    - criar-angulos.md                     # Gerar 3-5 ângulos de abordagem
+    - criar-conceitos.md                   # Definir conceitos visuais para o designer
+    - escrever-copy.md                     # Copy completa por canal e tipo
+    - adaptar-canal.md                     # Reformatar copy para outro canal
+    - registrar-peca-log.md                # Registrar peça em log-performance-criativa
+    - revisar-copy.md                      # Revisão final antes do @qa
+    - iterar-com-base-em-performance.md    # Iterar copy com dados reais
+    - criar-headline-banco.md              # Banco de headlines reutilizáveis
   templates:
-    - copy-anuncio.md
-    - roteiro-video.md
-    - copy-landing-page.md
-    - copy-whatsapp.md
-    - headline-banco.md
-    - copy-instagram.md
-    - copy-facebook.md
-    - copy-email.md
-    - copy-linkedin.md
-    - copy-blog.md
+    - copy-anuncio.md          # Template de copy de anúncio
+    - roteiro-video.md         # Template de roteiro de vídeo
+    - copy-landing-page.md     # Template de copy de LP
+    - copy-whatsapp.md         # Template de copy WhatsApp
+    - headline-banco.md        # Template de banco de headlines
+    - copy-instagram.md        # Template de copy IG
+    - copy-facebook.md         # Template de copy Facebook
+    - copy-email.md            # Template de copy de email
+    - copy-linkedin.md         # Template de copy LinkedIn
+    - copy-blog.md             # Template de copy de blog
   data:
-    - gatilhos-mentais.yaml
-    - tipos-angulos.yaml
-    - estruturas-copy.yaml
-    - niveis-consciencia.yaml
+    - gatilhos-mentais.yaml    # Catálogo de gatilhos mentais
+    - tipos-angulos.yaml       # Tipos de ângulos de abordagem
+    - estruturas-copy.yaml     # Estruturas de copy reutilizáveis (AIDA, PAS, etc)
+    - niveis-consciencia.yaml  # Níveis de consciência (Schwartz) por estágio
     - nomenclatura-pecas.yaml
 
 integracao:

@@ -65,18 +65,19 @@ commands:
     description: Documenta motivo da perda em learnings/vendas-perdas.md
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - vendas/pesquisar-prospect
-    - vendas/gerar-diagnostico
-    - vendas/criar-proposta
-    - vendas/follow-up
-    - vendas/fechar-cliente
+    - vendas/pesquisar-prospect    # Qualifica prospect (porte, nicho, dor)
+    - vendas/gerar-diagnostico     # Diagnóstico comercial estruturado
+    - vendas/criar-proposta        # Proposta comercial via template
+    - vendas/follow-up             # Follow-up cadenciado pós-proposta
+    - vendas/fechar-cliente        # Encerra venda e dispara onboarding
   templates:
-    - vendas/proposta.template.md
-    - vendas/diagnostico.template.md
+    - vendas/proposta.template.md       # Template de proposta comercial
+    - vendas/diagnostico.template.md    # Template de diagnóstico do prospect
   data:
-    - vendas/objecoes-comuns.yaml
-    - vendas/preco-por-nicho.yaml
+    - vendas/objecoes-comuns.yaml       # Catálogo de objeções e contra-argumentos
+    - vendas/preco-por-nicho.yaml       # Tabela de preço por vertical
 ```
 
 ---

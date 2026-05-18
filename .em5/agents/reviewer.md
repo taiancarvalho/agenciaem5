@@ -81,13 +81,14 @@ checklist:
     - 'Configs centrais atualizadas (CLAUDE.md, AGENTS.md, em5-config.yaml)?'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - construcao/validar-componente
-    - construcao/sugerir-ajustes
+    - construcao/validar-componente   # Valida componente contra Constitution (Arts. I–XII)
+    - construcao/sugerir-ajustes      # Lista ajustes necessários antes do commit
   data:
-    - gate-matrix.yaml
+    - gate-matrix.yaml                # Matriz de gates por tipo de componente
   workflows:
-    - construcao/ciclo-completo
+    - construcao/ciclo-completo       # Pipeline completo @arq → @builder → @reviewer
 ```
 
 ---

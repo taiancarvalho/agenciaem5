@@ -120,17 +120,18 @@ commands:
     description: 'Sair do modo Gerente'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - coo/delegar-operacao.md
-    - coo/monitorar-execucao.md
-    - coo/consolidar-e-reportar.md
+    - coo/delegar-operacao.md       # Delega tarefa específica a agente especialista
+    - coo/monitorar-execucao.md     # Acompanha status das operações em andamento
+    - coo/consolidar-e-reportar.md  # Consolida outputs e prepara relatório consolidado
   workflows:
-    - onboarding-cliente.yaml
-    - ciclo-campanha.yaml
-    - iteracao-criativa.yaml
+    - onboarding-cliente.yaml       # Pipeline completo de onboarding
+    - ciclo-campanha.yaml           # Pipeline briefing → estratégia → copy → criativo → QA
+    - iteracao-criativa.yaml        # Iteração de criativos baseada em performance
   data:
-    - canais-suportados.yaml
-    - kpis-por-objetivo.yaml
+    - canais-suportados.yaml        # Canais habilitados na agência
+    - kpis-por-objetivo.yaml        # KPIs esperados por objetivo de campanha
 
 handoff_rules:
   recebe_de:
