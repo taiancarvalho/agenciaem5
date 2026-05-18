@@ -1,0 +1,986 @@
+<!doctype html>
+<!--
+  em5 — Guia Visual de Onboarding
+  Versão: 1.0
+  Público: usuário iniciante, primeira vez instalando o em5.
+  Standalone HTML (sem JS, sem CDN). Print-friendly. Mobile responsive.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>em5 — Guia Visual de Onboarding</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-muted: #f8fafc;
+    --bg-card: #ffffff;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --ink: #0f172a;
+    --ink-muted: #475569;
+    --ink-subtle: #64748b;
+    --accent: #0ea5e9;
+    --accent-soft: #e0f2fe;
+    --brand: #0f172a;
+    --good: #10b981;
+    --good-soft: #dcfce7;
+    --warn: #f59e0b;
+    --warn-soft: #fef3c7;
+    --bad: #ef4444;
+    --bad-soft: #fee2e2;
+    --radius: 10px;
+    --radius-lg: 14px;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+    --shadow: 0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04);
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg-muted);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Layout */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px; }
+
+  /* Navigation */
+  nav.top {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav.top .inner {
+    max-width: 1080px; margin: 0 auto;
+    padding: 12px 24px;
+    display: flex; align-items: center; gap: 16px;
+    overflow-x: auto;
+  }
+  nav.top .logo {
+    font-weight: 700; font-size: 16px; letter-spacing: -.01em;
+    margin-right: 8px; white-space: nowrap;
+  }
+  nav.top a {
+    color: var(--ink-muted); text-decoration: none;
+    font-size: 13px; white-space: nowrap;
+    padding: 6px 10px; border-radius: 6px;
+  }
+  nav.top a:hover { background: var(--bg-muted); color: var(--ink); }
+
+  /* Hero */
+  header.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #fff;
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(14,165,233,.25), transparent 50%);
+    pointer-events: none;
+  }
+  header.hero .tag {
+    display: inline-block; font-size: 12px; font-weight: 600;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 16px;
+    letter-spacing: .02em;
+  }
+  header.hero h1 {
+    margin: 0 0 12px; font-size: 36px; line-height: 1.1;
+    letter-spacing: -.02em; font-weight: 700;
+  }
+  header.hero p.lede {
+    margin: 0 0 4px; font-size: 18px; opacity: .85; max-width: 640px;
+  }
+  header.hero .meta {
+    margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px;
+    font-size: 13px; opacity: .75;
+  }
+  header.hero .meta span::before { content: "·"; margin-right: 8px; opacity: .5; }
+  header.hero .meta span:first-child::before { content: none; }
+
+  /* Cards / Sections */
+  section { margin-bottom: 36px; scroll-margin-top: 70px; }
+  section > h2 {
+    font-size: 24px; letter-spacing: -.01em; margin: 0 0 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section > p.sub {
+    color: var(--ink-subtle); margin: 0 0 20px; font-size: 15px;
+  }
+  .number-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--ink); color: #fff;
+    font-size: 14px; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card h3 {
+    margin: 0 0 8px; font-size: 16px; letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card p { margin: 0; color: var(--ink-muted); font-size: 14px; }
+
+  .grid { display: grid; gap: 14px; }
+  .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+  /* Steps */
+  .steps { display: grid; gap: 14px; }
+  .step {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+    display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .step .num {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px;
+  }
+  .step h3 { margin: 0 0 6px; font-size: 16px; letter-spacing: -.01em; }
+  .step p { margin: 0 0 10px; color: var(--ink-muted); font-size: 14px; }
+  .step code.cmd {
+    display: inline-block;
+    background: #0f172a; color: #e2e8f0;
+    padding: 4px 10px; border-radius: 6px;
+    font-family: var(--mono); font-size: 12.5px;
+    margin-right: 6px;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+    border: 1px solid transparent;
+  }
+  .badge.outline { background: transparent; border-color: var(--border); color: var(--ink-muted); }
+  .badge.good { background: var(--good-soft); color: #166534; }
+  .badge.warn { background: var(--warn-soft); color: #92400e; }
+  .badge.bad { background: var(--bad-soft); color: #991b1b; }
+  .badge.accent { background: var(--accent-soft); color: #0369a1; }
+  .badge.ink { background: var(--ink); color: #fff; }
+
+  /* Callouts */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 14px 18px; border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 14px 0; font-size: 14px;
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 13px; letter-spacing: .02em; text-transform: uppercase; color: #0369a1; }
+  .callout.warn { border-color: var(--warn); background: var(--warn-soft); }
+  .callout.warn strong { color: #92400e; }
+  .callout.good { border-color: var(--good); background: var(--good-soft); }
+  .callout.good strong { color: #166534; }
+
+  /* Code block */
+  pre.code {
+    background: #0f172a; color: #e2e8f0;
+    border-radius: var(--radius); padding: 16px 18px;
+    overflow-x: auto; font-family: var(--mono); font-size: 13px;
+    line-height: 1.55; margin: 12px 0;
+  }
+  pre.code .c { color: #64748b; }
+  pre.code .k { color: #f472b6; }
+  pre.code .s { color: #86efac; }
+  pre.code .v { color: #fde68a; }
+
+  /* Tables */
+  table.skills {
+    width: 100%; border-collapse: collapse;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    font-size: 14px;
+  }
+  table.skills th, table.skills td {
+    text-align: left; padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  table.skills tr:last-child td { border-bottom: none; }
+  table.skills th {
+    background: var(--bg-muted); font-size: 12px;
+    color: var(--ink-subtle); text-transform: uppercase; letter-spacing: .05em;
+    font-weight: 600;
+  }
+  table.skills code {
+    font-family: var(--mono); font-size: 12.5px;
+    background: var(--bg-muted); padding: 2px 6px; border-radius: 4px;
+    color: var(--ink);
+  }
+
+  /* Agent card */
+  .agent-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 16px;
+    transition: border-color .15s;
+  }
+  .agent-card:hover { border-color: var(--border-strong); }
+  .agent-card .head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  }
+  .agent-card .icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .agent-card .id {
+    font-family: var(--mono); font-size: 11px; color: var(--ink-subtle);
+  }
+  .agent-card .name {
+    font-size: 15px; font-weight: 600; line-height: 1.2;
+  }
+  .agent-card p { margin: 6px 0 0; font-size: 13px; color: var(--ink-muted); }
+
+  /* SVG containers */
+  .svg-frame {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px;
+    overflow-x: auto;
+  }
+  .svg-frame svg { display: block; min-width: 600px; width: 100%; height: auto; }
+
+  /* Folder tree */
+  .tree {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px;
+    font-family: var(--mono); font-size: 13px;
+    line-height: 1.85; color: var(--ink-muted);
+  }
+  .tree .root { color: var(--ink); font-weight: 600; }
+  .tree .dir { color: var(--accent); }
+  .tree .comment { color: var(--ink-subtle); font-style: italic; }
+
+  /* FAQ */
+  details.faq {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 8px;
+    overflow: hidden;
+  }
+  details.faq summary {
+    padding: 14px 18px; cursor: pointer;
+    font-weight: 600; font-size: 14px;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: "+"; font-size: 18px; color: var(--ink-subtle); transition: transform .2s;
+  }
+  details.faq[open] summary::after { content: "−"; }
+  details.faq[open] summary { border-bottom: 1px solid var(--border); }
+  details.faq .body {
+    padding: 14px 18px; font-size: 14px; color: var(--ink-muted);
+  }
+  details.faq .body p:first-child { margin-top: 0; }
+  details.faq .body p:last-child { margin-bottom: 0; }
+
+  /* Footer */
+  footer.bottom {
+    margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center; color: var(--ink-subtle); font-size: 13px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    nav.top { display: none; }
+    .wrap { max-width: 100%; padding: 0; }
+    section, header.hero, .card, .step, table.skills, .svg-frame, .tree, details.faq {
+      break-inside: avoid; box-shadow: none;
+    }
+    header.hero { color: #fff; }
+    details.faq { border-color: #ccc; }
+    details.faq[open] summary { border-bottom-color: #ccc; }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .wrap { padding: 20px 16px; }
+    header.hero { padding: 32px 24px; }
+    header.hero h1 { font-size: 28px; }
+    .step { grid-template-columns: 1fr; }
+    .step .num { margin-bottom: -4px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <span class="logo">em5</span>
+    <a href="#sobre">O que é</a>
+    <a href="#setup">Setup</a>
+    <a href="#agentes">Agentes</a>
+    <a href="#fluxo">Fluxo padrão</a>
+    <a href="#skills">Skills</a>
+    <a href="#anatomia">Anatomia</a>
+    <a href="#filosofia">Filosofia</a>
+    <a href="#faq">FAQ</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="tag">GUIA VISUAL · v1.0</span>
+    <h1>em5 — sua agência inteira em 5 minutos por dia</h1>
+    <p class="lede">Framework operacional para gestor solo de agência de marketing digital. Você dá a intenção, o sistema executa o resto.</p>
+    <div class="meta">
+      <span>15 agentes especializados</span>
+      <span>10 skills canônicas</span>
+      <span>1 gateway externo (Composio)</span>
+      <span>Filesystem como fonte da verdade</span>
+    </div>
+  </header>
+
+  <!-- O QUE É -->
+  <section id="sobre">
+    <h2><span class="number-badge">1</span> O que é o em5</h2>
+    <p class="sub">A premissa: você não opera os clientes — você opera <em>a agência</em>. Os agentes operam os clientes.</p>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>🎯 Para quem</h3>
+        <p>Gestor solo (ou time enxuto) de agência digital que atende múltiplos clientes e precisa escalar sem inflar headcount.</p>
+      </div>
+      <div class="card">
+        <h3>⚙️ Como roda</h3>
+        <p>Em cima do Claude Code (CLI). Cada agente é um arquivo. Cada cliente é uma pasta. Cada decisão vira documento.</p>
+      </div>
+      <div class="card">
+        <h3>⏱️ Orçamento</h3>
+        <p>Toda interação humana tem teto de <strong>5 minutos</strong>. Se passou de 5, é bug de UX — vira ticket de refator.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Regra de ouro</strong>
+      Nada vai ao cliente sem veredicto <span class="badge good">APROVADO</span> do <strong>@qa (Crivo)</strong>. Não tem "publicar assim mesmo".
+    </div>
+  </section>
+
+  <!-- SETUP -->
+  <section id="setup">
+    <h2><span class="number-badge">2</span> Setup inicial — 5 passos</h2>
+    <p class="sub">Da clonagem ao primeiro cliente operando. Estimativa: 30 min na primeira vez.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>Instalar pré-requisitos</h3>
+          <p>Node 20+, npm, git, jq. Também o Claude Code (CLI da Anthropic).</p>
+          <code class="cmd">node --version</code>
+          <code class="cmd">npm i -g @anthropic-ai/claude-code</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>Clonar o em5</h3>
+          <p>Trazer o repositório pra sua máquina e entrar na pasta.</p>
+          <code class="cmd">git clone &lt;repo&gt; em5 && cd em5</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3>Configurar Composio (obrigatório)</h3>
+          <p>Único gateway externo. Liga Meta Ads, Google Analytics, Gmail, Slack, Sheets. Pega o token no painel do Composio e exporta como variável de ambiente.</p>
+          <code class="cmd">export COMPOSIO_API_KEY=...</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3>Rodar /setup</h3>
+          <p>Wizard interativo. Pergunta nome da agência, seus dados, canais que opera, e personaliza os agentes (fantasy names).</p>
+          <code class="cmd">/setup</code>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="num">5</div>
+        <div>
+          <h3>Criar primeiro cliente</h3>
+          <p>Gera o workspace do cliente em <code style="font-family:var(--mono);font-size:12.5px;background:var(--bg-muted);padding:2px 6px;border-radius:4px;">.em5/clientes/{slug}/</code> com toda estrutura.</p>
+          <code class="cmd">/cliente-novo nome-do-cliente</code>
+          <code class="cmd">/onboard nome-do-cliente</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <strong>Pronto.</strong>
+      Depois disso, dia-a-dia é só rodar skills (<code>/campanha</code>, <code>/relatorio</code>, <code>/dia</code>) e os agentes fazem o resto.
+    </div>
+  </section>
+
+  <!-- ORGANOGRAMA -->
+  <section id="agentes">
+    <h2><span class="number-badge">3</span> Organograma da agência</h2>
+    <p class="sub">15 agentes, cada um com um papel. Você fala com <strong>@ceo (Atlas)</strong>. Ele traduz pro <strong>@coo (Nexus)</strong>. Nexus delega.</p>
+
+    <div class="svg-frame">
+      <svg viewBox="0 0 1000 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organograma dos agentes em5">
+        <defs>
+          <style>
+            .node rect { fill: #fff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+            .node text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; fill: #0f172a; }
+            .node .id { font-size: 11px; fill: #64748b; font-family: ui-monospace, monospace; }
+            .node .name { font-size: 14px; font-weight: 600; }
+            .node .role { font-size: 11px; fill: #64748b; }
+            .link { stroke: #cbd5e1; stroke-width: 1.5; fill: none; }
+            .lead rect { fill: #0f172a; stroke: #0f172a; }
+            .lead text { fill: #fff; }
+            .lead .id { fill: rgba(255,255,255,.6); }
+            .lead .role { fill: rgba(255,255,255,.7); }
+            .ops rect { fill: #e0f2fe; stroke: #0ea5e9; }
+            .qa rect { fill: #fef3c7; stroke: #f59e0b; }
+            .meta rect { fill: #f1f5f9; stroke: #94a3b8; stroke-dasharray: 4 3; }
+          </style>
+        </defs>
+
+        <!-- User -->
+        <g class="node" transform="translate(420,10)">
+          <rect width="160" height="50" rx="25"/>
+          <text x="80" y="22" text-anchor="middle" class="name">👤 Você (gestor)</text>
+          <text x="80" y="38" text-anchor="middle" class="role">dá intenção</text>
+        </g>
+
+        <line class="link" x1="500" y1="60" x2="500" y2="90"/>
+
+        <!-- CEO -->
+        <g class="node lead" transform="translate(420,90)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@ceo</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🗺️ Atlas</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Estratégia · decisão</text>
+        </g>
+
+        <line class="link" x1="500" y1="146" x2="500" y2="176"/>
+
+        <!-- COO -->
+        <g class="node lead" transform="translate(420,176)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@coo</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🎯 Nexus</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Orquestração · delega</text>
+        </g>
+
+        <!-- Linhas COO → especialistas -->
+        <path class="link" d="M500,232 L500,275 L100,275 L100,295" />
+        <path class="link" d="M500,275 L260,275 L260,295" />
+        <path class="link" d="M500,275 L420,275 L420,295" />
+        <path class="link" d="M500,275 L580,275 L580,295" />
+        <path class="link" d="M500,275 L740,275 L740,295" />
+        <path class="link" d="M500,275 L900,275 L900,295" />
+
+        <!-- Especialistas (linha 1) -->
+        <g class="node ops" transform="translate(20,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@strategist</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🧭 Vera</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Plano estratégico</text>
+        </g>
+
+        <g class="node ops" transform="translate(180,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@traffic</text>
+          <text x="80" y="38" text-anchor="middle" class="name">📊 Pulse</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Campanhas · mídia</text>
+        </g>
+
+        <g class="node ops" transform="translate(340,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@copywriter</text>
+          <text x="80" y="38" text-anchor="middle" class="name">✍️ Eco</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Copy · ângulos</text>
+        </g>
+
+        <g class="node ops" transform="translate(500,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@designer</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🎨 Lux</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Criativos · UGC</text>
+        </g>
+
+        <g class="node ops" transform="translate(660,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@cs</text>
+          <text x="80" y="38" text-anchor="middle" class="name">☀️ Sol</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Onboarding · relatórios</text>
+        </g>
+
+        <g class="node ops" transform="translate(820,295)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@whats</text>
+          <text x="80" y="38" text-anchor="middle" class="name">📱 Onda</text>
+          <text x="80" y="52" text-anchor="middle" class="role">WhatsApp · handoff</text>
+        </g>
+
+        <!-- Linha 2: Negócio + Meta-time -->
+        <path class="link" d="M500,232 L500,395 L100,395 L100,415"/>
+        <path class="link" d="M500,395 L260,395 L260,415"/>
+        <path class="link" d="M500,395 L420,395 L420,415"/>
+        <path class="link" d="M500,395 L580,395 L580,415"/>
+        <path class="link" d="M500,395 L740,395 L740,415"/>
+        <path class="link" d="M500,395 L900,395 L900,415"/>
+
+        <g class="node ops" transform="translate(20,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@vendas</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🎯 Caça</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Prospect · fechamento</text>
+        </g>
+
+        <g class="node ops" transform="translate(180,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@fin</text>
+          <text x="80" y="38" text-anchor="middle" class="name">💰 Caixa</text>
+          <text x="80" y="52" text-anchor="middle" class="role">MRR · inadimplência</text>
+        </g>
+
+        <g class="node ops" transform="translate(340,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@scout</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🔍 Espia</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Inteligência competitiva</text>
+        </g>
+
+        <g class="node meta" transform="translate(500,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@arq</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🏛️ Arq</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Meta · desenha</text>
+        </g>
+
+        <g class="node meta" transform="translate(660,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@builder</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🔨 Cunha</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Meta · implementa</text>
+        </g>
+
+        <g class="node meta" transform="translate(820,415)">
+          <rect width="160" height="56"/>
+          <text x="80" y="20" text-anchor="middle" class="id">@reviewer</text>
+          <text x="80" y="38" text-anchor="middle" class="name">🧪 Lima</text>
+          <text x="80" y="52" text-anchor="middle" class="role">Meta · valida</text>
+        </g>
+
+        <!-- QA -->
+        <line class="link" x1="500" y1="471" x2="500" y2="500"/>
+        <g class="node qa" transform="translate(380,500)">
+          <rect width="240" height="60"/>
+          <text x="120" y="22" text-anchor="middle" class="id">@qa · barreira final</text>
+          <text x="120" y="42" text-anchor="middle" class="name">🔍 Crivo</text>
+          <text x="120" y="56" text-anchor="middle" class="role">Aprova · Revisa · Bloqueia</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="grid cols-4" style="margin-top:18px">
+      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-muted)">
+        <span style="width:12px;height:12px;border-radius:3px;background:#0f172a;display:inline-block"></span>
+        Liderança (você → CEO → COO)
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-muted)">
+        <span style="width:12px;height:12px;border-radius:3px;background:#e0f2fe;border:1px solid #0ea5e9;display:inline-block"></span>
+        Operação (executam o cliente)
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-muted)">
+        <span style="width:12px;height:12px;border-radius:3px;background:#f1f5f9;border:1px dashed #94a3b8;display:inline-block"></span>
+        Meta-time (constrói o em5)
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-muted)">
+        <span style="width:12px;height:12px;border-radius:3px;background:#fef3c7;border:1px solid #f59e0b;display:inline-block"></span>
+        Gate final (não passa sem)
+      </div>
+    </div>
+
+    <h3 style="margin:28px 0 12px;font-size:16px">Detalhe dos agentes principais</h3>
+    <div class="grid cols-2">
+      <div class="agent-card">
+        <div class="head"><div class="icon">🗺️</div><div><div class="id">@ceo · Atlas</div><div class="name">CEO — Estratégia do negócio</div></div></div>
+        <p>Único agente com visão do <em>negócio inteiro</em>. Traduz sua intenção em decisão. Nunca executa — sempre delega para o COO.</p>
+      </div>
+      <div class="agent-card">
+        <div class="head"><div class="icon">🎯</div><div><div class="id">@coo · Nexus</div><div class="name">COO — Orquestração</div></div></div>
+        <p>Lê o workflow, escolhe os agentes certos, repassa contexto mínimo. Nunca opera sozinho — coordena.</p>
+      </div>
+      <div class="agent-card">
+        <div class="head"><div class="icon">📊</div><div><div class="id">@traffic · Pulse</div><div class="name">Gestor de Tráfego</div></div></div>
+        <p>Audita conta, sobe campanha, otimiza, gera relatório bruto. Decisões em janela de 7+ dias — nunca 1-2 dias.</p>
+      </div>
+      <div class="agent-card">
+        <div class="head"><div class="icon">✍️</div><div><div class="id">@copywriter · Eco</div><div class="name">Copywriter</div></div></div>
+        <p>3-5 ângulos por briefing, copy por canal, adapta para Meta/Google/WhatsApp. Salva tudo com ID <code style="font-family:var(--mono);font-size:12px">CR-XXX-vN</code>.</p>
+      </div>
+      <div class="agent-card">
+        <div class="head"><div class="icon">🎨</div><div><div class="id">@designer · Lux</div><div class="name">Designer</div></div></div>
+        <p>Imagem (NanoBanana 2) + vídeo (Kling 3.0 Pro) via WaveSpeed. Lê branding do cliente antes de produzir.</p>
+      </div>
+      <div class="agent-card">
+        <div class="head"><div class="icon">🔍</div><div><div class="id">@qa · Crivo</div><div class="name">QA — Barreira final</div></div></div>
+        <p>Emite veredicto formal: <span class="badge good">APROVADO</span> <span class="badge warn">REVISÃO</span> <span class="badge bad">BLOQUEADO</span>. Não aprova por pressão de prazo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLUXO -->
+  <section id="fluxo">
+    <h2><span class="number-badge">4</span> Fluxo padrão — anatomia de uma campanha</h2>
+    <p class="sub">Do "vamos lançar uma campanha" ao anúncio rodando, em 7 estações.</p>
+
+    <div class="svg-frame">
+      <svg viewBox="0 0 1080 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo padrão de campanha em5">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+          </marker>
+          <style>
+            .station rect { fill: #fff; stroke: #cbd5e1; stroke-width: 1.5; rx: 10; }
+            .station text { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+            .station .step { font-size: 10px; fill: #64748b; font-weight: 600; letter-spacing: .1em; }
+            .station .agent { font-size: 12px; fill: #0ea5e9; font-family: ui-monospace, monospace; }
+            .station .action { font-size: 13px; fill: #0f172a; font-weight: 600; }
+            .station .artifact { font-size: 10px; fill: #64748b; font-family: ui-monospace, monospace; }
+            .gate rect { fill: #fef3c7; stroke: #f59e0b; }
+            .gate .action { fill: #92400e; }
+            .gate .agent { fill: #b45309; }
+          </style>
+        </defs>
+
+        <!-- 1 Briefing -->
+        <g class="station" transform="translate(10,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">01 · BRIEFING</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">@cs</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Coleta</text>
+          <text x="70" y="78" text-anchor="middle" class="action">do cliente</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">briefing-final.md</text>
+        </g>
+        <line x1="155" y1="95" x2="170" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- 2 Estratégia -->
+        <g class="station" transform="translate(175,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">02 · ESTRATÉGIA</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">@strategist</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Plano</text>
+          <text x="70" y="78" text-anchor="middle" class="action">estratégico</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">plano-estrategico.md</text>
+        </g>
+        <line x1="320" y1="95" x2="335" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- 3 Copy -->
+        <g class="station" transform="translate(340,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">03 · COPY</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">@copywriter</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Ângulos</text>
+          <text x="70" y="78" text-anchor="middle" class="action">+ copy</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">CR-XXX-*.md</text>
+        </g>
+        <line x1="485" y1="95" x2="500" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- 4 Design -->
+        <g class="station" transform="translate(505,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">04 · CRIATIVO</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">@designer</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Imagem</text>
+          <text x="70" y="78" text-anchor="middle" class="action">+ vídeo</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">CR-XXX-vN.jpg</text>
+        </g>
+        <line x1="650" y1="95" x2="665" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- 5 Lint -->
+        <g class="station" transform="translate(670,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">05 · LINT</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">/lint-pre-qa</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Char count</text>
+          <text x="70" y="78" text-anchor="middle" class="action">+ regras</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">lint-YYYY-MM-DD.md</text>
+        </g>
+        <line x1="815" y1="95" x2="830" y2="95" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <!-- 6 QA (gate) -->
+        <g class="station gate" transform="translate(835,40)">
+          <rect width="140" height="110"/>
+          <text x="70" y="20" text-anchor="middle" class="step">06 · QA</text>
+          <text x="70" y="42" text-anchor="middle" class="agent">@qa</text>
+          <text x="70" y="62" text-anchor="middle" class="action">Veredicto</text>
+          <text x="70" y="78" text-anchor="middle" class="action">formal</text>
+          <text x="70" y="98" text-anchor="middle" class="artifact">APROVADO?</text>
+        </g>
+
+        <!-- 7 Subida -->
+        <path d="M905,150 L905,180 L70,180 L70,200" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <g class="station" transform="translate(0,200)" style="display:none"/>
+        <g transform="translate(10,200)">
+          <rect width="140" height="0" fill="#fff"/>
+        </g>
+
+        <!-- 7 publicar -->
+        <g class="station" transform="translate(10,170)">
+          <rect width="200" height="50" fill="#dcfce7" stroke="#10b981"/>
+          <text x="100" y="22" text-anchor="middle" class="step" style="fill:#166534">07 · PUBLICAR</text>
+          <text x="100" y="40" text-anchor="middle" class="action" style="fill:#166534">@traffic sobe na plataforma</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="callout">
+      <strong>Por que tantas estações?</strong>
+      Cada agente toca <strong>apenas o domínio dele</strong> (Constituição Art. II). @copywriter não escolhe verba. @traffic não reescreve oferta. Isso é o que mantém qualidade alta sem você no meio.
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2><span class="number-badge">5</span> Skills canônicas</h2>
+    <p class="sub">Comandos que disparam workflows inteiros. Você só decora os 10 abaixo.</p>
+
+    <table class="skills">
+      <thead>
+        <tr><th style="width:200px">Skill</th><th>O que faz</th><th style="width:120px">Tempo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>/setup</code></td><td>Wizard de configuração inicial. Roda 1 vez.</td><td><span class="badge outline">5 min</span></td></tr>
+        <tr><td><code>/cliente-novo</code></td><td>Cria pasta + estrutura completa do cliente</td><td><span class="badge outline">1 min</span></td></tr>
+        <tr><td><code>/onboard</code></td><td>Coleta dados, setup técnico, primeiro contato</td><td><span class="badge outline">5 min</span></td></tr>
+        <tr><td><code>/briefing</code></td><td>Coleta briefing estruturado do cliente</td><td><span class="badge outline">5 min</span></td></tr>
+        <tr><td><code>/campanha</code></td><td>Ciclo completo: estratégia → copy → criativo → QA → publica</td><td><span class="badge outline">5 min input</span></td></tr>
+        <tr><td><code>/auditar</code></td><td>Auditoria completa de conta Meta ou Google</td><td><span class="badge outline">5 min</span></td></tr>
+        <tr><td><code>/iterar</code></td><td>Itera criativos com baixa performance</td><td><span class="badge outline">3 min</span></td></tr>
+        <tr><td><code>/lint-pre-qa</code></td><td>Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa</td><td><span class="badge accent">novo</span></td></tr>
+        <tr><td><code>/relatorio</code></td><td>Gera markdown + HTML do relatório e envia ao cliente via Gmail</td><td><span class="badge outline">3 min</span></td></tr>
+        <tr><td><code>/status</code></td><td>Resumo operacional de um cliente</td><td><span class="badge outline">30 s</span></td></tr>
+        <tr><td><code>/saude</code></td><td>Health check do sistema inteiro</td><td><span class="badge outline">1 min</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ANATOMIA -->
+  <section id="anatomia">
+    <h2><span class="number-badge">6</span> Anatomia de um cliente</h2>
+    <p class="sub">Toda informação do cliente vive em <code style="font-family:var(--mono);font-size:13px;background:var(--bg-card);border:1px solid var(--border);padding:2px 6px;border-radius:4px;">.em5/clientes/{slug}/</code>. Cada pasta tem dono fixo.</p>
+
+    <div class="tree">
+<span class="root">.em5/clientes/odontovital/</span>
+├── <span class="dir">onboarding/</span>           <span class="comment"># @cs — briefing inicial</span>
+│   ├── briefing-respostas.md
+│   └── briefing-final.md
+├── <span class="dir">estrategia/</span>           <span class="comment"># @strategist — plano</span>
+│   ├── analise-briefing.md
+│   └── plano-estrategico.md
+├── <span class="dir">branding/</span>             <span class="comment"># identidade visual</span>
+│   ├── cores.yaml
+│   └── fontes.yaml
+├── <span class="dir">copy/</span>                 <span class="comment"># @copywriter — ângulos + copy</span>
+│   ├── analise-icp.md
+│   ├── CR-001-v1.md      <span class="comment"># ID-versão</span>
+│   └── CR-002-v1.md
+├── <span class="dir">design/</span>               <span class="comment"># @designer — criativos</span>
+│   ├── conceito-visual.md
+│   └── CR-001-v1.jpg
+├── <span class="dir">trafego/</span>              <span class="comment"># @traffic — estrutura</span>
+│   └── estrutura-campanhas.md
+├── <span class="dir">setup-tecnico/</span>        <span class="comment"># pixel, acessos, tracking</span>
+│   └── status.md
+├── <span class="dir">operacao/</span>             <span class="comment"># logs vivos</span>
+│   ├── log-operacional.md       <span class="comment"># histórico do mês</span>
+│   ├── log-performance-criativa.md
+│   ├── lint-YYYY-MM-DD.md       <span class="comment"># output /lint-pre-qa</span>
+│   └── validacao-qa.md          <span class="comment"># veredictos do @qa</span>
+├── <span class="dir">relatorios/</span>           <span class="comment"># @cs — entregáveis</span>
+│   ├── relatorio-YYYY-MM-DD.md
+│   └── relatorio-YYYY-MM-DD.html   <span class="comment"># enviado ao cliente</span>
+├── <span class="dir">financeiro/</span>           <span class="comment"># @fin — mensalidade</span>
+│   └── mensalidade.yaml
+└── <span class="dir">memoria/</span>              <span class="comment"># aprendizados do cliente</span>
+    └── notas-sessao.md
+    </div>
+
+    <div class="callout">
+      <strong>Filesystem first</strong>
+      Você NUNCA acha info em chat. Sempre em arquivo. Se um agente "lembrou" algo sem ter arquivo, é bug — escala para o @ceo.
+    </div>
+  </section>
+
+  <!-- FILOSOFIA -->
+  <section id="filosofia">
+    <h2><span class="number-badge">7</span> Princípios inegociáveis</h2>
+    <p class="sub">Os artigos da Constituição que o sistema enforça automaticamente.</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3>📁 Art. I — Filesystem First</h3>
+        <p>Toda decisão vira documento. Conversa é exploração; arquivo é verdade. Estado vive em <code style="font-family:var(--mono);font-size:12.5px">/clientes/{slug}/</code>.</p>
+      </div>
+      <div class="card">
+        <h3>🎯 Art. II — Autoridade do Agente</h3>
+        <p>Cada agente = 1 domínio. Não invade alheio. @copywriter não decide verba; @traffic não reescreve oferta.</p>
+      </div>
+      <div class="card">
+        <h3>📦 Art. III — Artefato sobre Conversa</h3>
+        <p>Handoff entre agentes sempre referencia um documento. Nunca "baseado no que conversamos".</p>
+      </div>
+      <div class="card">
+        <h3>🔍 Art. VIII — Quality Gate</h3>
+        <p>Nada sai sem veredicto do @qa. Lint mecânico (<code>/lint-pre-qa</code>) pré-filtra, mas Crivo é a barreira final.</p>
+      </div>
+      <div class="card">
+        <h3>🔌 Art. IX — Composio Gateway</h3>
+        <p>Todo acesso a serviço externo passa por Composio MCP. Sem credencial solta, sem integração ad-hoc.</p>
+      </div>
+      <div class="card">
+        <h3>⏱️ Art. XII — em Cinco Minutos</h3>
+        <p>Toda interação humana ≤ 5 min. Passou de 5? Bug de UX. Vira ticket de refator via <code>/construir</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2><span class="number-badge">8</span> FAQ iniciante</h2>
+    <p class="sub">Dúvidas que toda primeira semana tem.</p>
+
+    <details class="faq">
+      <summary>Por onde começo no dia-a-dia?</summary>
+      <div class="body">
+        <p>Roda <code>/dia</code> (quando estiver na Fase 1.4) ou <code>/status nome-cliente</code> pra cada cliente ativo. Em ≤ 5 min você sabe o que precisa atenção. Daí decide qual skill rodar.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Preciso conversar com cada agente individualmente?</summary>
+      <div class="body">
+        <p>Não. Você fala com <strong>@ceo (Atlas)</strong>. Ele entende intenção, traduz pra <strong>@coo (Nexus)</strong>, e Nexus delega pros executores. Skills (<code>/campanha</code>, <code>/relatorio</code>) já fazem essa orquestração sem você acionar agente por agente.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Como o em5 não inventa dado?</summary>
+      <div class="body">
+        <p>Composio é o único gateway externo. Agentes só puxam métricas via Meta Ads API / Google Analytics (reais). Se algo não tem dado, o agente registra "sem dado disponível" no markdown — ele <strong>não fabrica</strong> número.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>O que acontece se eu pular o /lint-pre-qa?</summary>
+      <div class="body">
+        <p>O @qa (Crivo) vai cobrar lint. Se não houver arquivo <code>lint-YYYY-MM-DD.md</code> do dia, ele devolve pedindo lint primeiro. Crivo não valida char count — Crivo valida gancho, oferta, coerência. Lint é pré-filtro mecânico.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Posso "publicar assim mesmo" mesmo com BLOQUEADO?</summary>
+      <div class="body">
+        <p>Não, e não é aleatório: o gate é constitucional (Art. VIII). Se você tem motivo forte, usa <code>/override</code> (planejado pra Fase 3.3) que registra a decisão + auditoria. Mas o default é: BLOQUEADO = bloqueado.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>E se eu quiser um agente novo (ex: SEO)?</summary>
+      <div class="body">
+        <p>Não escreve direto. Roda <code>/construir agente-seo</code>. O meta-time (@arq → @builder → @reviewer) entrevista, projeta, implementa e valida contra a Constituição. Garante coerência com o resto do sistema.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Quanto custa rodar o em5?</summary>
+      <div class="body">
+        <p>Custo principal: tokens do Claude (LLM). Agentes usam tier <strong>frontier</strong> (Opus) para decisões críticas (@ceo, @qa, @reviewer, @arq) e <strong>balanced</strong> (Sonnet) para execução. Composio tem plano gratuito + pago conforme volume de chamadas.</p>
+      </div>
+    </details>
+
+    <details class="faq">
+      <summary>Onde tá a documentação completa?</summary>
+      <div class="body">
+        <p>Três arquivos:</p>
+        <p>• <code>docs/INSTALL.md</code> — passo-a-passo de instalação técnica<br>
+           • <code>docs/MANUAL.md</code> — manual completo de uso<br>
+           • <code>.em5/core/constitution.md</code> — os 13 artigos inegociáveis</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- Próximos passos -->
+  <section id="proximos">
+    <h2><span class="number-badge">9</span> Próximos passos</h2>
+    <p class="sub">Você tá instalado. Cliente criado. E agora?</p>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <h3>1. Onboard o cliente</h3>
+        <p>Rode <code>/onboard {slug}</code>. O @cs vai te guiar pra coletar briefing em ≤ 5 min.</p>
+      </div>
+      <div class="card">
+        <h3>2. Estratégia</h3>
+        <p>O @strategist (Vera) lê o briefing e gera <code>plano-estrategico.md</code> automaticamente. Você valida.</p>
+      </div>
+      <div class="card">
+        <h3>3. Primeira campanha</h3>
+        <p>Rode <code>/campanha {slug}</code>. Em 5 min você tem copy, criativo, lint, QA e estrutura pronta pra subir.</p>
+      </div>
+      <div class="card">
+        <h3>4. Daily run</h3>
+        <p>Próxima rotina: <code>/dia</code> de manhã. Sistema mostra desvios, sugere otimizações.</p>
+      </div>
+      <div class="card">
+        <h3>5. Relatório mensal</h3>
+        <p>Fim do mês: <code>/relatorio {slug}</code> gera HTML pro cliente e envia via Gmail.</p>
+      </div>
+      <div class="card">
+        <h3>6. Aprende com o sistema</h3>
+        <p>Toda decisão importante vira aprendizado em <code>.em5/learnings/</code>. O próximo cliente já parte mais inteligente.</p>
+      </div>
+    </div>
+
+    <div class="callout good" style="margin-top:20px">
+      <strong>Lembrete</strong>
+      Você está operando <em>a agência</em>, não os clientes. Confia nos agentes, eles foram desenhados pra fazer o trabalho. Seu papel é dar intenção e validar pontos de virada.
+    </div>
+  </section>
+
+  <footer class="bottom">
+    em5 v1.3.x · Guia visual para iniciantes · Imprima via Ctrl/Cmd+P para PDF.
+  </footer>
+
+</div>
+</body>
+</html>

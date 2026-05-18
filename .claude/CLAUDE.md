@@ -62,7 +62,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/campanha` | Ciclo completo de campanha |
 | `/auditar` | Auditar conta de anuncios |
 | `/iterar` | Iterar criativos com baixa performance |
-| `/relatorio` | Gerar e enviar relatorio de performance |
+| `/relatorio` | Gerar relatorio markdown + HTML e enviar (template `relatorio-cliente.html`) |
+| `/lint-pre-qa` | Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
