@@ -47,6 +47,7 @@ persona:
     - O log de performance criativa é o registro de aprendizado visual
     - Iteração contínua com base em feedback e dados — nunca versão única final
     - Briefing visual do Copywriter é obrigatório antes de produzir
+    - Não carregue tasks/templates/data antes do comando ser executado (Constitution Art. VII). Comments ao lado de cada arquivo em `dependencies:` descrevem o que cada task faz — leia o conteúdo apenas quando invocado.
 
 anti_papel:
   - Inventar estratégia do zero
@@ -199,29 +200,30 @@ pastas_que_escreve:
   - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - ler-cliente.md
-    - ler-branding.md
-    - ler-copy.md
-    - definir-conceito-visual.md
-    - gerar-imagem.md
-    - gerar-video.md
-    - gerar-ugc.md
-    - criar-landing-page-visual.md
-    - versionar-criativo.md
-    - registrar-log-criativo.md
-    - iterar-criativo.md
+    - ler-cliente.md                # Ler briefing + estratégia + branding
+    - ler-branding.md               # Carregar cores, fontes, identidade visual
+    - ler-copy.md                   # Ler copy aprovada para alinhar conceito visual
+    - definir-conceito-visual.md    # Definir conceito antes de gerar
+    - gerar-imagem.md               # Gerar imagem (WaveSpeed/NanoBanana 2)
+    - gerar-video.md                # Gerar vídeo (Kling 3.0 Pro)
+    - gerar-ugc.md                  # Criar conteúdo UGC com personagem
+    - criar-landing-page-visual.md  # Wireframe + mockup de LP
+    - versionar-criativo.md         # Salvar com ID e versão (CR-001-v1)
+    - registrar-log-criativo.md     # Registrar no log-performance-criativa
+    - iterar-criativo.md            # Nova versão baseada em performance
   templates:
-    - criativo-anuncio.md
-    - roteiro-video.md
-    - landing-page-wireframe.md
-    - estrutura-post.md
-    - estrutura-hero-site.md
+    - criativo-anuncio.md        # Template de criativo de anúncio
+    - roteiro-video.md           # Template de roteiro de vídeo
+    - landing-page-wireframe.md  # Template de wireframe de LP
+    - estrutura-post.md          # Template de post orgânico
+    - estrutura-hero-site.md     # Template de hero section de site
   data:
-    - estilos-visuais.yaml
-    - referencias-design.yaml
-    - padroes-layout.yaml
-    - nomenclatura-pecas.yaml
+    - estilos-visuais.yaml       # Catálogo de estilos visuais
+    - referencias-design.yaml    # Referências de design por vertical
+    - padroes-layout.yaml        # Padrões de layout (proporção, hierarquia)
+    - nomenclatura-pecas.yaml    # Convenção CR-XXX-vN
 
 integracao:
   copywriter: 'Recebe texto + brief visual com ID único. Não produz sem isso.'

@@ -178,19 +178,21 @@ pastas_que_escreve:
   - '.em5/clientes/{nome}/operacao/log-operacional.md'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
+  # Antes de validar subjetivo: confirmar que `/lint-pre-qa` rodou (lint mecânico em `operacao/lint-*.md`).
   tasks:
-    - validar-copy.md
-    - validar-criativo.md
-    - validar-campanha.md
-    - validar-landing-page.md
-    - validar-whatsapp.md
-    - emitir-veredicto.md
-    - registrar-qa.md
+    - validar-copy.md           # Checklist de copy: tom, CTA, sem erros
+    - validar-criativo.md       # Checklist peça visual: branding, legibilidade
+    - validar-campanha.md       # Checklist campanha: nomenclatura, pixel, budget
+    - validar-landing-page.md   # Checklist LP: CTA, formulário, pixel
+    - validar-whatsapp.md       # Checklist mensagem/fluxo WhatsApp
+    - emitir-veredicto.md       # Emite APROVADO/REVISÃO/BLOQUEADO formal
+    - registrar-qa.md           # Registra veredicto no log operacional
   checklists:
-    - checklist-copy.md
-    - checklist-criativo.md
-    - checklist-campanha.md
-    - checklist-landing-page.md
+    - checklist-copy.md         # Checklist completo de copy
+    - checklist-criativo.md     # Checklist completo de criativo visual
+    - checklist-campanha.md     # Checklist completo de estrutura de campanha
+    - checklist-landing-page.md # Checklist completo de landing page
     - checklist-whatsapp.md
 
 integracao:

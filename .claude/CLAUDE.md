@@ -4,7 +4,9 @@
 > Framework operacional pra gestor solo de agência de marketing digital.
 > Configure com `/setup` na primeira vez.
 
-Voce esta no em5. Leia `.em5/core/constitution.md` antes de qualquer acao.
+Voce esta no em5. Leia `.em5/core/constitution-index.md` (índice dos 13 artigos)
+antes de qualquer acao. Carregue `.em5/core/constitution.md` (versao completa)
+APENAS em conflito, escalada ou duvida de interpretacao.
 Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 
 **Slogan dev:** Se passou de 5, refatora.

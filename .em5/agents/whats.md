@@ -85,19 +85,20 @@ commands:
     description: Áudio → texto (Composio whisper ou equiv. se disponível)
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - whats/enviar-template
-    - whats/enviar-draft
-    - whats/receber-mensagem
-    - whats/handoff-humano
-    - whats/transcrever-audio
+    - whats/enviar-template      # Envia mensagem template (HSM) aprovada
+    - whats/enviar-draft         # Envia draft que requer aprovação humana
+    - whats/receber-mensagem     # Processa mensagem recebida do cliente
+    - whats/handoff-humano       # Escala conversa para operador humano
+    - whats/transcrever-audio    # Transcreve áudio recebido (Whisper)
   templates:
-    - whats/briefing-inicial.template.md
-    - whats/alerta-roas.template.md
-    - whats/weekly-report.template.md
-    - whats/objecao-padrao.template.md
+    - whats/briefing-inicial.template.md    # Template de briefing via WhatsApp
+    - whats/alerta-roas.template.md         # Template de alerta de ROAS
+    - whats/weekly-report.template.md       # Template de relatório semanal
+    - whats/objecao-padrao.template.md      # Templates de objeção padrão
   data:
-    - whats/stop-rules.yaml
+    - whats/stop-rules.yaml      # Regras de parada para tópicos sensíveis
     - whats/templates-por-nicho.yaml
 ```
 

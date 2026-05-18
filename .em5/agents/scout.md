@@ -65,17 +65,18 @@ commands:
     description: Output em .em5/clientes/{slug}/inteligencia/scout-{semana}.md
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - scout/mapear-concorrencia
-    - scout/scrape-site-concorrente
-    - scout/monitorar-ads-concorrente
-    - scout/gerar-swot
-    - scout/alerta-movimentacao
+    - scout/mapear-concorrencia       # Mapear concorrentes por nicho do cliente
+    - scout/scrape-site-concorrente   # Scrape via firecrawl de ofertas e copy
+    - scout/monitorar-ads-concorrente # Monitora ads ativos via Meta Ad Library
+    - scout/gerar-swot                # Gera SWOT comparativo vs cliente
+    - scout/alerta-movimentacao       # Alerta semanal de movimentação relevante
   templates:
-    - scout/swot.template.md
-    - scout/relatorio-semanal.template.md
+    - scout/swot.template.md              # Template SWOT comparativo
+    - scout/relatorio-semanal.template.md # Template de relatório semanal
   data:
-    - scout/concorrentes-por-nicho.yaml
+    - scout/concorrentes-por-nicho.yaml   # Base de concorrentes por vertical
 ```
 
 ---

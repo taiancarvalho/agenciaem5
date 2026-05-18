@@ -61,15 +61,16 @@ commands:
     description: Spec aprovada, envia pra @builder com tudo necessário
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - construcao/entrevistar
-    - construcao/desenhar-spec
+    - construcao/entrevistar          # Entrevista descobrindo necessidade real (≤5 min)
+    - construcao/desenhar-spec        # Desenha spec executável pelo @builder
   templates:
-    - construcao/spec.template.md
+    - construcao/spec.template.md     # Template de spec do componente
   data:
-    - canais-suportados.yaml
+    - canais-suportados.yaml          # Canais habilitados na agência
   workflows:
-    - construcao/ciclo-completo
+    - construcao/ciclo-completo       # Pipeline completo @arq → @builder → @reviewer
 ```
 
 ---

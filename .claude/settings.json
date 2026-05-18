@@ -57,6 +57,10 @@
           {
             "type": "command",
             "command": "bash .claude/hooks/model-router.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/composio-validator.sh"
           }
         ]
       }

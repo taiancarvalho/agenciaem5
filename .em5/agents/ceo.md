@@ -135,17 +135,18 @@ commands:
     description: 'Sair do modo CEO'
 
 dependencies:
+  # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
-    - ceo/new-client.md
-    - ceo/validate-system.md
-    - ceo/list-components.md
+    - ceo/new-client.md           # Cria workspace de novo cliente + delega onboarding
+    - ceo/validate-system.md      # Valida conformidade do sistema com Constitution
+    - ceo/list-components.md      # Lista agentes/skills/workflows registrados
   workflows:
-    - onboarding-cliente.yaml
-    - estrategia-campanha.yaml
-    - gestao-trafego.yaml
+    - onboarding-cliente.yaml     # Pipeline completo de onboarding
+    - estrategia-campanha.yaml    # Pipeline de estratégia → execução
+    - gestao-trafego.yaml         # Pipeline de gestão de tráfego diária
   data:
-    - estrutura-pastas.yaml
-    - canais-suportados.yaml
+    - estrutura-pastas.yaml       # Esqueleto canônico de pasta cliente
+    - canais-suportados.yaml      # Canais habilitados na agência
 
 integrations:
   meta_ads_mcp:
