@@ -2,7 +2,7 @@
 
 > **Todo processo da agência em ≤ 5 min de input humano.**
 > Sistema operacional pra gestor solo de agência de marketing digital.
-> 8 agentes especializados via Claude Code + Composio MCP único.
+> 15 agentes Claude Code, Composio MCP, painel visual, integração Asaas BR.
 
 [![v1.3.0](https://img.shields.io/badge/version-1.3.0-blue)](https://github.com/taiancarvalho/agenciaem5)
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -12,43 +12,92 @@
 
 ---
 
-## 🚀 Quick Start
+## 🎯 O que é
 
-```bash
-npx em5@latest install
-cd seu-projeto
-# abra Claude Code
-/setup
-/cliente-novo nome-do-cliente
-```
+em5 é um **sistema operacional pra agência solo** rodando inteiramente em Claude Code:
 
-Setup completo em **≤ 5 minutos** — wizard pergunta apenas o essencial.
+- 15 agentes especializados (estratégia, tráfego, copy, design, QA, vendas, financeiro)
+- 87 tasks executáveis, 19 skills, Constitution v1.3 (13 artigos)
+- Workspace nativo por cliente em `.em5/clientes/{slug}/`
+- Composio MCP como único gateway externo (Art. IX)
+- Asaas integrado pra financeiro BR (PIX/boleto/cartão)
+- Painel Astro estático + Electron desktop
+- Opcional: integração Paperclip pra UI visual orquestrada
+
+**Princípio central:** se uma skill precisa de mais que 5 min de input humano, é bug de UX → ticket de refator.
 
 ---
 
-## 🎯 Agentes
+## ⚡ Quick Start
+
+### Pré-requisitos
+
+- macOS, Linux ou WSL
+- Node 20+ + npm
+- [Claude Code CLI](https://claude.com/claude-code) instalado e autenticado
+- Conta [Composio](https://app.composio.dev/) (gateway MCP)
+- (Opcional) Conta [Asaas](https://www.asaas.com) sandbox/prod pra financeiro BR
+
+### Instalação em 3 comandos
+
+```bash
+git clone https://github.com/taiancarvalho/agenciaem5.git
+cd agenciaem5
+npm install
+```
+
+### Setup
+
+```bash
+cp .env.example .env
+# Edita .env com COMPOSIO_API_KEY + ASAAS_TOKEN
+```
+
+### Validar
+
+```bash
+npm test                          # 6 smoke tests
+node .em5/bin/em5-validate.js     # conformidade Constitution
+```
+
+### Operar
+
+Abre o projeto no Claude Code. No primeiro comando:
+
+```
+/setup                       # configura a agência (1× só)
+/cliente-novo nome-cliente   # cria workspace
+/dia                         # daily run de todas contas
+```
+
+📖 **Manual completo:** [`docs/MANUAL.md`](docs/MANUAL.md)
+📖 **Instalação detalhada:** [`docs/INSTALL.md`](docs/INSTALL.md)
+
+---
+
+## 🤖 Agentes (15)
 
 | ID | Persona | Camada | Função |
 |----|---------|--------|--------|
-| @ceo | Atlas 🗺️ | Estratégia | Decisões de negócio, novo cliente |
-| @coo | Nexus 🎯 | Orquestração | Workflows completos, delegação |
-| @cs | Sol ☀️ | Definição/Execução | Onboarding, relacionamento cliente |
-| @strategist | Vera 🧭 | Definição | Estratégia, posicionamento |
-| @traffic | Pulse 📊 | Execução | Meta Ads, Google Ads, otimização |
-| @copywriter | Eco ✍️ | Execução | Copy, ângulos, adaptação canal |
-| @designer | Lux 🎨 | Execução | Criativos, vídeos, UGC |
-| @qa | Crivo 🔍 | Validação | Gate obrigatório antes de publicar |
-| @arq | Arq 🏛️ | Construção | Meta-time: entrevista + spec de componentes novos |
-| @builder | Cunha 🔨 | Construção | Meta-time: implementa via Forge templates |
-| @reviewer | Lima 🧪 | Construção | Meta-time: valida componentes vs Constitution |
-| @vendas | Caça 🎯 | Definição | Prospect → diagnóstico → proposta → fechamento |
-| @fin | Caixa 💰 | Execução | Mensalidades, inadimplência, ROI, MRR |
-| @scout | Espia 🔍 | Definição | Inteligência competitiva, scrape, SWOT |
-| @whats | Onda 📱 | Execução | WhatsApp dual-provider, templates, stop rules |
+| `@ceo` | Atlas 🗺️ | Estratégia | Decisões irreversíveis, novo cliente, conflitos |
+| `@coo` | Nexus 🎯 | Orquestração | Workflows completos, delegação |
+| `@cs` | Sol ☀️ | Definição/Execução | Onboarding, relatórios, relacionamento |
+| `@strategist` | Vera 🧭 | Definição | Estratégia, posicionamento, plano |
+| `@traffic` | Pulse 📊 | Execução | Meta Ads, Google Ads, otimização |
+| `@copywriter` | Eco ✍️ | Execução | Copy, ângulos, adaptação canal |
+| `@designer` | Lux 🎨 | Execução | Criativos, vídeos, UGC |
+| `@qa` | Crivo 🔍 | Validação | Gate obrigatório, severity matrix |
+| `@arq` | Arq 🏛️ | Construção | Meta-time: spec de componentes novos |
+| `@builder` | Cunha 🔨 | Construção | Meta-time: implementa via Forge |
+| `@reviewer` | Lima 🧪 | Construção | Meta-time: valida contra Constitution |
+| `@vendas` | Caça 🎯 | Definição | Prospect → diagnóstico → proposta → fecha |
+| `@fin` | Caixa 💰 | Execução | Mensalidades, Asaas, ROI, MRR |
+| `@scout` | Espia 🔍 | Definição | Inteligência competitiva, scrape, SWOT |
+| `@whats` | Onda 📱 | Execução | WhatsApp dual-provider, templates, stop rules |
 
 ---
 
-## ⚡ Skills (≤ 5 min cada)
+## ⚡ Skills (19)
 
 ### Operação cliente
 ```
@@ -69,6 +118,7 @@ Setup completo em **≤ 5 minutos** — wizard pergunta apenas o essencial.
 /construir       Meta-time descobre + cria componente novo
 /forge           Wizard rápido cria agente/task/playbook
 /importar-gpt    Adapta customGPT → componente em5
+/extrair-design  URL/briefing → DESIGN.md + tokens + preview
 /aprender        Consulta learnings antes de criar
 /override        Override @qa (severity=alto, com auditoria)
 ```
@@ -83,7 +133,7 @@ Setup completo em **≤ 5 minutos** — wizard pergunta apenas o essencial.
 
 ---
 
-## 🏛️ Constituição (12 Artigos)
+## 🏛️ Constituição (13 Artigos)
 
 | # | Artigo | Severidade |
 |---|--------|------------|
@@ -95,13 +145,13 @@ Setup completo em **≤ 5 minutos** — wizard pergunta apenas o essencial.
 | VI | Honestidade do CLI | MUST |
 | VII | Conhecimento Modular | SHOULD |
 | VIII | Quality Gate Obrigatório | NON-NEGOTIABLE |
-| IX | Composio como Gateway Externo | NON-NEGOTIABLE |
+| IX | Composio Gateway + Exceções (v1.3) | NON-NEGOTIABLE |
 | X | Learnings Perpétuos | MUST |
 | XI | Severity Gates | NON-NEGOTIABLE |
 | XII | em Cinco Minutos | SHOULD |
 | XIII | Construção Self-Service | MUST |
 
-Veja [`.em5/core/constitution.md`](.em5/core/constitution.md) completo.
+📖 Constituição completa: [`.em5/core/constitution.md`](.em5/core/constitution.md)
 
 ---
 
@@ -118,9 +168,11 @@ QA usa matriz de severidade em `.em5/core/data/gate-matrix.yaml`:
 
 ---
 
-## 🔌 Composio MCP (único gateway externo)
+## 🔌 Integrações Externas
 
-Toolsets habilitados via Composio:
+### Composio MCP (gateway default — Art. IX)
+
+Toolsets habilitados:
 - Meta Ads
 - Google Analytics
 - Google Sheets
@@ -129,7 +181,15 @@ Toolsets habilitados via Composio:
 - WhatsApp Business
 - Google Drive
 
-**Zero MCPs paralelos.** Art. IX da constitution.
+### Asaas (exceção formal Art. IX v1.3)
+
+Financeiro BR — PIX, boleto, cartão. Documentado em [`.em5/integracoes/excecoes.yaml`](.em5/integracoes/excecoes.yaml).
+
+### WhatsApp dual-provider
+
+Configurável via `/whats-setup`:
+- **Composio** (`whatsapp_business` toolset) — oficial Meta, pago
+- **WAHA** selfhosted — free, não-oficial (risco de ban)
 
 ---
 
@@ -145,6 +205,7 @@ Toolsets habilitados via Composio:
 - `strategist-hipoteses.md` — validações
 - `designer-padroes.md` — layouts performantes
 - `system-errors.md` — erros do sistema
+- `mcp-excecoes.md` — auditoria MCPs não-default
 
 Use `/aprender` antes de criar campanha — sistema sugere padrões aplicáveis.
 
@@ -152,13 +213,102 @@ Use `/aprender` antes de criar campanha — sistema sugere padrões aplicáveis.
 
 ## 🛠️ Forge (criar agentes/tasks/playbooks)
 
-```bash
-/forge agent      # novo agente especializado
-/forge task       # nova task pra agente existente
-/forge playbook   # playbook de nicho ou canal
+Dois caminhos:
+
+### Meta-time `/construir` (recomendado)
+User descreve necessidade em português → @arq Arq entrevista (≤ 5 min) → @builder Cunha implementa → @reviewer Lima valida → componente em produção.
+
+```
+/construir "preciso gerar contratos PDF por cliente"
 ```
 
-Wizard inquirer ≤ 5 min. Templates em `.em5/setup/forge-templates/`.
+### Wizard `/forge` (rápido)
+Inquirer direto pra criar agente/task/playbook sem entrevista.
+
+```bash
+/forge agent     # ou /forge task | /forge playbook
+```
+
+Templates em `.em5/setup/forge-templates/`.
+
+---
+
+## 🖥️ Painel + Desktop
+
+### Painel Astro estático (local)
+
+```bash
+cd painel
+npm install
+npm run dev    # localhost:4321
+```
+
+3 páginas:
+- `/` — Cards de todos clientes ordenados por severity
+- `/financeiro` — MRR, ARR, ROI por cliente, inadimplência
+- `/cliente/{slug}` — Drill-down individual + DESIGN.md preview
+
+📖 Detalhes: [`painel/README.md`](painel/README.md)
+
+### Electron desktop (Win/Mac/Linux)
+
+```bash
+cd desktop
+npm install
+npm run dev   # janela Electron carregando o painel
+```
+
+Build pra release:
+```bash
+npm run build:mac    # .dmg
+npm run build:win    # .exe (NSIS)
+npm run build:linux  # .AppImage
+```
+
+📖 Detalhes: [`desktop/README.md`](desktop/README.md)
+
+---
+
+## 🔗 Paperclip Integration (opcional)
+
+Alternativa visual ao painel custom — orquestração estilo holding com UI mobile-ready:
+
+```bash
+mkdir ~/paperclip-em5 && cd ~/paperclip-em5
+npx paperclipai onboard --yes
+# UI em localhost:3100
+```
+
+Importa os 15 agentes em5 como empresa "Agência em Cinco":
+
+```bash
+bash .em5/_research/paperclip-import/import-agents.sh
+```
+
+📖 Pacote completo: [`.em5/_research/paperclip-import/README.md`](.em5/_research/paperclip-import/README.md)
+
+---
+
+## 🧪 Validação contínua
+
+### Smoke tests (CI/CD)
+
+```bash
+npm test    # 6 vitest tests
+```
+
+Cobertura:
+1. `/validate-em5` retorna 0 issues
+2. Infrastructure health 8 módulos OK
+3. Constitution tem 13 artigos required
+4. Todos 15 agentes têm `model_tier`
+5. `em5-config.yaml` versão 1.3+ com tagline
+6. Composio + Asaas vs `excecoes.yaml`
+
+### GitHub Actions
+
+- [`.github/workflows/validate.yml`](.github/workflows/validate.yml) — roda em PRs + push
+- [`.github/workflows/release.yml`](.github/workflows/release.yml) — release auto em tag `v*`
 
 ---
 
@@ -167,9 +317,39 @@ Wizard inquirer ≤ 5 min. Templates em `.em5/setup/forge-templates/`.
 ```bash
 npx em5@latest install     # Setup wizard
 npx em5@latest upgrade     # Atualiza versão preservando customizações
-npx em5@latest forge       # Wizard de criação
+npx em5@latest forge       # Wizard cria componente
 npx em5@latest version     # Mostra versão
 ```
+
+---
+
+## 🚀 Roadmap
+
+Veja [`CHANGELOG.md`](CHANGELOG.md) pro histórico completo.
+
+### v1.4 planejado
+- [ ] Paperclip integration plugins (Composio + Asaas)
+- [ ] Painel pages adicionais (`/learnings`, `/concorrentes`)
+- [ ] Cobertura de testes ampliada
+- [ ] Logo real (icon.icns/.ico/.png)
+
+### v2.0 visão
+- [ ] NPM publish público
+- [ ] Marketplace de playbooks comunidade
+- [ ] Multi-user via Paperclip auth
+- [ ] Cloud-hosted opcional (Tailscale)
+
+---
+
+## 🤝 Contribuição
+
+Open source MIT. Issues + PRs bem-vindos.
+
+### Princípios de contribuição
+
+- Toda PR roda `/validate-em5` + smoke tests (CI bloqueia se falhar)
+- Mudanças em agentes/tasks passam pelo @reviewer Lima (Art. XIII Construção Self-Service)
+- Constitution Art. I–XII inegociáveis — mudanças exigem proposta formal
 
 ---
 
@@ -180,13 +360,6 @@ npx em5@latest version     # Mostra versão
 Qualquer skill que extrapole 5 min de input humano = bug de UX → ticket de refator.
 
 ---
-
-## 🖥️ Painel + Desktop
-
-- `painel/` — Dashboard Astro estático local
-- `desktop/` — Wrapper Electron Win/Mac/Linux (.dmg/.exe/.AppImage)
-
-Veja [`painel/README.md`](painel/README.md) e [`desktop/README.md`](desktop/README.md).
 
 ## 📄 License
 

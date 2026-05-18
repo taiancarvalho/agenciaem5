@@ -16,3 +16,8 @@
 - **Revisão próxima:** 2026-08-16
 
 ---
+## 2026-05-17 08:56 — SIMULAÇÃO cadastrar-cliente-asaas
+- Cliente: teste-piloto
+- MCP: asaas (dry-run, sem call real)
+- Status: simulação estrutural ok
+
