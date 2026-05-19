@@ -1,0 +1,16 @@
+nome: "whatsapp-orquestracao"
+descricao: "Orquestrador WhatsApp — recebe mensagem -> triagem -> agente certo OR handoff humano"
+versao: "1.0"
+gatilho: "Webhook WhatsApp Business OR WAHA"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats"
+qa_gate: false
+
+sequencia:
+  - {id: 1, etapa: "receber", agente: "whats", task: "receber-mensagem.md", saida: "mensagem capturada + contexto cliente"}
+  - {id: 2, etapa: "transcrever-se-audio", agente: "whats", task: "transcrever-audio.md", saida: "texto se audio"}
+  - {id: 3, etapa: "triagem", agente: "whats", saida: "intent (cobranca? duvida tecnica? feedback? agendamento? urgente?)"}
+  - {id: 4, etapa: "rotear", agente: "coo", routing: {cobranca: "@fin", duvida_tecnica: "@cs", feedback: "@cs", urgente: "@cs imediato OR handoff humano"}}
+  - {id: 5, etapa: "responder-OR-handoff", agente: "whats", task: "enviar-draft.md OR handoff-humano.md", saida: "resposta enviada OR escalada"}
+metricas: {tempo_primeira_resposta: "<= 15min horario comercial", taxa_resolucao_sem_humano: ">= 60%"}
+stop_rules: ["cliente pediu humano", "intent urgente nao resolvido", "loop > 3 mensagens sem progresso"]

@@ -1,0 +1,15 @@
+nome: "post-feed-estatico"
+descricao: "Post imagem unica feed IG/FB — calendario regular"
+versao: "1.0"
+gatilho: "Calendario editorial"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "tema-angulo", agente: "strategist", saida: "tema definido"}
+  - {id: 2, etapa: "copy-legenda", agente: "copywriter", task: "escrever-post-social.md", saida: "legenda + hashtags + CTA"}
+  - {id: 3, etapa: "design-imagem", agente: "designer", task: "gerar-imagem.md", saida: "1 imagem 1080x1080 OR 1080x1350"}
+  - {id: 4, etapa: "qa", agente: "qa", checklist: ["legivel mobile", "branding correto", "CTA claro"]}
+  - {id: 5, etapa: "agendar", agente: "cs", composio_mcp: "meta_business_suite"}
+metricas: {prazo: "<= 24h", taxa_engajamento_alvo: ">= 3%"}

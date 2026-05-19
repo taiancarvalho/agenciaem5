@@ -1,0 +1,16 @@
+nome: "cro-funil"
+descricao: "Analise funil + ajuste pontos vazao baixa — Conversion Rate Optimization"
+versao: "1.0"
+gatilho: "Conversao funil baixa (vs benchmark nicho) OR pedido cliente"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "strategist"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "mapear-funil", agente: "strategist", saida: "funil completo (anuncio -> LP -> form -> checkout -> compra) com taxa cada etapa"}
+  - {id: 2, etapa: "identificar-vazamento", agente: "traffic", task: "modo-cro.md", saida: "etapa pior performance (gap maior vs benchmark)"}
+  - {id: 3, etapa: "diagnosticar-causa", agente: "strategist", saida: "hipoteses: copy fraca? LP lenta? form longo? checkout complexo?"}
+  - {id: 4, etapa: "propor-mudancas", agente: "designer", saida: "variacoes pra testar (A/B test ciclo)"}
+  - {id: 5, etapa: "trigger-ab-test", agente: "coo", saida: "trigger ab-test-ciclo.yaml com hipotese formal"}
+  - {id: 6, etapa: "implementar-vencedora", agente: "designer", condicao: "ab-test deu APROVADO"}
+metricas: {melhoria_conversao_alvo: ">= 20% etapa otimizada", roi_cro_alvo: ">= 5x esforco"}

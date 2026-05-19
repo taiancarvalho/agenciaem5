@@ -1,0 +1,14 @@
+nome: "reuniao-1on1-cliente"
+descricao: "Reuniao recorrente cliente (semanal/quinzenal) — pauta + ata + follow-up"
+versao: "1.0"
+gatilho: "Cadencia agendada no contrato OR pedido cliente"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: false
+
+sequencia:
+  - {id: 1, etapa: "preparar-pauta", agente: "cs", task: "preparar-reuniao.md", saida: "pauta + dados semana + perguntas pendentes"}
+  - {id: 2, etapa: "executar-call", agente: "cs", duracao: "30min", composio_mcp: "googlemeet"}
+  - {id: 3, etapa: "ata", agente: "cs", saida: "trigger ata-reuniao.yaml"}
+  - {id: 4, etapa: "follow-up", agente: "cs", saida: "acoes acordadas executadas + status reportado D+3"}
+metricas: {cadencia: "semanal/quinzenal", taxa_no_show_cliente: "< 10%"}

@@ -1,0 +1,16 @@
+nome: "setup-conversion-api"
+descricao: "Deploy server-side CAPI Meta + Google EA — recupera dados perdidos por ITP/cookies"
+versao: "1.0"
+gatilho: "Cliente avancado (e-commerce OR > 50k investimento/mes) OR setup-pixel-tracking detectou match rate baixo"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "escolher-metodo", agente: "cs", saida: "GTM Server-side (recomendado) OR custom backend OR connector (Zapier/Stape)"}
+  - {id: 2, etapa: "deploy-server-gtm", agente: "cs", saida: "container server-side ativo + endpoint configurado"}
+  - {id: 3, etapa: "mapear-eventos", agente: "cs", saida: "eventos Meta CAPI + Google Enhanced Conversions disparando"}
+  - {id: 4, etapa: "deduplicacao", agente: "cs", saida: "event_id sincronizado client+server (sem contar 2x)"}
+  - {id: 5, etapa: "validar", agente: "traffic", saida: "Test Events Meta + DebugView GA4 OK + match rate >= 85%"}
+  - {id: 6, etapa: "qa", agente: "qa", checklist: ["match rate alto", "sem duplicacao", "dados consistentes"]}
+metricas: {match_rate_alvo: ">= 85%", recuperacao_dados_alvo: ">= 30% (ITP/cookie-less)"}

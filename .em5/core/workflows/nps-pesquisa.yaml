@@ -1,0 +1,15 @@
+nome: "nps-pesquisa"
+descricao: "Pesquisa NPS trimestral cliente + acao por nota"
+versao: "1.0"
+gatilho: "Cron trimestral"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: false
+
+sequencia:
+  - {id: 1, etapa: "enviar-pesquisa", agente: "cs", composio_mcp: ["survey-monkey", "byteforms", "jotform"], saida: "pesquisa 1 pergunta (0-10) + comentario opcional"}
+  - {id: 2, etapa: "coletar-respostas", agente: "cs", sla: "7d coleta", saida: "respostas tabuladas"}
+  - {id: 3, etapa: "classificar", agente: "cs", saida: "promotor (9-10) + neutro (7-8) + detrator (0-6)"}
+  - {id: 4, etapa: "acao-por-nota", agente: "cs", saida: "promotor -> pede indicacao + case study; neutro -> investiga; detrator -> trigger churn-prevention.yaml"}
+  - {id: 5, etapa: "reportar-ceo", agente: "ceo", saida: "NPS agencia consolidado + tendencia"}
+metricas: {cadencia: "trimestral", nps_alvo: ">= 50 (excelente >= 70)", taxa_resposta: ">= 60%"}
