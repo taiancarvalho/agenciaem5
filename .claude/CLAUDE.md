@@ -76,6 +76,10 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/em5-scrape` | Scrape limpo de 1 página em markdown (adapter de `defuddle`) |
 | `/em5-proposta-docx` | Proposta/contrato em DOCX pra cliente/prospect (adapter de `docx`) |
 | `/em5-deck-pptx` | Deck PowerPoint pra pitch/QBR/apresentação (adapter de `pptx`) |
+| `/em5-debug` | Debug sistemático quando algo dá errado (adapter de `superpowers:systematic-debugging`) |
+| `/em5-paralelo` | Dispatch paralelo de agentes independentes (adapter de `superpowers:dispatching-parallel-agents`) |
+| `/em5-export-xlsx` | Export Excel pra cliente analisar dados crus (adapter de `xlsx`) |
+| `/em5-pdf` | Converter HTML/DOCX/PPTX em PDF estático (adapter de `pdf`) |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
