@@ -1,0 +1,180 @@
+# Workflow: Cobrança Falhou (Crisis Reativo)
+# Versao: 1.0 (Sprint 3 — ativar @fin crisis path)
+# Agentes: coo (orquestra) → fin (retry Asaas) → whats (comunica) → cs (escala 3d+) → ceo (15d+)
+
+nome: "cobranca-falhou"
+descricao: "Pipeline reativo para falha de pagamento — retry inteligente + comunicacao + escalacao"
+versao: "1.0"
+gatilho: "Webhook Asaas evento PAYMENT_OVERDUE OR PAYMENT_REFUSED OR PAYMENT_CHARGEBACK"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "fin"
+qa_gate: false  # crisis financeiro — velocidade > validacao formal
+sla_resposta: "<= 2h apos webhook (horario comercial)"
+
+inputs:
+  - "webhook payload Asaas (cobranca_id + cliente_id + tipo evento + motivo)"
+  - "clientes/{nome}/financeiro/log-cobranca-{YYYY}.md (historico inadimplencia)"
+  - "clientes/{nome}/financeiro/contrato.yaml (valor + plano + start_date)"
+
+outputs:
+  - "clientes/{nome}/financeiro/incidentes/cobranca-falhou-{YYYY-MM-DD}.md"
+  - "comunicacao cliente (WhatsApp + email)"
+  - "decisao @ceo (continuar | pausar servico | offboarding) se 15d+"
+
+sequencia:
+
+  # ===== ETAPA 1: TRIAGEM IMEDIATA =====
+  - id: 1
+    etapa: "receber-webhook"
+    agente: "coo"
+    task: "delegar-operacao.md"
+    entrada: "payload webhook Asaas"
+    saida: "incidente registrado + dispatch @fin"
+    dependencia: nenhuma
+    trigger: "webhook async"
+    primeira_acao: "criar clientes/{nome}/financeiro/incidentes/cobranca-falhou-{YYYY-MM-DD}.md com payload"
+
+  - id: 2
+    etapa: "diagnosticar-causa"
+    agente: "fin"
+    task: "monitorar-inadimplencia.md"
+    entrada: "payload + historico cliente"
+    saida: "diagnostico (causa + severidade + acao recomendada)"
+    composio_mcp: "asaas"
+    dependencia: "receber-webhook"
+    classificacao_causa:
+      CARTAO_RECUSADO: "tentar novo metodo (PIX + boleto)"
+      SALDO_INSUFICIENTE: "retry +3d + comunica cliente"
+      DADOS_DESATUALIZADOS: "@cs solicita atualizacao"
+      CHARGEBACK: "ALERTA MAXIMO — @ceo imediato (risco fraude/disputa)"
+      VENCIMENTO_PASSOU: "primeira inadimplencia OR recorrente?"
+
+  # ===== ETAPA 2: RETRY INTELIGENTE =====
+  - id: 3
+    etapa: "retry-cobranca"
+    agente: "fin"
+    task: "criar-cobranca-asaas.md"
+    entrada: "diagnostico"
+    saida: "nova tentativa cobranca + metodos alternativos (PIX prioritario + boleto fallback)"
+    composio_mcp: "asaas"
+    dependencia: "diagnosticar-causa"
+    condicao: "causa in [CARTAO_RECUSADO, SALDO_INSUFICIENTE, VENCIMENTO_PASSOU]"
+    estrategia:
+      tentativa_1: "PIX (zero fricao + instantaneo)"
+      tentativa_2: "Boleto novo +3d vencimento"
+      tentativa_3: "Cartao novo (solicitar dados atualizados via @cs)"
+
+  # ===== ETAPA 3: COMUNICACAO CLIENTE =====
+  - id: 4
+    etapa: "comunicar-cliente-imediato"
+    agente: "whats"
+    task: "enviar-template.md"
+    entrada: "diagnostico + nova cobranca"
+    saida: "mensagem WhatsApp enviada (template humano + nao agressivo + link nova cobranca)"
+    composio_mcp: "whatsapp_business OR waha"
+    dependencia: "retry-cobranca"
+    template_tone: "empático — assume problema técnico, nao culpa cliente"
+    template_estrutura:
+      - "Saudacao + identificacao breve"
+      - "'Sua cobranca de {valor} venceu — pode ter sido falha técnica'"
+      - "Link novo pagamento (PIX preferencial)"
+      - "Convite contato direto se duvida (numero @cs)"
+
+  - id: 5
+    etapa: "comunicar-email-fallback"
+    agente: "cs"
+    task: "registrar-interacao.md"
+    entrada: "comunicacao WhatsApp enviada"
+    saida: "email backup com mesmo conteudo + anexo nova fatura"
+    composio_mcp: "gmail"
+    dependencia: "retry-cobranca"
+    rodar_em_paralelo: true  # com WhatsApp
+
+  # ===== ETAPA 4: MONITORAMENTO =====
+  - id: 6
+    etapa: "aguardar-pagamento-retry"
+    agente: "fin"
+    task: "monitorar-inadimplencia.md"
+    entrada: "nova cobranca ativa"
+    saida: "status atualizado (PAGO | AINDA_PENDENTE)"
+    composio_mcp: "asaas"
+    dependencia: "comunicar-cliente-imediato"
+    frequencia: "cron a cada 6h por 72h"
+
+  # ===== ETAPA 5: ESCALACAO PROGRESSIVA =====
+  - id: 7
+    etapa: "escalar-3d"
+    agente: "cs"
+    task: "registrar-interacao.md"
+    entrada: "status AINDA_PENDENTE +72h"
+    saida: "outreach humano (call ou WhatsApp pessoal) + log incidente"
+    dependencia: "aguardar-pagamento-retry"
+    condicao: "72h sem pagamento"
+    acao: "@cs liga + entende motivo real + negocia (parcelamento? prazo?)"
+
+  - id: 8
+    etapa: "escalar-15d-ceo"
+    agente: "ceo"
+    task: "decisao.md"
+    entrada: "incidente + historico tentativas + diagnostico @cs"
+    saida: "decisao formal (continuar servico + parcelar | pausar campanhas | offboarding)"
+    dependencia: "escalar-3d"
+    condicao: "15+ dias sem pagamento"
+    opcoes:
+      CONTINUAR: "negociar parcelamento + manter ativo (cliente bom historico)"
+      PAUSAR: "pausa campanhas Meta/Google + comunica cliente formal (cliente medio risco)"
+      OFFBOARDING: "trigger offboarding.yaml (Sprint 5) — cliente alto risco/inadimplencia recorrente"
+
+  - id: 9
+    etapa: "executar-decisao-ceo"
+    agente: "coo"
+    task: "delegar-operacao.md"
+    entrada: "decisao formal @ceo"
+    saida: "acao executada por agente responsavel"
+    dependencia: "escalar-15d-ceo"
+    routing:
+      CONTINUAR: "@fin renegocia + @cs documenta"
+      PAUSAR: "@traffic pausa campanhas + @cs comunica + @fin recalcula cobranca"
+      OFFBOARDING: "trigger workflow offboarding.yaml"
+
+  # ===== ETAPA 6: REGISTRO + APRENDIZADO =====
+  - id: 10
+    etapa: "fechar-incidente"
+    agente: "fin"
+    task: "registrar-pagamento.md OR monitorar-inadimplencia.md"
+    entrada: "incidente resolvido (PAGO OR OFFBOARDED)"
+    saida: "incidente fechado + log-cobranca atualizado + flag historico cliente"
+    dependencia: "aguardar-pagamento-retry"
+    flag_historico: "se 3+ falhas em 12 meses, marcar HIGH_RISK no contrato (input renovacao)"
+
+# ===== CHARGEBACK (CAMINHO ESPECIAL) =====
+caminho_chargeback:
+  trigger: "diagnostico.causa == CHARGEBACK"
+  prioridade: "MAXIMA — escalar @ceo em <1h"
+  acoes:
+    - "@ceo imediato (risco financeiro + reputacao Asaas)"
+    - "@fin coleta evidencias (servico prestado, contrato, comunicacoes)"
+    - "@cs contata cliente entender motivo (disputa real ou fraude?)"
+    - "Contestar chargeback no Asaas com evidencias (prazo 7d)"
+    - "Se confirmado fraude → @ceo decide acao legal + offboarding"
+
+# ===== ON FAILURE =====
+on_failure:
+  retry_3x_falha: "@coo escala @ceo + pausa preventiva campanhas"
+  cliente_nao_responde_72h: "@cs liga + se sem retorno move pra escalar-15d"
+  asaas_webhook_falha: "polling manual @fin a cada 1h ate confirmar status"
+
+# ===== METRICAS =====
+metricas:
+  tempo_resposta_webhook: "<= 2h (horario comercial)"
+  taxa_recuperacao_retry: ">= 60% (PAGO no D+3)"
+  taxa_recuperacao_total: ">= 85% (PAGO em ate 15d)"
+  chargebacks_mes_alvo: "< 0.5%"
+
+# ===== NOTAS =====
+notas_importantes:
+  - "Crisis financeiro — velocidade prioritaria, sem gate @qa formal"
+  - "Comunicacao SEMPRE empatica (assume problema tecnico, nao acusa)"
+  - "Chargeback = nivel maximo, escala @ceo em <1h"
+  - "3+ falhas/ano = HIGH_RISK flag (input pra renovacao + ICP refinement)"
+  - "Webhook Asaas configurado no onboarding-cliente.yaml v2.0"

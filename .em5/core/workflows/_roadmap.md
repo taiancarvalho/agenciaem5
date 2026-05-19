@@ -5,9 +5,9 @@
 > Convenção: nome do yaml = `{categoria}-{escopo}.yaml` quando útil pra namespacing.
 
 **Última atualização:** 2026-05-19
-**Versão:** v1.1 (Sprint 1 — refactor P0 concluído)
+**Versão:** v1.3 (Sprint 2 + Sprint 3 concluídos)
 **Total catalogado:** 84 workflows (7 existentes + 77 propostos)
-**Status:** 4 ✅ saudáveis | 3 ✅ refatorados Sprint 1 | 77 🔴 pendentes
+**Status:** 4 ✅ saudáveis | 3 ✅ refatorados Sprint 1 | 7 ✅ criados Sprint 2+3 | 70 🔴 pendentes
 
 ---
 
@@ -28,17 +28,21 @@
 
 ## SPRINT TRACKING
 
-### Sprint atual: **Sprint 2 — Skills↔YAML** (next)
+### Sprint atual: **Sprint 4 — Conteúdo orgânico crítico** (next)
 
 ### Sprints concluídos
 - ✅ **Sprint 0 — Roadmap** (catálogo 84 workflows)
 - ✅ **Sprint 1 — Refactor P0** (onboarding-cliente v2.0 + lancamento v2.0 + ciclo-campanha v2.1)
+- ✅ **Sprint 2 — Skills↔YAML** (relatorio-cliente + auditoria-conta + daily-run)
+- ✅ **Sprint 3 — Ativar @fin + @vendas** (cobranca-mensal + prospec-fechamento + cold-outreach + cobranca-falhou)
 
 ### Próximos sprints planejados
 
 | Sprint | Escopo | Workflows | Estimativa |
 |--------|--------|-----------|-----------|
 | ~~**Sprint 1 — Refactor P0**~~ | ~~Corrigir débito dos 3 workflows incompletos~~ | ~~3~~ | ✅ Concluído |
+| ~~**Sprint 2 — Skills↔YAML**~~ | ~~Criar yaml pras 3 skills multi-agent sem workflow~~ | ~~3~~ | ✅ Concluído |
+| ~~**Sprint 3 — Ativar @fin + @vendas**~~ | ~~Pipelines financeiros e comerciais~~ | ~~4~~ | ✅ Concluído (foi 4 em vez de 2 — incluído cold-outreach e cobranca-falhou) |
 | **Sprint 2 — Skills↔YAML** | Criar yaml pras 3 skills multi-agent sem workflow | 3 | ~3h |
 | **Sprint 3 — Ativar @fin + @vendas** | Pipelines financeiros e comerciais | 2 | ~3h |
 | **Sprint 4 — Conteúdo orgânico crítico** | 5 formatos mais usados | 5 | ~5h |
@@ -70,18 +74,18 @@
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 8 | `relatorio-cliente.yaml` | 🔴 P1 | coo → traffic → cs → qa → cs (envio) | Skill `/relatorio` | Skill já existe, falta yaml |
-| 9 | `auditoria-conta.yaml` | 🔴 P1 | coo → traffic → qa → cs | Skill `/auditar` | Cobre meta + google |
-| 10 | `daily-run.yaml` | 🔴 P1 | coo → traffic (×N clientes ‖) → cs (alertas) | Skill `/dia` | Cron diário 8h |
+| 8 | `relatorio-cliente.yaml` | ✅ v1.0 | coo → traffic → cs → qa → cs (envio) | Skill `/relatorio` | **Sprint 2:** criado |
+| 9 | `auditoria-conta.yaml` | ✅ v1.0 | coo → traffic → qa → cs | Skill `/auditar` | **Sprint 2:** criado — cobre meta + google + paralelo |
+| 10 | `daily-run.yaml` | ✅ v1.0 | coo → traffic (×N clientes ‖) → cs (alertas) | Skill `/dia` | **Sprint 2:** criado — protetivo, classifica NORMAL/ATENCAO/ALERTA |
 
 ### Categoria 3 — Ativar @fin + @vendas (4) [Sprint 3]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 11 | `cobranca-mensal.yaml` | 🔴 P1 | fin (Asaas fatura) → whats (envia) → fin (concilia) → cs (escala 5d+) | Cron 1º dia mês | Usa MCP Asaas |
-| 12 | `prospec-fechamento.yaml` | 🔴 P1 | vendas (qualifica) → vendas (diagnóstico) → vendas (proposta) → ceo (aprova) → fin (cadastra) → onboarding | Skill `/vendas-pipeline` (novo) | — |
-| 13 | `cold-outreach.yaml` | 🔴 P1 | vendas (lista) → vendas (cadência) → vendas (resposta) → diagnóstico | Cron semanal | SDR |
-| 14 | `cobranca-falhou.yaml` | 🔴 P0 (crisis) | fin (retry Asaas) → whats (comunicação) → cs (escala 3d) | Webhook Asaas falha | — |
+| 11 | `cobranca-mensal.yaml` | ✅ v1.0 | coo → fin (Asaas fatura) → whats (envia) → fin (concilia) → cs (escala 5d+) → fin (MRR) | Cron 1º dia mês | **Sprint 3:** criado — MCP Asaas, escalação progressiva 5/15/30d |
+| 12 | `prospec-fechamento.yaml` | ✅ v1.0 | coo → vendas → ceo (aprova) → fin → trigger onboarding | Skill `/vendas-pipeline` | **Sprint 3:** criado — 11 steps com aprendizado de perdidos |
+| 13 | `cold-outreach.yaml` | ✅ v1.0 | coo → vendas (lista LGPD + cadência multicanal D0-D21) | Cron segunda 8h | **Sprint 3:** criado — rate limit anti-spam + trigger prospec-fechamento |
+| 14 | `cobranca-falhou.yaml` | ✅ v1.0 | coo → fin (diagnostic + retry) → whats + cs → ceo (15d+) | Webhook Asaas | **Sprint 3:** criado — caminho especial chargeback (escala @ceo 1h) |
 
 ### Categoria 4 — Conteúdo orgânico (15) [Sprints 4–6]
 

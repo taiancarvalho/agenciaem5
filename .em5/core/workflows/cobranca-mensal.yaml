@@ -1,0 +1,149 @@
+# Workflow: Cobrança Mensal Recorrente
+# Versao: 1.0 (Sprint 3 — ativar @fin)
+# Agentes: coo → fin (Asaas fatura) → whats (envia link) → fin (concilia) → cs (escala 5d+)
+
+nome: "cobranca-mensal"
+descricao: "Geracao + envio + conciliacao + escalacao de cobrancas mensais recorrentes via Asaas"
+versao: "1.0"
+gatilho: "Cron dia 1 de cada mes 9h OR webhook Asaas (cobranca confirmada)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "fin"
+qa_gate: false  # processo financeiro automatizado, gate via veredicto @fin
+
+inputs:
+  - "lista clientes ativos (status pago em5-config.yaml.clientes_ativos)"
+  - "valor mensal por cliente (clientes/{nome}/financeiro/contrato.yaml)"
+
+outputs:
+  - "clientes/{nome}/financeiro/cobrancas/{YYYY-MM}.json (status Asaas)"
+  - "clientes/{nome}/financeiro/log-cobranca-{YYYY}.md (append)"
+  - "operacao/painel-mrr-{YYYY-MM}.md (consolidado MRR)"
+  - "alertas inadimplencia para @cs"
+
+sequencia:
+
+  # ===== FASE 1: GERACAO =====
+  - id: 1
+    etapa: "listar-clientes-cobrar"
+    agente: "coo"
+    task: "delegar-operacao.md"
+    entrada: "em5-config.yaml.clientes_ativos + scan clientes/*/financeiro/contrato.yaml"
+    saida: "lista N clientes ativos + valores"
+    dependencia: nenhuma
+
+  - id: 2
+    etapa: "gerar-fatura-asaas"
+    agente: "fin"
+    task: "criar-cobranca-asaas.md"
+    entrada:
+      - "cliente customer_id (asaas-cliente.json)"
+      - "valor mensal"
+      - "vencimento padrao (dia 10 mes corrente)"
+    saida: "clientes/{nome}/financeiro/cobrancas/{YYYY-MM}.json (cobranca_id + link + boleto + pix)"
+    composio_mcp: "asaas"  # MCP nativo (excecao Composio)
+    dependencia: "listar-clientes-cobrar"
+    rodar_em_paralelo: true  # paraleliza por cliente
+
+  # ===== FASE 2: ENVIO =====
+  - id: 3
+    etapa: "enviar-cobranca-cliente"
+    agente: "whats"
+    task: "enviar-template.md"
+    entrada:
+      - "cobranca-{YYYY-MM}.json (link + valor + vencimento)"
+      - "cliente WhatsApp number (board-cliente.md)"
+      - "template: cobranca-mensal-padrao"
+    saida: "mensagem enviada + message_id armazenado"
+    composio_mcp: "whatsapp_business OR waha selfhosted"
+    dependencia: "gerar-fatura-asaas"
+    condicao: "cliente tem WhatsApp ativo (em5-config.yaml.whatsapp)"
+    fallback: "se sem WhatsApp, @cs envia via email Gmail"
+
+  - id: 4
+    etapa: "enviar-email-cobranca"
+    agente: "cs"
+    task: "enviar-relatorio.md"  # reutiliza envio email
+    entrada: "cobranca-{YYYY-MM}.json + template email cobranca"
+    saida: "email enviado + thread_id armazenado"
+    composio_mcp: "gmail"
+    dependencia: "gerar-fatura-asaas"
+    rodar_em_paralelo: true  # email + whatsapp em paralelo (redundancia)
+
+  # ===== FASE 3: CONCILIACAO =====
+  - id: 5
+    etapa: "monitorar-pagamento"
+    agente: "fin"
+    task: "monitorar-inadimplencia.md"
+    entrada: "cobrancas {YYYY-MM} ativas"
+    saida: "status atualizado por cliente (PAGO | PENDENTE | VENCIDO | INADIMPLENTE)"
+    composio_mcp: "asaas"
+    dependencia: "enviar-cobranca-cliente"
+    frequencia: "cron diario 10h ate dia 30 do mes"
+    classificacao:
+      PAGO: "pagamento confirmado Asaas"
+      PENDENTE: "ate vencimento (dia 10)"
+      VENCIDO: "1-4 dias apos vencimento"
+      INADIMPLENTE_5d: "5+ dias apos vencimento — escalar @cs"
+      INADIMPLENTE_15d: "15+ dias — escalar @ceo (pausa servico?)"
+      INADIMPLENTE_30d: "30+ dias — trigger churn-prevention.yaml (Sprint 5)"
+
+  - id: 6
+    etapa: "registrar-pagamento"
+    agente: "fin"
+    task: "registrar-pagamento.md"
+    entrada: "webhook Asaas pagamento confirmado"
+    saida: "clientes/{nome}/financeiro/log-cobranca-{YYYY}.md (append entrada PAGO)"
+    dependencia: "monitorar-pagamento"
+    trigger: "webhook async — disparado quando Asaas notifica pagamento"
+
+  # ===== FASE 4: ESCALACAO INADIMPLENCIA =====
+  - id: 7
+    etapa: "escalar-inadimplencia"
+    agente: "cs"
+    task: "registrar-interacao.md"
+    entrada: "lista INADIMPLENTE_5d+"
+    saida: "outreach humano (call/whats) + log + flag em log-operacional"
+    dependencia: "monitorar-pagamento"
+    condicao: "status in [INADIMPLENTE_5d, INADIMPLENTE_15d, INADIMPLENTE_30d]"
+    acoes:
+      INADIMPLENTE_5d: "@cs liga + @whats lembrete suave"
+      INADIMPLENTE_15d: "@ceo decide pause de servico + @cs comunica formal"
+      INADIMPLENTE_30d: "trigger workflow churn-prevention.yaml + considerar offboarding"
+
+  # ===== FASE 5: CONSOLIDACAO MRR =====
+  - id: 8
+    etapa: "gerar-mrr-mensal"
+    agente: "fin"
+    task: "gerar-mrr-mensal.md"
+    entrada: "todas cobrancas do mes (PAGAS + INADIMPLENTES)"
+    saida: "operacao/painel-mrr-{YYYY-MM}.md"
+    dependencia: "monitorar-pagamento"
+    frequencia: "cron dia 1 do mes seguinte 9h (apos fechamento mes)"
+    estrutura_painel:
+      - "MRR realizado vs esperado"
+      - "Churn rate ($ + clientes)"
+      - "Inadimplencia rate"
+      - "Novos clientes (MRR adicional)"
+      - "Lifetime value medio"
+      - "Top 5 clientes por receita"
+
+# ===== ON FAILURE =====
+on_failure:
+  asaas_falha_gerar: "@coo retry 3x backoff. Se persistir, escala @ceo (incident infra Asaas?)"
+  whatsapp_nao_entregue: "fallback email Gmail automatico"
+  email_bounce: "@cs valida email + reenvia OR liga"
+  webhook_asaas_falha: "@fin polling manual a cada 4h ate confirmar (degradacao graciosa)"
+
+# ===== METRICAS =====
+metricas:
+  taxa_geracao_sucesso: "100% (sem falha de geracao aceita)"
+  taxa_entrega_comunicacao: "> 95% (WhatsApp + email combinado)"
+  inadimplencia_15d_alvo: "< 5% MRR"
+  churn_mes_alvo: "< 3%"
+
+# ===== NOTAS =====
+notas_importantes:
+  - "Asaas é MCP nativo (excecao Composio — ver ~/.claude/rules/mcp-servers.md)"
+  - "Webhook Asaas DEVE estar configurado (Sprint 1: cliente-novo onboarding inclui setup)"
+  - "Inadimplencia NUNCA é decidida pelo @fin sozinho — sempre @ceo decide pause/churn"
+  - "Cobranca extra (lancamento, projeto) usa workflow separado, nao este"
