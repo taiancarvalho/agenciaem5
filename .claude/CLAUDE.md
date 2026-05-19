@@ -70,6 +70,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/em5-verify` | Self-check de artefato antes de marcar task done (adapter de `superpowers:verification-before-completion`) |
 | `/em5-roteiro-reels` | Roteiro Reels IG focado em gerar comentários (adapter de `instant-value-reels`) |
 | `/em5-call-para-sop` | Transcrição de call → SOP estruturado versionado (adapter de `generating-structured-sops`) |
+| `/em5-criativo-video` | Criativo em vídeo HTML standalone via HyperFrames — custo zero, sem queue (adapter de `hyperframes` + `hyperframes-cli` + `hyperframes-media`) |
+| `/em5-site-to-video` | Captura site/LP do cliente → vídeo promo automático (adapter de `website-to-hyperframes`) |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
