@@ -1,5 +1,5 @@
 // painel/src/lib/loader.js
-// Carrega dados dos clientes em5 lendo .em5/clientes/*/operacao/status.yaml
+// Carrega dados dos clientes em5 lendo clientes/*/operacao/status.yaml
 // 100% filesystem-first (Art. I).
 
 import fs from 'node:fs';
@@ -7,7 +7,7 @@ import path from 'node:path';
 import yaml from 'js-yaml';
 
 const EM5_ROOT = path.resolve(process.cwd(), '..');
-const CLIENTES_DIR = path.join(EM5_ROOT, '.em5/clientes');
+const CLIENTES_DIR = path.join(EM5_ROOT, 'clientes');
 const CONFIG_PATH = path.join(EM5_ROOT, 'em5-config.yaml');
 const LEARNINGS_DIR = path.join(EM5_ROOT, '.em5/learnings');
 

@@ -4,7 +4,7 @@ agent: qa
 description: Registrar resultado de validacao QA no log operacional para rastreabilidade
 inputs:
   - resultado da validacao (veredicto, itens, detalhes)
-  - .em5/clientes/{nome}/operacao/log-operacional.md
+  - clientes/{nome}/operacao/log-operacional.md
 outputs:
   - entrada registrada no log-operacional.md
 model_tier: frontier  # auto-set Fase 12.AAA legacy audit
@@ -40,7 +40,7 @@ Coletar:
 
 ### 2. Registrar no log operacional
 
-Adicionar linha em `.em5/clientes/{nome}/operacao/log-operacional.md`:
+Adicionar linha em `clientes/{nome}/operacao/log-operacional.md`:
 
 ```markdown
 | {data} | VALIDACAO | Crivo | QA: {tipo} de {item}. Resultado: {APROVADO/REVISAO/BLOQUEADO}. {detalhe 1 linha}. | CONCLUÍDO | {proximo passo} |

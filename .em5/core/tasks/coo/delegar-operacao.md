@@ -39,7 +39,7 @@ Ler o arquivo do workflow em `.em5/core/workflows/{nome}.yaml`.
 
 ### 2. Verificar estado do cliente
 
-Checar em `.em5/clientes/{nome}/operacao/` o que já foi feito:
+Checar em `clientes/{nome}/operacao/` o que já foi feito:
 - `log-operacional.md` — última interação e etapa atual
 - `proximos-passos.md` — o que está pendente
 
@@ -53,7 +53,7 @@ Para cada agente a ser acionado, preparar:
 Agente: @{id}
 Comando: *{comando} {cliente}
 Contexto: {1-2 frases — o que este agente precisa saber}
-Arquivo de referência: .em5/clientes/{nome}/{caminho}
+Arquivo de referência: clientes/{nome}/{caminho}
 Entrega esperada: {arquivo ou confirmação}
 ```
 

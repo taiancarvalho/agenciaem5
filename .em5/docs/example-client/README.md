@@ -15,7 +15,7 @@ Cliente do projeto original (OMG.sys) mantido como **exemplo de estrutura comple
 - `setup-tecnico/`
 - `trafego/`
 
-## Por que NÃO está em `.em5/clientes/`
+## Por que NÃO está em `clientes/`
 
 Se ficasse lá:
 - Agentes operariam nele (`@fin *sync-asaas` puxaria fake data)
@@ -55,7 +55,7 @@ Use o exemplo como referência ao rodar `/cliente-novo {seu-slug}` e operar com 
 
 ## NÃO faça
 
-- ❌ Mover de volta pra `.em5/clientes/` (vai poluir sistema)
+- ❌ Mover de volta pra `clientes/` (vai poluir sistema)
 - ❌ Operar agentes nele (`@traffic *sync-asaas docs/example-client/...`)
 - ❌ Deletar (perde referência educacional valiosa)
 

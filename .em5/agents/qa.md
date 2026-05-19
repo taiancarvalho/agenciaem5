@@ -159,7 +159,7 @@ escalada:
   bloqueado_grave: 'Escalada para Atlas (Agency Master)'
 
 registro_qa:
-  arquivo: '.em5/clientes/{nome}/operacao/log-operacional.md'
+  arquivo: 'clientes/{nome}/operacao/log-operacional.md'
   formato: |
     | Data | Item | Tipo | Veredicto | Observação |
     |------|------|------|-----------|------------|
@@ -167,16 +167,16 @@ registro_qa:
     | 2026-04-15 | Copy WhatsApp | Copy | REVISÃO | CTA ausente, tom inconsistente |
 
 pastas_que_acessa:
-  - '.em5/clientes/{nome}/estrategia/'
-  - '.em5/clientes/{nome}/copy/'
-  - '.em5/clientes/{nome}/design/'
-  - '.em5/clientes/{nome}/branding/'
-  - '.em5/clientes/{nome}/operacao/log-operacional.md'
-  - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
-  - '.em5/clientes/{nome}/operacao/lint-*.md'  # output do /lint-pre-qa — pré-requisito antes de validar
+  - 'clientes/{nome}/estrategia/'
+  - 'clientes/{nome}/copy/'
+  - 'clientes/{nome}/design/'
+  - 'clientes/{nome}/branding/'
+  - 'clientes/{nome}/operacao/log-operacional.md'
+  - 'clientes/{nome}/operacao/log-performance-criativa.md'
+  - 'clientes/{nome}/operacao/lint-*.md'  # output do /lint-pre-qa — pré-requisito antes de validar
 
 pastas_que_escreve:
-  - '.em5/clientes/{nome}/operacao/log-operacional.md'
+  - 'clientes/{nome}/operacao/log-operacional.md'
 
 dependencies:
   # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).

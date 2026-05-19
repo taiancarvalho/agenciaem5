@@ -9,7 +9,7 @@ inputs:
   - email
   - telefone
 outputs:
-  - .em5/clientes/{slug}/financeiro/cliente-asaas.yaml
+  - clientes/{slug}/financeiro/cliente-asaas.yaml
 elicit: true
 model_tier: balanced
 mcp_dependencies: [asaas]
@@ -25,7 +25,7 @@ Cria customer no Asaas via MCP (pré-requisito pra qualquer cobrança).
 
 1. **Valida documento** (CPF 11 dígitos ou CNPJ 14, sem máscara)
 2. **Asaas MCP**: `create-customer { name, cpfCnpj, email, mobilePhone }`
-3. Salva `.em5/clientes/{slug}/financeiro/cliente-asaas.yaml`:
+3. Salva `clientes/{slug}/financeiro/cliente-asaas.yaml`:
    ```yaml
    customer_id: cus_xxx
    nome_fiscal: "{nome}"

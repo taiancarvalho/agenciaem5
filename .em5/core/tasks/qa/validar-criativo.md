@@ -3,9 +3,9 @@ name: validar-criativo
 agent: qa
 description: Executar checklist de validacao de criativo visual (imagem ou video) antes da publicacao
 inputs:
-  - .em5/clientes/{nome}/design/ (arquivos de criativo)
-  - .em5/clientes/{nome}/branding/ (cores.yaml, fontes.yaml, guia-estilo.md)
-  - .em5/clientes/{nome}/copy/ (copy associada ao criativo)
+  - clientes/{nome}/design/ (arquivos de criativo)
+  - clientes/{nome}/branding/ (cores.yaml, fontes.yaml, guia-estilo.md)
+  - clientes/{nome}/copy/ (copy associada ao criativo)
 outputs:
   - resultado da validacao de criativo
   - itens a corrigir (se houver)
@@ -32,11 +32,11 @@ Mesmo que o cliente "ame o resultado", QA valida primeiro.
 
 ### 1. Coletar criativo a ser validado
 
-Identificar os arquivos de criativo em `.em5/clientes/{nome}/design/` pendentes de validacao.
+Identificar os arquivos de criativo em `clientes/{nome}/design/` pendentes de validacao.
 
 ### 2. Ler diretrizes de branding
 
-Consultar `.em5/clientes/{nome}/branding/cores.yaml`, `fontes.yaml` e `guia-estilo.md` (se existir) para validar conformidade visual.
+Consultar `clientes/{nome}/branding/cores.yaml`, `fontes.yaml` e `guia-estilo.md` (se existir) para validar conformidade visual.
 
 ### 3. Executar checklist
 

@@ -3,13 +3,13 @@ name: estruturar-campanha
 agent: traffic
 description: Criar estrutura inicial de campanhas seguindo a regra de 2 campanhas minimas — audiencia + objetivo
 inputs:
-  - .em5/clientes/{nome}/onboarding/board-cliente.md
-  - .em5/clientes/{nome}/trafego/auditoria.md
-  - .em5/clientes/{nome}/trafego/publicos-mapeados.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/onboarding/board-cliente.md
+  - clientes/{nome}/trafego/auditoria.md
+  - clientes/{nome}/trafego/publicos-mapeados.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
   - copy e criativos disponiveis (ou em producao)
 outputs:
-  - .em5/clientes/{nome}/trafego/campanhas-ativas.md
+  - clientes/{nome}/trafego/campanhas-ativas.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -19,7 +19,7 @@ elicit: true
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/traffic-meta.md` (ou `traffic-google.md`)
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 
@@ -127,7 +127,7 @@ composio.meta_ads.update_campaign(id: "{id}", status: "ACTIVE")
 
 ### 7. Documentar campanhas
 
-Criar `.em5/clientes/{nome}/trafego/campanhas-ativas.md` com estrutura das 2 campanhas.
+Criar `clientes/{nome}/trafego/campanhas-ativas.md` com estrutura das 2 campanhas.
 
 ### 8. Registrar no log e na memória
 

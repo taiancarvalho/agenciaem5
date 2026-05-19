@@ -5,7 +5,7 @@ description: Polling de mensagens recebidas + classifica + decide ação
 inputs:
   - cliente_slug (opcional — default: todos)
 outputs:
-  - .em5/clientes/{slug}/comunicacao/whats-recebido.md (append)
+  - clientes/{slug}/comunicacao/whats-recebido.md (append)
   - acionamento de tasks downstream
 elicit: false
 model_tier: balanced

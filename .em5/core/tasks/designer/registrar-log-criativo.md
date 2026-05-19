@@ -3,7 +3,7 @@ name: registrar-log-criativo
 agent: designer
 description: Registrar novo criativo no log de performance criativa com metadados visuais e referencias
 inputs:
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md
+  - clientes/{nome}/operacao/log-performance-criativa.md
   - dados do criativo (ID, canal, tipo, angulo, versao)
 outputs:
   - linha adicionada no log-performance-criativa.md
@@ -42,7 +42,7 @@ Reunir as informacoes:
 
 ### 2. Adicionar entrada ao log
 
-Abrir `.em5/clientes/{nome}/operacao/log-performance-criativa.md` e adicionar nova linha:
+Abrir `clientes/{nome}/operacao/log-performance-criativa.md` e adicionar nova linha:
 
 ```markdown
 | CR-{id} | {data} | {canal} | {tipo} | {angulo} | {resumo copy} | {nome arquivo criativo} | v{versao} | {status} | | |

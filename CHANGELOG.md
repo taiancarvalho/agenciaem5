@@ -63,7 +63,7 @@
 - 63 tasks executáveis
 - 5 playbooks de domínio
 - Composio MCP unificado
-- Workspace cliente nativo (`.em5/clientes/{slug}/`)
+- Workspace cliente nativo (`clientes/{slug}/`)
 
 ### Migration
 - Repo renomeado: `AgencyOS` → `agenciaem5`

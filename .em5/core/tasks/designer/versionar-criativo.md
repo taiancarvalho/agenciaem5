@@ -6,7 +6,7 @@ inputs:
   - arquivo de imagem ou vídeo gerado
   - ID da peça (CR-{id})
 outputs:
-  - arquivo salvo em .em5/clientes/{nome}/design/criativos/ com nomenclatura correta
+  - arquivo salvo em clientes/{nome}/design/criativos/ com nomenclatura correta
   - log de performance criativa atualizado
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -58,28 +58,28 @@ Perguntar ao usuário:
 
 ### 2. Verificar próximo número disponível
 
-Consultar `.em5/clientes/{nome}/operacao/log-performance-criativa.md` para identificar o maior número de CR utilizado e definir o próximo.
+Consultar `clientes/{nome}/operacao/log-performance-criativa.md` para identificar o maior número de CR utilizado e definir o próximo.
 
 ### 3. Salvar na pasta correta
 
 Para imagens:
 ```
-.em5/clientes/{nome}/design/criativos/CR-{id}-v{n}.png
+clientes/{nome}/design/criativos/CR-{id}-v{n}.png
 ```
 
 Para vídeos:
 ```
-.em5/clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
+clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
 ```
 
 Para landing pages:
 ```
-.em5/clientes/{nome}/design/landing-pages/CR-{id}-v{n}/
+clientes/{nome}/design/landing-pages/CR-{id}-v{n}/
 ```
 
 Para exports finais aprovados:
 ```
-.em5/clientes/{nome}/design/exports/CR-{id}-v{n}.{ext}
+clientes/{nome}/design/exports/CR-{id}-v{n}.{ext}
 ```
 
 ### 4. Atualizar log de performance criativa

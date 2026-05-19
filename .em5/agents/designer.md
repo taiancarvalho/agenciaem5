@@ -60,7 +60,7 @@ anti_papel:
 
 hard_dependencies:
   design_md:
-    path: .em5/clientes/{slug}/branding/DESIGN.md
+    path: clientes/{slug}/branding/DESIGN.md
     description: 'Sistema de design extraído via /extrair-design. Sem este arquivo, Lux recusa criar criativo e sugere rodar /extrair-design primeiro.'
     fallback: 'Se DESIGN.md ausente: avisar user + sugerir /extrair-design {slug} {url|briefing}'
 
@@ -152,13 +152,13 @@ nomenclatura_e_versionamento:
   regra: 'Toda peça relevante tem ID e versão. Rastreabilidade é obrigatória.'
 
 estrutura_de_pastas:
-  criativos: '.em5/clientes/{nome}/design/criativos/'
-  videos: '.em5/clientes/{nome}/design/videos/'
-  landing_pages: '.em5/clientes/{nome}/design/landing-pages/'
-  exports: '.em5/clientes/{nome}/design/exports/'
+  criativos: 'clientes/{nome}/design/criativos/'
+  videos: 'clientes/{nome}/design/videos/'
+  landing_pages: 'clientes/{nome}/design/landing-pages/'
+  exports: 'clientes/{nome}/design/exports/'
 
 log_ownership:
-  arquivo: '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
+  arquivo: 'clientes/{nome}/operacao/log-performance-criativa.md'
   responsabilidade_de_lux: 'Registrar execução visual: referência visual, versão do criativo, conceito utilizado'
   campos_de_lux: 'Criativo (nome do arquivo), Versão, Conceito Visual'
   campos_de_cal: 'ID, Data, Canal, Tipo, Ângulo, Copy (resumo)'
@@ -193,16 +193,16 @@ avora_skills_referencia:
     - 'Produção de Vídeo para Social'
 
 pastas_que_acessa:
-  - '.em5/clientes/{nome}/onboarding/'
-  - '.em5/clientes/{nome}/estrategia/'
-  - '.em5/clientes/{nome}/assets/'
-  - '.em5/clientes/{nome}/branding/'
-  - '.em5/clientes/{nome}/copy/'
-  - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
+  - 'clientes/{nome}/onboarding/'
+  - 'clientes/{nome}/estrategia/'
+  - 'clientes/{nome}/assets/'
+  - 'clientes/{nome}/branding/'
+  - 'clientes/{nome}/copy/'
+  - 'clientes/{nome}/operacao/log-performance-criativa.md'
 
 pastas_que_escreve:
-  - '.em5/clientes/{nome}/design/'
-  - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
+  - 'clientes/{nome}/design/'
+  - 'clientes/{nome}/operacao/log-performance-criativa.md'
 
 dependencies:
   # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).

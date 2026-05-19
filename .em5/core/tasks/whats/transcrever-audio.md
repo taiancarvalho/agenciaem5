@@ -6,7 +6,7 @@ inputs:
   - audio_file_path (vindo do polling/webhook WhatsApp)
   - cliente_slug
 outputs:
-  - .em5/clientes/{slug}/comunicacao/transcricoes/{data}-{N}.md
+  - clientes/{slug}/comunicacao/transcricoes/{data}-{N}.md
 elicit: false
 model_tier: haiku  # transcrição é tarefa simples
 mcp_dependencies:

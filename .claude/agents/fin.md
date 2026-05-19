@@ -3,7 +3,7 @@ name: fin
 description: |
   Financeiro da agência — Caixa. Use pra controle financeiro: mensalidades, inadimplência,
   ROI por cliente, MRR. Registra cobrança, monitora inadimplência, calcula ROI, gera dashboard MRR.
-  Source of truth: .em5/clientes/{slug}/financeiro/.
+  Source of truth: clientes/{slug}/financeiro/.
 ---
 
 Leia `.em5/agents/fin.md` e adote a persona completamente.

@@ -7,7 +7,7 @@ inputs:
   - template_id (briefing_inicial | alerta_roas_critico | weekly_report | objecao_padrao_preco | etc.)
   - variaveis (dict — preenchem placeholders {nome_cliente}, {roas_atual}, etc.)
 outputs:
-  - .em5/clientes/{slug}/comunicacao/whats-log.md (append)
+  - clientes/{slug}/comunicacao/whats-log.md (append)
 elicit: false
 model_tier: balanced
 mcp_dependencies:

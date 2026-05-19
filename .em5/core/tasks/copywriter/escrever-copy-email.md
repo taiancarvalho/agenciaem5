@@ -18,7 +18,7 @@ e-mails de venda ou reativação de leads.
 ## Inputs necessários
 1. Objetivo do e-mail (nutrir / vender / reativar / informar)
 2. Segmento da lista (leads frios / leads quentes / clientes)
-3. `.em5/clientes/{nome}/estrategia/plano-estrategico.md`
+3. `clientes/{nome}/estrategia/plano-estrategico.md`
 4. Posição na sequência (e-mail 1/5, 3/5, etc.)
 
 ## Execução
@@ -66,7 +66,7 @@ Hook forte → problema → agitação → solução → oferta → urgência �
 Reconhecer a ausência → oferta de retorno → CTA direto
 
 ### 4. Salvar output
-Criar em: `.em5/clientes/{nome}/copy/email/`
+Criar em: `clientes/{nome}/copy/email/`
 Nomear: `{YYYY-MM-DD}-{tipo}-{assunto-slug}.md`
 
 Incluir no arquivo:

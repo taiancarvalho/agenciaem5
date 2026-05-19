@@ -3,10 +3,10 @@ name: gerar-ugc
 agent: designer
 description: Criar conteudo UGC (imagem ou video) usando o sistema UGC com WaveSpeed AI
 inputs:
-  - .em5/clientes/{nome}/copy/CR-{id}.md
-  - .em5/clientes/{nome}/branding/
+  - clientes/{nome}/copy/CR-{id}.md
+  - clientes/{nome}/branding/
   - contexto/ugc-system/outputs/ (templates JSON)
-  - .em5/clientes/{nome}/assets/
+  - clientes/{nome}/assets/
 outputs:
   - JSON de prompt estruturado
   - Imagem ou video UGC gerado
@@ -19,7 +19,7 @@ elicit: true
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/designer-instagram.md` (seção 1: Árvore de decisão)
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 
@@ -135,9 +135,9 @@ Máximo 3 tentativas — se falhar, abrir diagnosis.md
 ### 7. Salvar e versionar
 
 ```
-Criativos: .em5/clientes/{nome}/design/criativos/CR-{id}-v{n}.{ext}
-Prompts:   .em5/clientes/{nome}/design/criativos/prompts/CR-{id}-ugc-prompt.json
-Vídeos:    .em5/clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
+Criativos: clientes/{nome}/design/criativos/CR-{id}-v{n}.{ext}
+Prompts:   clientes/{nome}/design/criativos/prompts/CR-{id}-ugc-prompt.json
+Vídeos:    clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
 ```
 
 ### 8. Registrar e atualizar memória

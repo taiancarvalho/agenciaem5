@@ -35,7 +35,7 @@ Adapter de `superpowers:writing-plans`.
 2. Invocar `superpowers:writing-plans` com goal + constraints
 3. Salvar plano em:
    ```
-   .em5/clientes/{cliente}/operacao/plano-{topico}-{YYYY-MM-DD}.md
+   clientes/{cliente}/operacao/plano-{topico}-{YYYY-MM-DD}.md
    ```
    (ou `.em5/planos/` se topico for da agência)
 

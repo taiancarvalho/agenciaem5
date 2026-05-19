@@ -109,9 +109,9 @@ CONVENIÊNCIA: cenário desk ou kitchen | ação: usando o produto/app  | modelo
 
 ### Passo 4 — Nomenclatura e salvamento
 ```
-Criativos: .em5/clientes/{nome}/design/criativos/CR-{id}-v{n}.{ext}
-Prompts:   .em5/clientes/{nome}/design/criativos/prompts/CR-{id}-prompt.json
-Vídeos:    .em5/clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
+Criativos: clientes/{nome}/design/criativos/CR-{id}-v{n}.{ext}
+Prompts:   clientes/{nome}/design/criativos/prompts/CR-{id}-prompt.json
+Vídeos:    clientes/{nome}/design/videos/CR-{id}-v{n}.mp4
 ```
 
 Salvar sempre o prompt usado junto do arquivo — facilita regeneração e iteração.

@@ -3,9 +3,9 @@ name: definir-conceito-visual
 agent: designer
 description: Escolher conceito visual antes de produzir criativos, com base na copy, estrategia e branding do cliente
 inputs:
-  - .em5/clientes/{nome}/copy/CR-{id}.md
-  - .em5/clientes/{nome}/estrategia/
-  - .em5/clientes/{nome}/branding/
+  - clientes/{nome}/copy/CR-{id}.md
+  - clientes/{nome}/estrategia/
+  - clientes/{nome}/branding/
 outputs:
   - conceito visual definido e documentado
   - direcao visual clara para producao
@@ -18,7 +18,7 @@ elicit: true
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/designer-instagram.md`
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 

@@ -3,8 +3,8 @@ name: mapear-publicos
 agent: traffic
 description: Mapear audiencias disponiveis na conta de anuncios e recomendar estrutura de publicos para as campanhas
 inputs:
-  - .em5/clientes/{nome}/trafego/auditoria.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/trafego/auditoria.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
   - acesso a conta de anuncios
 outputs:
   - secao de publicos dentro de auditoria.md ou arquivo publicos-mapeados.md

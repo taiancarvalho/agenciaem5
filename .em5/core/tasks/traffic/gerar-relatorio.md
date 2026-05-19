@@ -4,10 +4,10 @@ agent: traffic
 description: Gerar relatório técnico de performance do período para o CS entregar ao cliente
 inputs:
   - dados de performance do período (mês ou semana)
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md (para comparar com as metas)
+  - clientes/{nome}/operacao/log-performance-criativa.md
+  - clientes/{nome}/estrategia/plano-estrategico.md (para comparar com as metas)
 outputs:
-  - .em5/clientes/{nome}/relatorios/{periodo}-relatorio.md
+  - clientes/{nome}/relatorios/{periodo}-relatorio.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -48,7 +48,7 @@ Preciso dos dados do período {data_inicio} a {data_fim}:
 
 ### 2. Gerar relatório técnico
 
-Criar `.em5/clientes/{nome}/relatorios/{periodo}-relatorio.md`:
+Criar `clientes/{nome}/relatorios/{periodo}-relatorio.md`:
 
 ```markdown
 # Relatório de Performance — {Nome do Cliente}
@@ -140,7 +140,7 @@ Informar ao usuário:
 
 ```
 ✅ Relatório técnico salvo em:
-.em5/clientes/{nome}/relatorios/{periodo}-relatorio.md
+clientes/{nome}/relatorios/{periodo}-relatorio.md
 
 → Sol: *enviar-relatorio {nome}
 ```

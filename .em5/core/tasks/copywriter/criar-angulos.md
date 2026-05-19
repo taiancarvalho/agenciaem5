@@ -3,10 +3,10 @@ name: criar-angulos
 agent: copywriter
 description: Gerar 3 a 5 ângulos de abordagem para a oferta do cliente, com base no ICP, na oferta e na estratégia
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
 outputs:
-  - .em5/clientes/{nome}/copy/angulos.md
+  - clientes/{nome}/copy/angulos.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -46,14 +46,14 @@ Copy sem ângulo = escrever por escrever.
 ### 1. Ler briefing e plano estratégico
 
 Acessar:
-- `.em5/clientes/{nome}/onboarding/briefing-final.md`
-- `.em5/clientes/{nome}/estrategia/plano-estrategico.md`
+- `clientes/{nome}/onboarding/briefing-final.md`
+- `clientes/{nome}/estrategia/plano-estrategico.md`
 
 Extrair: dores do ICP, desejos, objeções, nível de consciência, linguagem, diferencial da oferta.
 
 ### 2. Gerar ângulos
 
-Criar `.em5/clientes/{nome}/copy/angulos.md`:
+Criar `clientes/{nome}/copy/angulos.md`:
 
 ```markdown
 # Ângulos de Comunicação — {Nome do Cliente}

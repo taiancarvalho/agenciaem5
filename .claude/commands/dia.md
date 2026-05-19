@@ -15,7 +15,7 @@
 ## Fluxo
 
 1. **@coo (Nexus)** recebe `/dia`
-2. Lê `.em5/clientes/*/operacao/status.yaml` pra identificar contas ativas
+2. Lê `clientes/*/operacao/status.yaml` pra identificar contas ativas
 3. Delega pra **@traffic (Pulse)** com lista de contas
 4. **Pulse** consulta Composio (Meta Ads + Google Analytics) e identifica:
    - ROAS desvio > 20% vs janela 7d
@@ -26,7 +26,7 @@
 5. **@qa (Crivo)** valida sinalizações (filtro de falsos positivos)
 6. **@cs (Sol)** prepara WhatsApp draft com diagnóstico — só urgência (severity=alto+)
 7. Output:
-   - `.em5/clientes/{slug}/relatorios/diario-{YYYY-MM-DD}.md` por conta
+   - `clientes/{slug}/relatorios/diario-{YYYY-MM-DD}.md` por conta
    - Resumo consolidado: `.em5/_dia/{YYYY-MM-DD}.md` (top issues + ações sugeridas)
 
 ## Critério de saída

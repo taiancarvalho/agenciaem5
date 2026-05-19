@@ -6,7 +6,7 @@ inputs:
   - cliente_slug (opcional — default: todos)
   - periodo: ultimo_mes | ultimos_3 | tudo
 outputs:
-  - .em5/clientes/*/financeiro/cobrancas.yaml (atualizado)
+  - clientes/*/financeiro/cobrancas.yaml (atualizado)
   - .em5/_fin/sync-{data}.md (log)
 elicit: false
 model_tier: balanced

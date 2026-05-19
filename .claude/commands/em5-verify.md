@@ -126,7 +126,7 @@ Invoque `superpowers:verification-before-completion` passando contexto:
 
 Salvar em:
 ```
-.em5/clientes/{cliente}/operacao/verify-{YYYY-MM-DD}-{artefato_slug}.md
+clientes/{cliente}/operacao/verify-{YYYY-MM-DD}-{artefato_slug}.md
 ```
 
 Formato:

@@ -3,12 +3,12 @@ name: escrever-copy
 agent: copywriter
 description: Escrever copy completa para o tipo e canal solicitado, com base no angulo definido
 inputs:
-  - .em5/clientes/{nome}/copy/angulos.md
-  - .em5/clientes/{nome}/trafego/briefing-criativos.md (se existir)
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/copy/angulos.md
+  - clientes/{nome}/trafego/briefing-criativos.md (se existir)
+  - clientes/{nome}/estrategia/plano-estrategico.md
 outputs:
-  - .em5/clientes/{nome}/copy/CR-{id}.md
-  - nova linha em .em5/clientes/{nome}/operacao/log-performance-criativa.md
+  - clientes/{nome}/copy/CR-{id}.md
+  - nova linha em clientes/{nome}/operacao/log-performance-criativa.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -18,7 +18,7 @@ elicit: true
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/copywriter-frameworks.md`
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 
@@ -119,7 +119,7 @@ Produzir a copy completa com base na estrutura do tipo definido.
 
 ### 3. Salvar arquivo
 
-Criar `.em5/clientes/{nome}/copy/CR-{id}.md` com copy + brief visual para o designer.
+Criar `clientes/{nome}/copy/CR-{id}.md` com copy + brief visual para o designer.
 
 ### 4. Registrar no log
 

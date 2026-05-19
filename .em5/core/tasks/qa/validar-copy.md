@@ -3,9 +3,9 @@ name: validar-copy
 agent: qa
 description: Executar checklist de validacao de copy antes da publicacao
 inputs:
-  - .em5/clientes/{nome}/copy/ (arquivos de copy)
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
-  - .em5/clientes/{nome}/copy/analise-icp.md
+  - clientes/{nome}/copy/ (arquivos de copy)
+  - clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/copy/analise-icp.md
 outputs:
   - resultado da validacao de copy
   - itens a corrigir (se houver)
@@ -32,7 +32,7 @@ Sem excecao, mesmo em "emergencia".
 
 ### 1. Coletar copy a ser validada
 
-Identificar todos os arquivos de copy em `.em5/clientes/{nome}/copy/` que estao marcados como pendentes de validacao.
+Identificar todos os arquivos de copy em `clientes/{nome}/copy/` que estao marcados como pendentes de validacao.
 
 ### 2. Executar checklist
 

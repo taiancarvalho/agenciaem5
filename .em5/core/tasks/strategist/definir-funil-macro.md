@@ -3,8 +3,8 @@ name: definir-funil-macro
 agent: strategist
 description: Definir as etapas do funil do cliente: topo, meio, fundo e retencao — mapeando objetivo de cada etapa
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
-  - .em5/clientes/{nome}/estrategia/posicionamento.md
+  - clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/estrategia/posicionamento.md
   - objetivo real confirmado
 outputs:
   - secao de funil dentro do plano-estrategico.md ou arquivo proprio

@@ -12,7 +12,7 @@ Padrão de output: [@google/design.md](https://www.npmjs.com/package/@google/des
 ## O que faz
 
 Input: URL pública, pasta local, screenshots, HTML, CSS, ou briefing.
-Output: `.em5/clientes/{slug}/branding/` com:
+Output: `clientes/{slug}/branding/` com:
 - `DESIGN.md` — sistema de design estruturado (consumido por @designer, @copywriter, @qa)
 - `preview.html` — visualização tipo Clay/Linear pra mostrar ao cliente
 - `tokens.json` — design tokens machine-readable (Lux usa em criativos)
@@ -39,7 +39,7 @@ Exemplo:
 
 ## Hard rules (Constitution-aligned)
 
-- Output **sempre** em `.em5/clientes/{slug}/branding/` (Art. I filesystem-first)
+- Output **sempre** em `clientes/{slug}/branding/` (Art. I filesystem-first)
 - Source = read-only (Art. III)
 - Sem inventar tokens/screenshots/motion (Art. VI honestidade)
 - Mark approximations em `source/analysis-notes.md`

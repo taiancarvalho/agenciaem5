@@ -6,8 +6,8 @@ inputs:
   - transcrição ou resumo da call (colado pelo usuário)
   - resultado da call (fechou / não fechou / em follow-up)
 outputs:
-  - .em5/clientes/agencia/vendas/analise-call-{id}.md
-  - atualização em .em5/clientes/agencia/vendas/script-vendas.md (se aplicável)
+  - clientes/agencia/vendas/analise-call-{id}.md
+  - atualização em clientes/agencia/vendas/script-vendas.md (se aplicável)
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -99,7 +99,7 @@ Gerar análise estruturada no arquivo:
 ### 3. Atualizar script de vendas (quando relevante)
 
 Se a análise revelar melhoria clara para o script, sugerir atualização em:
-`.em5/clientes/agencia/vendas/script-vendas.md`
+`clientes/agencia/vendas/script-vendas.md`
 
 Apresentar a mudança antes de aplicar:
 
@@ -117,7 +117,7 @@ Deseja aplicar essa mudança?
 
 ### 4. Atualizar banco de objeções
 
-Registrar em `.em5/clientes/agencia/vendas/objecoes.md`:
+Registrar em `clientes/agencia/vendas/objecoes.md`:
 
 ```markdown
 | Objeção | Frequência | Melhor resposta | Fonte |

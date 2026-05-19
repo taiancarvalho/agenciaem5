@@ -3,10 +3,10 @@ name: analisar-icp
 agent: copywriter
 description: Mapear dores, desejos, objeções, linguagem e nivel de consciencia do ICP a partir do briefing e da estrategia
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md (se existir)
+  - clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/estrategia/plano-estrategico.md (se existir)
 outputs:
-  - .em5/clientes/{nome}/copy/analise-icp.md
+  - clientes/{nome}/copy/analise-icp.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -31,11 +31,11 @@ Usar as palavras do ICP, nao as palavras da agencia.
 
 ### 1. Ler briefing
 
-Ler `.em5/clientes/{nome}/onboarding/briefing-final.md` inteiro. Se plano estrategico existir, ler tambem para confirmar ou ajustar a interpretacao.
+Ler `clientes/{nome}/onboarding/briefing-final.md` inteiro. Se plano estrategico existir, ler tambem para confirmar ou ajustar a interpretacao.
 
 ### 2. Extrair perfis de copy
 
-Criar `.em5/clientes/{nome}/copy/analise-icp.md`:
+Criar `clientes/{nome}/copy/analise-icp.md`:
 
 ```markdown
 # Analise de ICP — {Nome do Cliente}

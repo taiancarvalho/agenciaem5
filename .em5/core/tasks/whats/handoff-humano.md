@@ -6,7 +6,7 @@ inputs:
   - cliente_slug
   - motivo (sentiment_negativo | pergunta_fora_template | reclamacao | etc.)
 outputs:
-  - .em5/clientes/{slug}/comunicacao/handoffs.md (append)
+  - clientes/{slug}/comunicacao/handoffs.md (append)
   - notificação WhatsApp + email pro owner
 elicit: false
 model_tier: balanced

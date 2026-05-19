@@ -109,8 +109,8 @@ check('package.json bin/em5.js declarado (Fase 4)', 'MUST', () => {
 });
 
 check('Workspace cliente _template existe', 'NON-NEGOTIABLE', () => {
-  const tpl = path.join(ROOT, '.em5/clientes/_template');
-  if (!fs.existsSync(tpl)) return '.em5/clientes/_template/ ausente';
+  const tpl = path.join(ROOT, 'clientes/_template');
+  if (!fs.existsSync(tpl)) return 'clientes/_template/ ausente';
 });
 
 // === RELATÓRIO ===

@@ -3,11 +3,11 @@ name: criar-plano-estrategico
 agent: strategist
 description: Criar o plano estratégico completo que vai guiar todas as ações de campanha, copy, design e tráfego
 inputs:
-  - .em5/clientes/{nome}/estrategia/analise-briefing.md
-  - .em5/clientes/{nome}/onboarding/board-cliente.md
-  - .em5/clientes/{nome}/memoria/notas-sessao.md
+  - clientes/{nome}/estrategia/analise-briefing.md
+  - clientes/{nome}/onboarding/board-cliente.md
+  - clientes/{nome}/memoria/notas-sessao.md
 outputs:
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -15,7 +15,7 @@ elicit: false
 # Criar Plano Estratégico
 
 ## Playbook de Referência
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de começar
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de começar
 - Verificar score de maturidade no `board-cliente.md` — define qual plano propor (completo / essencial / onboarding)
 
 ## Objetivo
@@ -36,8 +36,8 @@ Nenhuma campanha, copy ou criativo deve existir sem referência ao plano.
 ### 1. Ler análise e board
 
 Carregar:
-- `.em5/clientes/{nome}/estrategia/analise-briefing.md`
-- `.em5/clientes/{nome}/onboarding/board-cliente.md`
+- `clientes/{nome}/estrategia/analise-briefing.md`
+- `clientes/{nome}/onboarding/board-cliente.md`
 
 ### 2. Definir escopo do plano pelo score de maturidade
 
@@ -50,7 +50,7 @@ Carregar:
 
 ### 3. Gerar o plano estratégico
 
-Criar `.em5/clientes/{nome}/estrategia/plano-estrategico.md`:
+Criar `clientes/{nome}/estrategia/plano-estrategico.md`:
 
 ```markdown
 # Plano Estratégico — {Nome do Cliente}
@@ -242,7 +242,7 @@ Retestar após: board e análise completos
 
 ## Atualizar memória
 
-Ao terminar, adicionar entrada em `.em5/clientes/{nome}/memoria/notas-sessao.md`:
+Ao terminar, adicionar entrada em `clientes/{nome}/memoria/notas-sessao.md`:
 
 ```
 ## Sessão {data}

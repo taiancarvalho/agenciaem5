@@ -7,7 +7,7 @@
 ## O que este comando faz
 
 1. Lê `.em5/core/data/estrutura-pastas.yaml` para conhecer a estrutura padrão
-2. Cria a pasta `.em5/clientes/{nome}/` com toda a estrutura
+2. Cria a pasta `clientes/{nome}/` com toda a estrutura
 3. Inicializa os logs operacionais com data atual
 4. Registra a criação no log operacional
 
@@ -20,7 +20,7 @@ Exemplo: "Clínica São Paulo" → `clinica-sao-paulo`
 
 Crie a estrutura completa:
 ```
-.em5/clientes/{nome}/
+clientes/{nome}/
 ├── onboarding/
 ├── estrategia/
 ├── copy/

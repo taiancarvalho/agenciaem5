@@ -26,7 +26,7 @@ Acione @traffic com:
 - Cliente: {nome}
 - Plataforma: {meta/google}
 - Task: auditar-conta (ou auditar-conta-google)
-- Destino do relatório: `.em5/clientes/{nome}/trafego/auditoria-{plataforma}-{data}.md`
+- Destino do relatório: `clientes/{nome}/trafego/auditoria-{plataforma}-{data}.md`
 
 Após auditoria: apresentar lista priorizada de ações recomendadas.
 Perguntar se deve acionar @coo para executar os ajustes.

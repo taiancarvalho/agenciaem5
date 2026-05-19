@@ -51,19 +51,19 @@ Pular brainstorm = deck genérico que cliente esquece.
 Por tipo:
 
 **pitch-comercial:**
-- `.em5/clientes/{prospect}/vendas/diagnostico.md`
+- `clientes/{prospect}/vendas/diagnostico.md`
 - `em5-config.yaml` → branding agência
 
 **qbr:**
-- `.em5/clientes/{cliente}/relatorios/*.html` últimos 3 meses
-- `.em5/clientes/{cliente}/estrategia/plano-estrategico.md`
+- `clientes/{cliente}/relatorios/*.html` últimos 3 meses
+- `clientes/{cliente}/estrategia/plano-estrategico.md`
 
 **apresentacao-plano:**
-- `.em5/clientes/{cliente}/estrategia/plano-estrategico.md`
+- `clientes/{cliente}/estrategia/plano-estrategico.md`
 - Brainstorm da narrativa
 
 **relatorio-mensal-deck:**
-- `.em5/clientes/{cliente}/relatorios/relatorio-{YYYY-MM-DD}.md` mais recente
+- `clientes/{cliente}/relatorios/relatorio-{YYYY-MM-DD}.md` mais recente
 
 ### Passo 3 — Invocar skill upstream `pptx`
 
@@ -77,12 +77,12 @@ Skill upstream gera deck preservando:
 ### Passo 4 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/vendas/deck-{tipo}-{YYYY-MM-DD}.pptx
+clientes/{cliente}/vendas/deck-{tipo}-{YYYY-MM-DD}.pptx
 ```
 
 ou (relatórios):
 ```
-.em5/clientes/{cliente}/relatorios/deck-{tipo}-{YYYY-MM-DD}.pptx
+clientes/{cliente}/relatorios/deck-{tipo}-{YYYY-MM-DD}.pptx
 ```
 
 ### Passo 5 — Verify + envio

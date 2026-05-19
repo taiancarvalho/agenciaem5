@@ -37,7 +37,7 @@ Adapter de `superpowers:systematic-debugging`.
 ### Passo 1 — Carregar contexto mínimo
 
 Dependendo do sintoma:
-- Performance: `.em5/clientes/{cliente}/trafego/` + `relatorios/*`
+- Performance: `clientes/{cliente}/trafego/` + `relatorios/*`
 - Tracking: `setup-tecnico/status.md`
 - Workflow: `operacao/log-operacional.md` últimos 7 dias
 
@@ -55,7 +55,7 @@ Dependendo do sintoma:
 ### Passo 3 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/operacao/debug-{sintoma}-{YYYY-MM-DD}.md
+clientes/{cliente}/operacao/debug-{sintoma}-{YYYY-MM-DD}.md
 ```
 
 Estrutura:

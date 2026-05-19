@@ -3,7 +3,7 @@ name: enviar-relatorio
 agent: cs
 description: Montar e enviar relatório de performance ao cliente — nunca pelo Gestor de Tráfego diretamente
 inputs:
-  - .em5/clientes/{nome}/relatorios/{mes}-relatorio.md (gerado pelo Gestor de Tráfego)
+  - clientes/{nome}/relatorios/{mes}-relatorio.md (gerado pelo Gestor de Tráfego)
   - contexto de relacionamento com o cliente
 outputs:
   - mensagem de WhatsApp formatada para envio
@@ -31,7 +31,7 @@ O Gestor de Tráfego NUNCA envia diretamente ao cliente.
 
 ### 1. Ler o relatório técnico
 
-Acessar `.em5/clientes/{nome}/relatorios/` e ler o relatório mais recente gerado pelo Pulse.
+Acessar `clientes/{nome}/relatorios/` e ler o relatório mais recente gerado pelo Pulse.
 
 ### 2. Confirmar tom com o usuário
 

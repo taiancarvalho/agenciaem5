@@ -5,7 +5,7 @@ description: Lista 5-10 concorrentes do nicho do cliente (1ª vez ou refresh)
 inputs:
   - cliente_slug
 outputs:
-  - .em5/clientes/{slug}/inteligencia/concorrentes.yaml
+  - clientes/{slug}/inteligencia/concorrentes.yaml
 elicit: true
 model_tier: balanced
 data_dependency: .em5/core/data/scout/concorrentes-por-nicho.yaml

@@ -13,14 +13,14 @@ elicit: false
 
 ## Playbook de Referência
 - Ler `.em5/playbooks/traffic-google.md` (seção SEARCH) antes de executar
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
 
 ## Objetivo
 Montar a estrutura de campanhas de Search no Google Ads:
 hierarquia campanha → grupo de anúncio → keywords → anúncios.
 
 ## Inputs necessários
-1. `.em5/clientes/{nome}/trafego/keywords-{data}.md`
+1. `clientes/{nome}/trafego/keywords-{data}.md`
 2. `.em5/core/data/estrutura-base-campanhas.yaml`
 3. Budget total Google Ads (`plano-estrategico.md`)
 4. Copy de anúncios (`copy/search/` — gerada por @copywriter)
@@ -67,7 +67,7 @@ Por grupo de anúncio, criar:
 
 ### 4. Documentar estrutura
 
-Atualizar: `.em5/clientes/{nome}/trafego/estrutura-campanhas.md`
+Atualizar: `clientes/{nome}/trafego/estrutura-campanhas.md`
 
 ```markdown
 ## Google Ads — Estrutura
@@ -91,7 +91,7 @@ Atualizar: `.em5/clientes/{nome}/trafego/estrutura-campanhas.md`
 
 ## Em caso de falha
 
-Se bloqueado por @qa, gerar `diagnosis.md` em `.em5/clientes/{nome}/trafego/`:
+Se bloqueado por @qa, gerar `diagnosis.md` em `clientes/{nome}/trafego/`:
 
 ```
 Problema identificado: {descrição precisa}

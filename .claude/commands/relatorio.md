@@ -27,10 +27,10 @@ Template baseado em Reportei — cliente recebe relatório com:
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
 Leia o contexto do cliente:
-- `.em5/clientes/{nome}/operacao/log-operacional.md` — período coberto
-- `.em5/clientes/{nome}/trafego/` — estrutura de campanhas
-- `.em5/clientes/{nome}/setup-tecnico/status.md` — IDs (account, page, IG handle)
-- `.em5/clientes/{nome}/branding/cores.yaml` — cores do HTML
+- `clientes/{nome}/operacao/log-operacional.md` — período coberto
+- `clientes/{nome}/trafego/` — estrutura de campanhas
+- `clientes/{nome}/setup-tecnico/status.md` — IDs (account, page, IG handle)
+- `clientes/{nome}/branding/cores.yaml` — cores do HTML
 - `em5-config.yaml` — nome da agência
 
 ---
@@ -46,7 +46,7 @@ Acione @traffic com:
   - **Instagram Business (Graph API):** Visitas perfil · Views orgânicas · Views totais · Alcance diário · Audiência idade/gênero · Cliques no perfil (CTA) · Top cidades · Posts (alcance, interações, salvos, taxa) · Reels (alcance, views, curtidas)
   - **Facebook Pages:** Seguidores · Novos seguidores · Alcance diário soma · Page views · Engajamento · Taxa engajamento · Top cidades
 
-- Destino markdown: `.em5/clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
+- Destino markdown: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
 - Estrutura do markdown: replicar a hierarquia do HTML (Hero · Meta Ads · IG · FB · Próximos passos)
 
 **Importante:** se uma fonte não tiver dado disponível (ex: cliente sem FB), @traffic marca seção como "não aplicável" — nunca fabrica número (Constitution Art. VI — Honestidade do CLI).
@@ -57,9 +57,9 @@ Acione @traffic com:
 
 Acione @cs com:
 - Cliente: {nome}
-- Origem: `.em5/clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
+- Origem: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
 - Template: `.em5/core/templates/relatorios/relatorio-cliente.html`
-- Destino: `.em5/clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.html`
+- Destino: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.html`
 
 **Substituições obrigatórias:**
 
@@ -126,7 +126,7 @@ Após veredicto APROVADO:
 
 ### Registro
 
-`.em5/clientes/{nome}/operacao/log-operacional.md`:
+`clientes/{nome}/operacao/log-operacional.md`:
 ```
 | {YYYY-MM-DD} | Relatório {periodo} | Relatório | APROVADO | HTML Reportei-style enviado via Gmail |
 ```

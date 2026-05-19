@@ -3,11 +3,11 @@ name: analisar-briefing
 agent: strategist
 description: Ler e analisar o board do cliente para extrair o objetivo real, ICP, oferta e contexto estratégico
 inputs:
-  - .em5/clientes/{nome}/onboarding/board-cliente.md
-  - .em5/clientes/{nome}/memoria/notas-sessao.md
+  - clientes/{nome}/onboarding/board-cliente.md
+  - clientes/{nome}/memoria/notas-sessao.md
 outputs:
   - análise estruturada em memória (base para as tarefas seguintes)
-  - .em5/clientes/{nome}/estrategia/analise-briefing.md
+  - clientes/{nome}/estrategia/analise-briefing.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -15,7 +15,7 @@ elicit: false
 # Analisar Briefing
 
 ## Playbook de Referência
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de qualquer análise
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas antes de qualquer análise
 - Verificar se já existe `analise-briefing.md` de versão anterior — se sim, identificar o que mudou
 
 ## Objetivo
@@ -35,11 +35,11 @@ A Estrategista confirma o objetivo real antes de montar qualquer plano.
 
 ### 1. Ler o board completo
 
-Acessar `.em5/clientes/{nome}/onboarding/board-cliente.md` e ler do início ao fim antes de extrair qualquer insight. Verificar score de maturidade calculado pelo @cs — ele define o que é viável propor.
+Acessar `clientes/{nome}/onboarding/board-cliente.md` e ler do início ao fim antes de extrair qualquer insight. Verificar score de maturidade calculado pelo @cs — ele define o que é viável propor.
 
 ### 2. Extrair análise estruturada
 
-Gerar `.em5/clientes/{nome}/estrategia/analise-briefing.md` com:
+Gerar `clientes/{nome}/estrategia/analise-briefing.md` com:
 
 ```markdown
 # Análise de Briefing — {Nome do Cliente}
@@ -149,7 +149,7 @@ Retestar após: board completo com todos os campos obrigatórios preenchidos
 
 ## Atualizar memória
 
-Ao terminar, adicionar entrada em `.em5/clientes/{nome}/memoria/notas-sessao.md`:
+Ao terminar, adicionar entrada em `clientes/{nome}/memoria/notas-sessao.md`:
 
 ```
 ## Sessão {data}

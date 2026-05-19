@@ -6,7 +6,7 @@ inputs:
   - concorrente_url
   - cliente_slug (pra contexto + saída)
 outputs:
-  - .em5/clientes/{slug}/inteligencia/scrapes/{concorrente}-{data}.md
+  - clientes/{slug}/inteligencia/scrapes/{concorrente}-{data}.md
 elicit: false
 model_tier: balanced
 mcp_toolsets: [composio.firecrawl]
@@ -27,7 +27,7 @@ Snapshot semanal do site concorrente. Detecta mudanças (preço, oferta, headlin
    - Preços visíveis (se houver)
    - Diferenciador declarado
    - Últimos 3 posts blog (título + data)
-3. Salva `.em5/clientes/{slug}/inteligencia/scrapes/{concorrente_slug}-{data}.md`:
+3. Salva `clientes/{slug}/inteligencia/scrapes/{concorrente_slug}-{data}.md`:
    ```markdown
    # Scrape — {concorrente} — {data}
    - Headline: "..."

@@ -12,7 +12,7 @@ Lê `.em5/core/workflows/onboarding-cliente.yaml` para conhecer a sequência.
 
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
-Verifique se a pasta `.em5/clientes/{nome}/` existe.
+Verifique se a pasta `clientes/{nome}/` existe.
 Se não existir: sugira rodar `/novo-cliente {nome}` primeiro.
 
 Ative o @cs e passe o contexto:

@@ -3,11 +3,11 @@ name: gerar-imagem
 agent: designer
 description: Gerar imagem estática para criativo usando NanoBanana 2 via WaveSpeed AI, com base na copy e no brief visual
 inputs:
-  - .em5/clientes/{nome}/copy/CR-{id}.md (brief visual do Copywriter)
-  - .em5/clientes/{nome}/branding/ (cores, fontes, guia de estilo)
-  - .em5/clientes/{nome}/assets/ (logo, fotos, produtos)
+  - clientes/{nome}/copy/CR-{id}.md (brief visual do Copywriter)
+  - clientes/{nome}/branding/ (cores, fontes, guia de estilo)
+  - clientes/{nome}/assets/ (logo, fotos, produtos)
 outputs:
-  - .em5/clientes/{nome}/design/criativos/CR-{id}-v1.{ext}
+  - clientes/{nome}/design/criativos/CR-{id}-v1.{ext}
   - atualização no log de performance criativa
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -32,7 +32,7 @@ Lux não começa sem ter lido a copy e o brief visual.
 
 ### 1. Ler a copy e o brief visual
 
-Acessar `.em5/clientes/{nome}/copy/CR-{id}.md` e extrair:
+Acessar `clientes/{nome}/copy/CR-{id}.md` e extrair:
 - Hook e promessa principal da copy
 - Ideia visual sugerida pelo Copywriter
 - Tom visual esperado
@@ -41,14 +41,14 @@ Acessar `.em5/clientes/{nome}/copy/CR-{id}.md` e extrair:
 
 ### 2. Ler o branding
 
-Acessar `.em5/clientes/{nome}/branding/`:
+Acessar `clientes/{nome}/branding/`:
 - `cores.yaml` — paleta de cores exata
 - `fontes.yaml` — tipografia aprovada
 - `guia-estilo.md` — tom visual, exemplos, restrições
 
 ### 3. Verificar assets disponíveis
 
-Acessar `.em5/clientes/{nome}/assets/`:
+Acessar `clientes/{nome}/assets/`:
 - `logo/` — versões da logo em alta resolução
 - `fotos/` — imagens do produto, equipe, local
 - `produtos/` — renders ou fotos de produto
@@ -94,7 +94,7 @@ Se a primeira geração não estiver alinhada ao branding ou à copy, ajustar o 
 
 ### 7. Salvar com ID e versão
 
-Salvar em `.em5/clientes/{nome}/design/criativos/`:
+Salvar em `clientes/{nome}/design/criativos/`:
 
 ```
 CR-{id}-v1.png   (primeira versão)
@@ -103,7 +103,7 @@ CR-{id}-v2.png   (se houver ajuste)
 
 ### 8. Atualizar log de performance criativa
 
-Encontrar a linha do `CR-{id}` em `.em5/clientes/{nome}/operacao/log-performance-criativa.md` e preencher:
+Encontrar a linha do `CR-{id}` em `clientes/{nome}/operacao/log-performance-criativa.md` e preencher:
 
 ```
 Criativo: CR-{id}-v1.png

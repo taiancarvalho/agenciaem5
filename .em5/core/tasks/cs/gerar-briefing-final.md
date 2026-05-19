@@ -3,9 +3,9 @@ name: gerar-briefing-final
 agent: cs
 description: Consolidar as respostas do briefing em um documento estruturado e validado para uso dos agentes
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-respostas.md
+  - clientes/{nome}/onboarding/briefing-respostas.md
 outputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/onboarding/briefing-final.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -26,11 +26,11 @@ O briefing final não é um resumo — é uma consolidação estruturada. Preser
 
 ### 1. Ler briefing-respostas.md
 
-Acessar `.em5/clientes/{nome}/onboarding/briefing-respostas.md` e processar todas as respostas.
+Acessar `clientes/{nome}/onboarding/briefing-respostas.md` e processar todas as respostas.
 
 ### 2. Consolidar no template
 
-Gerar o arquivo `.em5/clientes/{nome}/onboarding/briefing-final.md` com a estrutura abaixo:
+Gerar o arquivo `clientes/{nome}/onboarding/briefing-final.md` com a estrutura abaixo:
 
 ```markdown
 # Briefing Final — {Nome do Cliente}

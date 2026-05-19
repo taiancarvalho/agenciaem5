@@ -3,8 +3,8 @@ name: ler-branding
 agent: designer
 description: Ler o branding kit do cliente e extrair cores, tipografia, tom visual e referencias antes de produzir
 inputs:
-  - .em5/clientes/{nome}/branding/
-  - .em5/clientes/{nome}/assets/
+  - clientes/{nome}/branding/
+  - clientes/{nome}/assets/
 outputs:
   - mentalizacao do brand para uso nas tasks subsequentes
 model_tier: haiku  # auto-set Fase 12.AAA legacy audit
@@ -30,14 +30,14 @@ Sempre ler branding antes de qualquer task de producao.
 
 ### 1. Ler arquivos de branding
 
-Ler todos os arquivos em `.em5/clientes/{nome}/branding/`:
+Ler todos os arquivos em `clientes/{nome}/branding/`:
 - `cores.yaml` — paleta de cores primaria, secundaria e de acao
 - `fontes.yaml` — tipografia (titulos, corpo, uso)
 - `guia-estilo.md` — normas visuais, tom, nivel de sofisticacao
 
 ### 2. Verificar assets
 
-Listar `.em5/clientes/{nome}/assets/` para entender material disponivel:
+Listar `clientes/{nome}/assets/` para entender material disponivel:
 - Logo (formatos disponiveis)
 - Fotos existentes
 - Videos existentes

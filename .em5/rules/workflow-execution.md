@@ -40,7 +40,7 @@ CS: gerar-contrato → enviar-contrato → confirmar-assinatura →
     gerar-onboarding-final
 ```
 
-**Output principal:** `.em5/clientes/{nome}/onboarding/briefing.md`
+**Output principal:** `clientes/{nome}/onboarding/briefing.md`
 
 ---
 
@@ -56,7 +56,7 @@ Se integração real configurada → validar automaticamente
 Se não houver integração → gerar checklist manual, nunca fingir
 ```
 
-**Output:** `.em5/clientes/{nome}/setup-tecnico/status.md`
+**Output:** `clientes/{nome}/setup-tecnico/status.md`
 
 ---
 
@@ -73,7 +73,7 @@ Estrategista: analisar-briefing → validar-objetivo-real → definir-oferta →
               validar-plano-estrategico → gerar-plano-estrategico
 ```
 
-**Output principal:** `.em5/clientes/{nome}/estrategia/plano-estrategico.md`
+**Output principal:** `clientes/{nome}/estrategia/plano-estrategico.md`
 
 **Handoff:** Estrategista → Gestor de Tráfego + Copywriter + Designer
 
@@ -129,7 +129,7 @@ CS: registrar-interacao → abrir-pendencia → atualizar-status →
     arquivar-log (quando necessário)
 ```
 
-**Output:** `.em5/clientes/{nome}/operacao/log-operacional.md` (sempre atualizado)
+**Output:** `clientes/{nome}/operacao/log-operacional.md` (sempre atualizado)
 
 ---
 

@@ -3,11 +3,11 @@ name: solicitar-criativos
 agent: traffic
 description: Gerar briefing claro de criativos para o Copywriter e o Designer produzirem — com contexto de performance e objetivo da peça
 inputs:
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
-  - .em5/clientes/{nome}/trafego/auditoria.md (se existir)
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md (se existir)
+  - clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/trafego/auditoria.md (se existir)
+  - clientes/{nome}/operacao/log-performance-criativa.md (se existir)
 outputs:
-  - .em5/clientes/{nome}/trafego/briefing-criativos.md
+  - clientes/{nome}/trafego/briefing-criativos.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -50,7 +50,7 @@ Perguntar ao usuário:
 
 ### 2. Gerar briefing de criativos
 
-Criar/atualizar `.em5/clientes/{nome}/trafego/briefing-criativos.md`:
+Criar/atualizar `clientes/{nome}/trafego/briefing-criativos.md`:
 
 ```markdown
 # Briefing de Criativos — {Nome do Cliente}
@@ -122,7 +122,7 @@ Publicação prevista: {data}
 Informar ao usuário:
 
 ```
-Briefing criado em .em5/clientes/{nome}/trafego/briefing-criativos.md
+Briefing criado em clientes/{nome}/trafego/briefing-criativos.md
 
 Eco: *ler-cliente {nome} → *criar-angulos → *escrever-copy
 Lux: aguarda copy do Eco antes de produzir o visual

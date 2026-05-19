@@ -66,7 +66,7 @@ Skill upstream agrega resultados. Cada subagente reportou:
 
 Salvar em:
 ```
-.em5/clientes/{cliente}/operacao/paralelo-{topico}-{YYYY-MM-DD}.md
+clientes/{cliente}/operacao/paralelo-{topico}-{YYYY-MM-DD}.md
 ```
 
 Estrutura:

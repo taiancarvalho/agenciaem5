@@ -51,7 +51,7 @@ seguindo o protocolo dela manualmente) com o foco do tópico. A skill conduz:
 
 Salvar em:
 ```
-.em5/clientes/{cliente}/memoria/brainstorm-{topico}-{YYYY-MM-DD}.md
+clientes/{cliente}/memoria/brainstorm-{topico}-{YYYY-MM-DD}.md
 ```
 
 Estrutura mínima do arquivo:
@@ -100,7 +100,7 @@ Justificativa em 2-3 linhas (por que vence as outras).
 
 Se brainstorm levou a **decisão acionável**, registrar próximo passo no log operacional:
 ```
-.em5/clientes/{cliente}/operacao/log-operacional.md
+clientes/{cliente}/operacao/log-operacional.md
 ```
 Formato:
 ```

@@ -3,8 +3,8 @@ name: criar-hipoteses
 agent: strategist
 description: Formular hipoteses de campanha antes da execucao — o que acreditamos que funciona e por que
 inputs:
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md (ou secao de funil)
-  - .em5/clientes/{nome}/estrategia/posicionamento.md
+  - clientes/{nome}/estrategia/plano-estrategico.md (ou secao de funil)
+  - clientes/{nome}/estrategia/posicionamento.md
   - briefing-final
 outputs:
   - secao de hipoteses no plano-estrategico.md

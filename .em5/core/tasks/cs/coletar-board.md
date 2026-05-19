@@ -5,7 +5,7 @@ description: Conduzir coleta completa do board do cliente — o documento centra
 inputs:
   - nome do cliente (workspace já criado)
 outputs:
-  - .em5/clientes/{nome}/onboarding/board-cliente.md
+  - clientes/{nome}/onboarding/board-cliente.md
   - score de maturidade do cliente (0-100)
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -30,9 +30,9 @@ Não avançar para estratégia sem o checklist de prontidão aprovado.
 
 ## Pré-sessão: criar workspace
 
-Confirmar que `.em5/clientes/{nome}/` existe. Se não, criar:
+Confirmar que `clientes/{nome}/` existe. Se não, criar:
 ```
-.em5/clientes/{nome}/
+clientes/{nome}/
 ├── onboarding/
 ├── memoria/
 ├── estrategia/
@@ -232,9 +232,9 @@ Antes de passar para `criar-plano-estrategico`, verificar:
 
 ## Output
 
-Criar `.em5/clientes/{nome}/onboarding/board-cliente.md` com todas as seções + dados técnicos do Composio + score + checklist.
+Criar `clientes/{nome}/onboarding/board-cliente.md` com todas as seções + dados técnicos do Composio + score + checklist.
 
-Adicionar entrada inicial em `.em5/clientes/{nome}/memoria/notas-sessao.md`.
+Adicionar entrada inicial em `clientes/{nome}/memoria/notas-sessao.md`.
 
 Atualizar log operacional:
 ```markdown

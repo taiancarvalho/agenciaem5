@@ -43,8 +43,8 @@ upstream.
 ### Passo 2 — Coletar dados
 
 Pra `proposta-comercial`:
-- `.em5/clientes/{prospect}/vendas/diagnostico.md`
-- `.em5/clientes/{prospect}/vendas/oferta.md`
+- `clientes/{prospect}/vendas/diagnostico.md`
+- `clientes/{prospect}/vendas/oferta.md`
 - `em5-config.yaml` → dados da agência
 
 Pra `contrato`/`sow`:
@@ -62,12 +62,12 @@ Skill upstream cria/edita o documento Word preservando:
 ### Passo 4 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/vendas/proposta-{tipo}-{YYYY-MM-DD}.docx
+clientes/{cliente}/vendas/proposta-{tipo}-{YYYY-MM-DD}.docx
 ```
 
 ou (contratos):
 ```
-.em5/clientes/{cliente}/financeiro/contrato-{tipo}-{YYYY-MM-DD}.docx
+clientes/{cliente}/financeiro/contrato-{tipo}-{YYYY-MM-DD}.docx
 ```
 
 ### Passo 5 — Verify + envio
@@ -78,7 +78,7 @@ ou (contratos):
 
 ### Registro
 
-`.em5/clientes/{cliente}/operacao/log-operacional.md`:
+`clientes/{cliente}/operacao/log-operacional.md`:
 ```
 | {data} | proposta-{tipo} | DOCX enviado | APROVADO | {cliente_email} |
 ```

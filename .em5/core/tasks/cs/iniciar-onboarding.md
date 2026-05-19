@@ -6,7 +6,7 @@ inputs:
   - nome do cliente (slug sem espaços, ex: clinica-beleza)
   - contato principal (nome, cargo, WhatsApp)
 outputs:
-  - pasta do cliente criada em .em5/clientes/{nome}/
+  - pasta do cliente criada em clientes/{nome}/
   - primeiro registro no log-operacional.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -43,7 +43,7 @@ node .em5/bin/agency-os-new-client.js {nome}
 Estrutura que deve existir após a criação:
 
 ```
-.em5/clientes/{nome}/
+clientes/{nome}/
 ├── onboarding/
 ├── estrategia/
 ├── copy/
@@ -60,7 +60,7 @@ Estrutura que deve existir após a criação:
 
 ### 3. Registrar primeiro log
 
-Criar entrada inicial em `.em5/clientes/{nome}/operacao/log-operacional.md`:
+Criar entrada inicial em `clientes/{nome}/operacao/log-operacional.md`:
 
 ```markdown
 | Data | Tipo | Responsável | Descrição | Status | Próxima Ação |
@@ -80,6 +80,6 @@ Próximo passo: *coletar-briefing {nome}
 
 ## Output esperado
 
-- Pasta `.em5/clientes/{nome}/` criada com estrutura completa
+- Pasta `clientes/{nome}/` criada com estrutura completa
 - Log operacional iniciado com registro de entrada
 - Sistema pronto para coleta de briefing

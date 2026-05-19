@@ -13,7 +13,7 @@ elicit: false
 
 ## Playbook de Referência
 - Ler `.em5/playbooks/traffic-google.md` (seção PMAX) antes de executar
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
 
 ## Quando usar PMax — decisão obrigatória antes de criar
 
@@ -29,8 +29,8 @@ PMax SÓ deve ser ativado SE todos estes critérios forem atendidos:
 Se algum critério não for atendido → usar `estruturar-search.md` em vez de PMax.
 
 ## Inputs necessários
-1. `.em5/clientes/{nome}/onboarding/board-cliente.md` — budget, produto, canal de conversão
-2. `.em5/clientes/{nome}/estrategia/plano-estrategico.md` — ICP, oferta, KPIs
+1. `clientes/{nome}/onboarding/board-cliente.md` — budget, produto, canal de conversão
+2. `clientes/{nome}/estrategia/plano-estrategico.md` — ICP, oferta, KPIs
 3. Criativos aprovados pelo @qa em `design/criativos/`
 4. Copy dos assets em `copy/google/` (gerada por @copywriter)
 
@@ -87,7 +87,7 @@ Revisão formal em: `data de ativação + 14 dias`
 
 ### 5. Documentar
 
-Atualizar `.em5/clientes/{nome}/trafego/estrutura-campanhas.md`:
+Atualizar `clientes/{nome}/trafego/estrutura-campanhas.md`:
 
 ```markdown
 ## Google Ads — PMax
@@ -141,7 +141,7 @@ Retestar após: 7 dias com assets revisados e conversões verificadas
 
 ## Atualizar memória
 
-Ao terminar, adicionar entrada em `.em5/clientes/{nome}/memoria/notas-sessao.md`:
+Ao terminar, adicionar entrada em `clientes/{nome}/memoria/notas-sessao.md`:
 
 ```
 ## Sessão {data}
