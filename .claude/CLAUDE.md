@@ -72,6 +72,10 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/em5-call-para-sop` | Transcrição de call → SOP estruturado versionado (adapter de `generating-structured-sops`) |
 | `/em5-criativo-video` | Criativo em vídeo HTML standalone via HyperFrames — custo zero, sem queue (adapter de `hyperframes` + `hyperframes-cli` + `hyperframes-media`) |
 | `/em5-site-to-video` | Captura site/LP do cliente → vídeo promo automático (adapter de `website-to-hyperframes`) |
+| `/em5-plano` | Plano de execução explícito antes de delegar workflow complexo (adapter de `superpowers:writing-plans`) |
+| `/em5-scrape` | Scrape limpo de 1 página em markdown (adapter de `defuddle`) |
+| `/em5-proposta-docx` | Proposta/contrato em DOCX pra cliente/prospect (adapter de `docx`) |
+| `/em5-deck-pptx` | Deck PowerPoint pra pitch/QBR/apresentação (adapter de `pptx`) |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
