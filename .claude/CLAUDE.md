@@ -66,6 +66,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/iterar` | Iterar criativos com baixa performance |
 | `/relatorio` | Gerar relatorio markdown + HTML e enviar (template `relatorio-cliente.html`) |
 | `/lint-pre-qa` | Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa |
+| `/em5-brainstorm` | Brainstorm estruturado antes de decisão criativa (adapter de `superpowers:brainstorming`) |
+| `/em5-verify` | Self-check de artefato antes de marcar task done (adapter de `superpowers:verification-before-completion`) |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
