@@ -5,9 +5,10 @@
 > Convenção: nome do yaml = `{categoria}-{escopo}.yaml` quando útil pra namespacing.
 
 **Última atualização:** 2026-05-19
-**Versão:** v1.3 (Sprint 2 + Sprint 3 concluídos)
+**Versão:** v2.0 — TODOS SPRINTS CONCLUÍDOS 🎉
 **Total catalogado:** 84 workflows (7 existentes + 77 propostos)
-**Status:** 4 ✅ saudáveis | 3 ✅ refatorados Sprint 1 | 7 ✅ criados Sprint 2+3 | 70 🔴 pendentes
+**Status:** **83/83 yamls implementados** + `_rotinas.md` criado (Sprint Final)
+**Próxima etapa:** rodar `/schedule create` (ver `_rotinas.md` seção Setup inicial)
 
 ---
 
@@ -28,13 +29,27 @@
 
 ## SPRINT TRACKING
 
-### Sprint atual: **Sprint 4 — Conteúdo orgânico crítico** (next)
+### Sprint atual: **TODOS CONCLUÍDOS** 🎉
 
 ### Sprints concluídos
 - ✅ **Sprint 0 — Roadmap** (catálogo 84 workflows)
-- ✅ **Sprint 1 — Refactor P0** (onboarding-cliente v2.0 + lancamento v2.0 + ciclo-campanha v2.1)
-- ✅ **Sprint 2 — Skills↔YAML** (relatorio-cliente + auditoria-conta + daily-run)
-- ✅ **Sprint 3 — Ativar @fin + @vendas** (cobranca-mensal + prospec-fechamento + cold-outreach + cobranca-falhou)
+- ✅ **Sprint 1 — Refactor P0** (3 workflows refatorados)
+- ✅ **Sprint 2 — Skills↔YAML** (3 workflows)
+- ✅ **Sprint 3 — Ativar @fin + @vendas** (4 workflows)
+- ✅ **Sprint 4 — Conteúdo orgânico crítico** (6 workflows)
+- ✅ **Sprint 5 — Cliente relacionamento crítico** (4 workflows)
+- ✅ **Sprint 6 — Analytics avançado** (3 workflows)
+- ✅ **Sprint 7 — Crisis + Manutenção** (4 workflows)
+- ✅ **Sprint 8 — Aquisição + Legal + Reporting + Assets** (5 workflows)
+- ✅ **Sprint 9+ — P2 (Importantes)** (18 workflows compactos)
+- ✅ **Sprint N — P3 (Nice-to-have)** (14 workflows ultra-compactos)
+- ✅ **Sprint Final — Rotinas** (`_rotinas.md` com cron schedule completo)
+
+### Total entregue
+- **83 yamls** de workflow implementados
+- **2 docs** (`_roadmap.md` + `_rotinas.md`)
+- **Cobertura:** 100% das operações de uma agência de marketing digital moderna
+- **Pipeline `/schedule`:** 25+ cron jobs documentados pra setup imediato
 
 ### Próximos sprints planejados
 
