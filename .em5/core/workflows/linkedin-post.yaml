@@ -1,0 +1,61 @@
+# Workflow: LinkedIn Post (B2B)
+# Versao: 1.0 (Sprint 4 — conteúdo crítico)
+nome: "linkedin-post"
+descricao: "Post LinkedIn B2B — voz autoridade + storytelling pessoal + dock attachment opcional"
+versao: "1.0"
+gatilho: "Calendário B2B (2-3x semana) OR pedido cliente"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+inputs:
+  - "tema autoridade (case + aprendizado + dado mercado)"
+  - "branding profissional (LinkedIn não é IG)"
+
+outputs:
+  - "clientes/{nome}/social/linkedin/{YYYY-MM-DD}/post.md"
+  - "clientes/{nome}/social/linkedin/{YYYY-MM-DD}/midia.png (opcional — dock PDF se documento)"
+
+sequencia:
+  - id: 1
+    etapa: "definir-angulo-autoridade"
+    agente: "strategist"
+    saida: "ângulo (contrarian | case | dado novo | aprendizado) + ICP B2B alvo"
+
+  - id: 2
+    etapa: "escrever-post"
+    agente: "copywriter"
+    task: "escrever-post-social.md"
+    saida: "post.md"
+    estrutura:
+      hook_linha_1: "single line — quebra padrão (não 'eu lancei')"
+      preview_linhas_2_3: "antes do 'ver mais' — gancho que faz clicar"
+      desenvolvimento: "espaços brancos generosos — escaneável (mobile-first)"
+      cta: "soft (não 'compre') — pergunta que gera comentário OR doc download"
+    proibido: ["hashtag spam (max 3-5)", "tom motivacional vazio", "auto-promoção descarada", "emoji excessivo"]
+    tamanho_otimo: "1300-1800 caracteres (Lin algoritmo favorece tempo dwell)"
+
+  - id: 3
+    etapa: "design-opcional"
+    agente: "designer"
+    saida: "midia.png 1200×630 OR dock PDF se documento autoridade"
+    condicao: "ângulo requer prova visual OR doc download"
+
+  - id: 4
+    etapa: "qa-linkedin"
+    agente: "qa"
+    task: "validar-copy.md"
+    checklist: ["hook não é clickbait", "fonte/dado verificável", "tom profissional", "sem 'eu eu eu' excessivo", "CTA gera ação real"]
+
+  - id: 5
+    etapa: "publicar-engajar"
+    agente: "cs"
+    saida: "publicado + monitorar 60min iniciais (golden window LinkedIn) + responder TODOS comentários primeiros 2h (boost algoritmo)"
+
+on_failure:
+  qa_bloqueado: "@coo loop 1x"
+metricas:
+  prazo: "<= 24h"
+  alvo_dwell_time: ">= 5s (algoritmo Lin)"
+  alvo_comentarios: ">= 10 (sinal autoridade)"
+  alvo_alcance_organico: ">= 3x seguidores
