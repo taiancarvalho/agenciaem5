@@ -1,0 +1,184 @@
+# Workflow: Prospecção → Fechamento Comercial
+# Versao: 1.0 (Sprint 3 — ativar @vendas)
+# Agentes: coo → vendas (qualifica → diagnostico → proposta) → ceo (aprova) → fin (cadastra) → trigger onboarding-cliente
+
+nome: "prospec-fechamento"
+descricao: "Pipeline comercial completo — prospect qualificado ate cliente ativo na agencia"
+versao: "1.0"
+gatilho: "Skill `/vendas-pipeline {prospect}` OU lead chega via formulario/cold-outreach"
+agente_orquestrador: "coo"  # CLAUDE.md Regra 1
+agente_responsavel_entrega: "vendas"
+qa_gate: false  # proposta passa por @ceo (aprovacao executiva)
+
+inputs:
+  - "nome prospect + canal origem"
+  - "contato (email + telefone + LinkedIn)"
+  - "interesse declarado (qual servico)"
+
+outputs:
+  - "vendas/prospects/{slug}/diagnostico.md"
+  - "vendas/prospects/{slug}/proposta.docx (via /em5-proposta-docx)"
+  - "vendas/prospects/{slug}/log-interacoes.md"
+  - "se fechado: clientes/{slug}/ workspace criado + trigger onboarding-cliente.yaml"
+  - "se perdido: vendas/prospects/{slug}/registro-perdido.md"
+
+sequencia:
+
+  # ===== ETAPA 1: QUALIFICACAO =====
+  - id: 1
+    etapa: "pesquisar-prospect"
+    agente: "vendas"
+    task: "pesquisar-prospect.md"
+    entrada: "nome + contato"
+    saida: "vendas/prospects/{slug}/pesquisa.md (nicho, faturamento estimado, concorrentes, presenca digital atual, dores prováveis)"
+    dependencia: nenhuma
+    fontes:
+      - "site empresa + redes sociais"
+      - "Meta Ad Library (rodando ads? quais?)"
+      - "Google Ads (rodando? via SEMRush/SimilarWeb se disponivel)"
+      - "Reclame Aqui (saude reputacao)"
+      - "LinkedIn (decisor + tamanho time)"
+
+  - id: 2
+    etapa: "qualificacao-lead"
+    agente: "vendas"
+    task: "pesquisar-prospect.md"
+    entrada: "pesquisa.md"
+    saida: "score qualificacao + decisao (PROCEDE | DESCARTAR | NUTRIR)"
+    dependencia: "pesquisar-prospect"
+    criterios_procede:
+      - "Faturamento >= R$ 500k/ano (capacidade investimento)"
+      - "Tem produto/servico definido (nao ideia ainda)"
+      - "Investe em marketing OU dor explicita"
+      - "Decisor identificado + contato direto"
+
+  # ===== ETAPA 2: DIAGNOSTICO =====
+  - id: 3
+    etapa: "call-diagnostico"
+    agente: "vendas"
+    task: "gerar-diagnostico.md"
+    entrada: "pesquisa.md + agenda call 30-45min"
+    saida: "vendas/prospects/{slug}/diagnostico.md (call transcrita + pontos chave + objetivo cliente + budget mencionado + objecoes)"
+    dependencia: "qualificacao-lead"
+    condicao: "qualificacao == PROCEDE"
+    template_pauta:
+      - "Contexto negocio (5min)"
+      - "Resultados atuais + ferramentas + agencia anterior (10min)"
+      - "Objetivo proximos 6-12 meses (10min)"
+      - "Budget e expectativa (5min)"
+      - "Proximos passos (5min)"
+
+  # ===== ETAPA 3: PROPOSTA =====
+  - id: 4
+    etapa: "criar-proposta"
+    agente: "vendas"
+    task: "criar-proposta.md"
+    entrada: "diagnostico.md + tabela precos agencia (em5-config.yaml.servicos)"
+    saida: "vendas/prospects/{slug}/proposta.docx + .pdf"
+    dependencia: "call-diagnostico"
+    skill_externa: "/em5-proposta-docx"
+    estrutura_proposta:
+      - "Diagnostico (1 pagina — dores identificadas)"
+      - "Proposta de valor (como agencia resolve)"
+      - "Escopo detalhado (entregas mensais + canais)"
+      - "Cronograma (onboarding + primeira campanha + relatorios)"
+      - "Investimento (3 niveis se aplicavel: basico + recomendado + premium)"
+      - "Cases similares (anonimizados)"
+      - "Proximos passos + validade proposta"
+
+  - id: 5
+    etapa: "aprovar-proposta-ceo"
+    agente: "ceo"
+    task: "decisao.md"
+    entrada: "proposta.docx + diagnostico"
+    saida: "veredicto: APROVADA | AJUSTAR | RECUSAR"
+    dependencia: "criar-proposta"
+    criterios_aprovacao:
+      - "Margem >= 30% (custo operacional vs preco)"
+      - "Cliente compativel com posicionamento agencia"
+      - "Capacidade operacional disponivel (nao sobrecarrega equipe)"
+      - "Risco compliance OK (LGPD + nicho)"
+
+  - id: 6
+    etapa: "enviar-proposta"
+    agente: "vendas"
+    task: "criar-proposta.md"
+    entrada: "proposta APROVADA"
+    saida: "proposta enviada via email + WhatsApp + agendamento reuniao apresentacao"
+    composio_mcp: ["gmail"]
+    dependencia: "aprovar-proposta-ceo"
+    condicao: "veredicto == APROVADA"
+
+  # ===== ETAPA 4: FOLLOW-UP + FECHAMENTO =====
+  - id: 7
+    etapa: "follow-up"
+    agente: "vendas"
+    task: "follow-up.md"
+    entrada: "proposta enviada"
+    saida: "vendas/prospects/{slug}/log-interacoes.md (append por interacao)"
+    dependencia: "enviar-proposta"
+    cadencia:
+      D+1: "confirmacao recebimento (email curto)"
+      D+3: "checagem + oferta call sanar duvidas"
+      D+7: "ultima cadencia (objecao escalation)"
+      D+14: "marcar PERDIDO ou NUTRIR-3M"
+
+  - id: 8
+    etapa: "fechamento"
+    agente: "vendas"
+    task: "fechar-cliente.md"
+    entrada: "aceite formal do prospect (assinatura proposta OR confirmacao explicita)"
+    saida: "vendas/prospects/{slug}/contrato-assinado.pdf + flag FECHADO"
+    dependencia: "follow-up"
+    condicao: "prospect aceita proposta"
+
+  # ===== ETAPA 5: TRANSFERENCIA PRA ONBOARDING =====
+  - id: 9
+    etapa: "cadastrar-cliente-asaas"
+    agente: "fin"
+    task: "cadastrar-cliente-asaas.md"
+    entrada: "contrato-assinado + dados juridicos prospect"
+    saida: "clientes/{slug}/financeiro/asaas-cliente.json"
+    composio_mcp: "asaas"
+    dependencia: "fechamento"
+
+  - id: 10
+    etapa: "trigger-onboarding"
+    agente: "coo"
+    task: "delegar-operacao.md"
+    entrada: "cliente cadastrado + contrato"
+    saida: "trigger workflow onboarding-cliente.yaml v2.0"
+    dependencia: "cadastrar-cliente-asaas"
+    handoff: "workspace clientes/{slug}/ criado + @cs assume onboarding"
+
+  # ===== CAMINHO ALTERNATIVO: PERDIDO =====
+  - id: 11
+    etapa: "registrar-perdido"
+    agente: "vendas"
+    task: "registrar-perdido.md"
+    entrada: "prospect nao fechou apos D+14 OR recusa explicita"
+    saida: "vendas/prospects/{slug}/registro-perdido.md (motivo + aprendizado + se nutrir-3M ou descartar)"
+    dependencia: "follow-up"
+    condicao: "prospect recusa OR D+14 sem resposta"
+    importante: "Aprendizado alimenta refinamento ICP (workflow icp-refinement.yaml trimestral)"
+
+# ===== ON FAILURE =====
+on_failure:
+  ceo_recusa_proposta: "@vendas reformula (max 2 iteracoes) OR descarta com aprendizado"
+  cliente_nao_assina: "follow-up estendido D+30 OR move pra NUTRIR-3M (cadencia mensal)"
+  asaas_falha_cadastro: "@coo retry + escala @ceo (incident infra)"
+
+# ===== METRICAS =====
+metricas:
+  taxa_qualificacao_lead: "> 40% (PROCEDE / total)"
+  taxa_diagnostico_proposta: "> 70% (proposta enviada / diagnostico feito)"
+  taxa_fechamento: "> 25% (fechado / proposta enviada)"
+  ticket_medio_alvo: ">= R$ X (definir em em5-config.yaml)"
+  ciclo_venda_alvo: "<= 21 dias (lead → fechamento)"
+
+# ===== NOTAS =====
+notas_importantes:
+  - "Vendas nao opera campanhas — apenas vende a agencia"
+  - "Proposta SEMPRE passa por @ceo aprovacao (governanca + margem)"
+  - "Cliente assinado dispara onboarding-cliente.yaml v2.0 (que cuida do resto)"
+  - "Perdidos viram input pra refinamento ICP + nutricao 3M"

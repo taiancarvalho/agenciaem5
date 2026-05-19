@@ -1,0 +1,15 @@
+nome: "upsell-pitch"
+descricao: "Pitch upsell pra cliente saudavel 6m+ — novo servico ou expansao escopo"
+versao: "1.0"
+gatilho: "Cliente >= 6m + saudavel (NPS >= 8, pagamento em dia, performance OK) + gap identificado"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "vendas"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "identificar-gap", agente: "strategist", saida: "gap especifico cliente (canal nao explorado, escopo limitado, oportunidade nova)"}
+  - {id: 2, etapa: "preparar-pitch", agente: "vendas", saida: "proposta upsell focada no gap + ROI projetado"}
+  - {id: 3, etapa: "aprovacao-ceo", agente: "ceo", saida: "veredicto (margem + capacidade OK?)"}
+  - {id: 4, etapa: "apresentar", agente: "cs", saida: "pitch em proxima reuniao recorrente (nao call dedicada — soft)"}
+  - {id: 5, etapa: "fechamento", agente: "vendas", saida: "cliente aceita OR rejeita (sem pressao)"}
+metricas: {taxa_conversao_alvo: ">= 30%", ticket_adicional_medio: "+30% MRR cliente"}

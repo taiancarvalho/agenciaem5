@@ -1,0 +1,13 @@
+nome: "brand-voice-update"
+descricao: "Revisao anual style guide + brand voice cliente"
+versao: "1.0"
+gatilho: "Cron anual OR mudanca posicionamento"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "strategist"
+qa_gate: true
+sequencia:
+  - {id: 1, etapa: "auditar-comunicacao-ano", agente: "strategist", saida: "patterns linguagem + tom + decisoes"}
+  - {id: 2, etapa: "refinar-style-guide", agente: "copywriter", saida: "guide atualizado"}
+  - {id: 3, etapa: "qa", agente: "qa"}
+  - {id: 4, etapa: "comunicar-treinar", agente: "ceo", saida: "novo guide ativo + equipe treinada"}
+metricas: {cadencia: "anual"}

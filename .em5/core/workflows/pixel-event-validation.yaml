@@ -1,0 +1,53 @@
+# Workflow: Pixel Event Validation (Manutenção mensal)
+# Versao: 1.0 (Sprint 7 — manutenção)
+nome: "pixel-event-validation"
+descricao: "Validação mensal — todos eventos críticos disparando + match rate ok + sem duplicação"
+versao: "1.0"
+gatilho: "Cron mensal (dia 10)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "traffic"
+qa_gate: false
+
+inputs:
+  - "lista eventos críticos cliente (setup-pixel-tracking.yaml output)"
+
+outputs:
+  - "clientes/{nome}/setup-tecnico/pixel-validation-{YYYY-MM}.md"
+  - "alertas se algo quebrou"
+
+sequencia:
+  - id: 1
+    etapa: "checar-meta-events-manager"
+    agente: "traffic"
+    saida: "screenshot Events Manager + lista eventos disparando últimos 30d"
+    composio_mcp: "meta_ads"
+    indicadores:
+      ok: "eventos disparando + match rate >= 70% + sem duplicação"
+      atencao: "match rate 50-70% OR queda 20%+ vs mês anterior"
+      alerta: "evento sumiu OR match rate < 50% OR duplicação detectada"
+
+  - id: 2
+    etapa: "checar-ga4-debugview"
+    agente: "traffic"
+    saida: "eventos GA4 todos batendo metadata correta"
+
+  - id: 3
+    etapa: "comparar-fontes"
+    agente: "traffic"
+    saida: "tabela: Meta vs GA4 vs backend (deve bater +/- 15%)"
+
+  - id: 4
+    etapa: "gerar-relatorio-validacao"
+    agente: "traffic"
+    saida: "pixel-validation-{YYYY-MM}.md (status + ação se alerta)"
+
+  - id: 5
+    etapa: "disparar-correcao-se-alerta"
+    agente: "coo"
+    condicao: "status == alerta"
+    saida: "trigger pixel-quebrado.yaml OR escalation @cs"
+
+metricas:
+  cadencia: "mensal dia 10"
+  match_rate_alvo: ">= 70%"
+  divergencia_fontes_max: "+/- 15%"

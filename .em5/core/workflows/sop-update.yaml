@@ -1,0 +1,15 @@
+nome: "sop-update"
+descricao: "Loop versionamento SOPs -> conhecimento agencia evolui"
+versao: "1.0"
+gatilho: "Pos-call relevante (decisao processo) OR retrospectiva mensal"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "transcrever-input", agente: "cs", skill_externa: "/em5-call-para-sop", saida: "raw input estruturado"}
+  - {id: 2, etapa: "gerar-sop", agente: "cs", saida: "SOP novo OR atualizacao SOP existente"}
+  - {id: 3, etapa: "qa-sop", agente: "reviewer", saida: "validacao (passos claros, sem ambiguidade, executavel)"}
+  - {id: 4, etapa: "versionar", agente: "cs", saida: "commit em .em5/core/sops/ (versao incrementada)"}
+  - {id: 5, etapa: "comunicar-equipe", agente: "ceo", saida: "novo SOP comunicado + treinamento se requer"}
+metricas: {sops_atualizados_mes: ">= 1", taxa_aderencia_pos_update: "tracked via QA"}

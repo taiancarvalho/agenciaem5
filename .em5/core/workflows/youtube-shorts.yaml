@@ -1,0 +1,15 @@
+nome: "youtube-shorts"
+descricao: "Short YouTube (60s vertical) — hook 3s + ideia unica + loopable"
+versao: "1.0"
+gatilho: "Calendario semanal OR repurpose de Reels"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "ideia", agente: "strategist", saida: "1 ideia + hook + payoff"}
+  - {id: 2, etapa: "roteiro-60s", agente: "copywriter", saida: "roteiro 150 palavras (hook 3s + dev + CTA loop)"}
+  - {id: 3, etapa: "edicao-vertical", agente: "designer", task: "gerar-video.md", saida: "video 1080x1920 60s + captions"}
+  - {id: 4, etapa: "qa", agente: "qa", checklist: ["hook 3s prende", "vertical 9:16", "loopable se possivel"]}
+  - {id: 5, etapa: "publicar", agente: "cs", composio_mcp: "youtube"}
+metricas: {prazo: "<= 48h", alvo_views: ">= 10x seguidores"}

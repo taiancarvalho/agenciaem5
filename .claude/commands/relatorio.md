@@ -26,7 +26,34 @@ Template baseado em Reportei — cliente recebe relatório com:
 
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
-Leia o contexto do cliente:
+### Roteamento (NÃO pular camadas — CLAUDE.md Regra Absoluta 1)
+
+**Main thread NÃO chama @traffic / @cs / @qa direto.** Relatório é workflow
+multi-agente stateful (coleta → render → QA → envio) e DEVE passar por @coo.
+
+Acione **@coo** com prompt:
+
+```
+@coo Nexus — operação: relatório de performance
+Cliente: {nome}
+Período: {data_inicio} a {data_fim}
+Workflow: coleta @traffic → render HTML @cs → veredicto @qa → envio @cs (Gmail)
+Referências:
+  - Skill com detalhamento técnico dos 4 passos: .claude/commands/relatorio.md
+  - Template HTML: .em5/core/templates/relatorios/relatorio-cliente.html
+Entregas esperadas:
+  - clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md
+  - clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.html
+  - clientes/{nome}/relatorios/qa-verdict-{YYYY-MM-DD}.md
+  - email enviado via Gmail Composio com HTML inline
+```
+
+@coo é responsável por: ler contexto operacional abaixo, montar contexto mínimo
+para cada subagente (Art. IV), seguir os 4 passos como referência detalhada,
+nunca pular @qa antes do envio.
+
+### Contexto que @coo deve ler antes de despachar
+
 - `clientes/{nome}/operacao/log-operacional.md` — período coberto
 - `clientes/{nome}/trafego/` — estrutura de campanhas
 - `clientes/{nome}/setup-tecnico/status.md` — IDs (account, page, IG handle)
@@ -35,9 +62,9 @@ Leia o contexto do cliente:
 
 ---
 
-### Passo 1 — @traffic coleta dados (Composio MCP)
+### Passo 1 — @traffic coleta dados (Composio MCP) — delegado por @coo
 
-Acione @traffic com:
+@coo aciona @traffic com:
 - Cliente: {nome}
 - Objetivo: coletar dados consolidados do período
 - Período: {data_inicio} a {data_fim} + período anterior comparável (mesmo nº de dias)
@@ -53,9 +80,9 @@ Acione @traffic com:
 
 ---
 
-### Passo 2 — @cs renderiza HTML
+### Passo 2 — @cs renderiza HTML — delegado por @coo
 
-Acione @cs com:
+@coo aciona @cs com:
 - Cliente: {nome}
 - Origem: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
 - Template: `.em5/core/templates/relatorios/relatorio-cliente.html`
@@ -106,7 +133,7 @@ Próximos passos:
 
 ---
 
-### Passo 3 — @qa valida
+### Passo 3 — @qa valida — delegado por @coo
 
 Veredicto formal sobre markdown + HTML:
 - Coerência markdown ↔ HTML (sem divergência numérica)
@@ -118,7 +145,7 @@ Veredicto formal sobre markdown + HTML:
 
 ---
 
-### Passo 4 — @cs envia
+### Passo 4 — @cs envia — delegado por @coo
 
 Após veredicto APROVADO:
 - Email via Gmail (Composio MCP) com HTML inline + .md anexado pra histórico

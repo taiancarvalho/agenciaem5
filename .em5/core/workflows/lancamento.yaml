@@ -1,124 +1,267 @@
 # Workflow: Lancamento
-# Versao: 1.0
-# Agentes: coo → strategist → copywriter → designer → traffic → qa → cs
+# Versao: 2.0 (Sprint 1 — convenção @coo + integração @fin + @scout + @whats + comunicação cliente em todas fases)
+# Agentes: coo (orquestra) + fin (verifica budget) + strategist + copy + designer + scout (monitora concorrencia) + traffic + qa + whats + cs
 
 nome: "lancamento"
-descricao: "Fluxo pre/durante/pos-lancamento de produto ou servico"
-gatilho: "Cliente com lancamento programado ou pedido de campanha de lancamento"
+descricao: "Fluxo pre/durante/pos-lancamento de produto ou servico — 3 fases, 13 steps, com QA gate em cada material"
+versao: "2.0"
+gatilho: "Cliente com lancamento programado OU pedido de campanha de lancamento (acionado por @cs ou @ceo)"
+agente_orquestrador: "coo"  # CLAUDE.md Regra 1
+agente_responsavel_entrega: "cs"
+qa_gate: true
+duracao_tipica_total: "4-8 semanas (2-4 pre + 1-2 durante + 1-2 pos)"
+
+inputs:
+  - "briefing inicial do cliente sobre lancamento"
+  - "plano de pagamento aprovado (verifica @fin)"
+  - "clientes/{nome}/estrategia/plano-estrategico.md (existente)"
+
+outputs:
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/briefing.md"
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/plano-lancamento.md"
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/materiais/ (copy + criativos + LP)"
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/relatorio-final.md"
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/aprendizados.md"
+  - "clientes/{nome}/lancamentos/{nome-lancamento}/qa-verdicts/ (por material)"
 
 fases:
+
+  # ===========================================================
+  # FASE 1: PRÉ-LANÇAMENTO (2-4 semanas antes)
+  # ===========================================================
   pre_lancamento:
     descricao: "Preparacao completa antes da abertura de carrinho/inscricoes"
     duracao_tipica: "2-4 semanas antes"
     sequencia:
-      - etapa: "briefing-lancamento"
+
+      - id: 1
+        etapa: "briefing-lancamento"
         agente: "cs"
+        task: "coletar-board.md"
         entrada: "briefing do cliente sobre o lancamento"
-        saida: "onboarding/briefing-lancamento.md"
+        saida: "clientes/{nome}/lancamentos/{slug}/briefing.md"
+        dependencia: nenhuma
         campos_obrigatorios:
-          - produto/servico sendo lancado
-          - data de abertura e fechamento de carrinho
-          - meta de vendas/inscricoes
-          - publico-alvo
-          - preco e condicoes especiais
-          - materiais ja produzidos
-          - canais a usar
+          - "produto/servico sendo lancado"
+          - "data abertura e fechamento carrinho"
+          - "meta vendas/inscricoes"
+          - "publico-alvo + ICP"
+          - "preco + condicoes especiais"
+          - "materiais ja produzidos"
+          - "canais a usar"
+          - "budget total aprovado pelo cliente"
 
-      - etapa: "estrategia-lancamento"
-        agente: "strategist"
-        entrada: "briefing-lancamento.md"
-        saida: "estrategia/plano-lancamento.md"
+      - id: 2
+        etapa: "verificar-budget"
+        agente: "fin"
+        task: "calcular-roi-cliente.md"
+        entrada: "briefing-lancamento.budget + historico-cobranca cliente"
+        saida: "clientes/{nome}/financeiro/lancamento-{slug}-aprovacao.md (APROVADO | PENDENTE_PAGAMENTO | INSUFICIENTE)"
         dependencia: "briefing-lancamento"
-        inclui:
-          - sequencia de aquecimento (semanas antes)
-          - estrategia de abertura de carrinho
-          - estrategia de remarketing durante
-          - estrategia de recuperacao (ultimas horas/urgencia)
-          - canais e verbas por fase
+        on_failure: "@coo congela workflow + escala @ceo + @cs comunica cliente"
 
-      - etapa: "preparar-criativos"
+      - id: 3
+        etapa: "inteligencia-competitiva"
+        agente: "scout"
+        task: "mapear-concorrencia.md"
+        entrada: "nicho cliente + lista concorrentes diretos"
+        saida: "clientes/{nome}/lancamentos/{slug}/intel-concorrencia.md (ofertas similares ativas, criativos referencia, gaps)"
+        dependencia: "briefing-lancamento"
+        rodar_em_paralelo: true
+
+      - id: 4
+        etapa: "estrategia-lancamento"
+        agente: "strategist"
+        task: "criar-plano-estrategico.md"
+        entrada: "briefing-lancamento.md + intel-concorrencia.md + plano-estrategico.md cliente"
+        saida: "clientes/{nome}/lancamentos/{slug}/plano-lancamento.md"
+        dependencia:
+          - "verificar-budget"
+          - "inteligencia-competitiva"
+        inclui:
+          - "sequencia aquecimento (semanas antes)"
+          - "estrategia abertura carrinho"
+          - "estrategia remarketing durante"
+          - "estrategia recuperacao (ultimas horas/urgencia)"
+          - "canais + verbas por fase"
+          - "KPIs alvo + thresholds de alerta"
+
+      - id: 5
+        etapa: "preparar-materiais-paralelo"
         agente: "coo"
-        descricao: "Acionar copywriter e designer em paralelo"
+        descricao: "Despacho paralelo copy + designer + landing-page"
         delegacao:
-          copywriter: "criar-copy-lancamento — sequencia de emails, anuncios por fase, copy de vendas"
-          designer: "criar-criativos-lancamento — banners, videos, stories por fase"
+          copywriter:
+            task: "escrever-copy.md + escrever-copy-email.md"
+            saida: "lancamentos/{slug}/materiais/copy/ (ads + emails + LP copy + WhatsApp templates)"
+          designer:
+            task: "gerar-imagem.md + gerar-video.md"
+            saida: "lancamentos/{slug}/materiais/criativos/ (banners + videos + stories + reels por fase)"
+          designer:
+            task: "definir-conceito-visual.md (LP)"
+            saida: "lancamentos/{slug}/materiais/landing-page/ (HTML pronto)"
         dependencia: "estrategia-lancamento"
 
-      - etapa: "validar-qa"
+      - id: 6
+        etapa: "qa-materiais"
         agente: "qa"
-        entrada: "todos os materiais producidos (copy + criativos + LP)"
-        saida: "veredicto por material"
-        dependencia: "preparar-criativos"
+        task: "validar-campanha.md + validar-copy.md + validar-criativo.md + validar-landing-page.md"
+        entrada: "todos materiais produzidos"
+        saida: "clientes/{nome}/lancamentos/{slug}/qa-verdicts/{material}-{YYYY-MM-DD}.md"
+        dependencia: "preparar-materiais-paralelo"
+        veredictos: ["APROVADO", "REVISAO", "BLOQUEADO"]
+        on_failure: "@coo loop volta pra @copy/@designer ate APROVADO"
 
-  durante_lancamento:
-    descricao: "Ativacao e monitoramento intensivo"
-    sequencia:
-      - etapa: "ativar-campanhas"
-        agente: "traffic"
-        entrada: "materiais APROVADOS + plano-lancamento.md"
-        saida: "campanhas ativas (Meta + Google se aplicavel)"
-        dependencia: "validar-qa"
-        ferramenta: "Composio MCP"
-
-      - etapa: "monitorar-intensivo"
-        agente: "traffic"
-        entrada: "campanhas ativas + metas do plano"
-        saida: "atualizacao diaria no log operacional"
-        dependencia: "ativar-campanhas"
-        frequencia: "2x por dia durante lancamento ativo"
-        alertas:
-          - gasto muito acima do normal: escalar para @coo
-          - CPL/CPA 2x acima da meta: otimizar urgente
-
-      - etapa: "otimizar-diario"
-        agente: "traffic"
-        entrada: "dados do dia anterior"
-        saida: "ajustes de campanha (pausar, escalar, redistribuir verba)"
-        dependencia: "monitorar-intensivo"
-        notas: "Durante lancamento, janela de analise e reduzida para 24-48h (excecao a regra dos 7 dias)"
-
-  pos_lancamento:
-    descricao: "Analise, aprendizados e otimizacao continua"
-    sequencia:
-      - etapa: "relatorio-lancamento"
-        agente: "traffic"
-        entrada: "dados completos do periodo"
-        saida: "relatorios/relatorio-lancamento-{data}.md"
-        dependencia: "ativar-campanhas"
-        conteudo:
-          - resultado versus meta
-          - custo de aquisicao realizado
-          - melhores criativos e angulos
-          - o que nao funcionou
-
-      - etapa: "otimizar-pos-lancamento"
-        agente: "traffic"
-        entrada: "relatorio de lancamento"
-        saida: "campanhas de retencao/upsell ativas (se aplicavel)"
-        dependencia: "relatorio-lancamento"
-
-      - etapa: "registrar-aprendizados"
-        agente: "strategist"
-        entrada: "relatorio de lancamento + dados de performance criativa"
-        saida: "estrategia/aprendizados-lancamento-{data}.md"
-        dependencia: "relatorio-lancamento"
-        conteudo:
-          - hipoteses confirmadas
-          - hipoteses refutadas
-          - insights de angulo e copy
-          - recomendacoes para proximo lancamento
-
-      - etapa: "enviar-relatorio-cliente"
+      - id: 7
+        etapa: "preview-cliente"
         agente: "cs"
-        entrada: "relatorio-lancamento.md + aprendizados"
-        saida: "relatorio enviado ao cliente"
+        task: "preparar-reuniao.md"
+        entrada: "materiais APROVADOS"
+        saida: "preview enviado cliente (deck + materiais + cronograma) + APROVACAO formal"
+        dependencia: "qa-materiais"
+        importante: "Cliente assina aprovacao antes da ativacao — protege agencia"
+
+  # ===========================================================
+  # FASE 2: DURANTE LANÇAMENTO (1-2 semanas, ativo)
+  # ===========================================================
+  durante_lancamento:
+    descricao: "Ativacao + monitoramento intensivo + comunicacao continua"
+    duracao_tipica: "duracao do carrinho aberto"
+    sequencia:
+
+      - id: 8
+        etapa: "ativar-campanhas"
+        agente: "traffic"
+        task: "estruturar-campanha.md"
+        entrada: "materiais APROVADOS + preview-cliente OK + plano-lancamento.md"
+        saida: "campanhas ativas (Meta + Google se aplicavel) + log-operacional atualizado"
+        dependencia: "preview-cliente"
+        composio_mcp: ["meta_ads", "google_ads"]
+
+      - id: 9
+        etapa: "monitorar-intensivo"
+        agente: "traffic"
+        task: "monitorar-performance.md"
+        entrada: "campanhas ativas + metas plano"
+        saida: "logs 2x/dia em log-operacional"
+        dependencia: "ativar-campanhas"
+        frequencia: "2x por dia durante carrinho aberto (manha + tarde)"
+        alertas:
+          - "gasto > 130% diario previsto: escalar @coo"
+          - "CPL/CPA > 2x meta: otimizar urgente (otimizar-campanha.md)"
+          - "frequencia > 4.0: rotacionar criativos"
+        excecao_regra_7d: "Durante lancamento, janela analise reduzida pra 24-48h"
+
+      - id: 10
+        etapa: "remarketing-whatsapp"
+        agente: "whats"
+        task: "enviar-template.md"
+        entrada: "lista de leads (formulario + abandono carrinho) + templates aprovados"
+        saida: "mensagens WhatsApp disparadas conforme cadencia plano"
+        dependencia: "ativar-campanhas"
+        rodar_em_paralelo: true
+        condicao: "cliente tem WhatsApp Business ativo (em5-config.yaml.whatsapp)"
+
+      - id: 11
+        etapa: "comunicar-cliente-diario"
+        agente: "cs"
+        task: "registrar-interacao.md"
+        entrada: "snapshot diario @traffic"
+        saida: "update diario cliente (WhatsApp + email) com KPIs + acoes"
+        dependencia: "monitorar-intensivo"
+        frequencia: "1x/dia minimo durante lancamento"
+
+  # ===========================================================
+  # FASE 3: PÓS-LANÇAMENTO (1-2 semanas após fechamento)
+  # ===========================================================
+  pos_lancamento:
+    descricao: "Analise, aprendizados, retencao/upsell, relatorio cliente"
+    duracao_tipica: "1-2 semanas apos fechamento carrinho"
+    sequencia:
+
+      - id: 12
+        etapa: "relatorio-lancamento"
+        agente: "traffic"
+        task: "gerar-relatorio.md"
+        entrada: "dados completos do periodo (Meta + Google + organico + WhatsApp)"
+        saida: "clientes/{nome}/lancamentos/{slug}/relatorio-final.md"
+        dependencia: "ativar-campanhas"  # roda apos carrinho fechar
+        conteudo:
+          - "resultado vs meta (% atingimento)"
+          - "CAC realizado vs previsto"
+          - "melhores criativos + angulos (top 5)"
+          - "o que nao funcionou + hipoteses"
+          - "ROI da operacao"
+
+      - id: 13
+        etapa: "campanha-retencao-upsell"
+        agente: "traffic"
+        task: "estruturar-campanha.md"
+        entrada: "relatorio-final + base compradores + base nao-compradores"
+        saida: "2 campanhas ativas: retencao (compradores -> upsell) + recuperacao (carrinho abandonado)"
+        dependencia: "relatorio-lancamento"
+        condicao: "aplicavel quando produto tem upsell/recompra"
+
+      - id: 14
+        etapa: "registrar-aprendizados"
+        agente: "strategist"
+        task: "analisar-call.md"  # adaptado para analise lancamento
+        entrada: "relatorio-final + log performance criativa + intel-concorrencia"
+        saida: "clientes/{nome}/lancamentos/{slug}/aprendizados.md"
+        dependencia: "relatorio-lancamento"
+        conteudo:
+          - "hipoteses confirmadas"
+          - "hipoteses refutadas"
+          - "insights de angulo + copy"
+          - "padroes de criativo vencedor"
+          - "recomendacoes proximo lancamento"
+
+      - id: 15
+        etapa: "qa-relatorio-final"
+        agente: "qa"
+        task: "emitir-veredicto.md"
+        entrada: "relatorio-final.md + aprendizados.md"
+        saida: "qa-verdict-relatorio-final-{YYYY-MM-DD}.md"
         dependencia:
           - "relatorio-lancamento"
           - "registrar-aprendizados"
-        ferramenta: "Composio MCP (Gmail)"
 
+      - id: 16
+        etapa: "enviar-relatorio-cliente"
+        agente: "cs"
+        task: "enviar-relatorio.md"
+        entrada: "relatorio-final APROVADO + aprendizados"
+        saida: "relatorio + aprendizados enviados ao cliente (HTML email + PDF anexo)"
+        dependencia: "qa-relatorio-final"
+        composio_mcp: "gmail"
+
+      - id: 17
+        etapa: "reconciliacao-financeira"
+        agente: "fin"
+        task: "calcular-roi-cliente.md"
+        entrada: "gastos reais + receita gerada cliente"
+        saida: "clientes/{nome}/financeiro/lancamento-{slug}-fechamento.md"
+        dependencia: "relatorio-lancamento"
+        notas: "Input pra decisao renovacao/upsell @vendas"
+
+# ===== ON FAILURE GLOBAL =====
+on_failure:
+  qa_bloqueado_pre_lancamento: "@coo loop volta pra producao, ajusta cronograma se atrasar > 3d"
+  qa_bloqueado_durante_lancamento: "@coo pausa imediato + escala @ceo (perda receita real)"
+  budget_estourado: "@traffic pausa imediato + @fin notifica @ceo + @cs comunica cliente em 1h"
+  conta_suspensa: "trigger workflow conta-suspensa-meta.yaml (Sprint 7)"
+
+# ===== METRICAS DE SUCESSO =====
+metricas:
+  prazo_pre_lancamento: "8-10 dias uteis briefing -> preview-cliente"
+  taxa_aprovacao_qa_primeira: "> 80% (loop < 2x)"
+  comunicacao_diaria_durante: "100% dos dias do carrinho aberto"
+  prazo_relatorio_final: "<= 5 dias uteis pos-fechamento carrinho"
+
+# ===== NOTAS =====
 notas_importantes:
-  - "Lancamento exige mais frequencia de monitoramento — ajustar expectativa do cliente"
-  - "QA obrigatorio em TODOS os materiais antes de qualquer publicacao"
-  - "Aprendizados registrados sao ativo estrategico para proximo lancamento"
-  - "Pos-lancamento: campanha de retencao para quem comprou e de recuperacao para quem nao comprou"
+  - "Lancamento exige frequencia 2x maior de monitoramento — ajustar expectativa cliente no briefing"
+  - "QA obrigatorio em TODOS materiais antes ativacao (Regra Absoluta 2)"
+  - "Aprendizados registrados sao ativo estrategico — sempre alimentar memoria/notas-sessao"
+  - "Pos-lancamento: retencao pra quem comprou + recuperacao pra quem nao comprou (2 campanhas separadas)"
+  - "Cliente assina aprovacao formal em #7 preview-cliente — protege agencia em caso de resultado abaixo"

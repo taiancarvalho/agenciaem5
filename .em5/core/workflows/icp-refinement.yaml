@@ -1,0 +1,14 @@
+nome: "icp-refinement"
+descricao: "Trimestral — refina ICP baseado em dados reais (clientes mais saudaveis vs piores)"
+versao: "1.0"
+gatilho: "Cron trimestral"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "strategist"
+qa_gate: false
+
+sequencia:
+  - {id: 1, etapa: "analisar-clientes-saudaveis", agente: "strategist", saida: "perfil clientes high-LTV + baixo-churn (padroes)"}
+  - {id: 2, etapa: "analisar-perdidos", agente: "strategist", saida: "padroes dos que sairam OR nunca fecharam"}
+  - {id: 3, etapa: "refinar-icp", agente: "strategist", saida: "ICP atualizado em clientes/_agencia/icp.md"}
+  - {id: 4, etapa: "atualizar-criterios-cold-outreach", agente: "vendas", saida: "criterios pesquisa-prospect ajustados"}
+metricas: {cadencia: "trimestral", melhoria_taxa_fechamento_pos_refinement: ">= 10%"}

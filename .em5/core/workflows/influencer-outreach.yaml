@@ -1,0 +1,17 @@
+nome: "influencer-outreach"
+descricao: "Pesquisa + outreach + negociacao + brief + publicacao + relatorio influencer"
+versao: "1.0"
+gatilho: "Estrategia influencer marketing"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "pesquisar-influencers", agente: "scout", composio_mcp: ["hypeauditor", "modash"], saida: "lista 10-30 perfis (nicho + engajamento real + ICP audiencia)"}
+  - {id: 2, etapa: "outreach", agente: "cs", saida: "mensagem personalizada + briefing inicial + budget"}
+  - {id: 3, etapa: "negociar", agente: "vendas", saida: "termos: cache + entregaveis + prazo + direitos uso"}
+  - {id: 4, etapa: "brief-formal", agente: "copywriter", saida: "brief detalhado (hook + msg chave + DOs DONTs + hashtags)"}
+  - {id: 5, etapa: "acompanhar-producao", agente: "cs", saida: "feedback no draft"}
+  - {id: 6, etapa: "qa", agente: "qa", checklist: ["compliance LGPD + #ad obrigatorio", "claims OK", "alinhado brief"]}
+  - {id: 7, etapa: "publicacao-medicao", agente: "traffic", saida: "tracking link + UTM + medicao engajamento + conversao"}
+metricas: {custo_engajamento_alvo: "<= R$ 0.50 por engagement", conversao_via_influencer_alvo: "tracked"}

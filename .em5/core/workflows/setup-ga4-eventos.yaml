@@ -1,0 +1,78 @@
+# Workflow: Setup GA4 + Eventos Customizados
+# Versao: 1.0 (Sprint 6 — analytics)
+nome: "setup-ga4-eventos"
+descricao: "Configuração GA4 property + eventos customizados + conversões + UTM padronizado"
+versao: "1.0"
+gatilho: "Cliente novo OR migração UA → GA4"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+inputs:
+  - "acesso Google Analytics (Admin role)"
+  - "site cliente + GTM (ou código direto)"
+
+outputs:
+  - "clientes/{nome}/setup-tecnico/ga4-property.md"
+  - "clientes/{nome}/setup-tecnico/ga4-eventos-customizados.md"
+  - "clientes/{nome}/setup-tecnico/utm-padronizado.md (convenção naming)"
+
+sequencia:
+  - id: 1
+    etapa: "criar-property-ga4"
+    agente: "cs"
+    saida: "property_id criado + Data Stream configurado + Enhanced Measurement ativo"
+    composio_mcp: "googleads"
+
+  - id: 2
+    etapa: "instalar-tag-ga4"
+    agente: "cs"
+    saida: "gtag.js OR GTM tag configurada — disparando em todas páginas"
+
+  - id: 3
+    etapa: "definir-eventos-customizados"
+    agente: "strategist"
+    saida: "lista eventos custom (form_submit_lead, whatsapp_click, video_play, scroll_75, etc.)"
+    importante: "máximo 50 eventos custom — priorizar value-events"
+
+  - id: 4
+    etapa: "configurar-eventos-gtm"
+    agente: "cs"
+    saida: "tags GTM criadas + triggers + variáveis + publicação container"
+
+  - id: 5
+    etapa: "marcar-conversoes"
+    agente: "cs"
+    saida: "eventos críticos marcados como Conversões em GA4 (até 30 conversões)"
+
+  - id: 6
+    etapa: "padronizar-utm"
+    agente: "traffic"
+    saida: "utm-padronizado.md (convenção source/medium/campaign/content/term + planilha geradora)"
+    convencao_utm:
+      source: "meta, google, linkedin, email, organic-social"
+      medium: "cpc, paid-social, email, organic, referral"
+      campaign: "{cliente}-{objetivo}-{YYYY-MM}"
+      content: "{criativo-id} OR {ad-variant}"
+      term: "{keyword} (Google Ads apenas)"
+
+  - id: 7
+    etapa: "qa-ga4"
+    agente: "qa"
+    task: "validar-landing-page.md"
+    checklist:
+      - "PageView disparando todas páginas (DebugView GA4)"
+      - "Eventos custom disparando com parâmetros"
+      - "Conversões marcadas + recebendo dados"
+      - "UTM aparecem no Acquisition report"
+      - "Cross-domain tracking se aplicável"
+      - "Filtros internos (IP escritório agência) configurados"
+
+metricas:
+  prazo: "<= 5d cliente novo → GA4 validado"
+  taxa_conversoes_disparando: "100%"
+  delay_dados_max: "<= 48h primeira conversão real"
+
+on_failure:
+  evento_nao_aparece_debugview: "@cs revisa GTM trigger + console"
+  dados_zerados_dia: "@cs verifica filtros + GTM publicado"

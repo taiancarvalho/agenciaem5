@@ -1,0 +1,67 @@
+# Workflow: Carrossel Instagram
+# Versao: 1.0 (Sprint 4 — conteúdo crítico)
+nome: "carrossel-ig"
+descricao: "Carrossel IG 10 slides — tema + copy slide-a-slide + capa + design + QA + agendamento"
+versao: "1.0"
+gatilho: "Calendário editorial (semanal) OR pedido cliente"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+inputs:
+  - "tema do carrossel (calendario-conteudo.md)"
+  - "clientes/{nome}/branding/ (cores + fontes + tom)"
+  - "ICP + plano-estrategico"
+
+outputs:
+  - "clientes/{nome}/social/carrosseis/{YYYY-MM-DD}/slides/ (10 .png)"
+  - "clientes/{nome}/social/carrosseis/{YYYY-MM-DD}/copy-feed.md"
+  - "clientes/{nome}/social/carrosseis/{YYYY-MM-DD}/qa-verdict.md"
+
+sequencia:
+  - id: 1
+    etapa: "definir-tema-angulo"
+    agente: "strategist"
+    task: "criar-calendario-conteudo.md"
+    saida: "tema + angulo + dor/desejo do ICP + CTA"
+
+  - id: 2
+    etapa: "estrutura-slide-a-slide"
+    agente: "copywriter"
+    task: "escrever-post-social.md"
+    entrada: "tema + angulo"
+    saida: "10 slides definidos: 1 capa (hook) + 8 desenvolvimento + 1 CTA + copy-feed.md (legenda + hashtags)"
+    estrutura:
+      slide_1_capa: "hook visual + promessa clara — sem capa, sem swipe"
+      slides_2_9: "1 ideia por slide — escaneável + emoji estratégico"
+      slide_10: "CTA específico (comenta palavra X, salva, compartilha)"
+    proibido: ["título genérico", "lista 50 itens", "AIDA óbvio"]
+
+  - id: 3
+    etapa: "design-slides"
+    agente: "designer"
+    task: "definir-conceito-visual.md + gerar-imagem.md"
+    entrada: "10 slides texto + branding"
+    saida: "10 PNGs 1080×1350 + capa otimizada"
+    composio_mcp: ["wavespeed", "canva"]
+
+  - id: 4
+    etapa: "qa-carrossel"
+    agente: "qa"
+    task: "validar-criativo.md + validar-copy.md"
+    saida: "qa-verdict.md (APROVADO | REVISAO | BLOQUEADO)"
+    checklist: ["hook do slide 1 forte", "fluxo lógico entre slides", "branding correto", "copy sem erro", "CTA específico (não 'comente abaixo')"]
+
+  - id: 5
+    etapa: "agendar-publicacao"
+    agente: "cs"
+    task: "registrar-interacao.md"
+    saida: "agendado via Meta Business Suite OR publicação manual + log"
+    condicao: "qa-verdict == APROVADO"
+
+on_failure:
+  qa_bloqueado: "@coo loop max 2x. Se 3x = escala @strategist (revê ângulo)"
+metricas:
+  prazo: "<= 48h tema → agendado"
+  taxa_aprovacao_qa_primeira: ">= 80%"
+  alvo_salvamentos: ">= 5% impressões (sinal qualidade)"

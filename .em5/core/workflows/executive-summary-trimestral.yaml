@@ -1,0 +1,15 @@
+nome: "executive-summary-trimestral"
+descricao: "Resumo executivo C-level 1 pagina — decisao-driven, nao operacional"
+versao: "1.0"
+gatilho: "Cron trimestral OR pedido C-level cliente"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+sequencia:
+  - {id: 1, etapa: "consolidar-3m", agente: "strategist", saida: "decisoes-chave + ROI + projecao"}
+  - {id: 2, etapa: "consolidar-financeiro", agente: "fin", saida: "numeros essenciais executivo"}
+  - {id: 3, etapa: "redigir-1pager", agente: "cs", saida: "1 pagina (3-4 KPIs hero + 3 decisoes + 1 risco + recomendacao)"}
+  - {id: 4, etapa: "qa", agente: "qa", checklist: ["1 pagina real (nao 3)", "decisao clara", "sem jargao operacional"]}
+  - {id: 5, etapa: "enviar-c-level", agente: "cs", saida: "PDF enviado direto ao C-level"}
+metricas: {tamanho_max: "1 pagina", prazo: "<= 7d pos-fechamento trimestre"}

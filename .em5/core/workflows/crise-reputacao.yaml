@@ -1,0 +1,18 @@
+nome: "crise-reputacao"
+descricao: "Comentario viral negativo OR avaliacao ruim publica — protocolo resposta rapida"
+versao: "1.0"
+gatilho: "Alerta scout (mencao negativa amplitude) OR comentario rede cliente (Reclame Aqui, Google reviews, Twitter/X)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+sla: "<= 2h primeira resposta"
+
+sequencia:
+  - {id: 1, etapa: "monitoramento-detecta", agente: "scout", saida: "alerta + screenshot + url + alcance estimado"}
+  - {id: 2, etapa: "triagem-severidade", agente: "ceo", saida: "severidade (baixa: ignora; media: resposta padrao; alta: protocolo crise)"}
+  - {id: 3, etapa: "rascunhar-resposta", agente: "copywriter", saida: "resposta empatica + acao concreta + sem defensividade"}
+  - {id: 4, etapa: "qa-resposta", agente: "qa", checklist: ["nao acusa", "reconhece problema", "oferece solucao", "tom apropriado", "nao escala briga"]}
+  - {id: 5, etapa: "publicar-resposta", agente: "cs", saida: "resposta publicada + monitoramento 48h proximas mencoes"}
+  - {id: 6, etapa: "acao-paralela", agente: "ceo", saida: "se justa: corrige raiz; se injusta: aceita perda, nao prolonga"}
+  - {id: 7, etapa: "post-mortem", agente: "strategist", saida: "input em learnings/crises.md"}
+metricas: {tempo_primeira_resposta: "<= 2h", taxa_escalation_evitada: ">= 90%"}

@@ -1,0 +1,14 @@
+nome: "review-portfolio-mensal"
+descricao: "Review mensal portfolio clientes — saude geral agencia"
+versao: "1.0"
+gatilho: "Cron mensal (dia 5)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "ceo"
+qa_gate: false
+
+sequencia:
+  - {id: 1, etapa: "snapshot-todos-clientes", agente: "coo", saida: "status operacional + financeiro + relacionamento todos"}
+  - {id: 2, etapa: "mrr-trend", agente: "fin", saida: "MRR mes vs anterior + churn + novos"}
+  - {id: 3, etapa: "clientes-em-risco", agente: "coo", saida: "lista clientes high-risk (sinais churn)"}
+  - {id: 4, etapa: "decisoes-ceo", agente: "ceo", saida: "review-portfolio-{YYYY-MM}.md (decisoes + ajustes)"}
+metricas: {cadencia: "mensal dia 5", duracao: "<= 1h"}

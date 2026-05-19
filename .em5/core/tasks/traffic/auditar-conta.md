@@ -8,11 +8,26 @@ inputs:
   - acesso a conta de anuncios (Meta Ads ou Google Ads)
 outputs:
   - clientes/{nome}/trafego/auditoria.md
+  - clientes/{nome}/trafego/qa-verdict-{YYYY-MM-DD}.md (após @qa)
+requires_qa: true  # auditoria NÃO está done sem veredicto @qa
+orchestrator: coo  # disparo direto pelo main thread = violação CLAUDE.md Regra 1
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
 
 # Auditar Conta de Anúncios
+
+## Gates obrigatórios (CLAUDE.md Regras Absolutas)
+
+1. **Orquestração via @coo:** esta task NÃO deve ser disparada por main thread
+   direto. Slash `/auditar` roteia via @coo → @traffic → @qa. Disparo direto
+   viola Regra Absoluta 1.
+
+2. **QA antes de done:** após gerar `auditoria.md`, @traffic NÃO marca task
+   como completed. @coo delega @qa para emitir veredicto formal
+   (APROVADO | REVISÃO | BLOQUEADO) salvo em `qa-verdict-{YYYY-MM-DD}.md`.
+   Sem veredicto APROVADO, auditoria não vai pro @ceo nem pro cliente
+   (Regra Absoluta 2).
 
 ## Playbook de Referência
 

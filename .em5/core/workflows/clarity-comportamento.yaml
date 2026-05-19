@@ -1,0 +1,16 @@
+nome: "clarity-comportamento"
+descricao: "Analise heatmap + recordings Clarity — insights comportamentais cliente"
+versao: "1.0"
+gatilho: "Cron mensal OR pedido especifico (LP nova, queda conversao)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "traffic"
+qa_gate: false
+mcp_disponivel: "microsoft_clarity (subutilizado!)"
+
+sequencia:
+  - {id: 1, etapa: "instalar-clarity", agente: "cs", saida: "tag Clarity instalada via GTM (se nao tinha)", condicao: "primeiro uso"}
+  - {id: 2, etapa: "coletar-dados-30d", agente: "traffic", composio_mcp: "microsoft_clarity", saida: "heatmaps + recordings + insights AI"}
+  - {id: 3, etapa: "identificar-padroes", agente: "strategist", saida: "padroes identificados (dead clicks, rage clicks, scroll depth baixo, abandono em form)"}
+  - {id: 4, etapa: "gerar-insights-acionaveis", agente: "strategist", saida: "3-5 recomendacoes especificas com evidencia visual"}
+  - {id: 5, etapa: "compartilhar-cliente", agente: "cs", saida: "insights compartilhados em weekly-digest OR call"}
+metricas: {cadencia: "mensal", insights_implementados: "tracked"}
