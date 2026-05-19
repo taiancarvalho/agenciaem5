@@ -283,7 +283,7 @@ Salva em `em5-config.yaml`.
 
 Pergunta se quer extrair DESIGN.md. Responde "skip" pra primeira vez.
 
-Resultado: `.em5/clientes/teste-piloto/` com 13 subpastas.
+Resultado: `clientes/teste-piloto/` com 13 subpastas.
 
 ### 8.3 Daily run
 
@@ -430,7 +430,7 @@ node .em5/bin/em5-validate.js 2>&1
 
 ```bash
 # Cliente precisa ter operacao/status.yaml
-ls .em5/clientes/{slug}/operacao/status.yaml
+ls clientes/{slug}/operacao/status.yaml
 
 # Rebuild painel
 cd painel && npm run build

@@ -30,13 +30,13 @@ Para cada etapa em andamento, verificar se o arquivo de saída esperado existe:
 ```
 Etapa                  | Arquivo esperado
 -----------------------|--------------------------------------------
-CS onboarding          | .em5/clientes/{nome}/onboarding/briefing-final.md
-Estrategista           | .em5/clientes/{nome}/estrategia/plano-estrategico.md
-Gestor (auditoria)     | .em5/clientes/{nome}/trafego/ (arquivos de auditoria)
-Copywriter             | .em5/clientes/{nome}/copy/ (copy por canal)
-Designer               | .em5/clientes/{nome}/design/criativos/ (arquivos)
+CS onboarding          | clientes/{nome}/onboarding/briefing-final.md
+Estrategista           | clientes/{nome}/estrategia/plano-estrategico.md
+Gestor (auditoria)     | clientes/{nome}/trafego/ (arquivos de auditoria)
+Copywriter             | clientes/{nome}/copy/ (copy por canal)
+Designer               | clientes/{nome}/design/criativos/ (arquivos)
 QA                     | log-operacional.md com veredicto: APROVADO
-Gestor (relatório)     | .em5/clientes/{nome}/relatorios/relatorio-{periodo}.md
+Gestor (relatório)     | clientes/{nome}/relatorios/relatorio-{periodo}.md
 ```
 
 ### 2. Avaliar qualidade mínima da entrega
@@ -53,7 +53,7 @@ Quando entrega confirmada, despachar o próximo agente da sequência:
 ```
 Entrega confirmada: briefing-final.md
 → Acionar: @strategist *analisar-briefing {cliente}
-   Contexto: "Briefing finalizado pelo CS. Leia .em5/clientes/{nome}/onboarding/briefing-final.md"
+   Contexto: "Briefing finalizado pelo CS. Leia clientes/{nome}/onboarding/briefing-final.md"
 ```
 
 ### 4. Tratar bloqueios

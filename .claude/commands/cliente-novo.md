@@ -5,7 +5,7 @@
 ## O que este comando faz
 
 1. Lê `.em5/core/data/estrutura-pastas.yaml` para conhecer estrutura padrão
-2. Cria pasta `.em5/clientes/{slug}/` completa
+2. Cria pasta `clientes/{slug}/` completa
 3. Inicializa logs operacionais com data atual
 4. **(Fase 13)** Pergunta se quer extrair DESIGN.md agora — dispara `/extrair-design` se sim
 5. Registra criação em log operacional + learnings
@@ -20,7 +20,7 @@ Exemplo: "Clínica São Paulo" → `clinica-sao-paulo`
 ## Estrutura criada
 
 ```
-.em5/clientes/{slug}/
+clientes/{slug}/
 ├── onboarding/
 ├── estrategia/
 ├── copy/
@@ -56,7 +56,7 @@ Exemplo: "Clínica São Paulo" → `clinica-sao-paulo`
 Após criar workspace, **pergunta:**
 
 ```
-✓ Workspace criado em .em5/clientes/{slug}/
+✓ Workspace criado em clientes/{slug}/
 
 🎨 Quer extrair DESIGN.md agora? (Recomendado — @designer Lux + @copywriter Eco
    precisam disso pra operar - Art. XIII hard dependency)

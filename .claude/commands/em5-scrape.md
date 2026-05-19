@@ -51,7 +51,7 @@ Saída: markdown limpo (sem nav, sidebar, footer, ads).
 ### Passo 3 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/inteligencia/scrape-{slug-url}-{YYYY-MM-DD}.md
+clientes/{cliente}/inteligencia/scrape-{slug-url}-{YYYY-MM-DD}.md
 ```
 
 Onde `slug-url` é o host + path principal kebab-case.

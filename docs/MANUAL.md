@@ -53,7 +53,7 @@ Você → @ceo Atlas (intenção) → @coo Nexus (delega) → agente especialist
 
 Todo trabalho gera arquivo. Conversa é exploração, arquivo é verdade (Art. I).
 
-`.em5/clientes/{slug}/` é fonte única do estado de cada cliente.
+`clientes/{slug}/` é fonte única do estado de cada cliente.
 
 ---
 
@@ -69,7 +69,7 @@ Todo trabalho gera arquivo. Conversa é exploração, arquivo é verdade (Art. I
 @vendas Caça *fechar-cliente nova-clinica
 ```
 
-Output: prospect em `.em5/prospects/nova-clinica/` → após fechar, vira `.em5/clientes/nova-clinica/`.
+Output: prospect em `.em5/prospects/nova-clinica/` → após fechar, vira `clientes/nova-clinica/`.
 
 ### 2.2 Onboarding (Sol + Vera + Lux)
 
@@ -369,7 +369,7 @@ Output:
 ```
 > /cliente-novo clinica-sao-paulo
 
-✓ Workspace .em5/clientes/clinica-sao-paulo/ criado
+✓ Workspace clientes/clinica-sao-paulo/ criado
 ✓ status.yaml + log.md inicializados
 
 🎨 Quer extrair DESIGN.md agora?
@@ -719,7 +719,7 @@ Apenas pra severity `alto` (crítico = nunca):
 @fin Caixa *cadastrar-cliente-asaas cliente-x
 # Pede: nome fiscal, CPF/CNPJ, email, telefone
 # Cria customer no Asaas
-# Salva .em5/clientes/cliente-x/financeiro/cliente-asaas.yaml
+# Salva clientes/cliente-x/financeiro/cliente-asaas.yaml
 ```
 
 ### Cobranças
@@ -882,7 +882,7 @@ Via wizard rápido:
 ? Nome? exportar-pptx
 ? Agente owner? @cs Sol
 ? Inputs? cliente-slug, periodo
-? Output? .em5/clientes/{slug}/relatorios/relatorio-{periodo}.pptx
+? Output? clientes/{slug}/relatorios/relatorio-{periodo}.pptx
 ```
 
 ### Importar customGPT
@@ -918,10 +918,10 @@ Não diretamente. Cada instalação em5 = 1 agência. Pra multi-agência:
 
 ```bash
 # Move pra archive (não deleta permanente)
-mv .em5/clientes/cliente-x .em5/docs/archive/clientes/cliente-x-$(date +%Y%m%d)/
+mv clientes/cliente-x .em5/docs/archive/clientes/cliente-x-$(date +%Y%m%d)/
 
 # OU delete definitivo (com cuidado)
-rm -rf .em5/clientes/cliente-x
+rm -rf clientes/cliente-x
 ```
 
 ### "Como atualizar em5 mantendo customizações?"

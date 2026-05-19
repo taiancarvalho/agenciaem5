@@ -31,7 +31,7 @@ Abre http://localhost:4321 com:
 
 ## Princípios respeitados
 
-- **Art. I (Filesystem First):** lê `.em5/clientes/*/operacao/status.yaml` direto. Sem DB.
+- **Art. I (Filesystem First):** lê `clientes/*/operacao/status.yaml` direto. Sem DB.
 - **Art. III (Artefatos):** mudança em status.yaml → reflete no painel ao rebuild
 - **Art. XII (em 5 min):** dashboard mostra tudo essencial pra decidir prox passo
 

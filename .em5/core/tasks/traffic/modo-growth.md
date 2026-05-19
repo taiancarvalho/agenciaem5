@@ -3,9 +3,9 @@ name: modo-growth
 agent: traffic
 description: Ativar modo de escala — identificar vencedores, propor estrategias verticais/horizontais e registrar acoes de growth
 inputs:
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md
+  - clientes/{nome}/operacao/log-performance-criativa.md
   - dados de performance atuais da conta de anuncios
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
 outputs:
   - plano de escalacao vertical/horizontal
   - entradas no log-growth.md
@@ -93,7 +93,7 @@ Horizontal:
 
 ### 4. Criar plano de crescimento
 
-Gerar documento em `.em5/clientes/{nome}/trafego/plano-growth.md`:
+Gerar documento em `clientes/{nome}/trafego/plano-growth.md`:
 
 ```markdown
 # Plano de Growth — {Nome do Cliente}
@@ -134,7 +134,7 @@ Gerar documento em `.em5/clientes/{nome}/trafego/plano-growth.md`:
 
 ### 5. Registrar no log de growth
 
-Para cada acao do plano, adicionar entrada em `.em5/clientes/{nome}/operacao/log-growth.md`:
+Para cada acao do plano, adicionar entrada em `clientes/{nome}/operacao/log-growth.md`:
 
 ```markdown
 | GW-{id} | {data} | {descricao da acao} | {VERTICAL/HORIZONTAL/CRIATIVO/CANAL/OFERTA} | Pendente | Agendada |

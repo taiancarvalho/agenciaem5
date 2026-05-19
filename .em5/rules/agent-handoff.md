@@ -28,7 +28,7 @@ handoff:
   to_agent: "{id do novo agente}"
   cliente_context:
     cliente_ativo: "{nome do cliente}"
-    cliente_path: ".em5/clientes/{nome}/"
+    cliente_path: "clientes/{nome}/"
     etapa_atual: "{flow em execução}"
     ultima_task: "{última task executada}"
   decisions:
@@ -91,7 +91,7 @@ Após troca:
 - Artefato handoff (~400 tokens) → RETIDO
   - cliente_ativo: "Clínica São Paulo"
   - última_task: "gerar-onboarding-final"
-  - artifacts_generated: [".em5/clientes/clinica-sp/onboarding/briefing.md"]
+  - artifacts_generated: ["clientes/clinica-sp/onboarding/briefing.md"]
   - next_action: "analisar briefing e gerar plano estratégico"
 - Persona @strategist (~3K tokens) → CARREGADA
 

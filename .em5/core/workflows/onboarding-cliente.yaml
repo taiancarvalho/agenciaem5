@@ -11,7 +11,7 @@ sequencia:
   - etapa: "coletar-dados-iniciais"
     agente: "cs"
     entrada: "nome do cliente, contato principal"
-    saida: "workspace criado em .em5/clientes/{nome}/"
+    saida: "workspace criado em clientes/{nome}/"
     dependencia: nenhuma
 
   - etapa: "coletar-briefing"
@@ -23,7 +23,7 @@ sequencia:
   - etapa: "gerar-briefing-final"
     agente: "cs"
     entrada: "respostas coletadas, template briefing-final.md"
-    saida: ".em5/clientes/{nome}/onboarding/briefing-final.md"
+    saida: "clientes/{nome}/onboarding/briefing-final.md"
     dependencia: "coletar-briefing"
 
   - etapa: "listar-acessos"

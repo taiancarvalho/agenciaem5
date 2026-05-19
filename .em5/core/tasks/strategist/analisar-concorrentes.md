@@ -7,7 +7,7 @@
 Mapear posicionamento, ofertas, canais e diferenciais dos principais concorrentes do cliente para informar a estrategia de campanha.
 
 ## Inputs necessarios
-1. `.em5/clientes/{nome}/onboarding/briefing-final.md` — lista de concorrentes mencionados
+1. `clientes/{nome}/onboarding/briefing-final.md` — lista de concorrentes mencionados
 2. Pesquisa via Composio (web search) para dados atualizados
 3. Context7 para tecnicas de analise competitiva se necessario
 
@@ -47,7 +47,7 @@ Mapear posicionamento, ofertas, canais e diferenciais dos principais concorrente
 - Formatos de criativo ausentes
 
 ### 4. Gerar documento
-Salvar em: `.em5/clientes/{nome}/estrategia/analise-concorrentes.md`
+Salvar em: `clientes/{nome}/estrategia/analise-concorrentes.md`
 
 ```markdown
 # Analise de Concorrentes — {nome-do-cliente}

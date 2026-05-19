@@ -13,7 +13,7 @@
 
 ## Workspace
 
-- [ ] Estrutura de pastas criada em `.em5/clientes/{nome}/`
+- [ ] Estrutura de pastas criada em `clientes/{nome}/`
 - [ ] Arquivos iniciais criados (logs, status.md)
 
 ## Briefing

@@ -6,7 +6,7 @@ inputs:
   - nome do cliente (workspace já criado)
   - canais selecionados (Meta Ads, Google Ads, Instagram, site, GA4, etc.)
 outputs:
-  - .em5/clientes/{nome}/setup-tecnico/acessos.md
+  - clientes/{nome}/setup-tecnico/acessos.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -27,7 +27,7 @@ Se o briefing final já está disponível, extrair os canais de lá. Se não, pe
 
 ### 1. Identificar canais ativos
 
-Verificar se existe `briefing-final.md` em `.em5/clientes/{nome}/onboarding/`. Se existir, extrair os canais que serão utilizados.
+Verificar se existe `briefing-final.md` em `clientes/{nome}/onboarding/`. Se existir, extrair os canais que serão utilizados.
 
 Se não existir, perguntar:
 
@@ -49,7 +49,7 @@ Selecione todos que se aplicam:
 
 ### 2. Gerar lista de acessos por canal
 
-Criar `.em5/clientes/{nome}/setup-tecnico/acessos.md` com o formato abaixo. Incluir **apenas** os canais selecionados.
+Criar `clientes/{nome}/setup-tecnico/acessos.md` com o formato abaixo. Incluir **apenas** os canais selecionados.
 
 ```markdown
 # Acessos Necessários — {Nome do Cliente}

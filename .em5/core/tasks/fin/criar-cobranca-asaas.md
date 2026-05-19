@@ -8,7 +8,7 @@ inputs:
   - billing_type: PIX | BOLETO | CREDIT_CARD
   - due_date (YYYY-MM-DD)
 outputs:
-  - .em5/clientes/{slug}/financeiro/cobrancas.yaml (append)
+  - clientes/{slug}/financeiro/cobrancas.yaml (append)
   - .em5/learnings/{mes}/mcp-excecoes.md (audit)
 elicit: true
 model_tier: balanced
@@ -38,7 +38,7 @@ Criar cobrança no Asaas via MCP oficial + manter espelho local em filesystem (A
 
 ### 2. Buscar customer_id do cliente
 
-Lê `.em5/clientes/{slug}/financeiro/cliente-asaas.yaml`:
+Lê `clientes/{slug}/financeiro/cliente-asaas.yaml`:
 ```yaml
 customer_id: cus_xxx
 nome_fiscal: "Razão social"
@@ -61,7 +61,7 @@ Se ausente → erro + solicita cadastro prévio.
 
 ### 4. Sync local
 
-Append em `.em5/clientes/{slug}/financeiro/cobrancas.yaml`:
+Append em `clientes/{slug}/financeiro/cobrancas.yaml`:
 ```yaml
 - id_asaas: pay_xxx
   data_criacao: 2026-05-16

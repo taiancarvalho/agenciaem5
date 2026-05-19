@@ -16,7 +16,7 @@ Criar calendário editorial mensal para social media orgânico,
 definindo temas, formatos e objetivos por post.
 
 ## Inputs necessários
-1. `.em5/clientes/{nome}/estrategia/plano-estrategico.md`
+1. `clientes/{nome}/estrategia/plano-estrategico.md`
 2. Canais do cliente (Instagram, Facebook, LinkedIn)
 3. Frequência acordada (ex: 3x/semana)
 4. Datas especiais do mês (feriados, eventos do nicho)
@@ -54,7 +54,7 @@ Para cada post planejado, definir:
 | 02/06 | Instagram | carrossel | 5 erros que... | Educar | Dor | Salvar | Pendente |
 ```
 
-Salvar em: `.em5/clientes/{nome}/copy/social/calendario-{YYYY-MM}.md`
+Salvar em: `clientes/{nome}/copy/social/calendario-{YYYY-MM}.md`
 
 ## Handoff
 - Calendário aprovado pelo dono da agência antes da produção

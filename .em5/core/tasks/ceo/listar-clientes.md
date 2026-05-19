@@ -3,7 +3,7 @@ name: listar-clientes
 agent: ceo
 description: Listar todos os clientes cadastrados no agenciaem5 com resumo de status
 inputs:
-  - .em5/clientes/ (diretorio de clientes)
+  - clientes/ (diretorio de clientes)
 outputs:
   - lista de clientes com status de cada um
 model_tier: frontier  # auto-set Fase 12.AAA legacy audit
@@ -22,7 +22,7 @@ Fornecer visao rapida de todos os clientes no sistema — quantos sao, em que et
 
 ### 1. Listar pastas de clientes
 
-Verificar subdiretorios em `.em5/clientes/` (excluindo `_template`).
+Verificar subdiretorios em `clientes/` (excluindo `_template`).
 
 ### 2. Para cada cliente, coletar status
 

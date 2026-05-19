@@ -6,7 +6,7 @@ inputs:
   - cliente_slug
   - semana_ref (default: semana corrente)
 outputs:
-  - .em5/clientes/{slug}/inteligencia/relatorio-{YYYY-Www}.md
+  - clientes/{slug}/inteligencia/relatorio-{YYYY-Www}.md
 elicit: false
 model_tier: balanced
 template: .em5/core/templates/scout/relatorio-semanal.template.md

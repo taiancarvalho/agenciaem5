@@ -39,7 +39,7 @@
 → Taian (taian@em5.agency)
 
 ✓ .em5/config/whats.yaml gerado
-✓ Templates copiados pra .em5/clientes/_template/comunicacao/templates/
+✓ Templates copiados pra clientes/_template/comunicacao/templates/
 ✓ Stop rules ativadas
 ✓ Teste enviado pro owner
 
@@ -66,7 +66,7 @@ channels:
       auth: none  # ou: api_key se setou
     templates:
       path: .em5/core/data/whatsapp-templates.yaml
-      override_dir: .em5/clientes/{slug}/comunicacao/templates/
+      override_dir: clientes/{slug}/comunicacao/templates/
     stop_rules:
       config: .em5/core/data/whats-stop-rules.yaml
       active:

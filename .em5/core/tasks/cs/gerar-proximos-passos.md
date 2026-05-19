@@ -7,7 +7,7 @@ inputs:
   - contexto da reuniao/interacao recente (ou log operacional)
 outputs:
   - atualiza log-operacional.md
-  - .em5/clientes/{nome}/operacao/proximos-passos.md
+  - clientes/{nome}/operacao/proximos-passos.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -28,7 +28,7 @@ Simplicidade primeiro. O cliente nao precisa ver complexidade operacional — ap
 
 ### 1. Coletar contexto da interacao recente
 
-Ler o `log-operacional.md` em `.em5/clientes/{nome}/operacao/` para entender:
+Ler o `log-operacional.md` em `clientes/{nome}/operacao/` para entender:
 
 - Qual foi a ultima interacao com o cliente
 - O que foi decidido/conversado
@@ -64,7 +64,7 @@ O QUE ESTAMOS AGUARDANDO:
 
 ### 4. Gerar documento de proximos passos
 
-Criar `.em5/clientes/{nome}/operacao/proximos-passos.md`:
+Criar `clientes/{nome}/operacao/proximos-passos.md`:
 
 ```markdown
 # Proximos Passos — {Nome do Cliente}

@@ -3,11 +3,11 @@ name: setup-tecnico
 agent: cs
 description: Listar, solicitar e validar todos os acessos técnicos necessários antes da execução das campanhas
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md (para saber quais canais serão usados)
+  - clientes/{nome}/onboarding/briefing-final.md (para saber quais canais serão usados)
 outputs:
-  - .em5/clientes/{nome}/setup-tecnico/acessos.md
-  - .em5/clientes/{nome}/setup-tecnico/checklist-tracking.md
-  - .em5/clientes/{nome}/setup-tecnico/status.md
+  - clientes/{nome}/setup-tecnico/acessos.md
+  - clientes/{nome}/setup-tecnico/checklist-tracking.md
+  - clientes/{nome}/setup-tecnico/status.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -35,7 +35,7 @@ Ler `briefing-final.md` e identificar quais canais serão utilizados para montar
 
 ### 2. Gerar lista de acessos necessários
 
-Criar `.em5/clientes/{nome}/setup-tecnico/acessos.md`:
+Criar `clientes/{nome}/setup-tecnico/acessos.md`:
 
 ```markdown
 # Acessos Necessários — {Nome do Cliente}
@@ -106,7 +106,7 @@ Assim que recebermos tudo, conseguimos começar em {prazo_estimado}. 🚀
 
 ### 4. Gerar checklist de tracking
 
-Criar `.em5/clientes/{nome}/setup-tecnico/checklist-tracking.md`:
+Criar `clientes/{nome}/setup-tecnico/checklist-tracking.md`:
 
 ```markdown
 # Checklist de Tracking — {Nome do Cliente}
@@ -131,7 +131,7 @@ Criar `.em5/clientes/{nome}/setup-tecnico/checklist-tracking.md`:
 
 ### 5. Registrar status técnico
 
-Criar `.em5/clientes/{nome}/setup-tecnico/status.md`:
+Criar `clientes/{nome}/setup-tecnico/status.md`:
 
 ```markdown
 # Status Técnico — {Nome do Cliente}

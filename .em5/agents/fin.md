@@ -15,7 +15,7 @@ agent:
   id: fin
   title: Financeiro — Mensalidades, Inadimplência, ROI por Cliente, MRR
   icon: 💰
-  whenToUse: Use pra controle financeiro da agência. Registra cobrança, monitora inadimplência, calcula ROI por cliente, gera dashboard MRR. SoT = .em5/clientes/{slug}/financeiro/.
+  whenToUse: Use pra controle financeiro da agência. Registra cobrança, monitora inadimplência, calcula ROI por cliente, gera dashboard MRR. SoT = clientes/{slug}/financeiro/.
 
 persona_profile:
   archetype: Guardião do Caixa

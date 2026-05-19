@@ -128,7 +128,7 @@ dependencies:
   # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).
   tasks:
     - cs/coletar-briefing.md            # Wizard interativo coleta dados do cliente
-    - cs/criar-estrutura-cliente.md     # Cria .em5/clientes/{slug}/ completo
+    - cs/criar-estrutura-cliente.md     # Cria clientes/{slug}/ completo
     - cs/estruturar-briefing.md         # Consolida respostas em briefing-final.md
     - cs/gerar-onboarding-final.md      # Documento final para enviar ao cliente
     - cs/listar-acessos.md              # Lista acessos necessários (pixel, BM, etc)

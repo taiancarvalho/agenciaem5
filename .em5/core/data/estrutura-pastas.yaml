@@ -3,11 +3,11 @@
 # Usado por: @ceo (novo-cliente), @cs (onboarding), todos os agentes
 
 raiz_sistema: ".em5/"
-raiz_clientes: ".em5/clientes/{nome}/"
+raiz_clientes: "clientes/{nome}/"
 
 cliente:
   onboarding:
-    path: ".em5/clientes/{nome}/onboarding/"
+    path: "clientes/{nome}/onboarding/"
     arquivos:
       - briefing-respostas.md
       - briefing-final.md
@@ -15,21 +15,21 @@ cliente:
       - contato.md
 
   estrategia:
-    path: ".em5/clientes/{nome}/estrategia/"
+    path: "clientes/{nome}/estrategia/"
     arquivos:
       - plano-estrategico.md
       - analise-briefing.md
       - analise-concorrentes.md
 
   copy:
-    path: ".em5/clientes/{nome}/copy/"
+    path: "clientes/{nome}/copy/"
     descricao: "Pecas de copy organizadas por ID (CR-XXX)"
     arquivos_padrao:
       - analise-icp.md
       - (CR-XXX por tipo)
 
   design:
-    path: ".em5/clientes/{nome}/design/"
+    path: "clientes/{nome}/design/"
     diretorios:
       - criativos/
       - videos/
@@ -39,7 +39,7 @@ cliente:
       - (CR-XXX por tipo com versionamento v1, v2...)
 
   assets:
-    path: ".em5/clientes/{nome}/assets/"
+    path: "clientes/{nome}/assets/"
     diretorios:
       - logo/
       - fotos/
@@ -47,21 +47,21 @@ cliente:
       - produtos/
 
   branding:
-    path: ".em5/clientes/{nome}/branding/"
+    path: "clientes/{nome}/branding/"
     arquivos:
       - cores.yaml
       - fontes.yaml
       - guia-estilo.md
 
   setup-tecnico:
-    path: ".em5/clientes/{nome}/setup-tecnico/"
+    path: "clientes/{nome}/setup-tecnico/"
     arquivos:
       - acessos.md
       - checklist-tracking.md
       - status.md
 
   trafego:
-    path: ".em5/clientes/{nome}/trafego/"
+    path: "clientes/{nome}/trafego/"
     arquivos_padrao:
       - estrutura-campanhas.md
       - auditoria-meta-{data}.md
@@ -69,18 +69,18 @@ cliente:
       - plano-growth.md (se growth ativo)
 
   relatorios:
-    path: ".em5/clientes/{nome}/relatorios/"
+    path: "clientes/{nome}/relatorios/"
     descricao: "Relatorios por periodo"
     arquivos_padrao:
       - relatorio-{YYYY-MM}.md
 
   reunioes:
-    path: ".em5/clientes/{nome}/reunioes/"
+    path: "clientes/{nome}/reunioes/"
     arquivos_padrao:
       - pauta-{YYYY-MM-DD}.md
 
   operacao:
-    path: ".em5/clientes/{nome}/operacao/"
+    path: "clientes/{nome}/operacao/"
     arquivos:
       - log-operacional.md        # dono: @cs
       - log-performance-criativa.md  # dono: @copywriter, colabora: @designer, @traffic

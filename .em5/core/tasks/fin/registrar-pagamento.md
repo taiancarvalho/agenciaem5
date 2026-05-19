@@ -7,8 +7,8 @@ inputs:
   - data_pagamento
   - metodo (PIX | BOLETO | CREDIT_CARD | manual)
 outputs:
-  - .em5/clientes/{slug}/financeiro/cobrancas.yaml (status: PAID)
-  - .em5/clientes/{slug}/financeiro/pagamentos.md (append)
+  - clientes/{slug}/financeiro/cobrancas.yaml (status: PAID)
+  - clientes/{slug}/financeiro/pagamentos.md (append)
 elicit: false
 model_tier: haiku  # tarefa simples, modelo barato
 ---

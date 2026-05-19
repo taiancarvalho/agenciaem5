@@ -40,9 +40,9 @@ Fontes possíveis:
 - **Drive/Docs** — `googledrive-automation` / `googledocs-automation`
 - **Paste direto** — user cola no chat
 
-Se for áudio em `.em5/clientes/{cliente}/audios/{nome}.mp3`:
+Se for áudio em `clientes/{cliente}/audios/{nome}.mp3`:
 1. Invocar Composio `gladia` ou `deepgram` para transcrever
-2. Salvar transcrição em `.em5/clientes/{cliente}/audios/{nome}.txt` antes de processar
+2. Salvar transcrição em `clientes/{cliente}/audios/{nome}.txt` antes de processar
 
 ### Passo 2 — Invocar skill upstream
 
@@ -62,7 +62,7 @@ A skill converte texto solto em SOP **sequencial, sem ambiguidade**, separando:
 
 Salvar em:
 ```
-.em5/clientes/{cliente}/sops/{topico}-v1.md
+clientes/{cliente}/sops/{topico}-v1.md
 ```
 
 Se cliente = `agencia`:
@@ -128,7 +128,7 @@ Estrutura mínima do arquivo:
 
 Atualizar índice de SOPs do cliente em:
 ```
-.em5/clientes/{cliente}/sops/INDEX.md
+clientes/{cliente}/sops/INDEX.md
 ```
 
 Se não existir, criar com cabeçalho:

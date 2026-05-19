@@ -6,7 +6,7 @@ inputs:
   - cliente_slug
   - periodo: ultimo_mes | ultimos_3 | YTD
 outputs:
-  - .em5/clientes/{slug}/financeiro/roi-{periodo}.md
+  - clientes/{slug}/financeiro/roi-{periodo}.md
 elicit: false
 model_tier: balanced
 ---
@@ -35,7 +35,7 @@ ROI_cliente = (Receita - Custo_ads) / Custo_agência_interno
 4. Soma horas em `clientes/{slug}/operacao/log.md` (auditável)
 5. Multiplica por `custo_hora_agencia` (default R$ 80 — em `em5-config.yaml`)
 6. Calcula ROI
-7. Salva `.em5/clientes/{slug}/financeiro/roi-{periodo}.md`:
+7. Salva `clientes/{slug}/financeiro/roi-{periodo}.md`:
    ```markdown
    # ROI {cliente} — {periodo}
    - Receita: R$ {X}

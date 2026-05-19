@@ -35,8 +35,8 @@ model_tier: {{MODEL_TIER}}
 
 ## Critério de saída
 
-- [ ] Output salvo em `.em5/clientes/{cliente}/{categoria}/{arquivo}.md`
-- [ ] Log atualizado em `.em5/clientes/{cliente}/operacao/log.md`
+- [ ] Output salvo em `clientes/{cliente}/{categoria}/{arquivo}.md`
+- [ ] Log atualizado em `clientes/{cliente}/operacao/log.md`
 - [ ] Handoff documentado pro próximo agente
 
 ---

@@ -7,7 +7,7 @@ inputs:
   - mensagem (texto livre)
   - severity_estimada: baixo | medio | alto | critico
 outputs:
-  - .em5/clientes/{slug}/comunicacao/whats-log.md (append)
+  - clientes/{slug}/comunicacao/whats-log.md (append)
 elicit: true
 model_tier: balanced
 ---

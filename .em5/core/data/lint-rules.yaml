@@ -123,7 +123,7 @@ landing_page:
       severidade: bloqueio
 
 output:
-  arquivo: ".em5/clientes/{slug}/operacao/lint-{YYYY-MM-DD}.md"
+  arquivo: "clientes/{slug}/operacao/lint-{YYYY-MM-DD}.md"
   formato_resultado:
     aprovado: "✅ LINT APROVADO — pronto para @qa"
     aviso: "⚠️ LINT COM AVISOS — passa pro @qa com lista de alertas"

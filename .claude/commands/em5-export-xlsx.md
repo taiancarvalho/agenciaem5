@@ -70,12 +70,12 @@ Formatação:
 ### Passo 3 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/relatorios/export-{tipo}-{YYYY-MM-DD}.xlsx
+clientes/{cliente}/relatorios/export-{tipo}-{YYYY-MM-DD}.xlsx
 ```
 
 ou (financeiro):
 ```
-.em5/clientes/{cliente}/financeiro/export-{tipo}-{YYYY-MM-DD}.xlsx
+clientes/{cliente}/financeiro/export-{tipo}-{YYYY-MM-DD}.xlsx
 ```
 
 ### Passo 4 — Verify + envio
@@ -86,7 +86,7 @@ ou (financeiro):
 
 ### Registro
 
-`.em5/clientes/{cliente}/operacao/log-operacional.md`:
+`clientes/{cliente}/operacao/log-operacional.md`:
 ```
 | {data} | export-{tipo} | XLSX | APROVADO | Enviado pro {email} |
 ```

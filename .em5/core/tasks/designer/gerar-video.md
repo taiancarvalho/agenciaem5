@@ -3,12 +3,12 @@ name: gerar-video
 agent: designer
 description: Gerar video para criativo usando Kling 3.0 Pro via WaveSpeed AI, com prompt estruturado baseado na copy, branding e conceito visual
 inputs:
-  - .em5/clientes/{nome}/copy/CR-{id}.md (copy da campanha)
-  - .em5/clientes/{nome}/branding/ (identidade visual)
-  - .em5/clientes/{nome}/design/conceito-visual-CR-{id}.md (conceito definido)
+  - clientes/{nome}/copy/CR-{id}.md (copy da campanha)
+  - clientes/{nome}/branding/ (identidade visual)
+  - clientes/{nome}/design/conceito-visual-CR-{id}.md (conceito definido)
 outputs:
-  - .em5/clientes/{nome}/design/videos/CR-{id}-v1.mp4
-  - JSON de prompt em .em5/clientes/{nome}/design/videos/prompts/CR-{id}-prompt.json
+  - clientes/{nome}/design/videos/CR-{id}-v1.mp4
+  - JSON de prompt em clientes/{nome}/design/videos/prompts/CR-{id}-prompt.json
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -37,10 +37,10 @@ Nao usar linguagem comercial polida — preferir captura consumer realista.
 
 Reunir todas as entradas necessarias:
 
-- **Copy**: `.em5/clientes/{nome}/copy/CR-{id}.md` — extrair hook, angulo, promessa e CTA
-- **Branding**: `.em5/clientes/{nome}/branding/` — cores, fontes, guia de estilo
+- **Copy**: `clientes/{nome}/copy/CR-{id}.md` — extrair hook, angulo, promessa e CTA
+- **Branding**: `clientes/{nome}/branding/` — cores, fontes, guia de estilo
 - **Conceito visual**: documento gerado pela task `definir-conceito-visual`
-- **Assets**: `.em5/clientes/{nome}/assets/` — elementos disponiveis para usar
+- **Assets**: `clientes/{nome}/assets/` — elementos disponiveis para usar
 
 ### 2. Definir estrutura do video
 
@@ -107,18 +107,18 @@ Usar WaveSpeed AI com Kling 3.0 Pro. Enviar o prompt estruturado.
 
 - Se a primeira geracao nao estiver alinhada: ajustar prompt (maquina de prompt, nao de camera) — maximo 3 tentativas
 - Se apos 3 tentativas ainda nao estiver bom: documentar o problema e escalar para revisao
-- Salvar o JSON do prompt em `.em5/clientes/{nome}/design/videos/prompts/CR-{id}-prompt.json`
+- Salvar o JSON do prompt em `clientes/{nome}/design/videos/prompts/CR-{id}-prompt.json`
 
 ### 6. Versionar e salvar
 
-Salvar video em `.em5/clientes/{nome}/design/videos/`:
+Salvar video em `clientes/{nome}/design/videos/`:
 
 ```
 CR-{id}-v1.mp4   ← primeira versao
 CR-{id}-v2.mp4   ← se houver ajuste
 ```
 
-Salvar prompt JSON em `.em5/clientes/{nome}/design/videos/prompts/`:
+Salvar prompt JSON em `clientes/{nome}/design/videos/prompts/`:
 
 ```json
 {
@@ -136,7 +136,7 @@ Salvar prompt JSON em `.em5/clientes/{nome}/design/videos/prompts/`:
 
 ### 7. Registrar no log
 
-Atualizar `.em5/clientes/{nome}/operacao/log-performance-criativa.md`:
+Atualizar `clientes/{nome}/operacao/log-performance-criativa.md`:
 
 ```
 Criativo: CR-{id}-v1.mp4

@@ -31,13 +31,13 @@ painel/
 ├── src/
 │   ├── pages/index.astro       # Tela principal — cards + KPIs
 │   ├── layouts/Base.astro       # Layout com tema dark
-│   └── lib/loader.js            # Lê .em5/clientes/*/operacao/status.yaml
+│   └── lib/loader.js            # Lê clientes/*/operacao/status.yaml
 └── README.md
 ```
 
 ## Como o painel sabe dos clientes?
 
-Cada cliente em `.em5/clientes/{slug}/operacao/status.yaml` declara:
+Cada cliente em `clientes/{slug}/operacao/status.yaml` declara:
 
 ```yaml
 nome: "Clínica X"
@@ -51,7 +51,7 @@ alerta_mensagem: "ROAS caiu 25% — investigar audiência"
 ultima_atualizacao: 2026-05-16
 ```
 
-E `.em5/clientes/{slug}/financeiro/mensalidade.yaml`:
+E `clientes/{slug}/financeiro/mensalidade.yaml`:
 
 ```yaml
 valor_mensal: 4500

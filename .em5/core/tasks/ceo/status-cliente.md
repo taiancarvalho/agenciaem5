@@ -28,7 +28,7 @@ Perguntar ao usuario:
 Qual cliente quer verificar?
 ```
 
-Validar que o cliente existe em `.em5/clientes/`.
+Validar que o cliente existe em `clientes/`.
 
 ### 2. Verificar artefatos existentes
 
@@ -63,7 +63,7 @@ relatorios/ — {N} arquivos
 
 ### 4. Analisar log operacional
 
-Ler `.em5/clientes/{nome}/operacao/log-operacional.md` e extrair:
+Ler `clientes/{nome}/operacao/log-operacional.md` e extrair:
 - Ultima entrada (data, tipo, responsavel)
 - Pendencias em aberto (status != CONCLUÍDO)
 - Total de entradas por tipo

@@ -4,9 +4,9 @@ agent: traffic
 description: Analisar performance da janela de 7 dias e tomar decisoes de otimizacao baseadas em dados
 inputs:
   - dados de performance dos ultimos 7 dias (plataforma ou usuario)
-  - .em5/clientes/{nome}/trafego/auditoria.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md
+  - clientes/{nome}/trafego/auditoria.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/operacao/log-performance-criativa.md
 outputs:
   - registro das decisoes no log operacional
   - atualizacao no log de performance criativa
@@ -19,7 +19,7 @@ elicit: true
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/traffic-meta.md` (seção 2: Otimizar)
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 

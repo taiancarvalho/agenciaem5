@@ -13,7 +13,7 @@ elicit: false
 
 ## Playbook de Referência
 - Ler `.em5/playbooks/copywriter-frameworks.md` (seção INSTAGRAM ORGÂNICO + canal relevante + Seções 5-6 para regras de escrita e vídeo) antes de executar
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
 
 ## Objetivo
 Escrever copy de post para redes sociais: Instagram, Facebook ou LinkedIn.
@@ -21,7 +21,7 @@ Formato adaptado por canal, seguindo o branding e ângulo estratégico.
 
 ## Inputs necessários
 1. Pauta do post (tema, objetivo, formato: feed/stories/reels)
-2. `.em5/clientes/{nome}/estrategia/plano-estrategico.md` — ângulo e posicionamento
+2. `clientes/{nome}/estrategia/plano-estrategico.md` — ângulo e posicionamento
 3. Tom de voz do cliente (branding/guia-estilo.md ou board-cliente.md seção Brand)
 
 ## Execução
@@ -106,7 +106,7 @@ Os três precisam trabalhar juntos — nunca depender só de um.
 **Sempre escrever 3 opções de hook antes de escolher.** O hook do vídeo é o ponto de maior alavancagem — 1 hora escolhendo o hook certo vale mais que 3 horas escrevendo o corpo.
 
 ### 5. Salvar output
-Criar arquivo em: `.em5/clientes/{nome}/copy/social/`
+Criar arquivo em: `clientes/{nome}/copy/social/`
 Nomear: `{YYYY-MM-DD}-{tipo}-{tema-slug}.md`
 
 Incluir no arquivo:

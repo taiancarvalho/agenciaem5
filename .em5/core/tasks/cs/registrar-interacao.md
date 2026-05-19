@@ -7,7 +7,7 @@ inputs:
   - descrição do que aconteceu
   - próxima ação
 outputs:
-  - nova linha em .em5/clientes/{nome}/operacao/log-operacional.md
+  - nova linha em clientes/{nome}/operacao/log-operacional.md
 model_tier: haiku  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -49,7 +49,7 @@ Perguntar ao usuário:
 
 ### 2. Adicionar linha no log
 
-Abrir `.em5/clientes/{nome}/operacao/log-operacional.md` e adicionar ao final:
+Abrir `clientes/{nome}/operacao/log-operacional.md` e adicionar ao final:
 
 ```markdown
 | {data} | {TIPO} | {Responsável} | {Descrição do que aconteceu} | {Status: CONCLUÍDO/EM ANDAMENTO/PENDENTE} | {Próxima ação e prazo} |
@@ -64,7 +64,7 @@ Abrir `.em5/clientes/{nome}/operacao/log-operacional.md` e adicionar ao final:
 
 ### 3. Atualizar proximos-passos (quando necessário)
 
-Se a interação gerou ações concretas, atualizar também `.em5/clientes/{nome}/operacao/proximos-passos.md`:
+Se a interação gerou ações concretas, atualizar também `clientes/{nome}/operacao/proximos-passos.md`:
 
 ```markdown
 # Próximos Passos — {Nome do Cliente}

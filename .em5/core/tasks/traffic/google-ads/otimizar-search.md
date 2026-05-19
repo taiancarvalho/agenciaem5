@@ -13,7 +13,7 @@ elicit: false
 
 ## Playbook de Referência
 - Ler `.em5/playbooks/traffic-google.md` (seção OTIMIZAR) antes de executar
-- Ler `.em5/clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
+- Ler `clientes/{nome}/memoria/notas-sessao.md` — últimas 3 entradas
 
 ## Objetivo
 Otimizar campanhas de Search ativas: ajustar lances, pausar termos ruins,
@@ -22,7 +22,7 @@ expandir termos bons, melhorar Quality Score.
 ## Inputs necessários
 1. Acesso à conta via Composio (Google Analytics / Google Ads)
 2. `.em5/core/data/janelas-analise.yaml` — janelas de decisão
-3. `.em5/clientes/{nome}/trafego/keywords-{data}.md` — mapa original
+3. `clientes/{nome}/trafego/keywords-{data}.md` — mapa original
 4. Meta de CPL ou CPA do cliente (`plano-estrategico.md`)
 
 ## Execução
@@ -66,7 +66,7 @@ Verificar Asset Performance no RSA (Responsive Search Ad):
 
 ### 5. Registrar otimizações
 
-Atualizar: `.em5/clientes/{nome}/operacao/log-performance-criativa.md`
+Atualizar: `clientes/{nome}/operacao/log-performance-criativa.md`
 
 ```markdown
 ## Otimização Search — {data}

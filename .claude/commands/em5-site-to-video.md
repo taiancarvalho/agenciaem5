@@ -64,9 +64,9 @@ A skill captura:
 ### Passo 3 — Salvar artefato
 
 ```
-.em5/clientes/{cliente}/design/site-promo-{YYYY-MM-DD}.html  (HTML standalone)
-.em5/clientes/{cliente}/design/site-promo-{YYYY-MM-DD}.mp4   (renderizado)
-.em5/clientes/{cliente}/design/site-promo-{YYYY-MM-DD}-meta.json
+clientes/{cliente}/design/site-promo-{YYYY-MM-DD}.html  (HTML standalone)
+clientes/{cliente}/design/site-promo-{YYYY-MM-DD}.mp4   (renderizado)
+clientes/{cliente}/design/site-promo-{YYYY-MM-DD}-meta.json
 ```
 
 Metadata:
@@ -99,7 +99,7 @@ Metadata:
 
 ### Passo 5 — Registrar
 
-`.em5/clientes/{cliente}/operacao/log-operacional.md`:
+`clientes/{cliente}/operacao/log-operacional.md`:
 ```
 | {data} | site-promo-{data} | Mockup vídeo | INFO | URL capturada: {url} |
 ```

@@ -6,11 +6,11 @@ inputs:
   - cliente_slug
   - fonte: URL | caminho-arquivo | caminho-pasta
 outputs:
-  - .em5/clientes/{slug}/branding/DESIGN.md
-  - .em5/clientes/{slug}/branding/preview.html
-  - .em5/clientes/{slug}/branding/tokens.json
-  - .em5/clientes/{slug}/branding/theme.css
-  - .em5/clientes/{slug}/branding/source/
+  - clientes/{slug}/branding/DESIGN.md
+  - clientes/{slug}/branding/preview.html
+  - clientes/{slug}/branding/tokens.json
+  - clientes/{slug}/branding/theme.css
+  - clientes/{slug}/branding/source/
 elicit: true
 model_tier: balanced
 tool_dependency: .em5/tools/design-extractor/
@@ -26,8 +26,8 @@ Em ≤ 5 min de input humano, transformar fonte caótica (site, briefing, screen
 
 ## Pré-requisitos
 
-- Cliente existe em `.em5/clientes/{slug}/`
-- `.em5/clientes/{slug}/branding/` existe (criado por `/cliente-novo`)
+- Cliente existe em `clientes/{slug}/`
+- `clientes/{slug}/branding/` existe (criado por `/cliente-novo`)
 - Se fonte=URL: Composio `firecrawl` toolset ativo
 - `.em5/tools/design-extractor/` disponível (Fase 13.1)
 
@@ -35,7 +35,7 @@ Em ≤ 5 min de input humano, transformar fonte caótica (site, briefing, screen
 
 ### 1. Validação
 
-- `slug` está em `.em5/clientes/`?
+- `slug` está em `clientes/`?
 - `fonte` é URL válida OU caminho existente?
 - `branding/DESIGN.md` já existe? → confirmar overwrite com user
 
@@ -49,7 +49,7 @@ Conforme tipo:
 
 ### 3. Salvar source/
 
-`.em5/clientes/{slug}/branding/source/`:
+`clientes/{slug}/branding/source/`:
 - `source-url.txt` OU `source-path.txt`
 - `screenshots/` (se aplicável)
 - `analysis-notes.md` (initial — preenche durante análise)
@@ -66,7 +66,7 @@ Aplica regras:
 ### 5. Gerar outputs
 
 ```
-.em5/clientes/{slug}/branding/
+clientes/{slug}/branding/
 ├── DESIGN.md         # sistema estruturado
 ├── preview.html      # visual Clay-style
 ├── tokens.json       # design tokens

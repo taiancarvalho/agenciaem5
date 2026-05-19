@@ -5,7 +5,7 @@ description: Criar estrutura de pastas para um novo cliente usando o template ca
 inputs:
   - nome do cliente (slug — sem espacos, sem acentos)
 outputs:
-  - .em5/clientes/{nome}/ com estrutura completa de diretorios
+  - clientes/{nome}/ com estrutura completa de diretorios
 model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -36,34 +36,34 @@ Qual o nome do cliente para o workspace?
 Slug sem espacos e sem acentos (ex: clinica-sao-paulo)
 ```
 
-Validar que nao existe pasta com mesmo nome em `.em5/clientes/`.
+Validar que nao existe pasta com mesmo nome em `clientes/`.
 
 ### 2. Criar estrutura de diretorios
 
 ```bash
-mkdir -p .em5/clientes/{nome}/onboarding
-mkdir -p .em5/clientes/{nome}/estrategia
-mkdir -p .em5/clientes/{nome}/copy
-mkdir -p .em5/clientes/{nome}/design/criativos
-mkdir -p .em5/clientes/{nome}/design/videos
-mkdir -p .em5/clientes/{nome}/design/landing-pages
-mkdir -p .em5/clientes/{nome}/design/exports
-mkdir -p .em5/clientes/{nome}/assets/logo
-mkdir -p .em5/clientes/{nome}/assets/fotos
-mkdir -p .em5/clientes/{nome}/assets/videos
-mkdir -p .em5/clientes/{nome}/assets/produtos
-mkdir -p .em5/clientes/{nome}/branding
-mkdir -p .em5/clientes/{nome}/setup-tecnico
-mkdir -p .em5/clientes/{nome}/trafego
-mkdir -p .em5/clientes/{nome}/relatorios
-mkdir -p .em5/clientes/{nome}/operacao
-mkdir -p .em5/clientes/{nome}/operacao/historico
+mkdir -p clientes/{nome}/onboarding
+mkdir -p clientes/{nome}/estrategia
+mkdir -p clientes/{nome}/copy
+mkdir -p clientes/{nome}/design/criativos
+mkdir -p clientes/{nome}/design/videos
+mkdir -p clientes/{nome}/design/landing-pages
+mkdir -p clientes/{nome}/design/exports
+mkdir -p clientes/{nome}/assets/logo
+mkdir -p clientes/{nome}/assets/fotos
+mkdir -p clientes/{nome}/assets/videos
+mkdir -p clientes/{nome}/assets/produtos
+mkdir -p clientes/{nome}/branding
+mkdir -p clientes/{nome}/setup-tecnico
+mkdir -p clientes/{nome}/trafego
+mkdir -p clientes/{nome}/relatorios
+mkdir -p clientes/{nome}/operacao
+mkdir -p clientes/{nome}/operacao/historico
 ```
 
 ### 3. Confirmar criacao
 
 ```
-✅ Estrutura de pastas criada: .em5/clientes/{nome}/
+✅ Estrutura de pastas criada: clientes/{nome}/
 
 Proximo passo: @cs *iniciar-onboarding {nome}
 ```

@@ -3,11 +3,11 @@ name: definir-posicionamento
 agent: strategist
 description: Definir posicionamento, narrativa e diferencial da oferta do cliente no mercado
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
-  - .em5/clientes/{nome}/estrategia/analise-briefing.md
+  - clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/estrategia/analise-briefing.md
   - objetivo real (confirmado via validar-objetivo-real)
 outputs:
-  - .em5/clientes/{nome}/estrategia/posicionamento.md
+  - clientes/{nome}/estrategia/posicionamento.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -43,7 +43,7 @@ Identificar:
 
 ### 3. Definir elementos de posicionamento
 
-Criar `.em5/clientes/{nome}/estrategia/posicionamento.md` com:
+Criar `clientes/{nome}/estrategia/posicionamento.md` com:
 
 ```markdown
 # Posicionamento — {Nome do Cliente}

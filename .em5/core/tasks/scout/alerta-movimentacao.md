@@ -6,7 +6,7 @@ inputs:
   - cliente_slug
   - mudanca_detectada (de scrape diff)
 outputs:
-  - .em5/clientes/{slug}/inteligencia/alertas-{YYYY-MM}.md (append)
+  - clientes/{slug}/inteligencia/alertas-{YYYY-MM}.md (append)
   - notificação @strategist se relevante
 elicit: false
 model_tier: balanced

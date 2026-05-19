@@ -5,7 +5,7 @@ description: SWOT comparativo cliente vs top-3 concorrentes
 inputs:
   - cliente_slug
 outputs:
-  - .em5/clientes/{slug}/inteligencia/swot-{periodo}.md
+  - clientes/{slug}/inteligencia/swot-{periodo}.md
 elicit: false
 model_tier: balanced
 template: .em5/core/templates/scout/swot.template.md

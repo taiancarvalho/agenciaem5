@@ -7,9 +7,9 @@
 Preparar pauta estruturada para reuniao com o cliente, consolidando performance, pendencias e proximos passos.
 
 ## Inputs necessarios
-1. `.em5/clientes/{nome}/operacao/log-operacional.md` — ultimas interacoes e status
-2. `.em5/clientes/{nome}/relatorios/` — relatorio mais recente disponivel
-3. `.em5/clientes/{nome}/operacao/proximos-passos.md` — pendencias abertas
+1. `clientes/{nome}/operacao/log-operacional.md` — ultimas interacoes e status
+2. `clientes/{nome}/relatorios/` — relatorio mais recente disponivel
+3. `clientes/{nome}/operacao/proximos-passos.md` — pendencias abertas
 
 ## Execucao
 
@@ -26,7 +26,7 @@ Preparar pauta estruturada para reuniao com o cliente, consolidando performance,
 - Proximos 30 dias (o que esta planejado)
 
 ### 3. Gerar pauta
-Criar arquivo em: `.em5/clientes/{nome}/reunioes/pauta-{YYYY-MM-DD}.md`
+Criar arquivo em: `clientes/{nome}/reunioes/pauta-{YYYY-MM-DD}.md`
 
 ```markdown
 # Reuniao — {nome-do-cliente} — {data}
@@ -77,6 +77,6 @@ model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 ```
 
 ## Handoff
-- Arquivo salvo em `.em5/clientes/{nome}/reunioes/`
+- Arquivo salvo em `clientes/{nome}/reunioes/`
 - Registrar no log-operacional.md: "Pauta de reuniao gerada para {data}"
 - Enviar pauta para cliente antes da reuniao se adequado

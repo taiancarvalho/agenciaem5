@@ -16,8 +16,8 @@ Mapear palavras-chave para campanhas de Search no Google Ads:
 intenção de compra, concorrentes, marca e negativas.
 
 ## Inputs necessários
-1. `.em5/clientes/{nome}/onboarding/briefing-final.md`
-2. `.em5/clientes/{nome}/estrategia/plano-estrategico.md`
+1. `clientes/{nome}/onboarding/briefing-final.md`
+2. `clientes/{nome}/estrategia/plano-estrategico.md`
 3. Budget mensal previsto (para estimar volume)
 
 ## Execução
@@ -100,7 +100,7 @@ Campanha: [CLIENTE] | Search | {objetivo}
 [conforme seção 3]
 ```
 
-Salvar em: `.em5/clientes/{nome}/trafego/keywords-{YYYY-MM-DD}.md`
+Salvar em: `clientes/{nome}/trafego/keywords-{YYYY-MM-DD}.md`
 
 ## Handoff
 - Entregar para @traffic usar em `estruturar-campanha.md` (versão Google)

@@ -4,8 +4,8 @@ agent: qa
 description: Executar checklist de validacao de landing page antes do trafego
 inputs:
   - URL da landing page
-  - .em5/clientes/{nome}/copy/ (copies de anuncio associadas)
-  - .em5/clientes/{nome}/setup-tecnico/status.md
+  - clientes/{nome}/copy/ (copies de anuncio associadas)
+  - clientes/{nome}/setup-tecnico/status.md
 outputs:
   - resultado da validacao de landing page
   - itens a corrigir (se houver)

@@ -56,8 +56,8 @@ Mesma pasta da fonte + extensão `.pdf`:
 ```
 
 Exemplo:
-- Fonte: `.em5/clientes/cna-vm/relatorios/relatorio-2026-05-18.html`
-- PDF: `.em5/clientes/cna-vm/relatorios/relatorio-2026-05-18.pdf`
+- Fonte: `clientes/cna-vm/relatorios/relatorio-2026-05-18.html`
+- PDF: `clientes/cna-vm/relatorios/relatorio-2026-05-18.pdf`
 
 ### Passo 4 — Metadata
 

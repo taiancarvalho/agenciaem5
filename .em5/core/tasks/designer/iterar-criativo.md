@@ -3,8 +3,8 @@ name: iterar-criativo
 agent: designer
 description: Criar nova versao de criativo baseado em feedback humano ou dados de performance, versionando e atualizando log
 inputs:
-  - .em5/clientes/{nome}/operacao/log-performance-criativa.md (dados de performance)
-  - .em5/clientes/{nome}/design/criativos/ ou /videos/ (criativo original)
+  - clientes/{nome}/operacao/log-performance-criativa.md (dados de performance)
+  - clientes/{nome}/design/criativos/ ou /videos/ (criativo original)
   - Feedback do QA (Crivo), Gestor de Tráfego (Pulse) ou Copywriter (Eco)
 outputs:
   - Nova versao versionada (CR-{id}-v2, v3, etc.)
@@ -36,7 +36,7 @@ o visual, a copy ou a segmentacao — nao assumir que e so design.
 
 ### 1. Identificar o criativo e o motivo da iteracao
 
-Ler `.em5/clientes/{nome}/operacao/log-performance-criativa.md` e localizar o CR-{id}:
+Ler `clientes/{nome}/operacao/log-performance-criativa.md` e localizar o CR-{id}:
 
 - Qual e a versao atual (v1, v2, etc.)
 - Quais sao os dados de performance (CTR, CPC, CPA, CPM, ROAS)
@@ -123,14 +123,14 @@ Se for iteracao de UGC:
 Seguir o padrao de versionamento:
 
 ```
-Imagem:  .em5/clientes/{nome}/design/criativos/CR-{id}-v{n+1}.png
-Video:   .em5/clientes/{nome}/design/videos/CR-{id}-v{n+1}.mp4
-Prompts: .em5/clientes/{nome}/design/criativos/prompts/CR-{id}-v{n+1}-prompt.json
+Imagem:  clientes/{nome}/design/criativos/CR-{id}-v{n+1}.png
+Video:   clientes/{nome}/design/videos/CR-{id}-v{n+1}.mp4
+Prompts: clientes/{nome}/design/criativos/prompts/CR-{id}-v{n+1}-prompt.json
 ```
 
 ### 7. Atualizar o log
 
-Em `.em5/clientes/{nome}/operacao/log-performance-criativa.md`, na entrada do CR-{id}:
+Em `clientes/{nome}/operacao/log-performance-criativa.md`, na entrada do CR-{id}:
 
 - Atualizar `Criativo` para `CR-{id}-v{n+1}.{ext}`
 - Atualizar `Versao` para `v{n+1}`

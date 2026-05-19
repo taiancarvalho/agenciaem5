@@ -3,10 +3,10 @@ name: adaptar-canal
 agent: copywriter
 description: Transformar copy existente no formato correto para cada canal (Meta, WhatsApp, e-mail, LinkedIn, blog)
 inputs:
-  - .em5/clientes/{nome}/copy/ (peca original)
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/copy/ (peca original)
+  - clientes/{nome}/estrategia/plano-estrategico.md
 outputs:
-  - .em5/clientes/{nome}/copy/CR-{NNN}-adaptada-{canal}.md
+  - clientes/{nome}/copy/CR-{NNN}-adaptada-{canal}.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -69,7 +69,7 @@ Ler a peca de copy original e o plano estrategico para confirmar:
 
 ### 3. Criar arquivo adaptado
 
-Criar `.em5/clientes/{nome}/copy/CR-{NNN}-adaptada-{canal}.md`:
+Criar `clientes/{nome}/copy/CR-{NNN}-adaptada-{canal}.md`:
 
 ```markdown
 # Copy Adaptada — {Canal} | {ID da peca original}

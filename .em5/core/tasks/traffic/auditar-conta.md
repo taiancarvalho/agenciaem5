@@ -3,11 +3,11 @@ name: auditar-conta
 agent: traffic
 description: Auditar a conta de anuncios do cliente para mapear historico, campanhas ativas, padroes de performance e oportunidades antes de agir
 inputs:
-  - .em5/clientes/{nome}/onboarding/board-cliente.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/onboarding/board-cliente.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
   - acesso a conta de anuncios (Meta Ads ou Google Ads)
 outputs:
-  - .em5/clientes/{nome}/trafego/auditoria.md
+  - clientes/{nome}/trafego/auditoria.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: false
 ---
@@ -17,7 +17,7 @@ elicit: false
 ## Playbook de Referência
 
 **Ler antes de executar:** `.em5/playbooks/traffic-meta.md` (seção 3: Auditoria)
-**Memória:** ler últimas 3 entradas de `.em5/clientes/{nome}/memoria/notas-sessao.md`
+**Memória:** ler últimas 3 entradas de `clientes/{nome}/memoria/notas-sessao.md`
 
 ---
 
@@ -74,7 +74,7 @@ Sem conversas salvas:      → cliente não tem histórico = começar do zero
 
 ### 3. Gerar relatório de auditoria
 
-Criar `.em5/clientes/{nome}/trafego/auditoria.md`:
+Criar `clientes/{nome}/trafego/auditoria.md`:
 
 ```markdown
 # Auditoria de Conta — {Nome do Cliente}

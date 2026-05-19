@@ -34,9 +34,9 @@ Se `$ARGUMENTS` estiver incompleto, pergunte cliente + tema.
 ### Passo 1 — Contexto mínimo
 
 Carregue (Constitution Art. IV — contexto reduzido):
-- `.em5/clientes/{cliente}/onboarding/briefing-final.md` (oferta, ICP)
-- `.em5/clientes/{cliente}/estrategia/plano-estrategico.md` (ângulo macro, se existir)
-- `.em5/clientes/{cliente}/copy/analise-icp.md` (dor, linguagem)
+- `clientes/{cliente}/onboarding/briefing-final.md` (oferta, ICP)
+- `clientes/{cliente}/estrategia/plano-estrategico.md` (ângulo macro, se existir)
+- `clientes/{cliente}/copy/analise-icp.md` (dor, linguagem)
 
 ### Passo 2 — Invocar skill upstream
 
@@ -57,7 +57,7 @@ A skill é **principle-driven** — não é template fixo. Foco em:
 
 Salvar em:
 ```
-.em5/clientes/{cliente}/copy/CR-{NNN}-reels-{tema}.md
+clientes/{cliente}/copy/CR-{NNN}-reels-{tema}.md
 ```
 
 Onde `NNN` = próximo número incremental (verificar pasta `copy/` antes).
@@ -107,7 +107,7 @@ Estrutura mínima:
 
 ### Passo 4 — Registrar no log
 
-`.em5/clientes/{cliente}/operacao/log-performance-criativa.md`:
+`clientes/{cliente}/operacao/log-performance-criativa.md`:
 ```
 | {YYYY-MM-DD} | CR-{NNN}-reels-{tema} | Reels | Orgânico IG | PENDENTE @qa | comentários="{palavra-código}" |
 ```

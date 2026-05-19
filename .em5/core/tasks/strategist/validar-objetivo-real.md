@@ -3,8 +3,8 @@ name: validar-objetivo-real
 agent: strategist
 description: Confirmar com o usuario se o objetivo declarado e o objetivo real do cliente — nem sempre sao a mesma coisa
 inputs:
-  - .em5/clientes/{nome}/onboarding/briefing-final.md
-  - .em5/clientes/{nome}/estrategia/analise-briefing.md (se existir)
+  - clientes/{nome}/onboarding/briefing-final.md
+  - clientes/{nome}/estrategia/analise-briefing.md (se existir)
 outputs:
   - objetivo-real-confirmado registrado no briefing-final e no log-operacional
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
@@ -64,7 +64,7 @@ Se não, qual é o objetivo real?
 
 ### 4. Registrar resultado
 
-Atualizar `.em5/clientes/{nome}/onboarding/briefing-final.md` com:
+Atualizar `clientes/{nome}/onboarding/briefing-final.md` com:
 
 ```markdown
 **Objetivo real confirmado:** {objetivo final validado}

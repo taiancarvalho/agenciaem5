@@ -58,10 +58,10 @@ Se `$ARGUMENTS` incompleto, pergunte cliente + CR/roteiro.
 ### Passo 1 — Carregar contexto mínimo (Art. IV)
 
 Leia:
-- `.em5/clientes/{cliente}/copy/{CR-XXX}.md` — roteiro, copy, CTA
-- `.em5/clientes/{cliente}/branding/cores.yaml` — paleta
-- `.em5/clientes/{cliente}/branding/fontes.yaml` — tipografia
-- `.em5/clientes/{cliente}/design/conceito-visual.md` (se existir) — conceito macro
+- `clientes/{cliente}/copy/{CR-XXX}.md` — roteiro, copy, CTA
+- `clientes/{cliente}/branding/cores.yaml` — paleta
+- `clientes/{cliente}/branding/fontes.yaml` — tipografia
+- `clientes/{cliente}/design/conceito-visual.md` (se existir) — conceito macro
 
 ### Passo 2 — Pré-processamento de mídia (se necessário)
 
@@ -70,7 +70,7 @@ Invoque `hyperframes-media` para:
 - **Transcribe** — se cliente forneceu áudio de referência, transcrever pra captions
 - **Remove-background** — se há B-roll do cliente pra usar em composição
 
-Output salvo em `.em5/clientes/{cliente}/design/assets/{CR-XXX}/`.
+Output salvo em `clientes/{cliente}/design/assets/{CR-XXX}/`.
 
 ### Passo 3 — Invocar skill upstream `hyperframes`
 
@@ -89,8 +89,8 @@ A skill produz **HTML standalone** com toda animação inline.
 ### Passo 4 — Lint + preview via `hyperframes-cli`
 
 ```bash
-npx hyperframes lint .em5/clientes/{cliente}/design/{CR-XXX}-v1.html
-npx hyperframes preview .em5/clientes/{cliente}/design/{CR-XXX}-v1.html
+npx hyperframes lint clientes/{cliente}/design/{CR-XXX}-v1.html
+npx hyperframes preview clientes/{cliente}/design/{CR-XXX}-v1.html
 ```
 
 Lint pega: timing inválido, asset faltando, sync de caption fora de range.
@@ -100,8 +100,8 @@ Preview abre browser local — agente confirma visual antes de render final.
 ### Passo 5 — Render final
 
 ```bash
-npx hyperframes render .em5/clientes/{cliente}/design/{CR-XXX}-v1.html \
-  --output .em5/clientes/{cliente}/design/{CR-XXX}-v1.mp4 \
+npx hyperframes render clientes/{cliente}/design/{CR-XXX}-v1.html \
+  --output clientes/{cliente}/design/{CR-XXX}-v1.mp4 \
   --resolution 1080x1920  # ajustar conforme aspect
 ```
 
@@ -109,7 +109,7 @@ Output: `.mp4` ou `.webm` pronto pra upload.
 
 ### Passo 6 — Salvar metadados
 
-Em `.em5/clientes/{cliente}/design/{CR-XXX}-v1-meta.json`:
+Em `clientes/{cliente}/design/{CR-XXX}-v1-meta.json`:
 ```json
 {
   "cr_id": "CR-XXX",
@@ -129,7 +129,7 @@ Em `.em5/clientes/{cliente}/design/{CR-XXX}-v1-meta.json`:
 ### Passo 7 — Verify + log + QA
 
 - Rodar `/em5-verify {cliente} design/{CR-XXX}-v1.mp4`
-- Registrar em `.em5/clientes/{cliente}/operacao/log-performance-criativa.md`
+- Registrar em `clientes/{cliente}/operacao/log-performance-criativa.md`
 - @qa Crivo valida via `*validar-criativo`
 
 ## Vantagens vs fal.ai/queue-based providers

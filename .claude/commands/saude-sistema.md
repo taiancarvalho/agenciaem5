@@ -27,10 +27,10 @@ Execute o health check verificando cada item abaixo:
 ### 3. Configuração da Agência
 - [ ] `em5-config.yaml` existe (se setup foi feito)
 - [ ] Composio API Key configurada
-- [ ] Pelo menos um cliente em `.em5/clientes/`
+- [ ] Pelo menos um cliente em `clientes/`
 
 ### 4. Clientes Ativos
-Para cada cliente em `.em5/clientes/`:
+Para cada cliente em `clientes/`:
 - [ ] log-operacional.md presente
 - [ ] Última entrada no log tem menos de 30 dias
 

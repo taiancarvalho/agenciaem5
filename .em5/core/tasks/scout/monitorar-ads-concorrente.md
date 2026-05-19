@@ -6,7 +6,7 @@ inputs:
   - concorrente_url ou page_id_meta
   - cliente_slug
 outputs:
-  - .em5/clientes/{slug}/inteligencia/ads-{concorrente}-{data}.md
+  - clientes/{slug}/inteligencia/ads-{concorrente}-{data}.md
 elicit: false
 model_tier: balanced
 ---

@@ -52,7 +52,7 @@ Para cada campanha ativa, verificar:
 - [ ] Pixel/tag instalada corretamente no site
 
 ### 4. Gerar Relatorio
-Salvar em: `.em5/clientes/{nome}/trafego/auditoria-google-{YYYY-MM-DD}.md`
+Salvar em: `clientes/{nome}/trafego/auditoria-google-{YYYY-MM-DD}.md`
 
 ```markdown
 # Auditoria Google Ads — {nome-do-cliente}

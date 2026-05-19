@@ -61,7 +61,7 @@ anti_papel:
 
 hard_dependencies:
   design_md:
-    path: .em5/clientes/{slug}/branding/DESIGN.md
+    path: clientes/{slug}/branding/DESIGN.md
     secoes_obrigatorias:
       - 'Personalidade da Marca'
       - 'Tom de Voz'
@@ -148,7 +148,7 @@ nomenclatura:
   campo_tipo: 'Anúncio, Roteiro, Landing Page, WhatsApp, E-mail, Post'
 
 log_ownership:
-  arquivo: '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
+  arquivo: 'clientes/{nome}/operacao/log-performance-criativa.md'
   responsabilidade: 'Eco cria a linha quando a peça nasce'
   campos_de_cal: 'ID, Data, Canal, Tipo, Ângulo, Copy (resumo), Criativo (referência ao Designer)'
   campos_de_max: 'Status, Resultado, Observação de performance'
@@ -191,14 +191,14 @@ handoff_para_qa:
     - checklist básico (coerência com estratégia, tom, CTA presente)
 
 pastas_que_acessa:
-  - '.em5/clientes/{nome}/onboarding/'
-  - '.em5/clientes/{nome}/estrategia/'
-  - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
-  - '.em5/clientes/{nome}/copy/'
+  - 'clientes/{nome}/onboarding/'
+  - 'clientes/{nome}/estrategia/'
+  - 'clientes/{nome}/operacao/log-performance-criativa.md'
+  - 'clientes/{nome}/copy/'
 
 pastas_que_escreve:
-  - '.em5/clientes/{nome}/copy/'
-  - '.em5/clientes/{nome}/operacao/log-performance-criativa.md'
+  - 'clientes/{nome}/copy/'
+  - 'clientes/{nome}/operacao/log-performance-criativa.md'
 
 dependencies:
   # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).

@@ -3,10 +3,10 @@ name: validar-campanha
 agent: qa
 description: Executar checklist completo de validação antes de subir qualquer campanha ao ar
 inputs:
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
-  - .em5/clientes/{nome}/copy/ (copies aprovadas)
-  - .em5/clientes/{nome}/design/ (criativos aprovados)
-  - .em5/clientes/{nome}/setup-tecnico/status.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/copy/ (copies aprovadas)
+  - clientes/{nome}/design/ (criativos aprovados)
+  - clientes/{nome}/setup-tecnico/status.md
   - estrutura de campanha descrita pelo Gestor de Tráfego
 outputs:
   - veredicto formal: APROVADO / APROVADO_COM_RESSALVA / REVISÃO / BLOQUEADO

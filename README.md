@@ -18,7 +18,7 @@ em5 é um **sistema operacional pra agência solo** rodando inteiramente em Clau
 
 - 15 agentes especializados (estratégia, tráfego, copy, design, QA, vendas, financeiro)
 - 87 tasks executáveis, 19 skills, Constitution v1.3 (13 artigos)
-- Workspace nativo por cliente em `.em5/clientes/{slug}/`
+- Workspace nativo por cliente em `clientes/{slug}/`
 - Composio MCP como único gateway externo (Art. IX)
 - Asaas integrado pra financeiro BR (PIX/boleto/cartão)
 - Painel Astro estático + Electron desktop

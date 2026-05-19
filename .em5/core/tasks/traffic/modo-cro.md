@@ -3,8 +3,8 @@ name: modo-cro
 agent: traffic
 description: Analisar conversao pos-clique — diagnosticar onde o usuario abandona, criar hipoteses e definir testes de otimizacao
 inputs:
-  - .em5/clientes/{nome}/trafego/campanhas-ativas.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/trafego/campanhas-ativas.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
   - log-performance-criativa.md
   - dados de conversao (Google Analytics, pixel, formularios)
 outputs:

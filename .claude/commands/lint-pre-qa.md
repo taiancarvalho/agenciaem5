@@ -36,10 +36,10 @@ Ler `.em5/core/data/lint-rules.yaml`. Carregar bloco `{tipo}`.
 
 | Tipo | Pasta |
 |------|-------|
-| copy | `.em5/clientes/{cliente}/copy/` |
-| criativo | `.em5/clientes/{cliente}/design/` |
-| campanha | `.em5/clientes/{cliente}/trafego/estrutura-campanhas.md` |
-| landing-page | `.em5/clientes/{cliente}/setup-tecnico/` |
+| copy | `clientes/{cliente}/copy/` |
+| criativo | `clientes/{cliente}/design/` |
+| campanha | `clientes/{cliente}/trafego/estrutura-campanhas.md` |
+| landing-page | `clientes/{cliente}/setup-tecnico/` |
 
 Se `arquivo` foi passado, filtrar.
 
@@ -72,7 +72,7 @@ Para cada arquivo:
 
 ### Passo 4 — Gerar relatório
 
-Salvar em `.em5/clientes/{cliente}/operacao/lint-{YYYY-MM-DD}.md`:
+Salvar em `clientes/{cliente}/operacao/lint-{YYYY-MM-DD}.md`:
 
 ```markdown
 # Lint pré-@qa — {cliente} — {YYYY-MM-DD}

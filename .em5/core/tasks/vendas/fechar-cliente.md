@@ -7,7 +7,7 @@ inputs:
   - aceite_formato: whatsapp | email | assinatura_digital
 outputs:
   - .em5/prospects/{slug}/aceite.md
-  - novo workspace cliente em .em5/clientes/{slug}/
+  - novo workspace cliente em clientes/{slug}/
   - handoff @cs Sol + @fin Caixa
 elicit: true
 model_tier: balanced
@@ -22,8 +22,8 @@ Aceite formal + transição prospect → cliente ativo. Zero atrito no handoff.
 ## Passo a passo
 
 1. Confirma aceite (lê WhatsApp/email/assinatura — anexa em aceite.md)
-2. Cria workspace cliente: `.em5/clientes/{slug}/` via skill `/cliente-novo {nome}`
-3. Copia proposta aprovada → `.em5/clientes/{slug}/onboarding/proposta-original.md`
+2. Cria workspace cliente: `clientes/{slug}/` via skill `/cliente-novo {nome}`
+3. Copia proposta aprovada → `clientes/{slug}/onboarding/proposta-original.md`
 4. Cria `mensalidade.yaml`:
    ```yaml
    valor_mensal: {valor da proposta}

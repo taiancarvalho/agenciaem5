@@ -5,7 +5,7 @@ description: Criar workspace completo para novo cliente no agenciaem5, com toda 
 inputs:
   - nome do cliente (slug — sem espaços, sem acentos, ex: clinica-sao-paulo)
 outputs:
-  - .em5/clientes/{nome}/ com estrutura completa
+  - clientes/{nome}/ com estrutura completa
   - arquivos iniciais de operação criados
 model_tier: frontier  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -34,26 +34,26 @@ Validar:
 - Sem espaços (usar hífens)
 - Sem acentos
 - Tudo em minúsculo
-- Verificar se já existe em `.em5/clientes/`
+- Verificar se já existe em `clientes/`
 
 ### 2. Criar estrutura de pastas
 
 ```bash
-mkdir -p .em5/clientes/{nome}/onboarding
-mkdir -p .em5/clientes/{nome}/estrategia
-mkdir -p .em5/clientes/{nome}/copy
-mkdir -p .em5/clientes/{nome}/design/criativos
-mkdir -p .em5/clientes/{nome}/design/videos
-mkdir -p .em5/clientes/{nome}/design/landing-pages
-mkdir -p .em5/clientes/{nome}/design/exports
-mkdir -p .em5/clientes/{nome}/assets/logo
-mkdir -p .em5/clientes/{nome}/assets/fotos
-mkdir -p .em5/clientes/{nome}/assets/videos
-mkdir -p .em5/clientes/{nome}/branding
-mkdir -p .em5/clientes/{nome}/setup-tecnico
-mkdir -p .em5/clientes/{nome}/relatorios
-mkdir -p .em5/clientes/{nome}/trafego
-mkdir -p .em5/clientes/{nome}/operacao/historico
+mkdir -p clientes/{nome}/onboarding
+mkdir -p clientes/{nome}/estrategia
+mkdir -p clientes/{nome}/copy
+mkdir -p clientes/{nome}/design/criativos
+mkdir -p clientes/{nome}/design/videos
+mkdir -p clientes/{nome}/design/landing-pages
+mkdir -p clientes/{nome}/design/exports
+mkdir -p clientes/{nome}/assets/logo
+mkdir -p clientes/{nome}/assets/fotos
+mkdir -p clientes/{nome}/assets/videos
+mkdir -p clientes/{nome}/branding
+mkdir -p clientes/{nome}/setup-tecnico
+mkdir -p clientes/{nome}/relatorios
+mkdir -p clientes/{nome}/trafego
+mkdir -p clientes/{nome}/operacao/historico
 ```
 
 ### 3. Criar arquivos iniciais
@@ -165,7 +165,7 @@ peso_corpo: ""
 Exibir para o usuário:
 
 ```
-✅ Workspace criado: .em5/clientes/{nome}/
+✅ Workspace criado: clientes/{nome}/
 
 Estrutura:
 ├── onboarding/

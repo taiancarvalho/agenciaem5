@@ -43,13 +43,13 @@ Detectar inadimplência via Asaas + escalar severity conforme dias de atraso. Dr
 ### 2. Cruzar com clientes locais
 
 Pra cada `payment_id` retornado:
-- Achar cliente em `.em5/clientes/*/financeiro/cobrancas.yaml`
+- Achar cliente em `clientes/*/financeiro/cobrancas.yaml`
 - Calcular `dias_atraso = today - dueDate`
 - Determinar severity (tabela acima)
 
 ### 3. Atualizar status local
 
-`.em5/clientes/{slug}/financeiro/mensalidade.yaml`:
+`clientes/{slug}/financeiro/mensalidade.yaml`:
 ```yaml
 inadimplencia_dias: {N}
 ultima_cobranca_status: OVERDUE

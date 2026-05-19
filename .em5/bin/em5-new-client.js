@@ -34,7 +34,7 @@ if (!fs.existsSync(path.join(rootDir, '.em5'))) {
 // Verificar se cliente ja existe
 const clienteDir = path.join(clientesDir, slug);
 if (fs.existsSync(clienteDir)) {
-  console.error(`❌ Cliente '${slug}' ja existe em .em5/clientes/`);
+  console.error(`❌ Cliente '${slug}' ja existe em clientes/`);
   process.exit(1);
 }
 
@@ -82,7 +82,7 @@ Object.entries(files).forEach(([filePath, content]) => {
 
 // Confirmar criacao
 console.log(`
-✅ Workspace criado: .em5/clientes/${slug}/
+✅ Workspace criado: clientes/${slug}/
 
 Estrutura:
 ├── onboarding/

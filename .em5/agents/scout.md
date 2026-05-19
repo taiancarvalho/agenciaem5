@@ -63,7 +63,7 @@ commands:
   - name: alerta-movimentacao
     description: Diff semanal: o que mudou? Envia pro @strategist se relevante
   - name: relatorio-semanal
-    description: Output em .em5/clientes/{slug}/inteligencia/scout-{semana}.md
+    description: Output em clientes/{slug}/inteligencia/scout-{semana}.md
 
 dependencies:
   # Carregue cada arquivo APENAS quando o comando correspondente for executado (Constitution Art. VII).

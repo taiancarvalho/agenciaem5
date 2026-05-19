@@ -1,7 +1,7 @@
 # /extrair-design — Extrai DESIGN.md do cliente
 
 > URL/briefing/screenshots → sistema de design estruturado em ≤ 5 min.
-> Output em `.em5/clientes/{slug}/branding/` com DESIGN.md + preview.html + tokens.json + theme.css.
+> Output em `clientes/{slug}/branding/` com DESIGN.md + preview.html + tokens.json + theme.css.
 
 ## Uso
 
@@ -26,7 +26,7 @@ Composio firecrawl scrape (se URL) ou ler local
   ↓
 Aplica padrão Clay (preview.html sidebar "_thebrandbook")
   ↓
-Output em .em5/clientes/{slug}/branding/:
+Output em clientes/{slug}/branding/:
   ✓ DESIGN.md (sistema completo)
   ✓ preview.html (visual pro cliente)
   ✓ tokens.json (machine-readable)
@@ -53,7 +53,7 @@ Notifica @copywriter Eco (tom de voz disponível)
 
 ## Output esperado
 
-`.em5/clientes/{slug}/branding/`:
+`clientes/{slug}/branding/`:
 ```
 ├── DESIGN.md
 ├── preview.html
@@ -70,7 +70,7 @@ Notifica @copywriter Eco (tom de voz disponível)
 - NÃO inventa tokens (Art. VI honestidade)
 - NÃO sobrescreve DESIGN.md existente sem confirmação user
 - NÃO renderiza preview "shallow" — padrão Clay obrigatório
-- NÃO opera sem `slug` válido (cliente precisa existir em `.em5/clientes/`)
+- NÃO opera sem `slug` válido (cliente precisa existir em `clientes/`)
 
 ## Próximos passos automáticos
 

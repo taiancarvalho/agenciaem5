@@ -6,7 +6,7 @@ inputs:
   - nome do cliente (workspace ja criado)
   - canais selecionados (do briefing-final.md ou da lista de acessos)
 outputs:
-  - .em5/clientes/{nome}/setup-tecnico/checklist-tracking.md
+  - clientes/{nome}/setup-tecnico/checklist-tracking.md
   - atualiza log-operacional.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
@@ -30,7 +30,7 @@ Se houver extensao como Meta Pixel Helper ou Tag Assistant disponivel, orientar 
 
 ### 1. Identificar canais ativos
 
-Ler `acessos.md` em `.em5/clientes/{nome}/setup-tecnico/` para saber quais plataformas estao sendo utilizadas e gerar o checklist correspondente.
+Ler `acessos.md` em `clientes/{nome}/setup-tecnico/` para saber quais plataformas estao sendo utilizadas e gerar o checklist correspondente.
 
 ### 2. Solicitar URLs do cliente
 
@@ -47,7 +47,7 @@ Preciso das seguintes informacoes para montar o checklist:
 
 ### 3. Gerar checklist de tracking
 
-Criar `.em5/clientes/{nome}/setup-tecnico/checklist-tracking.md` com o formato abaixo. Incluir apenas as secoes relevantes para os canais do cliente.
+Criar `clientes/{nome}/setup-tecnico/checklist-tracking.md` com o formato abaixo. Incluir apenas as secoes relevantes para os canais do cliente.
 
 ```markdown
 # Checklist de Tracking — {Nome do Cliente}

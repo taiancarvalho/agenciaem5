@@ -3,10 +3,10 @@ name: criar-conceitos
 agent: copywriter
 description: Definir conceitos de campanha — headline, promessa e direção principal da peça — combinando ângulo com execução visual
 inputs:
-  - .em5/clientes/{nome}/copy/angulos.md
-  - .em5/clientes/{nome}/estrategia/plano-estrategico.md
+  - clientes/{nome}/copy/angulos.md
+  - clientes/{nome}/estrategia/plano-estrategico.md
 outputs:
-  - .em5/clientes/{nome}/copy/conceitos-campanha.md
+  - clientes/{nome}/copy/conceitos-campanha.md
 model_tier: balanced  # auto-set Fase 12.AAA legacy audit
 elicit: true
 ---
@@ -30,7 +30,7 @@ Conceito é o que Eco entrega para Lux entender o que o visual precisa reforçar
 
 ### 1. Ler ângulos e contexto
 
-Ler `.em5/clientes/{nome}/copy/angulos.md` e o plano estratégico.
+Ler `clientes/{nome}/copy/angulos.md` e o plano estratégico.
 
 ### 2. Definir conceitos por ângulo
 
@@ -45,7 +45,7 @@ Para cada ângulo aprovado, criar um conceito com:
 
 ### 3. Criar documento
 
-Criar `.em5/clientes/{nome}/copy/conceitos-campanha.md`:
+Criar `clientes/{nome}/copy/conceitos-campanha.md`:
 
 ```markdown
 # Conceitos de Campanha — {Nome do Cliente}
