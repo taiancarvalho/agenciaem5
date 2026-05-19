@@ -1,0 +1,54 @@
+# Workflow: Weekly Digest WhatsApp
+# Versao: 1.0 (Sprint 8 — reporting)
+nome: "weekly-digest-whatsapp"
+descricao: "Resumo semanal via WhatsApp ao cliente — sex 17h, KPIs chave + ações da semana"
+versao: "1.0"
+gatilho: "Cron semanal (sex 17h, exceto feriado)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats"
+qa_gate: false  # comunicação curta — gate via @cs revisar antes de enviar
+
+inputs:
+  - "dados semana cliente (Meta + Google + organico)"
+
+outputs:
+  - "clientes/{nome}/comunicacao/weekly-digest-{YYYY-SS}.md"
+  - "mensagem WhatsApp enviada ao cliente"
+
+sequencia:
+  - id: 1
+    etapa: "coletar-dados-semana"
+    agente: "traffic"
+    task: "monitorar-performance.md"
+    saida: "snapshot 7d vs 7d anterior (KPIs chave: gasto, conversões, CPL, CTR)"
+    composio_mcp: ["meta_ads", "google_ads"]
+
+  - id: 2
+    etapa: "redigir-digest-curto"
+    agente: "cs"
+    saida: "weekly-digest-{YYYY-SS}.md (200-400 chars — escaneável no WhatsApp)"
+    estrutura:
+      saudacao: "🚀 Resumo semana — {cliente}"
+      kpis: "3-4 KPIs com delta (📈/📉)"
+      destaque: "1 vitória + 1 atenção"
+      proxima_semana: "1-2 ações principais"
+      cta: "responde se quiser detalhes"
+
+  - id: 3
+    etapa: "enviar-whatsapp"
+    agente: "whats"
+    task: "enviar-template.md"
+    saida: "mensagem enviada"
+    composio_mcp: ["whatsapp_business", "waha"]
+    fallback: "se sem WhatsApp ativo, @cs envia via email"
+
+  - id: 4
+    etapa: "log-fechamento"
+    agente: "cs"
+    saida: "append log-operacional + tracking respostas próximos 24h"
+
+metricas:
+  cadencia: "sexta 17h semanal"
+  taxa_envio_sucesso: "100%"
+  taxa_resposta_cliente: ">= 30% (sinal engajamento)"
+  npr_via_digest: "input pra QBR"

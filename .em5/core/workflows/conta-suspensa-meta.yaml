@@ -1,0 +1,118 @@
+# Workflow: Conta Suspensa Meta (Crisis)
+# Versao: 1.0 (Sprint 7 — crisis)
+nome: "conta-suspensa-meta"
+descricao: "Recovery emergencial conta/BM Meta suspensa — < 24h pra evitar perda receita"
+versao: "1.0"
+gatilho: "Notificação Meta OR @traffic detecta delivery = 0 + erro 'Account Disabled'"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: false
+prioridade: "MAXIMA"
+sla: "<= 24h pra abrir appeal"
+
+inputs:
+  - "screenshot notificação Meta + motivo (policy violation, payment, suspicious activity)"
+  - "histórico conta + criativos rodando"
+
+outputs:
+  - "clientes/{nome}/crisis/conta-suspensa-{YYYY-MM-DD}/diagnostico.md"
+  - "clientes/{nome}/crisis/conta-suspensa-{YYYY-MM-DD}/appeal-enviado.md"
+  - "clientes/{nome}/crisis/conta-suspensa-{YYYY-MM-DD}/timeline.md"
+
+sequencia:
+  - id: 1
+    etapa: "confirmar-suspensao"
+    agente: "traffic"
+    saida: "diagnostico.md (escopo: ad_account? BM inteiro? page? perfil pessoal?)"
+    composio_mcp: "meta_ads"
+
+  - id: 2
+    etapa: "comunicar-cliente-imediato"
+    agente: "cs"
+    sla: "<= 30min"
+    saida: "WhatsApp + email cliente (transparência total — não esconder)"
+    composio_mcp: ["whatsapp_business", "gmail"]
+    tom: "factual + plano de ação imediato + sem pânico"
+
+  - id: 3
+    etapa: "diagnosticar-causa-provavel"
+    agente: "traffic"
+    saida: "causa provável + evidências"
+    causas_comuns:
+      policy_violation: "criativo + landing page contra políticas (saúde, finanças, ML/AI claims)"
+      payment_issue: "cartão recusado OR fatura não paga"
+      suspicious_activity: "login estranho OR mudança rápida budget"
+      circumvention: "tentativa burlar políticas (cloaking, gateway)"
+      pixel_issues: "pixel disparando eventos suspeitos"
+
+  - id: 4
+    etapa: "preparar-appeal"
+    agente: "cs"
+    saida: "appeal-enviado.md (texto formal Meta + evidências de boa-fé)"
+    estrutura_appeal:
+      - "Identificação conta + cliente"
+      - "Reconhecimento + cooperação"
+      - "Diagnóstico próprio (se aplicável)"
+      - "Ações corretivas já tomadas"
+      - "Pedido específico (reativação + esclarecimento)"
+    proibido: ["acusar Meta", "minimizar", "appeal genérico template"]
+
+  - id: 5
+    etapa: "enviar-appeal-formal"
+    agente: "cs"
+    saida: "appeal enviado via Business Support (caso aberto + ticket_id)"
+    canais:
+      primario: "Meta Business Support Help Center"
+      backup_1: "Account representative (se cliente Meta Premier)"
+      backup_2: "Twitter/X @MetaBusiness (último recurso)"
+
+  - id: 6
+    etapa: "implementar-correcoes"
+    agente: "traffic"
+    saida: "criativos/LPs problemáticos pausados + ajustes feitos antes de pedir reativação"
+
+  - id: 7
+    etapa: "ativar-plano-b-google"
+    agente: "traffic"
+    task: "estruturar-campanha.md"
+    saida: "campanhas Google Ads provisórias enquanto Meta resolvido (se cliente tem acesso)"
+    condicao: "cliente tem Google Ads ativo OR podemos ativar rapidamente"
+
+  - id: 8
+    etapa: "monitorar-resposta-meta"
+    agente: "cs"
+    frequencia: "cron a cada 6h"
+    saida: "timeline.md atualizada com cada resposta Meta"
+    sla_meta: "típico 3-7 dias úteis"
+
+  - id: 9
+    etapa: "escalar-ceo-se-72h"
+    agente: "ceo"
+    task: "decisao.md"
+    condicao: "72h+ sem resposta Meta OR appeal negado"
+    opcoes:
+      escalation_meta: "se cliente Premier, acionar account rep"
+      pivot_canal: "migrar 100% pra Google/TikTok temporariamente"
+      criar_nova_conta: "última opção — risco de também ser banida"
+      comunicar_perda: "se irrecuperável, plano cliente de longo prazo"
+
+  - id: 10
+    etapa: "reativacao-validacao"
+    agente: "traffic"
+    saida: "conta reativada + testes graduais (não dispara 100% budget imediato)"
+    estrategia: "ramp-up 25% → 50% → 100% em 7d pra evitar nova suspensão"
+
+  - id: 11
+    etapa: "post-mortem"
+    agente: "strategist"
+    saida: "input em learnings/conta-suspensa-cases.md + atualiza compliance checklist (lgpd-review-campanha.yaml)"
+
+metricas:
+  tempo_resposta_inicial: "<= 1h pós-detecção"
+  taxa_recuperacao_alvo: ">= 80% (conta reativada)"
+  prazo_medio_recovery: "<= 7 dias úteis"
+  receita_perdida_alvo: "minimizar via plano-B Google"
+
+on_failure:
+  appeal_negado_2x: "@ceo decide criar nova conta (com cuidado extra) OR migrar canal"
+  cliente_perde_paciencia: "trigger churn-prevention.yaml"

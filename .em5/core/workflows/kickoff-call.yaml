@@ -1,0 +1,59 @@
+# Workflow: Kickoff Call (pós-fechamento)
+# Versao: 1.0 (Sprint 5)
+nome: "kickoff-call"
+descricao: "Primeira call formal pós-fechamento — alinhar expectativas, cronograma, comunicação"
+versao: "1.0"
+gatilho: "Onboarding-cliente.yaml step kickoff-call OR pedido @cs"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: false
+
+inputs:
+  - "cliente recém-fechado (clientes/{nome}/ workspace pronto)"
+  - "briefing-final.md + plano-inicial.md"
+
+outputs:
+  - "clientes/{nome}/reunioes/kickoff-{YYYY-MM-DD}/agenda.md"
+  - "clientes/{nome}/reunioes/kickoff-{YYYY-MM-DD}/ata.md"
+  - "clientes/{nome}/reunioes/kickoff-{YYYY-MM-DD}/proximos-passos.md"
+
+sequencia:
+  - id: 1
+    etapa: "agendar-call"
+    agente: "cs"
+    task: "preparar-reuniao.md"
+    saida: "convite calendar + link Meet/Zoom (preferência cliente)"
+    composio_mcp: ["googlecalendar", "googlemeet"]
+
+  - id: 2
+    etapa: "preparar-materiais"
+    agente: "strategist"
+    saida: "deck kickoff (10-15 slides — quem somos + diagnóstico + plano + cronograma + comunicação)"
+    skill_externa: "/em5-deck-pptx"
+
+  - id: 3
+    etapa: "executar-call"
+    agente: "cs"
+    duracao: "45-60min"
+    pauta:
+      - "Apresentação equipe (5min)"
+      - "Recap fechamento + expectativas (10min)"
+      - "Diagnóstico inicial (10min)"
+      - "Plano 90d (15min)"
+      - "Cronograma + comunicação semanal/mensal (10min)"
+      - "Próximos passos (5min)"
+
+  - id: 4
+    etapa: "ata-pos-call"
+    agente: "cs"
+    saida: "ata.md (decisões + ações + responsáveis + prazos)"
+    skill_externa: "/em5-call-para-sop quando aplicável"
+
+  - id: 5
+    etapa: "follow-up-d1"
+    agente: "cs"
+    saida: "email follow-up D+1 (ata + materiais discutidos + próxima reunião agendada)"
+
+metricas:
+  prazo: "<= 5 dias úteis pós-fechamento"
+  taxa_satisfacao_pos_call: ">= 9/10 (mini pesquisa NPS)"

@@ -1,0 +1,77 @@
+# Workflow: Setup Pixel + Tracking (Meta + CAPI)
+# Versao: 1.0 (Sprint 6 — analytics)
+nome: "setup-pixel-tracking"
+descricao: "Instalação completa pixel Meta + Conversions API + validação eventos"
+versao: "1.0"
+gatilho: "Cliente novo (onboarding-cliente) OR migração agência"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "cs"
+qa_gate: true
+
+inputs:
+  - "acesso GTM OR código site (WordPress/Shopify/Webflow/custom)"
+  - "BM Meta + ad_account"
+  - "lista eventos críticos cliente (Lead, Purchase, AddToCart, etc.)"
+
+outputs:
+  - "clientes/{nome}/setup-tecnico/pixel-instalado.md"
+  - "clientes/{nome}/setup-tecnico/capi-deployado.md"
+  - "clientes/{nome}/setup-tecnico/eventos-validados.md"
+
+sequencia:
+  - id: 1
+    etapa: "criar-pixel-bm"
+    agente: "cs"
+    saida: "pixel_id + dataset_id criados em BM"
+    composio_mcp: "meta_ads"
+
+  - id: 2
+    etapa: "instalar-pixel-site"
+    agente: "cs"
+    saida: "pixel base + eventos padrão via GTM OR plugin OR código direto"
+    metodos_por_cms:
+      wordpress: "plugin oficial Meta for Business OR Pixel Caffeine"
+      shopify: "integração nativa Meta"
+      webflow: "GTM container + tag Meta"
+      custom: "GTM + dataLayer + tag Meta"
+
+  - id: 3
+    etapa: "configurar-eventos-customizados"
+    agente: "cs"
+    saida: "eventos críticos disparando (Lead, Purchase, etc.) com parâmetros corretos (value, currency, content_ids)"
+
+  - id: 4
+    etapa: "deployar-capi"
+    agente: "cs"
+    saida: "Conversions API server-side ativo (recupera dados perdidos por ITP/cookies)"
+    metodos: ["GTM Server-side", "Zapier connector", "código backend custom"]
+    importante: "deduplicação client+server obrigatória (event_id)"
+
+  - id: 5
+    etapa: "validar-eventos-meta"
+    agente: "traffic"
+    task: "monitorar-performance.md"
+    saida: "Test Events Meta Business Manager — todos eventos disparam + match rate >= 70% (CAPI)"
+    composio_mcp: "meta_ads"
+
+  - id: 6
+    etapa: "qa-tracking"
+    agente: "qa"
+    task: "validar-landing-page.md"
+    checklist:
+      - "Pixel disparando em PageView (todas páginas)"
+      - "Eventos críticos disparando + valores corretos"
+      - "Deduplicação client/server OK (event_id presente)"
+      - "Match rate CAPI >= 70%"
+      - "Sem disparos duplicados"
+      - "iOS 14+ compatível (Aggregated Event Measurement configurado)"
+      - "8 eventos AEM priorizados por valor"
+
+metricas:
+  prazo: "<= 5d cliente novo → tracking ativo validado"
+  match_rate_alvo: ">= 80% (CAPI)"
+  taxa_eventos_disparados: "100% (eventos críticos definidos)"
+
+on_failure:
+  evento_nao_dispara: "@cs debuga GTM + console browser + escalate dev cliente"
+  match_rate_baixo: "@cs revisa email/phone hash + adiciona external_id"
