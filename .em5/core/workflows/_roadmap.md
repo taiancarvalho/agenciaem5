@@ -106,136 +106,136 @@
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 15 | `carrossel-ig.yaml` | 🔴 P1 | strategist (tema) → copy (10 slides + hook) → designer → qa → cs | Calendário | Formato #1 IG |
-| 16 | `reels-ig.yaml` | 🔴 P1 | copy (roteiro) → designer (storyboard + edit) → qa → cs | Skill `/em5-roteiro-reels` | Skill existe |
-| 17 | `stories-sequencia.yaml` | 🔴 P1 | copy → designer → cs | Diário | Stickers + polls |
-| 18 | `post-feed-estatico.yaml` | 🔴 P2 | copy → designer → qa → cs | Calendário | Formato menor uso |
-| 19 | `live-ig.yaml` | 🔴 P3 | strategist → copy (roteiro) → designer (divulgação) → cs | Pedido cliente | Pouco recorrente |
-| 20 | `linkedin-post.yaml` | 🔴 P1 | copy → designer → qa → cs | Calendário | B2B — voz diferente |
-| 21 | `linkedin-artigo.yaml` | 🔴 P2 | strategist → copy → qa → cs | Calendário mensal | Long-form |
-| 22 | `youtube-longform.yaml` | 🔴 P2 | strategist (keyword) → copy (roteiro) → designer (b-roll + thumb) → qa | Pedido cliente | SEO YT |
-| 23 | `youtube-shorts.yaml` | 🔴 P2 | copy → designer → qa | Calendário | Vertical 60s |
-| 24 | `tiktok-native.yaml` | 🔴 P2 | strategist (trend) → copy → designer → cs | Calendário | Não republica Reels |
-| 25 | `blog-seo.yaml` | 🔴 P1 | strategist (keyword) → copy (outline + texto) → qa (SEO on-page) → cs (publica) | Calendário | — |
-| 26 | `newsletter.yaml` | 🔴 P1 | strategist → copy → cs (segment + send) → cs (relatório) | Cron semanal | Gmail/ESP via Composio |
-| 27 | `email-nurture-drip.yaml` | 🔴 P2 | copy (5-7 emails) → qa → cs (setup gatilho) | Pedido | Comportamental |
-| 28 | `twitter-thread.yaml` | 🔴 P3 | copy → designer → qa | Calendário | — |
-| 29 | `podcast-episodio.yaml` | 🔴 P3 | strategist (pauta) → copy → designer (capa) → cs (distribuição) | Pedido cliente | — |
+| 15 | `carrossel-ig.yaml` | ✅ v1.0 | strategist (tema) → copy (10 slides + hook) → designer → qa → cs | Calendário | Formato #1 IG |
+| 16 | `reels-ig.yaml` | ✅ v1.0 | copy (roteiro) → designer (storyboard + edit) → qa → cs | Skill `/em5-roteiro-reels` | Skill existe |
+| 17 | `stories-sequencia.yaml` | ✅ v1.0 | copy → designer → cs | Diário | Stickers + polls |
+| 18 | `post-feed-estatico.yaml` | ✅ v1.0 | copy → designer → qa → cs | Calendário | Formato menor uso |
+| 19 | `live-ig.yaml` | ✅ v1.0 | strategist → copy (roteiro) → designer (divulgação) → cs | Pedido cliente | Pouco recorrente |
+| 20 | `linkedin-post.yaml` | ✅ v1.0 | copy → designer → qa → cs | Calendário | B2B — voz diferente |
+| 21 | `linkedin-artigo.yaml` | ✅ v1.0 | strategist → copy → qa → cs | Calendário mensal | Long-form |
+| 22 | `youtube-longform.yaml` | ✅ v1.0 | strategist (keyword) → copy (roteiro) → designer (b-roll + thumb) → qa | Pedido cliente | SEO YT |
+| 23 | `youtube-shorts.yaml` | ✅ v1.0 | copy → designer → qa | Calendário | Vertical 60s |
+| 24 | `tiktok-native.yaml` | ✅ v1.0 | strategist (trend) → copy → designer → cs | Calendário | Não republica Reels |
+| 25 | `blog-seo.yaml` | ✅ v1.0 | strategist (keyword) → copy (outline + texto) → qa (SEO on-page) → cs (publica) | Calendário | — |
+| 26 | `newsletter.yaml` | ✅ v1.0 | strategist → copy → cs (segment + send) → cs (relatório) | Cron semanal | Gmail/ESP via Composio |
+| 27 | `email-nurture-drip.yaml` | ✅ v1.0 | copy (5-7 emails) → qa → cs (setup gatilho) | Pedido | Comportamental |
+| 28 | `twitter-thread.yaml` | ✅ v1.0 | copy → designer → qa | Calendário | — |
+| 29 | `podcast-episodio.yaml` | ✅ v1.0 | strategist (pauta) → copy → designer (capa) → cs (distribuição) | Pedido cliente | — |
 
 ### Categoria 5 — Cliente relacionamento (10) [Sprint 5+]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 30 | `kickoff-call.yaml` | 🔴 P1 | cs (agenda) → strategist (materiais) → cs (ata) → coo (próximos passos) | Pós-fechamento | — |
-| 31 | `reuniao-1on1-cliente.yaml` | 🔴 P1 | cs (pauta) → cs (ata) → coo (follow-up) | Recorrente | — |
-| 32 | `ata-reuniao.yaml` | 🔴 P1 | cs (transcrição) → cs (ata estruturada) → cs (envia) | Pós-call | Usa `/em5-call-para-sop` interno |
-| 33 | `qbr-trimestral.yaml` | 🔴 P1 | strategist (revisa plano) → traffic (3M dados) → cs (deck) → qa → cs (apresenta) | Cron trimestral | Reunião exec |
-| 34 | `renovacao-contrato.yaml` | 🔴 P1 | fin (alerta 60d) → strategist (revisa resultados) → vendas (proposta nova) → ceo (aprova) | Cron 60d antes vencimento | — |
-| 35 | `upsell-pitch.yaml` | 🔴 P2 | strategist (analisa gap) → vendas (proposta) → ceo (aprova) | Cliente saudável 6m+ | — |
-| 36 | `churn-prevention.yaml` | 🔴 P1 | fin (sinal atraso) OR cs (NPS baixo) → ceo (escala) → cs (call retenção) | Trigger sinais | — |
-| 37 | `offboarding.yaml` | 🔴 P2 | cs (handoff assets) → fin (encerra Asaas) → coo (post-mortem) | Cliente sai | — |
-| 38 | `nps-pesquisa.yaml` | 🔴 P2 | cs (envia) → cs (coleta) → cs (ação por nota) | Cron trimestral | — |
-| 39 | `case-study.yaml` | 🔴 P3 | cs (entrevista) → copy (estudo) → designer (visual) → qa | Top performer | — |
+| 30 | `kickoff-call.yaml` | ✅ v1.0 | cs (agenda) → strategist (materiais) → cs (ata) → coo (próximos passos) | Pós-fechamento | — |
+| 31 | `reuniao-1on1-cliente.yaml` | ✅ v1.0 | cs (pauta) → cs (ata) → coo (follow-up) | Recorrente | — |
+| 32 | `ata-reuniao.yaml` | ✅ v1.0 | cs (transcrição) → cs (ata estruturada) → cs (envia) | Pós-call | Usa `/em5-call-para-sop` interno |
+| 33 | `qbr-trimestral.yaml` | ✅ v1.0 | strategist (revisa plano) → traffic (3M dados) → cs (deck) → qa → cs (apresenta) | Cron trimestral | Reunião exec |
+| 34 | `renovacao-contrato.yaml` | ✅ v1.0 | fin (alerta 60d) → strategist (revisa resultados) → vendas (proposta nova) → ceo (aprova) | Cron 60d antes vencimento | — |
+| 35 | `upsell-pitch.yaml` | ✅ v1.0 | strategist (analisa gap) → vendas (proposta) → ceo (aprova) | Cliente saudável 6m+ | — |
+| 36 | `churn-prevention.yaml` | ✅ v1.0 | fin (sinal atraso) OR cs (NPS baixo) → ceo (escala) → cs (call retenção) | Trigger sinais | — |
+| 37 | `offboarding.yaml` | ✅ v1.0 | cs (handoff assets) → fin (encerra Asaas) → coo (post-mortem) | Cliente sai | — |
+| 38 | `nps-pesquisa.yaml` | ✅ v1.0 | cs (envia) → cs (coleta) → cs (ação por nota) | Cron trimestral | — |
+| 39 | `case-study.yaml` | ✅ v1.0 | cs (entrevista) → copy (estudo) → designer (visual) → qa | Top performer | — |
 
 ### Categoria 6 — Analytics avançado (7) [Sprint 6]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 40 | `setup-pixel-tracking.yaml` | 🔴 P1 | cs (instala pixel + CAPI) → traffic (valida disparos) → qa (auditoria) | Cliente novo | — |
-| 41 | `setup-ga4-eventos.yaml` | 🔴 P1 | cs (eventos + conversões) → traffic (UTM) → qa | Cliente novo | — |
-| 42 | `setup-conversion-api.yaml` | 🔴 P2 | cs (deploy CAPI server-side) → traffic (valida) | Cliente avançado | — |
-| 43 | `ab-test-ciclo.yaml` | 🔴 P1 | strategist (hipótese) → traffic (setup) → traffic (run 7-14d) → strategist (análise) → coo | Pedido cliente | — |
-| 44 | `cro-funil.yaml` | 🔴 P2 | strategist → traffic (modo-cro task existe) → designer (variações) → qa | Conversão baixa | Task existe sem workflow |
-| 45 | `clarity-comportamento.yaml` | 🔴 P2 | traffic (heatmap + recordings via MCP Clarity) → strategist (insight) → cs | Mensal | **MCP disponível não usado** |
-| 46 | `atribuicao-multi-touch.yaml` | 🔴 P3 | traffic (cruza UTM+GA4+Meta+GAds) → strategist (modelo) → cs | Pedido específico | — |
+| 40 | `setup-pixel-tracking.yaml` | ✅ v1.0 | cs (instala pixel + CAPI) → traffic (valida disparos) → qa (auditoria) | Cliente novo | — |
+| 41 | `setup-ga4-eventos.yaml` | ✅ v1.0 | cs (eventos + conversões) → traffic (UTM) → qa | Cliente novo | — |
+| 42 | `setup-conversion-api.yaml` | ✅ v1.0 | cs (deploy CAPI server-side) → traffic (valida) | Cliente avançado | — |
+| 43 | `ab-test-ciclo.yaml` | ✅ v1.0 | strategist (hipótese) → traffic (setup) → traffic (run 7-14d) → strategist (análise) → coo | Pedido cliente | — |
+| 44 | `cro-funil.yaml` | ✅ v1.0 | strategist → traffic (modo-cro task existe) → designer (variações) → qa | Conversão baixa | Task existe sem workflow |
+| 45 | `clarity-comportamento.yaml` | ✅ v1.0 | traffic (heatmap + recordings via MCP Clarity) → strategist (insight) → cs | Mensal | **MCP disponível não usado** |
+| 46 | `atribuicao-multi-touch.yaml` | ✅ v1.0 | traffic (cruza UTM+GA4+Meta+GAds) → strategist (modelo) → cs | Pedido específico | — |
 
 ### Categoria 7 — Crisis / reativo (5) [Sprint 7]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 47 | `conta-suspensa-meta.yaml` | 🔴 P1 | traffic (diagnose) → cs (appeal Meta) → ceo (escala) → cs (comunica cliente) | BM/conta bloqueada | Recovery <24h |
-| 48 | `pixel-quebrado.yaml` | 🔴 P1 | traffic (detecta queda) → cs (re-instala) → qa (valida) | Conversões -80%+ overnight | Incident |
-| 49 | `crise-reputacao.yaml` | 🔴 P2 | scout (monitora) → ceo (decide resposta) → copy (rascunha) → qa → cs (publica) | Comentário viral negativo | — |
-| 50 | `campanha-com-bug.yaml` | 🔴 P2 | traffic (pausa) → qa (root cause) → copy/designer (corrige) → qa → traffic (relança) | Ad com erro detectado | — |
+| 47 | `conta-suspensa-meta.yaml` | ✅ v1.0 | traffic (diagnose) → cs (appeal Meta) → ceo (escala) → cs (comunica cliente) | BM/conta bloqueada | Recovery <24h |
+| 48 | `pixel-quebrado.yaml` | ✅ v1.0 | traffic (detecta queda) → cs (re-instala) → qa (valida) | Conversões -80%+ overnight | Incident |
+| 49 | `crise-reputacao.yaml` | ✅ v1.0 | scout (monitora) → ceo (decide resposta) → copy (rascunha) → qa → cs (publica) | Comentário viral negativo | — |
+| 50 | `campanha-com-bug.yaml` | ✅ v1.0 | traffic (pausa) → qa (root cause) → copy/designer (corrige) → qa → traffic (relança) | Ad com erro detectado | — |
 | 51 | `cobranca-falhou.yaml` | (#14 acima) | — | — | Já catalogado em fin |
 
 ### Categoria 8 — Aquisição (5) [Sprint 8]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 52 | `webinar-captura.yaml` | 🔴 P2 | strategist (tema) → copy (promo + lp) → designer → cs (live) → cs (nurture) | Pedido marketing agência | — |
-| 53 | `parceria-network.yaml` | 🔴 P3 | vendas (mapeia) → ceo (decide) → vendas (negocia) | Oportunidade | Co-venda |
-| 54 | `lead-magnet.yaml` | 🔴 P2 | strategist (tema) → copy (material) → designer → cs (captura + nurture) | Calendário marketing | Ebook/template |
+| 52 | `webinar-captura.yaml` | ✅ v1.0 | strategist (tema) → copy (promo + lp) → designer → cs (live) → cs (nurture) | Pedido marketing agência | — |
+| 53 | `parceria-network.yaml` | ✅ v1.0 | vendas (mapeia) → ceo (decide) → vendas (negocia) | Oportunidade | Co-venda |
+| 54 | `lead-magnet.yaml` | ✅ v1.0 | strategist (tema) → copy (material) → designer → cs (captura + nurture) | Calendário marketing | Ebook/template |
 
 ### Categoria 9 — Assets produção (5) [Sprint 8]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 55 | `photoshoot-cliente.yaml` | 🔴 P3 | strategist (brief) → designer (moodboard) → cs (produção) → designer (seleção) | Pedido cliente | — |
-| 56 | `ugc-creator-pipeline.yaml` | 🔴 P2 | copy (brief) → cs (contratação) → designer (edit recebido) → qa | Pedido | — |
-| 57 | `influencer-outreach.yaml` | 🔴 P2 | scout (pesquisa) → cs (outreach) → vendas (negocia) → copy (brief) → qa | Pedido | — |
-| 58 | `branding-novo-cliente.yaml` | 🔴 P2 | strategist → designer (logo + paleta + tipo) → qa → cs | Cliente sem branding | — |
-| 59 | `landing-page-build.yaml` | 🔴 P1 | strategist → copy → designer → designer (dev HTML) → qa → cs (publica) | Pedido cliente | Skill `/extrair-design` ajuda |
+| 55 | `photoshoot-cliente.yaml` | ✅ v1.0 | strategist (brief) → designer (moodboard) → cs (produção) → designer (seleção) | Pedido cliente | — |
+| 56 | `ugc-creator-pipeline.yaml` | ✅ v1.0 | copy (brief) → cs (contratação) → designer (edit recebido) → qa | Pedido | — |
+| 57 | `influencer-outreach.yaml` | ✅ v1.0 | scout (pesquisa) → cs (outreach) → vendas (negocia) → copy (brief) → qa | Pedido | — |
+| 58 | `branding-novo-cliente.yaml` | ✅ v1.0 | strategist → designer (logo + paleta + tipo) → qa → cs | Cliente sem branding | — |
+| 59 | `landing-page-build.yaml` | ✅ v1.0 | strategist → copy → designer → designer (dev HTML) → qa → cs (publica) | Pedido cliente | Skill `/extrair-design` ajuda |
 
 ### Categoria 10 — Internal agency (6) [Sprint 9]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 60 | `daily-standup.yaml` | 🔴 P1 | coo (consolida bloqueios todos clientes) → ceo (decide) | Cron 9h diário | Solo: snapshot dia |
-| 61 | `weekly-review-interna.yaml` | 🔴 P2 | coo (semana ops) → fin (semana $) → ceo (decisões) | Cron sex 17h | — |
-| 62 | `recrutamento.yaml` | 🔴 P3 | ceo (vaga) → cs (divulga) → ceo (triagem) → ceo (entrevista) | Pedido | — |
-| 63 | `treinamento-equipe.yaml` | 🔴 P3 | ceo (define) → cs (onboarding interno) | Novo funcionário | — |
-| 64 | `time-tracking.yaml` | 🔴 P2 | coo (loga horas por cliente) → fin (ROI hora) | Diário | Input pra ROI |
-| 65 | `sop-update.yaml` | 🔴 P2 | qualquer agente (input call) → cs (`/em5-call-para-sop`) → reviewer | Pós-call relevante | Loop versionamento |
+| 60 | `daily-standup.yaml` | ✅ v1.0 | coo (consolida bloqueios todos clientes) → ceo (decide) | Cron 9h diário | Solo: snapshot dia |
+| 61 | `weekly-review-interna.yaml` | ✅ v1.0 | coo (semana ops) → fin (semana $) → ceo (decisões) | Cron sex 17h | — |
+| 62 | `recrutamento.yaml` | ✅ v1.0 | ceo (vaga) → cs (divulga) → ceo (triagem) → ceo (entrevista) | Pedido | — |
+| 63 | `treinamento-equipe.yaml` | ✅ v1.0 | ceo (define) → cs (onboarding interno) | Novo funcionário | — |
+| 64 | `time-tracking.yaml` | ✅ v1.0 | coo (loga horas por cliente) → fin (ROI hora) | Diário | Input pra ROI |
+| 65 | `sop-update.yaml` | ✅ v1.0 | qualquer agente (input call) → cs (`/em5-call-para-sop`) → reviewer | Pós-call relevante | Loop versionamento |
 
 ### Categoria 11 — Legal / compliance (3) [Sprint 8]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 66 | `lgpd-review-campanha.yaml` | 🔴 P1 | cs (checa consent + política) → qa (audit) | Antes formulário/captura | Compliance |
-| 67 | `contrato-cliente-novo.yaml` | 🔴 P2 | vendas (`/em5-proposta-docx`) → ceo (revisa) → cs (envia assinatura) | Pós-fechamento | Skill existe |
-| 68 | `nda-prospect.yaml` | 🔴 P2 | vendas (gera) → ceo (assina) → vendas (envia) | Diagnóstico aprofundado | — |
+| 66 | `lgpd-review-campanha.yaml` | ✅ v1.0 | cs (checa consent + política) → qa (audit) | Antes formulário/captura | Compliance |
+| 67 | `contrato-cliente-novo.yaml` | ✅ v1.0 | vendas (`/em5-proposta-docx`) → ceo (revisa) → cs (envia assinatura) | Pós-fechamento | Skill existe |
+| 68 | `nda-prospect.yaml` | ✅ v1.0 | vendas (gera) → ceo (assina) → vendas (envia) | Diagnóstico aprofundado | — |
 
 ### Categoria 12 — Reporting especializado (4) [Sprint 8]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 69 | `weekly-digest-whatsapp.yaml` | 🔴 P1 | traffic (snapshot) → cs (resumo curto) → whats (envia) | Cron sex 17h | Status semanal cliente |
-| 70 | `executive-summary-trimestral.yaml` | 🔴 P2 | strategist (decisões) → fin (números) → cs (1 página) → qa → cs (envia) | Cron trimestral | C-level |
-| 71 | `creative-leaderboard.yaml` | 🔴 P2 | traffic (top 10 mês) → strategist (insight) → copy/designer (input iteração) | Cron mensal | — |
-| 72 | `competitor-creative-lib.yaml` | 🔴 P2 | scout (scrape biblioteca anúncios concorrente) → strategist → copy | Cron semanal | — |
+| 69 | `weekly-digest-whatsapp.yaml` | ✅ v1.0 | traffic (snapshot) → cs (resumo curto) → whats (envia) | Cron sex 17h | Status semanal cliente |
+| 70 | `executive-summary-trimestral.yaml` | ✅ v1.0 | strategist (decisões) → fin (números) → cs (1 página) → qa → cs (envia) | Cron trimestral | C-level |
+| 71 | `creative-leaderboard.yaml` | ✅ v1.0 | traffic (top 10 mês) → strategist (insight) → copy/designer (input iteração) | Cron mensal | — |
+| 72 | `competitor-creative-lib.yaml` | ✅ v1.0 | scout (scrape biblioteca anúncios concorrente) → strategist → copy | Cron semanal | — |
 
 ### Categoria 13 — Manutenção recorrente (5) [Sprint 7]
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 73 | `lookalike-refresh.yaml` | 🔴 P1 | traffic (atualiza LAL com base nova) → qa | Cron mensal | — |
-| 74 | `custom-audience-hygiene.yaml` | 🔴 P2 | traffic (remove < 1000) → qa | Cron trimestral | — |
-| 75 | `pixel-event-validation.yaml` | 🔴 P1 | traffic (testa todos eventos) → qa | Cron mensal | — |
-| 76 | `icp-refinement.yaml` | 🔴 P2 | strategist (analisa dados reais) → copy (atualiza ICP) | Cron trimestral | — |
-| 77 | `brand-voice-update.yaml` | 🔴 P3 | strategist → copy (style guide) → qa | Cron anual | — |
+| 73 | `lookalike-refresh.yaml` | ✅ v1.0 | traffic (atualiza LAL com base nova) → qa | Cron mensal | — |
+| 74 | `custom-audience-hygiene.yaml` | ✅ v1.0 | traffic (remove < 1000) → qa | Cron trimestral | — |
+| 75 | `pixel-event-validation.yaml` | ✅ v1.0 | traffic (testa todos eventos) → qa | Cron mensal | — |
+| 76 | `icp-refinement.yaml` | ✅ v1.0 | strategist (analisa dados reais) → copy (atualiza ICP) | Cron trimestral | — |
+| 77 | `brand-voice-update.yaml` | ✅ v1.0 | strategist → copy (style guide) → qa | Cron anual | — |
 
 ### Categoria 14 — Scout / Inteligência (1 — já listada parcialmente)
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 78 | `inteligencia-semanal.yaml` | 🔴 P2 | scout (scrape concorrência) → scout (SWOT) → cs (envia insight) | Cron semanal | — |
+| 78 | `inteligencia-semanal.yaml` | ✅ v1.0 | scout (scrape concorrência) → scout (SWOT) → cs (envia insight) | Cron semanal | — |
 
 ### Categoria 15 — WhatsApp orquestração (1)
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 79 | `whatsapp-orquestracao.yaml` | 🔴 P2 | whats (recebe) → whats (triagem) → [agente relevante] OR handoff humano | Webhook WhatsApp | — |
+| 79 | `whatsapp-orquestracao.yaml` | ✅ v1.0 | whats (recebe) → whats (triagem) → [agente relevante] OR handoff humano | Webhook WhatsApp | — |
 
 ### Categoria 16 — CEO governo (5)
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 80 | `review-portfolio-mensal.yaml` | 🔴 P2 | ceo + fin (MRR) + coo (ops status) | Cron mensal | Saúde negócio |
-| 81 | `okrs-trimestrais.yaml` | 🔴 P3 | ceo → coo (cascade) | Cron trimestral | — |
-| 82 | `analise-portfolio.yaml` | 🔴 P3 | ceo + fin + cs | Pedido | — |
-| 83 | `decisao-estrategica.yaml` | 🔴 P3 | ceo (estrutura decisão) → coo (executa se aplicável) | Pedido | — |
-| 84 | `crise-negocio.yaml` | 🔴 P3 | ceo → coo → fin → cs | Crise (perda cliente grande, etc) | — |
+| 80 | `review-portfolio-mensal.yaml` | ✅ v1.0 | ceo + fin (MRR) + coo (ops status) | Cron mensal | Saúde negócio |
+| 81 | `okrs-trimestrais.yaml` | ✅ v1.0 | ceo → coo (cascade) | Cron trimestral | — |
+| 82 | `analise-portfolio.yaml` | ✅ v1.0 | ceo + fin + cs | Pedido | — |
+| 83 | `decisao-estrategica.yaml` | ✅ v1.0 | ceo (estrutura decisão) → coo (executa se aplicável) | Pedido | — |
+| 84 | `crise-negocio.yaml` | ✅ v1.0 | ceo → coo → fin → cs | Crise (perda cliente grande, etc) | — |
 
 ---
 
