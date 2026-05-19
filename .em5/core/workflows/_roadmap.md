@@ -5,8 +5,9 @@
 > Convenção: nome do yaml = `{categoria}-{escopo}.yaml` quando útil pra namespacing.
 
 **Última atualização:** 2026-05-19
-**Versão:** v1.0 (catálogo inicial)
+**Versão:** v1.1 (Sprint 1 — refactor P0 concluído)
 **Total catalogado:** 84 workflows (7 existentes + 77 propostos)
+**Status:** 4 ✅ saudáveis | 3 ✅ refatorados Sprint 1 | 77 🔴 pendentes
 
 ---
 
@@ -27,15 +28,17 @@
 
 ## SPRINT TRACKING
 
-### Sprint atual: **Sprint 0 — Roadmap**
-- [x] Catalogar 84 workflows neste arquivo
-- [ ] Validar com operador
+### Sprint atual: **Sprint 2 — Skills↔YAML** (next)
+
+### Sprints concluídos
+- ✅ **Sprint 0 — Roadmap** (catálogo 84 workflows)
+- ✅ **Sprint 1 — Refactor P0** (onboarding-cliente v2.0 + lancamento v2.0 + ciclo-campanha v2.1)
 
 ### Próximos sprints planejados
 
 | Sprint | Escopo | Workflows | Estimativa |
 |--------|--------|-----------|-----------|
-| **Sprint 1 — Refactor P0** | Corrigir débito dos 3 workflows incompletos | 3 | ~3h |
+| ~~**Sprint 1 — Refactor P0**~~ | ~~Corrigir débito dos 3 workflows incompletos~~ | ~~3~~ | ✅ Concluído |
 | **Sprint 2 — Skills↔YAML** | Criar yaml pras 3 skills multi-agent sem workflow | 3 | ~3h |
 | **Sprint 3 — Ativar @fin + @vendas** | Pipelines financeiros e comerciais | 2 | ~3h |
 | **Sprint 4 — Conteúdo orgânico crítico** | 5 formatos mais usados | 5 | ~5h |
@@ -55,12 +58,12 @@
 
 | # | Workflow | Status | Agentes | Trigger | Notas |
 |---|----------|--------|---------|---------|-------|
-| 1 | `ciclo-campanha.yaml` | 🟡 P0 | strategist → [traffic+copy+design ‖] → qa → traffic → cs | Skill `/campanha` | Refactor: inserir gate `@fin.verifica-budget` antes do publish |
+| 1 | `ciclo-campanha.yaml` | ✅ v2.1 | coo → strategist → [traffic+copy+design ‖] → qa → fin (budget) → traffic → cs | Skill `/campanha` | **Sprint 1:** gate `@fin.verificar-budget` inserido antes publish |
 | 2 | `iteracao-criativa.yaml` | ✅ | traffic → copy → designer → qa → traffic | Skill `/iterar` | OK |
 | 3 | `google-ads.yaml` | ✅ | traffic → copy → qa → traffic → cs | Skill — | OK |
 | 4 | `social-media.yaml` | ✅ | strategist → copy → designer → qa → cs | — | OK (mas será deprecado conforme criamos formatos específicos) |
-| 5 | `lancamento.yaml` | 🟡 P0 | coo → strategist → copy → designer → traffic → qa → cs | Pedido lançamento | Refactor: expandir 4 → 11 steps (pré/durante/pós) |
-| 6 | `onboarding-cliente.yaml` | 🟡 P0 | cs (7 steps) | Skill `/onboard` | Refactor: add fases @fin (cadastro Asaas) + @strategist (plano-inicial) |
+| 5 | `lancamento.yaml` | ✅ v2.0 | coo + fin + strategist + scout + copy + designer + traffic + qa + whats + cs | Pedido lançamento | **Sprint 1:** expandido 4 → 17 steps (pré/durante/pós) + @fin/@scout/@whats |
+| 6 | `onboarding-cliente.yaml` | ✅ v2.0 | cs → fin (Asaas) → cs → strategist (plano-inicial) → qa → cs | Skill `/onboard` | **Sprint 1:** add fases @fin (cadastro Asaas + primeira cobrança) + @strategist (plano-inicial) + QA gate |
 | 7 | `construcao-ciclo-completo.yaml` | ✅ | arq → builder → reviewer | Skill `/construir` | OK (meta-time) |
 
 ### Categoria 2 — Skills sem yaml (3) [Sprint 2]

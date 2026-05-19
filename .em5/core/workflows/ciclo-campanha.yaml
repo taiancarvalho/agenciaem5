@@ -1,10 +1,14 @@
 # Workflow: Ciclo de Campanha
-# Versao: 2.0 (wave pattern + on-failure diagnosis)
-# Agentes: strategist → [traffic+copywriter+designer paralelo] → qa → traffic → cs
+# Versao: 2.1 (Sprint 1 — add gate @fin.verificar-budget antes do publish + orquestrador @coo formal)
+# Agentes: coo (orquestra) → strategist → [traffic+copy+designer ‖] → qa → fin (budget) → traffic (publish) → cs
 
 nome: "ciclo-campanha"
 descricao: "Fluxo completo de criacao, producao e publicacao de campanha"
-gatilho: "Board do cliente completo (board-cliente.md gerado pelo @cs)"
+versao: "2.1"
+gatilho: "Board do cliente completo (board-cliente.md gerado pelo @cs) OU skill /campanha"
+agente_orquestrador: "coo"  # CLAUDE.md Regra 1 — main thread não orquestra
+agente_responsavel_entrega: "cs"
+qa_gate: true
 
 # ----------------------------------------------------------------
 # WAVES: grupos de tasks com sincronizacao explicita
@@ -105,11 +109,28 @@ waves:
           - "produzir-criativos"
           - "estruturar-campanha"
 
+      - etapa: "verificar-budget"
+        agente: "fin"
+        task: "calcular-roi-cliente.md"
+        entrada:
+          - "trafego/campanhas-ativas.md (budget proposto por campanha)"
+          - "clientes/{nome}/financeiro/ (status pagamentos + saldo disponivel)"
+          - "em5-config.yaml (limite_budget_sem_aprovacao)"
+        saida: "clientes/{nome}/financeiro/aprovacao-budget-{YYYY-MM-DD}.md"
+        veredictos: ["APROVADO", "PENDENTE_PAGAMENTO_CLIENTE", "INSUFICIENTE", "EXCEDE_LIMITE"]
+        dependencia: "validar-tudo"
+        on-failure:
+          PENDENTE_PAGAMENTO_CLIENTE: "@coo congela publish + @cs comunica cliente + @whats lembrete pagamento"
+          INSUFICIENTE: "@coo congela publish + @ceo decide (cobranca extra ou reduzir escopo)"
+          EXCEDE_LIMITE: "@coo escala @ceo aprovacao manual"
+        importante: "Sem este gate, agencia publicou campanha de cliente inadimplente em 2025 (incident em5 v1.2)"
+
       - etapa: "publicar-campanha"
         agente: "traffic"
-        entrada: "veredicto APROVADO, criativos finais, estrutura pronta"
+        entrada: "veredicto APROVADO @qa + APROVADO @fin, criativos finais, estrutura pronta"
         saida: "campanha ativa na plataforma"
-        dependencia: "validar-tudo"
+        dependencia: "verificar-budget"
+        condicao: "verificar-budget.veredicto == APROVADO"
         ferramenta: "Composio MCP (Meta Ads / Google Ads)"
 
   wave-5-acompanhamento:

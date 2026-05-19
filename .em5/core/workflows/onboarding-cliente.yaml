@@ -1,53 +1,132 @@
 # Workflow: Onboarding de Cliente
-# Versao: 1.0
-# Agente responsavel: CS (Sol)
+# Versao: 2.0 (Sprint 1 — add fases @fin Asaas + @strategist plano inicial)
+# Agentes: cs (board) → fin (Asaas + cobranca) → strategist (plano-inicial) → cs (handoff)
 
 nome: "onboarding-cliente"
-descricao: "Recebe cliente fechado e entrega cliente documentado, organizado e pronto para estrategia"
-gatilho: "Cliente fechou com a agencia"
-agente_responsavel: "cs"
+descricao: "Recebe cliente fechado → workspace + Asaas + briefing + tracking + plano inicial → cliente pronto pra primeira campanha"
+versao: "2.0"
+gatilho: "Cliente fechou com a agencia (acionado por @vendas via prospec-fechamento.yaml ou diretamente por @ceo)"
+agente_orquestrador: "coo"  # CLAUDE.md Regra 1 — main thread não orquestra
+agente_responsavel_entrega: "cs"
+qa_gate: true  # @qa valida plano-inicial + tracking antes do handoff final
+
+inputs:
+  - "nome cliente"
+  - "dados de fechamento (contato, plano contratado, valor mensal)"
+
+outputs:
+  - "clientes/{nome}/ (workspace completo)"
+  - "clientes/{nome}/onboarding/briefing-final.md"
+  - "clientes/{nome}/setup-tecnico/status.md"
+  - "clientes/{nome}/estrategia/plano-inicial.md"
+  - "clientes/{nome}/financeiro/asaas-cliente.json"
+  - "clientes/{nome}/financeiro/primeira-cobranca.json"
+  - "clientes/{nome}/operacao/qa-verdict-onboarding-{YYYY-MM-DD}.md"
 
 sequencia:
-  - etapa: "coletar-dados-iniciais"
+
+  # ===== FASE 1: SETUP INICIAL =====
+  - etapa: "criar-workspace"
     agente: "cs"
-    entrada: "nome do cliente, contato principal"
-    saida: "workspace criado em clientes/{nome}/"
+    task: "iniciar-onboarding.md"
+    entrada: "nome cliente, dados fechamento"
+    saida: "clientes/{nome}/ (estrutura canonica)"
     dependencia: nenhuma
 
-  - etapa: "coletar-briefing"
+  - etapa: "cadastrar-asaas"
+    agente: "fin"
+    task: "cadastrar-cliente-asaas.md"
+    entrada: "dados fechamento (CNPJ/CPF, email, telefone, plano)"
+    saida: "clientes/{nome}/financeiro/asaas-cliente.json (customer_id)"
+    dependencia: "criar-workspace"
+    composio_mcp: "asaas"  # Exceção MCP nativo, ver ~/.claude/rules/mcp-servers.md
+
+  - etapa: "gerar-primeira-cobranca"
+    agente: "fin"
+    task: "criar-cobranca-asaas.md"
+    entrada: "asaas-cliente.json, plano contratado, data primeiro pagamento"
+    saida: "clientes/{nome}/financeiro/primeira-cobranca.json + link pagamento"
+    dependencia: "cadastrar-asaas"
+
+  # ===== FASE 2: COLETA DE INFORMAÇÕES =====
+  - etapa: "coletar-board"
     agente: "cs"
-    entrada: "template briefing-perguntas.md, disponibilidade do cliente"
-    saida: "respostas estruturadas no briefing"
-    dependencia: "coletar-dados-iniciais"
+    task: "coletar-board.md"
+    entrada: "template board-cliente.md, contato cliente"
+    saida: "clientes/{nome}/onboarding/board-cliente.md (preenchido)"
+    dependencia: "criar-workspace"
 
   - etapa: "gerar-briefing-final"
     agente: "cs"
-    entrada: "respostas coletadas, template briefing-final.md"
+    task: "gerar-briefing-final.md"
+    entrada: "board-cliente.md + respostas adicionais"
     saida: "clientes/{nome}/onboarding/briefing-final.md"
-    dependencia: "coletar-briefing"
+    dependencia: "coletar-board"
 
+  # ===== FASE 3: SETUP TÉCNICO =====
   - etapa: "listar-acessos"
     agente: "cs"
-    entrada: "canais escolhidos (Meta, Google, etc.)"
-    saida: "lista de acessos necessarios enviada ao cliente"
+    task: "listar-acessos.md"
+    entrada: "canais do plano contratado (Meta, Google, GA4, etc.)"
+    saida: "clientes/{nome}/setup-tecnico/acessos-necessarios.md (enviado cliente)"
     dependencia: "gerar-briefing-final"
+
+  - etapa: "setup-tecnico"
+    agente: "cs"
+    task: "setup-tecnico.md"
+    entrada: "acessos recebidos do cliente"
+    saida: "clientes/{nome}/setup-tecnico/status.md (BM, ad_account, GA4, pixel)"
+    dependencia: "listar-acessos"
 
   - etapa: "validar-tracking"
     agente: "cs"
-    entrada: "acessos recebidos, checklist-tracking.md"
-    saida: "status-do-tracking.md preenchido"
-    dependencia: "listar-acessos"
+    task: "validar-tracking.md"
+    entrada: "status.md preenchido"
+    saida: "clientes/{nome}/setup-tecnico/tracking-validado.md"
+    dependencia: "setup-tecnico"
 
-  - etapa: "registrar-status-tecnico"
-    agente: "cs"
-    entrada: "resultado validacao de tracking"
-    saida: "setup-tecnico/status.md atualizado"
-    dependencia: "validar-tracking"
-
-  - etapa: "entregar-para-estrategia"
-    agente: "cs"
-    entrada: "briefing-final.md + status-tecnico.md prontos"
-    saida: "handoff para @strategist"
+  # ===== FASE 4: ESTRATÉGIA INICIAL =====
+  - etapa: "plano-inicial"
+    agente: "strategist"
+    task: "criar-plano-estrategico.md"
+    entrada: "briefing-final.md + tracking-validado.md"
+    saida: "clientes/{nome}/estrategia/plano-inicial.md (posicionamento, ICP, canais, KPIs alvo, hipoteses)"
     dependencia:
       - "gerar-briefing-final"
-      - "registrar-status-tecnico"
+      - "validar-tracking"
+
+  # ===== FASE 5: QA + HANDOFF =====
+  - etapa: "qa-onboarding"
+    agente: "qa"
+    task: "validar-onboarding.md"  # nova task — criar Sprint 1.B
+    entrada: "briefing-final.md + status.md + plano-inicial.md + asaas-cliente.json"
+    saida: "clientes/{nome}/operacao/qa-verdict-onboarding-{YYYY-MM-DD}.md"
+    dependencia: "plano-inicial"
+    veredictos: ["APROVADO", "REVISAO", "BLOQUEADO"]
+
+  - etapa: "kickoff-call"
+    agente: "cs"
+    task: "preparar-reuniao.md"  # gancho pra workflow kickoff-call.yaml (Sprint 5)
+    entrada: "qa-verdict APROVADO"
+    saida: "kickoff agendado + materiais prontos"
+    dependencia: "qa-onboarding"
+    condicao: "qa-verdict == APROVADO"
+
+  - etapa: "handoff-para-ops"
+    agente: "cs"
+    task: "gerar-proximos-passos.md"
+    entrada: "todos artefatos acima"
+    saida: "clientes/{nome}/operacao/proximos-passos.md (primeira campanha agendada)"
+    dependencia: "kickoff-call"
+
+# ===== ON FAILURE =====
+on_failure:
+  qa_bloqueado: "@coo escala pra @ceo + congela onboarding ate resolucao"
+  asaas_falha: "@coo aciona @fin pra retry, escala @ceo se 3 tentativas"
+  cliente_nao_responde: "@cs registra em registrar-interacao.md + @coo decide pause/cancel apos 7d"
+
+# ===== METRICAS =====
+metricas:
+  tempo_medio_alvo: "5-7 dias uteis (do fechamento ao handoff)"
+  taxa_aprovacao_qa: "> 90%"
+  inadimplencia_primeiro_mes: "< 5%"
