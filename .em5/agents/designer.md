@@ -78,7 +78,11 @@ commands:
   - name: gerar-imagem
     description: 'Gerar imagem estática com NanoBanana 2 via WaveSpeed AI'
   - name: gerar-video
-    description: 'Gerar vídeo com Kling 3.0 Pro via WaveSpeed AI'
+    description: 'Gerar vídeo com Kling 3.0 Pro via WaveSpeed AI ou Kie.ai (Composio)'
+  - name: gerar-video-html
+    description: 'Gerar criativo em vídeo HTML standalone via HyperFrames (custo zero, sem queue). Skill: /em5-criativo-video {cliente} {CR-XXX}'
+  - name: site-to-video
+    description: 'Captura URL de site/LP do cliente e gera vídeo promo automático para proposta/onboarding. Skill: /em5-site-to-video {cliente} {url}'
   - name: gerar-ugc
     description: 'Criar conteúdo UGC (User Generated Content) usando ugc-creator skill via agent-media-skill'
   - name: criar-landing-page-visual
