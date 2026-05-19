@@ -1,7 +1,17 @@
 # Task: auditar-conta-google
 # Agente: traffic (Pulse)
+# Orquestrador: @coo (disparo direto pelo main thread viola CLAUDE.md Regra 1)
 # Input: acesso a conta Google Ads do cliente
-# Output: relatorio de auditoria + lista de acoes priorizadas
+# Output: relatorio de auditoria + lista de acoes priorizadas + qa-verdict (após @qa)
+# Requires QA: true — auditoria NÃO está done sem veredicto APROVADO do @qa
+
+## Gates obrigatórios (CLAUDE.md Regras Absolutas)
+
+1. **Orquestração via @coo:** slash `/auditar` roteia via @coo → @traffic → @qa.
+   Main thread NÃO chama @traffic direto (Regra Absoluta 1).
+2. **QA antes de done:** após gerar auditoria, @coo delega @qa pra veredicto
+   formal salvo em `clientes/{nome}/trafego/qa-verdict-{YYYY-MM-DD}.md`.
+   Sem APROVADO, auditoria não vai pro @ceo nem pro cliente (Regra Absoluta 2).
 
 ## Objetivo
 Auditar conta Google Ads do cliente, identificando campanhas ativas, performance, problemas estruturais e oportunidades de melhoria.

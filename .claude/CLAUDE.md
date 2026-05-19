@@ -109,9 +109,27 @@ Voce → @ceo (traduz intencao) → @coo (le workflow, delega)
 
 ---
 
-## Regra absoluta
+## Regras absolutas (NÃO violar)
 
-**Nada vai ao cliente sem veredicto APROVADO do @qa (Crivo).**
+### 1. Main thread NÃO orquestra operações multi-agente
+
+Toda operação que envolve 2+ agentes operacionais (@traffic, @cs, @copywriter,
+@designer, @scout, @whats, @qa) DEVE passar por `@ceo → @coo`.
+
+**Proibido:** main thread chamar `Agent(subagent_type=traffic)` ou qualquer
+operacional diretamente quando workflow envolve sequência/paralelo de agentes.
+Pular @coo viola Constitution Art. II (Autoridade do Agente) e Art. IV
+(Contexto Reduzido) — vimos isso na auditoria 4 contas CNA 2026-05-19.
+
+**Exceção:** operação single-agent isolada (ex: "@traffic mostra status conta X")
+pode ir direto. Multi-agent ou stateful (auditoria + relatório + QA) → @coo
+obrigatório.
+
+Slash commands operacionais (`/auditar`, `/campanha`, `/relatorio`, `/iterar`)
+JÁ ROTEAM via @coo — siga o template, não otimize pulando camadas.
+
+### 2. Nada vai ao cliente sem veredicto APROVADO do @qa (Crivo)
+
 QA nao aprova por pressao. BLOQUEADO significa bloqueado.
 
 ---
