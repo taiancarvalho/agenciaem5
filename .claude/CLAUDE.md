@@ -68,6 +68,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/lint-pre-qa` | Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa |
 | `/em5-brainstorm` | Brainstorm estruturado antes de decisão criativa (adapter de `superpowers:brainstorming`) |
 | `/em5-verify` | Self-check de artefato antes de marcar task done (adapter de `superpowers:verification-before-completion`) |
+| `/em5-roteiro-reels` | Roteiro Reels IG focado em gerar comentários (adapter de `instant-value-reels`) |
+| `/em5-call-para-sop` | Transcrição de call → SOP estruturado versionado (adapter de `generating-structured-sops`) |
 | `/status` | Resumo operacional de um cliente |
 | `/saude` | Health check completo |
 
