@@ -1,0 +1,29 @@
+nome: "whatsapp-sdr-qualificacao"
+descricao: "Inbound WhatsApp — bot qualifica antes de passar pra vendedor humano (poupa SDR humano de lead frio)"
+versao: "1.0"
+gatilho: "Webhook WhatsApp recebe mensagem nova (numero nao conhecido) OR form site -> WhatsApp"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats"
+qa_gate: true
+modo: "rascunho-padrao"
+
+sequencia:
+  - {id: 1, etapa: "receber-inbound", agente: "whats", task: "receber-mensagem.md", saida: "mensagem + numero + horario"}
+  - {id: 2, etapa: "saudacao-inicial", agente: "whats", saida: "resposta automatica < 30s — humaniza + apresenta agencia"}
+  - {id: 3, etapa: "perguntas-qualificacao", agente: "whats", saida: "5 perguntas curtas (negocio + objetivo + budget + prazo + decisor)"}
+  - {id: 4, etapa: "scoring", agente: "vendas", saida: "score qualificacao (FRIO/MORNO/QUENTE/PRONTO)"}
+  - {id: 5, etapa: "rotear-handoff", agente: "coo", routing: {QUENTE: "vendedor humano imediato", PRONTO: "agendar diagnostico", MORNO: "nutrir + reativacao 30d", FRIO: "agradecer + opt-in nurturing"}}
+
+metricas:
+  taxa_qualificacao_correta: ">= 85% (humano valida amostra)"
+  tempo_primeira_resposta: "< 30s"
+  taxa_handoff_quente: ">= 30% dos inbound"
+
+stop_rules:
+  - "cliente pergunta complexa fora playbook → handoff humano imediato"
+  - "tom irritado detectado → handoff humano"
+  - "pediu cancelamento → @cs"
+
+notas:
+  - "Bot NUNCA finge ser humano — sempre identifica como assistente IA"
+  - "Vendedor humano sempre chamado por nome real quando handoff"

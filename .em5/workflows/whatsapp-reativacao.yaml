@@ -1,0 +1,34 @@
+nome: "whatsapp-reativacao"
+descricao: "Cliente parado X meses volta pro radar — reativacao com gancho real (nao spray-and-pray)"
+versao: "1.0"
+gatilho: "Cron mensal scan base (clientes inativos 3-12 meses) OR oportunidade manual @cs"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats + vendas"
+qa_gate: true
+modo: "rascunho-padrao"
+
+criterios_elegibilidade:
+  inativo_3_a_6_meses: "PRIORIDADE — quente ainda"
+  inativo_6_a_12_meses: "MEDIO — vale tentar com gancho real"
+  inativo_12_meses_OR_mais: "FRIO — so se gancho excepcional (case + oferta)"
+  ja_disse_NAO_explicito: "NUNCA reativar"
+  ja_perdido_3_meses: "Esperar mais 6 meses"
+
+sequencia:
+  - {id: 1, etapa: "scan-base-inativos", agente: "vendas", saida: "lista clientes elegiveis"}
+  - {id: 2, etapa: "pesquisar-cliente-individualmente", agente: "vendas", task: "pesquisar-prospect.md", saida: "atualizacao contexto (mudou de empresa? ainda no mesmo nicho? rodando ads?)"}
+  - {id: 3, etapa: "criar-gancho-real", agente: "copywriter", saida: "1 mensagem com gancho especifico (case relevante + observacao sobre negocio cliente + pergunta aberta)"}
+  - {id: 4, etapa: "qa-mensagem-reativacao", agente: "qa", checklist: ["gancho REAL nao generico", "personalizada", "sem 'oi sumido' OR 'voltei aqui'", "pergunta aberta", "opt-out claro"]}
+  - {id: 5, etapa: "enviar-controlado", agente: "whats", saida: "max 10 mensagens/dia reativacao (volume baixo, qualidade alta)"}
+  - {id: 6, etapa: "monitorar-resposta-30d", agente: "vendas", saida: "classifica respostas + trigger prospec-fechamento se quente"}
+
+proibido:
+  - "Spray-and-pray (mesma mensagem 100 clientes)"
+  - "'Oi sumido' ou similar (fraco)"
+  - "Mentir sobre razao do contato"
+  - "Voltar mais de 1x em 90d"
+
+metricas:
+  taxa_resposta_alvo: ">= 15% (qualidade do gancho mostra)"
+  taxa_re_fechamento: ">= 5% dos reativados retornam cliente"
+  ROI_reativacao: ">= 10x CAC normal (cliente conhecido = menor friccao)"

@@ -1,0 +1,109 @@
+# Workflow: Abertura de Semana (ritual humano 30min)
+# Versao: 1.0 (PR-B)
+nome: "abertura-semana"
+descricao: "Ritual humano de 30min toda segunda 8h — 3 prioridades + 1a entrega + revisa ledger semana anterior"
+versao: "1.0"
+gatilho: "Skill `/abertura-semana` OU cron segunda 8h (manual no Desktop, automatico CLI)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "ceo"
+qa_gate: false
+duracao_alvo: "30min"
+
+inputs:
+  - "log-operacional.md ultima semana (todos clientes ativos)"
+  - "proximos-passos.md cada cliente"
+  - "memoria/notas-sessao.md ultimas entradas"
+  - "perfil-negocio.md cada cliente (filtra workflows relevantes)"
+
+outputs:
+  - "operacao/abertura-semana-{YYYY-SS}.md (3 prioridades + plano semana)"
+  - "1 entrega real gerada da prioridade #1"
+  - "ledger arquivado/continuado/delegado"
+
+sequencia:
+
+  - id: 1
+    etapa: "revisar-semana-anterior"
+    agente: "coo"
+    task: "consolidar-e-reportar.md"
+    saida: "snapshot semana passada (entregue/pendente/atrasado) por cliente"
+    leitura:
+      - "operacao/log-operacional.md ultimos 7 dias"
+      - "operacao/proximos-passos.md status atual"
+    diferenciacao:
+      ENTREGUE: "task done + QA aprovado + cliente sabe"
+      PENDENTE: "iniciado mas nao concluido"
+      ATRASADO: "deadline passou — investigar"
+
+  - id: 2
+    etapa: "consultar-ceo-prioridades"
+    agente: "ceo"
+    saida: "3 prioridades estrategicas da semana (cross-cliente OR cliente especifico)"
+    framework: "Eisenhower — escolhe Importante+NaoUrgente, evita Bombeiro (Urgente+Importante)"
+    pergunta_padrao: "Se eu nao fizer absolutamente nada essa semana, o que quebra? E o que so anda mais devagar?"
+
+  - id: 3
+    etapa: "validar-com-coo-execucao"
+    agente: "coo"
+    saida: "3 prioridades + workflows recomendados pra executar cada"
+    cruza_com:
+      - perfis_clientes_envolvidos
+      - capacidade_operacional_real
+      - bloqueantes_check_pre_operacional
+
+  - id: 4
+    etapa: "gerar-primeira-entrega"
+    agente: "coo"
+    saida: "1 entrega real da prioridade #1 (nao das 3 — uma so, dispatch workflow)"
+    importante: "Momentum > planejamento. Mata uma logo de cara."
+    exemplos_entregas_validas:
+      - "Relatorio cliente X periodo semana passada"
+      - "Auditoria conta Y para reuniao quarta"
+      - "Iteracao criativa Z baseado dados ultima semana"
+      - "Proposta cliente W follow-up D+3"
+
+  - id: 5
+    etapa: "registrar-plano-semana"
+    agente: "coo"
+    saida: "operacao/abertura-semana-{YYYY-SS}.md"
+    estrutura: |
+      # Abertura Semana {YYYY-SS}
+
+      **Data:** YYYY-MM-DD
+      **Duracao:** Xmin
+
+      ## Revisao semana anterior
+      - Entregues: X tasks
+      - Pendentes: Y (motivo + acao)
+      - Atrasadas: Z (escalation)
+
+      ## 3 Prioridades semana
+      1. {prioridade #1} — workflow {nome} — agente responsavel
+      2. {prioridade #2} — workflow {nome}
+      3. {prioridade #3} — workflow {nome}
+
+      ## Entrega gerada hoje (momentum)
+      - {tipo + cliente + path artefato}
+
+      ## Ledger atualizado
+      - X continua / Y arquivado / Z delegado humano
+
+  - id: 6
+    etapa: "atualizar-proximos-passos"
+    agente: "coo"
+    saida: "proximos-passos.md cada cliente atualizado com prioridade semana"
+
+on_failure:
+  ceo_indisponivel: "@coo executa com defaults (3 maiores ROI clientes ativos) + alerta @ceo"
+  nenhuma_entrega_gerada: "Sinal grave — operacao parada. Escalation imediata"
+
+metricas:
+  duracao_real: "<= 30min"
+  taxa_entrega_segunda: "100% (sempre 1 entrega gerada na segunda)"
+  taxa_aderencia_3_prioridades: ">= 80% das 3 entregues ate sexta"
+  taxa_review_sem_arrastar: "0 tasks 'pendente' carregadas 2+ semanas seguidas"
+
+notas:
+  - "Ritual HUMANO — nao automatico. Operador presente."
+  - "30min sagrados — nao expandir pra 1h (vira reuniao)"
+  - "Sexta 17h: workflow weekly-review-interna fecha o ciclo (existe em roadmap)"

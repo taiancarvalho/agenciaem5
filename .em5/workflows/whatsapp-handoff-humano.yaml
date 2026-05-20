@@ -1,0 +1,50 @@
+nome: "whatsapp-handoff-humano"
+descricao: "Bot detecta quando passar pra pessoa real — sinais explicitos + implicitos"
+versao: "1.0"
+gatilho: "Acionado por qualquer outro workflow WhatsApp quando deteccao handoff"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats + cs OR vendas"
+qa_gate: false
+modo: "execucao-imediata"  # crisis cliente — velocidade > rascunho
+
+sinais_handoff_explicitos:
+  - "cliente pede 'falar com humano' OR 'falar com pessoa' OR similar"
+  - "cliente menciona 'cancelar' OR 'reclamar' OR 'reembolso'"
+  - "cliente disse 'parar' OR 'sair' OR 'unsubscribe' OR similar"
+  - "cliente compartilhou documento legal (advogado em copia)"
+
+sinais_handoff_implicitos:
+  - "tom irritado detectado (CAPS, exclamacoes, palavroes leves)"
+  - "3 mensagens sem progresso (loop)"
+  - "pergunta complexa fora playbook agente"
+  - "menciona concorrente (sinal churn potencial)"
+  - "horario madrugada (urgencia inferida)"
+
+sequencia:
+  - {id: 1, etapa: "detectar-sinal", agente: "whats", saida: "sinal classificado (explicito/implicito + tipo)"}
+  - {id: 2, etapa: "decidir-quem-humano", agente: "coo", routing: {financeiro: "@fin humano", cancelamento: "@ceo + @cs", duvida_tecnica: "@cs", venda_quente: "@vendas humano", outro: "@cs default"}}
+  - {id: 3, etapa: "preparar-handoff", agente: "whats", saida: "contexto resumido pra humano (cliente + historico ultima conversa + ultima mensagem + sinal detectado)"}
+  - {id: 4, etapa: "avisar-cliente", agente: "whats", saida: "mensagem transparente: 'Vou te conectar com {nome humano} que vai te ajudar com isso. Te respondo em ate Xh.'"}
+  - {id: 5, etapa: "notificar-humano", agente: "coo", saida: "alerta humano via Slack/WhatsApp pessoal + link conversa + contexto"}
+  - {id: 6, etapa: "monitorar-tempo-resposta", agente: "coo", saida: "alerta se humano nao responde em SLA (15min horario comercial / 1h fora)"}
+  - {id: 7, etapa: "fechar-handoff", agente: "cs OR humano", saida: "registra: humano assumiu + bot pausa cadencias ativas com cliente"}
+
+SLA_resposta_humana:
+  horario_comercial: "<= 15min"
+  fora_horario: "<= 1h (madrugada = 8h)"
+  urgente_financeiro: "<= 5min"
+  urgente_cancelamento: "imediato @ceo"
+
+stop_rules_imediatas:
+  - "Cliente disse PARAR → bot pausa imediato TODAS cadencias com esse numero"
+  - "Cliente chamou advogado → @ceo + @fin imediato, bot zerado"
+
+metricas:
+  taxa_handoff_correto: ">= 95% (humano valida sample)"
+  tempo_medio_handoff_completo: "<= 1min (deteccao -> humano notificado)"
+  taxa_sla_cumprido: ">= 90%"
+
+notas:
+  - "Bot NUNCA mente sobre transferencia — sempre transparente"
+  - "Humano SEMPRE recebe contexto formatado — nao precisa scroll historico inteiro"
+  - "Apos handoff, cadencias automaticas desse cliente PAUSAM ate humano liberar"

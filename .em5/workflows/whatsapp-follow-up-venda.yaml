@@ -1,0 +1,33 @@
+nome: "whatsapp-follow-up-venda"
+descricao: "Follow-up venda parada — D+2, D+5, D+10, D+15 (break-up) — pra prospect com proposta enviada"
+versao: "1.0"
+gatilho: "Trigger automatico do prospec-fechamento.yaml step enviar-proposta"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats + vendas"
+qa_gate: false
+modo: "rascunho-padrao"
+
+cadencia:
+  D_1: "confirmacao recebimento (curto, sem cobrar)"
+  D_3: "checagem soft (ouviu duvidas?)"
+  D_5: "oferta call 15min sanar duvidas"
+  D_10: "case especifico + 1 pergunta direta"
+  D_15: "break-up educado (ultima cadencia)"
+  D_30: "move pra NUTRIR-3M OR PERDIDO"
+
+sequencia:
+  - {id: 1, etapa: "identificar-fase-cadencia", agente: "vendas", saida: "qual D da cadencia atual"}
+  - {id: 2, etapa: "gerar-mensagem-fase", agente: "copywriter", saida: "mensagem personalizada (nome cliente + dor + proposta)"}
+  - {id: 3, etapa: "enviar-whatsapp", agente: "whats", saida: "mensagem enviada"}
+  - {id: 4, etapa: "monitorar-resposta", agente: "whats", saida: "classifica (positivo/objecao/negativo/silencio)"}
+  - {id: 5, etapa: "rotear", agente: "coo", routing: {positivo: "@vendas humano", objecao: "responder objecao com playbook", negativo: "agradecer + registra perdido", silencio: "proxima fase cadencia"}}
+  - {id: 6, etapa: "fechar-cadencia-d15", agente: "vendas", task: "registrar-perdido.md", condicao: "chegou D+15 sem fechar", saida: "decisao NUTRIR-3M OR DESCARTAR"}
+
+stop_rules:
+  - "cliente diz nao OR pediu pra parar → cadencia pausa imediato"
+  - "cliente respondeu positivo → cadencia pausa, vendedor humano assume"
+
+metricas:
+  taxa_resposta_d_1: ">= 80%"
+  taxa_fechamento_pos_cadencia: ">= 20% dos que receberam D+1"
+  taxa_break_up_efetivo: ">= 30% respondem D+15 break-up"

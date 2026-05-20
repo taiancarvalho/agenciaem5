@@ -1,0 +1,30 @@
+nome: "whatsapp-cs-recorrente"
+descricao: "Cliente ativo — onboarding ongoing, ativacao, retencao, NPS leve via WhatsApp"
+versao: "1.0"
+gatilho: "Cron periodico cliente ativo OR trigger fase relacionamento (D+7, D+30, D+60, D+90)"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats + cs"
+qa_gate: false
+modo: "rascunho-padrao"
+
+cadencia_padrao_cliente_novo:
+  D_0: "boas-vindas + proximos passos onboarding"
+  D_1: "confirma acessos recebidos"
+  D_3: "check kickoff agendado"
+  D_7: "primeira semana — tudo claro?"
+  D_30: "1 mes — feedback qualitativo"
+  D_60: "2 meses — NPS leve (escala 0-10)"
+  D_90: "3 meses — QBR convite + renovacao"
+
+sequencia:
+  - {id: 1, etapa: "identificar-fase", agente: "cs", saida: "cliente em qual D do relacionamento"}
+  - {id: 2, etapa: "gerar-mensagem-fase", agente: "cs", task: "registrar-interacao.md", saida: "mensagem personalizada fase + contexto cliente especifico"}
+  - {id: 3, etapa: "qa-mensagem", agente: "cs", saida: "auto-review (sem placeholder, tom certo, link valido)"}
+  - {id: 4, etapa: "enviar", agente: "whats", saida: "mensagem enviada"}
+  - {id: 5, etapa: "monitorar-resposta", agente: "whats", saida: "captura resposta + classifica (engajado/silencio/problema)"}
+  - {id: 6, etapa: "escalar-sinais", agente: "coo", condicao: "silencio 2+ semanas OR problema reportado", saida: "trigger churn-prevention.yaml"}
+
+metricas:
+  taxa_resposta_d_30: ">= 70%"
+  nps_d_60_alvo: ">= 8"
+  taxa_silencio_2_semanas: "< 5% clientes (alerta churn)"

@@ -1,0 +1,28 @@
+nome: "whatsapp-prospec-frio"
+descricao: "Prospec outbound WhatsApp — frio/morno, pede permissao antes pitch (LGPD + Meta safe)"
+versao: "1.0"
+gatilho: "Skill `/whats-setup` modo prospec OR campanha outbound especifica"
+agente_orquestrador: "coo"
+agente_responsavel_entrega: "whats"
+qa_gate: true  # template MARKETING precisa @qa antes envio
+modo: "rascunho-padrao"  # ver system/rules/modo-rascunho.md
+
+sequencia:
+  - {id: 1, etapa: "validar-lista-lgpd", agente: "cs", saida: "lista origem documentada — opt-in OR legitimo interesse"}
+  - {id: 2, etapa: "criar-template-meta", agente: "copywriter", task: "escrever-copy.md", saida: "template MARKETING aprovado Meta (1 hook + 1 CTA + opt-out claro)"}
+  - {id: 3, etapa: "qa-template", agente: "qa", checklist: ["sem promessa exagerada", "sem CAPS abusivo", "opt-out explicito", "compliance perfil cliente"]}
+  - {id: 4, etapa: "submeter-aprovacao-meta", agente: "whats", task: "enviar-template.md", saida: "template_id aprovado"}
+  - {id: 5, etapa: "envio-controlado", agente: "whats", saida: "envio max 20/dia/numero, espacado 3-7s, horario 9h-21h"}
+  - {id: 6, etapa: "monitorar-respostas", agente: "whats", saida: "tag por intent — POSITIVO/NEGATIVO/STOP/PEDIU_INFO"}
+  - {id: 7, etapa: "handoff-positivo", agente: "coo", condicao: "intent==POSITIVO", saida: "trigger workflow prospec-fechamento se virou lead qualificado"}
+
+stop_rules:
+  - "cliente diz PARAR/STOP/SAIR → blocklist permanente"
+  - "3 mensagens sem resposta → pausa cadencia"
+  - "reclamou ao Meta → @ceo imediato + audit lista origem"
+  - "marca como spam Whatsapp → pausa numero + investiga"
+
+metricas:
+  taxa_resposta_alvo: ">= 5%"
+  taxa_stop_rate: "< 0.5%"
+  taxa_handoff_positivo: ">= 1.5%"

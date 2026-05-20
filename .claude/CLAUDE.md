@@ -81,6 +81,7 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 | `/cliente-novo` | Criar workspace de novo cliente |
 | `/perfil-cliente` | Classificar cliente em 1 dos 8 perfis operacionais (PN-01 a PN-08) |
 | `/check-cliente` | Verificação pré-operacional 35-itens (acessos + tracking + branding + financeiro + estratégia + compliance) |
+| `/abertura-semana` | Ritual humano 30min toda segunda — 3 prioridades + 1 entrega real + revisão ledger |
 | `/onboard` | Iniciar onboarding de cliente |
 | `/briefing` | Coletar briefing estruturado |
 | `/campanha` | Ciclo completo de campanha |

@@ -1,16 +1,40 @@
 nome: "whatsapp-orquestracao"
-descricao: "Orquestrador WhatsApp — recebe mensagem -> triagem -> agente certo OR handoff humano"
-versao: "1.0"
-gatilho: "Webhook WhatsApp Business OR WAHA"
+descricao: "Router central WhatsApp — recebe qualquer evento + roteia pra 1 dos 7 sub-fluxos especializados"
+versao: "2.0"  # v2 — agora router pra 7 sub-fluxos (PR-B)
+gatilho: "Webhook WhatsApp Business OR WAHA — qualquer evento (inbound/cron/trigger)"
 agente_orquestrador: "coo"
 agente_responsavel_entrega: "whats"
-qa_gate: false
+qa_gate: false  # router — gates ficam em cada sub-fluxo
+
+sub_fluxos_disponiveis:
+  prospec_frio: "whatsapp-prospec-frio.yaml — outbound LGPD-safe"
+  sdr_qualificacao: "whatsapp-sdr-qualificacao.yaml — inbound qualifica"
+  cs_recorrente: "whatsapp-cs-recorrente.yaml — cliente ativo D+0/1/7/30/60/90"
+  follow_up_venda: "whatsapp-follow-up-venda.yaml — proposta enviada D+1/3/5/10/15"
+  onboarding_cliente: "whatsapp-onboarding-cliente.yaml — pos contrato D+0/1/3/5/7"
+  reativacao: "whatsapp-reativacao.yaml — cliente inativo 3-12 meses"
+  handoff_humano: "whatsapp-handoff-humano.yaml — passa pra pessoa real"
 
 sequencia:
-  - {id: 1, etapa: "receber", agente: "whats", task: "receber-mensagem.md", saida: "mensagem capturada + contexto cliente"}
-  - {id: 2, etapa: "transcrever-se-audio", agente: "whats", task: "transcrever-audio.md", saida: "texto se audio"}
-  - {id: 3, etapa: "triagem", agente: "whats", saida: "intent (cobranca? duvida tecnica? feedback? agendamento? urgente?)"}
-  - {id: 4, etapa: "rotear", agente: "coo", routing: {cobranca: "@fin", duvida_tecnica: "@cs", feedback: "@cs", urgente: "@cs imediato OR handoff humano"}}
-  - {id: 5, etapa: "responder-OR-handoff", agente: "whats", task: "enviar-draft.md OR handoff-humano.md", saida: "resposta enviada OR escalada"}
-metricas: {tempo_primeira_resposta: "<= 15min horario comercial", taxa_resolucao_sem_humano: ">= 60%"}
-stop_rules: ["cliente pediu humano", "intent urgente nao resolvido", "loop > 3 mensagens sem progresso"]
+  - {id: 1, etapa: "receber-evento", agente: "whats", task: "receber-mensagem.md", saida: "evento + numero + horario + contexto cliente"}
+  - {id: 2, etapa: "transcrever-se-audio", agente: "whats", task: "transcrever-audio.md", condicao: "evento eh audio"}
+  - {id: 3, etapa: "classificar-tipo", agente: "whats", saida: "tipo (inbound novo / inbound conhecido / trigger cron / trigger workflow / sinal handoff)"}
+  - {id: 4, etapa: "rotear-sub-fluxo", agente: "coo", routing: {inbound_novo: "sdr_qualificacao", cliente_ativo_cron: "cs_recorrente", proposta_enviada_cron: "follow_up_venda", contrato_novo: "onboarding_cliente", cliente_inativo: "reativacao", outbound_campanha: "prospec_frio", sinal_handoff: "handoff_humano"}}
+  - {id: 5, etapa: "executar-sub-fluxo", agente: "coo", saida: "delegacao pro workflow especializado"}
+  - {id: 6, etapa: "monitorar-resultado", agente: "whats", saida: "log + classifica resultado pro retro"}
+
+stop_rules_globais:
+  - "cliente diz PARAR/STOP → blocklist permanente + pausa TODAS cadencias"
+  - "loop > 3 mensagens sem progresso → handoff humano"
+  - "tom irritado → handoff humano imediato"
+  - "menciona reclamacao formal/advogado → @ceo imediato"
+
+metricas:
+  tempo_primeira_resposta: "<= 15min horario comercial / <= 1h fora"
+  taxa_resolucao_sem_humano: ">= 60%"
+  taxa_handoff_correto: ">= 95%"
+
+notas:
+  - "v2.0 — antes era workflow unico, agora é router pros 7 sub-fluxos especializados"
+  - "Cada sub-fluxo tem qa_gate + modo: rascunho-padrao individual"
+  - "Operador habilita sub-fluxos um por vez via /whats-setup (gradual)"
