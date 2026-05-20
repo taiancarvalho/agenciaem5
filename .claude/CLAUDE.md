@@ -45,9 +45,7 @@ Antes da 1ª campanha real, rodar `/check-cliente` (35 itens — acessos + track
 | @copywriter | Eco ✍️ | Copy, angulos, adaptacao por canal |
 | @designer | Lux 🎨 | Criativos visuais, videos, UGC |
 | @qa | Crivo 🔍 | Validacao obrigatoria antes de qualquer publicacao |
-| @arq | Arq 🏛️ | Meta-time: entrevista user + desenha spec de componentes novos |
-| @builder | Cunha 🔨 | Meta-time: implementa componentes via Forge templates |
-| @reviewer | Lima 🧪 | Meta-time: valida componentes contra Constitution antes de commit |
+| @builder | Cunha 🔨 | Meta-time único — entrevista + implementa + valida componentes novos (era arq + builder + reviewer fundidos) |
 | @vendas | Caça 🎯 | Prospect → diagnóstico → proposta → fechamento de cliente |
 | @fin | Caixa 💰 | Mensalidades, inadimplência, ROI por cliente, MRR |
 | @scout | Espia 🔍 | Inteligência competitiva, scrape concorrência, SWOT, alertas |
