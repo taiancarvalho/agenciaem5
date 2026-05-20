@@ -89,7 +89,8 @@ check('Composio toolsets mínimos', 'MUST', () => {
 });
 
 check('Skill canônicas presentes', 'SHOULD', () => {
-  const required = ['setup', 'cliente-novo', 'campanha', 'auditar', 'dia', 'forge', 'aprender', 'override'];
+  // v2.4 (Cenário C): forge/aprender/override removidos. Adicionado pedir + ticket + construir
+  const required = ['setup', 'cliente-novo', 'campanha', 'auditar', 'dia', 'pedir', 'ticket', 'construir'];
   const cmdDir = path.join(ROOT, '.claude/commands');
   const present = fs.readdirSync(cmdDir).map((f) => f.replace('.md', ''));
   const missing = required.filter((c) => !present.includes(c));
