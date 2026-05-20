@@ -65,7 +65,19 @@
 - O próximo agente nunca depende de reconstituir contexto da conversa
 - Artefato = documento salvo com localização previsível
 
-**Violação:** Handoff dizendo "baseado no que conversamos" sem documento de referência.
+### Ticket vivo (v2.4+) — artefato canônico de demanda
+
+A partir de v2.4, **toda demanda multi-agente cria 1 ticket vivo** em `historico/{YYMMDD-clienteslug-tipo}/ticket.md`. Substitui sync manual antigo de 3 arquivos por cliente.
+
+- @coo cria ticket ANTES de despachar agente
+- Cada agente envolvido anota inline (yaml status + observações livres)
+- @coo passa SÓ path ticket pro subagente (não contexto duplicado)
+- Status global é prerrogativa @coo
+- Append-only nas anotações (histórico nunca deletado)
+
+Ver protocolo completo: `.em5/system/rules/protocolo-ticket-vivo.md`
+
+**Violação:** Handoff dizendo "baseado no que conversamos" sem documento de referência. Despachar agente sem criar ticket. Subagente editar step de outro agente.
 
 ---
 
