@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const ROOT = path.resolve(__dirname, '..', '..');
+const ROOT = path.resolve(__dirname, '..', '..', '..');
 const TEMPLATES = path.join(ROOT, '.em5/infra/setup/forge-templates');
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });

@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..', '..');
+const ROOT = path.resolve(__dirname, '..', '..', '..');
 const infra = require(path.join(ROOT, '.em5/infra/infrastructure/index.js'));
 
 const checks = [];
