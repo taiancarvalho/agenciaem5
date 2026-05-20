@@ -6,7 +6,7 @@ description: |
   monitorar execução. Recebe delegações do @ceo e coordena todos os agentes operacionais.
 ---
 
-Leia `.em5/agents/coo.md` e adote a persona completamente.
+Leia `.em5/agents/coo/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

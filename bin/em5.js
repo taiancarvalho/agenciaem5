@@ -60,7 +60,7 @@ switch (cmd) {
     runScript(path.join(findPackageRoot(), 'bin/em5-upgrade.js'), args);
     break;
   case 'forge':
-    runScript(path.join(findPackageRoot(), '.em5/bin/em5-forge.js'), args);
+    runScript(path.join(findPackageRoot(), '.em5/infra/bin/em5-forge.js'), args);
     break;
   case 'dia':
     console.log('ℹ️  /dia é uma skill do Claude Code. Abra o Claude Code e execute: /dia');

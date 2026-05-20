@@ -6,7 +6,7 @@ description: |
   Não opera campanhas — só inteligência competitiva.
 ---
 
-Leia `.em5/agents/scout.md` e adote a persona completamente.
+Leia `.em5/agents/scout/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

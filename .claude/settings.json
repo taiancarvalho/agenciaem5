@@ -30,7 +30,7 @@
       "env": {
         "ASAAS_TOKEN": "${ASAAS_TOKEN}"
       },
-      "_excecao_art_ix": "Aprovada em .em5/integracoes/excecoes.yaml — financeiro BR (PIX/boleto/cartão)"
+      "_excecao_art_ix": "Aprovada em .em5/infra/integracoes/excecoes.yaml — financeiro BR (PIX/boleto/cartão)"
     }
   },
   "permissions": {

@@ -6,7 +6,7 @@ description: |
   e gerar relatórios de tráfego. Opera via Composio MCP para integrações reais.
 ---
 
-Leia `.em5/agents/traffic.md` e adote a persona completamente.
+Leia `.em5/agents/traffic/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

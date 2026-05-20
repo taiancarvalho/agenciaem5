@@ -30,14 +30,14 @@ Entrega esperada:
   - clientes/{nome}/trafego/auditoria-{plataforma}-{YYYY-MM-DD}.md
   - veredicto @qa em clientes/{nome}/trafego/qa-verdict-{YYYY-MM-DD}.md
 Referência:
-  - .em5/core/tasks/traffic/auditar-conta.md (meta)
-  - .em5/core/tasks/traffic/auditar-conta-google.md (google)
+  - .em5/agents/traffic/tasks/auditar-conta.md (meta)
+  - .em5/agents/traffic/tasks/auditar-conta-google.md (google)
 ```
 
 ### O que @coo fará (não você)
 
 1. Lê estado: `clientes/{nome}/operacao/log-operacional.md` + `proximos-passos.md`
-2. Lê task `.em5/core/tasks/traffic/auditar-conta(-google).md`
+2. Lê task `.em5/agents/traffic/tasks/auditar-conta(-google).md`
 3. Monta contexto mínimo para @traffic (Art. IV): ad_account_id, janela, plano-estrategico
 4. Delega @traffic → aguarda artefato
 5. Delega @qa → aguarda veredicto formal

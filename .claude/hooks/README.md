@@ -21,7 +21,7 @@ Cada agente declara `model_tier` no seu YAML frontmatter:
 
 ### Learnings Capture (Fase 1.2)
 
-Hook PostToolUse `learnings-capture.sh` (planejado): após @qa retornar veredicto, append em `.em5/learnings/{YYYY-MM}/qa-bloqueios.md` se BLOQUEADO. Atualmente captura manual via agente.
+Hook PostToolUse `learnings-capture.sh` (planejado): após @qa retornar veredicto, append em `.em5/system/learnings/{YYYY-MM}/qa-bloqueios.md` se BLOQUEADO. Atualmente captura manual via agente.
 
 ## Hooks ativos
 

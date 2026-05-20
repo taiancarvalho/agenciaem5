@@ -4,7 +4,7 @@
 
 ## O que este comando faz
 
-1. Lê `.em5/core/data/estrutura-pastas.yaml` para conhecer estrutura padrão
+1. Lê `.em5/system/data/estrutura-pastas.yaml` para conhecer estrutura padrão
 2. Cria pasta `clientes/{slug}/` completa
 3. Inicializa logs operacionais com data atual
 4. **(Fase 13)** Pergunta se quer extrair DESIGN.md agora — dispara `/extrair-design` se sim

@@ -13,10 +13,10 @@ Execute o health check verificando cada item abaixo:
 ### 1. Estrutura Base
 - [ ] `.em5/` existe
 - [ ] `.em5/agents/` — 8 agentes presentes (ceo, coo, cs, strategist, traffic, copywriter, designer, qa)
-- [ ] `.em5/core/constitution.md` existe
-- [ ] `.em5/core/workflows/` — 6 workflows (onboarding-cliente, ciclo-campanha, iteracao-criativa, google-ads, social-media, lancamento)
-- [ ] `.em5/core/data/` — 8 arquivos de dados
-- [ ] `.em5/core/tasks/` — 8 pastas de tasks
+- [ ] `.em5/system/constitution.md` existe
+- [ ] `.em5/workflows/` — 6 workflows (onboarding-cliente, ciclo-campanha, iteracao-criativa, google-ads, social-media, lancamento)
+- [ ] `.em5/system/data/` — 8 arquivos de dados
+- [ ] `.em5/agents/` — 8 pastas de tasks
 
 ### 2. Claude Configuration
 - [ ] `.claude/CLAUDE.md` existe

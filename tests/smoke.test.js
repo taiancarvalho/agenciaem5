@@ -14,14 +14,14 @@ describe('em5 smoke tests', () => {
 
   // #1 — Validate retorna 0
   it('validate-em5 passa sem issues NON-NEGOTIABLE', () => {
-    const out = execSync('node .em5/bin/em5-validate.js', { cwd: ROOT, encoding: 'utf8' });
+    const out = execSync('node .em5/infra/bin/em5-validate.js', { cwd: ROOT, encoding: 'utf8' });
     expect(out).toContain('Todos os checks passaram');
     expect(out).not.toContain('🛑');
   });
 
   // #2 — Infrastructure health: todos módulos críticos OK
   it('infrastructure health reporta módulos críticos OK', () => {
-    const out = execSync('node .em5/infrastructure/index.js health', { cwd: ROOT, encoding: 'utf8' });
+    const out = execSync('node .em5/infra/infrastructure/index.js health', { cwd: ROOT, encoding: 'utf8' });
     const data = JSON.parse(out);
     const criticos = ['hooks', 'forge', 'gateMatrix', 'learnings', 'composio', 'constitution', 'config', 'agents'];
     for (const mod of criticos) {
@@ -31,7 +31,7 @@ describe('em5 smoke tests', () => {
 
   // #3 — Constitution tem 13 artigos com severidade declarada
   it('constitution tem 13 artigos (Arts. I–XIII)', () => {
-    const content = fs.readFileSync(path.join(ROOT, '.em5/core/constitution.md'), 'utf8');
+    const content = fs.readFileSync(path.join(ROOT, '.em5/system/constitution.md'), 'utf8');
     const requiredArticles = ['Filesystem First', 'Composio', 'Quality Gate', 'Learnings Perpétuos', 'Severity Gates', 'em Cinco Minutos', 'Construção Self-Service'];
     for (const art of requiredArticles) {
       expect(content).toContain(art);
@@ -70,7 +70,7 @@ describe('em5 Composio + Asaas (Art. IX v1.3)', () => {
     // Asaas tem que estar em excecoes.yaml se presente
     const externals = mcps.filter((m) => !['composio', 'context7'].includes(m));
     if (externals.length > 0) {
-      const excecoes = fs.readFileSync(path.join(ROOT, '.em5/integracoes/excecoes.yaml'), 'utf8');
+      const excecoes = fs.readFileSync(path.join(ROOT, '.em5/infra/integracoes/excecoes.yaml'), 'utf8');
       for (const mcp of externals) {
         expect(excecoes).toContain(`mcp_id: ${mcp}`);
       }

@@ -1,6 +1,6 @@
 # /aprender — Consulta Learnings do em5
 
-> Lê últimos 30 dias de `.em5/learnings/` e sugere padrões aplicáveis ao contexto.
+> Lê últimos 30 dias de `.em5/system/learnings/` e sugere padrões aplicáveis ao contexto.
 > Promessa em5: insight em ≤ 5 min.
 
 ## Uso
@@ -22,10 +22,10 @@
 ## Fluxo
 
 1. @coo (Nexus) recebe `/aprender $ARGUMENTS`
-2. Lê arquivos de `.em5/learnings/{ano-mes}/` (último mês completo + mês corrente)
+2. Lê arquivos de `.em5/system/learnings/{ano-mes}/` (último mês completo + mês corrente)
 3. Filtra por tags se houver flag `--nicho`, `--canal`, `--severity`
 4. Sintetiza: top 5 padrões, tendências, alertas
-5. Salva síntese em `.em5/learnings/_sinteses/{data}-{categoria}.md` se útil
+5. Salva síntese em `.em5/system/learnings/_sinteses/{data}-{categoria}.md` se útil
 6. Retorna direto pro user (≤ 5 min)
 
 ## Quando chamar

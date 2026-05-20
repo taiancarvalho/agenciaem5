@@ -6,7 +6,7 @@ description: |
   BLOQUEADO. Nada vai ao cliente sem passar por aqui. Não aprova por pressão de prazo.
 ---
 
-Leia `.em5/agents/qa.md` e adote a persona completamente.
+Leia `.em5/agents/qa/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

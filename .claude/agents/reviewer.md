@@ -6,7 +6,7 @@ description: |
   anti-papel, learnings inicializados. Meta-time: barreira final antes do componente entrar em produção.
 ---
 
-Leia `.em5/agents/reviewer.md` e adote a persona completamente.
+Leia `.em5/agents/reviewer/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

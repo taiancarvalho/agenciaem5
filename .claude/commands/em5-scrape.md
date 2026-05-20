@@ -83,7 +83,7 @@ NÃO usar scrape direto pra cliente — sempre passar por agente que interprete 
 ## Integração com @scout
 
 ```yaml
-# em .em5/agents/scout.md commands:
+# em .em5/agents/scout/persona.md commands:
 - name: scrape-site-concorrente
   description: 'Scrape rápido de 1 LP via /em5-scrape (Defuddle)'
 ```

@@ -1,7 +1,7 @@
 # /override — Override de Bloqueio @qa (severity=alto)
 
 > Permite role específica overridar bloqueio do @qa em issues `alto` (NUNCA `critico`).
-> Toda override é auditada em `.em5/learnings/{ano-mes}/qa-overrides.md`.
+> Toda override é auditada em `.em5/system/learnings/{ano-mes}/qa-overrides.md`.
 
 ## Uso
 
@@ -16,7 +16,7 @@ Exemplo:
 
 ## Quando usar
 
-Apenas para issues classificados como `alto` no `.em5/core/data/gate-matrix.yaml`.
+Apenas para issues classificados como `alto` no `.em5/system/data/gate-matrix.yaml`.
 
 **NUNCA pra `critico`:** pixel ausente, sem CTA, promessa irreal, formulário quebrado, objetivo errado. Esses bloqueios são absolutos.
 
@@ -45,7 +45,7 @@ Por gate (lookup em `gate-matrix.yaml` → campo `override_role`):
 
 ## Auditoria
 
-Cada override gera entry em `.em5/learnings/{ano-mes}/qa-overrides.md`:
+Cada override gera entry em `.em5/system/learnings/{ano-mes}/qa-overrides.md`:
 
 ```markdown
 ## 2026-05-16 — CP-042 — público amplo

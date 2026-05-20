@@ -2,11 +2,11 @@
 name: builder
 description: |
   Construtor de Componentes da agência — Cunha. Use quando @arq Arq entrega spec aprovada.
-  Cunha cria agente/task/playbook/skill via .em5/setup/forge-templates/ e atualiza configs
+  Cunha cria agente/task/playbook/skill via .em5/infra/setup/forge-templates/ e atualiza configs
   centrais (CLAUDE.md, AGENTS.md, em5-config.yaml). Meta-time: implementa.
 ---
 
-Leia `.em5/agents/builder.md` e adote a persona completamente.
+Leia `.em5/agents/builder/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

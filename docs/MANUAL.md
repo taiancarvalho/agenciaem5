@@ -163,8 +163,8 @@ Output:
 
 ```
 1. Revisar learnings do dia
-   ls .em5/learnings/{ano-mes}/
-   cat .em5/learnings/{ano-mes}/qa-bloqueios.md
+   ls .em5/system/learnings/{ano-mes}/
+   cat .em5/system/learnings/{ano-mes}/qa-bloqueios.md
 
 2. Validar conformidade
    /validate-em5
@@ -470,11 +470,11 @@ P4: Composio tem toolset Google Reviews?
 P5: Severity de review 1 estrela?
 > alto, escalar pra owner
 
-✓ Spec gerada: .em5/construcao/CT-001/spec.md
+✓ Spec gerada: .em5/infra/forge/CT-001/spec.md
 
 @builder Cunha implementando...
-✓ Criado: .em5/agents/reviews.md (Echo, persona)
-✓ Criado: .em5/core/tasks/reviews/monitorar-reviews.md
+✓ Criado: .em5/agents/reviews/persona.md (Echo, persona)
+✓ Criado: .em5/agents/reviews/tasks/monitorar-reviews.md
 ✓ Criado: skill /monitor-reviews
 ✓ Atualizado: CLAUDE.md, AGENTS.md, em5-config.yaml
 
@@ -497,7 +497,7 @@ feat: @reviews Echo + /monitor-reviews via /construir CT-001
 
 ### Model tier por agente
 
-Edita `.em5/agents/{agent}.md`, campo `model_tier`:
+Edita `.em5/agents/{agent}/persona.md`, campo `model_tier`:
 
 - `frontier` — Opus (decisões críticas)
 - `balanced` — Sonnet (default)
@@ -507,7 +507,7 @@ Default: ceo + qa + arq + reviewer = frontier; demais = balanced.
 
 ### Severity Gates customizados
 
-Edita `.em5/core/data/gate-matrix.yaml`:
+Edita `.em5/system/data/gate-matrix.yaml`:
 
 ```yaml
 gates:
@@ -530,7 +530,7 @@ Adiciona/remove conforme necessidade. Reinicia Claude Code após mudança.
 
 ### Hooks customizados
 
-Edita `.em5/hooks/registry.js` → `defaultHooks()`:
+Edita `.em5/infra/hooks/registry.js` → `defaultHooks()`:
 
 ```javascript
 reg.register('PreToolUse', {
@@ -541,7 +541,7 @@ reg.register('PreToolUse', {
 
 Aplica:
 ```bash
-node .em5/hooks/registry.js apply-claude
+node .em5/infra/hooks/registry.js apply-claude
 ```
 
 ---
@@ -623,7 +623,7 @@ node .em5/hooks/registry.js apply-claude
 ### Estrutura
 
 ```
-.em5/learnings/
+.em5/system/learnings/
 ├── _template.md
 ├── 2026-05/
 │   ├── qa-bloqueios.md
@@ -662,8 +662,8 @@ Agente sugere padrões aplicáveis.
 
 ```bash
 # Reviso o que aprendeu no mês passado
-ls .em5/learnings/2026-04/
-cat .em5/learnings/2026-04/copy-vitorias.md
+ls .em5/system/learnings/2026-04/
+cat .em5/system/learnings/2026-04/copy-vitorias.md
 ```
 
 Top patterns viram playbooks via `/forge playbook`.
@@ -695,7 +695,7 @@ Top patterns viram playbooks via `/forge playbook`.
 - `publico_amplo_demais` → alto (override: @strategist)
 - `nomenclatura_fora_padrao` → médio (auto-fix Pulse)
 
-Lista completa: [`.em5/core/data/gate-matrix.yaml`](../.em5/core/data/gate-matrix.yaml).
+Lista completa: [`.em5/system/data/gate-matrix.yaml`](../.em5/system/data/gate-matrix.yaml).
 
 ### Override de bloqueio
 
@@ -807,11 +807,11 @@ Se ROI < 1.5x → notifica @ceo (sinal de churn-risk).
 @whats Onda *enviar-template cliente-x cobranca_amigavel
 ```
 
-Templates em [`.em5/core/data/whatsapp-templates.yaml`](../.em5/core/data/whatsapp-templates.yaml).
+Templates em [`.em5/system/data/whatsapp-templates.yaml`](../.em5/system/data/whatsapp-templates.yaml).
 
 ### Templates por nicho
 
-Override por nicho em [`.em5/core/data/whats/templates-por-nicho.yaml`](../.em5/core/data/whats/templates-por-nicho.yaml).
+Override por nicho em [`.em5/system/data/whats/templates-por-nicho.yaml`](../.em5/system/data/whats/templates-por-nicho.yaml).
 
 Exemplo:
 - Cliente nicho `clinica-odonto` recebe template diferente do `saas-b2b`.
@@ -819,7 +819,7 @@ Exemplo:
 ### Stop rules absolutas
 
 ```yaml
-# .em5/core/data/whats-stop-rules.yaml
+# .em5/system/data/whats-stop-rules.yaml
 cliente_pediu_parar: permanente
 horario_silencioso: 22h-08h (exceto severity=crítico)
 max_mensagens_dia: 3
@@ -856,7 +856,7 @@ Quando dispara:
 ? Ângulos validados? "papai-presente", "rotina-organizada"
 ? KPIs alvo? CPL R$25, taxa agendamento 35%
 
-✓ .em5/playbooks/nicho-clinica-pediatria.md criado
+✓ .em5/agents/nicho-clinica-pediatria/persona.md criado
 ```
 
 @strategist Vera carrega automaticamente quando cliente novo tem `nicho: clinica-pediatria`.
@@ -918,7 +918,7 @@ Não diretamente. Cada instalação em5 = 1 agência. Pra multi-agência:
 
 ```bash
 # Move pra archive (não deleta permanente)
-mv clientes/cliente-x .em5/docs/archive/clientes/cliente-x-$(date +%Y%m%d)/
+mv clientes/cliente-x .em5/infra/docs/archive/clientes/cliente-x-$(date +%Y%m%d)/
 
 # OU delete definitivo (com cuidado)
 rm -rf clientes/cliente-x
@@ -933,7 +933,7 @@ npx em5@latest upgrade        # roda migrations preservando .env + agents custom
 
 ### "Como contribuo com playbooks?"
 
-PR no repo em5 com `.em5/playbooks/{seu-nicho}.md`. Após review, vira playbook oficial da comunidade.
+PR no repo em5 com `.em5/agents/{seu-nicho}/persona.md`. Após review, vira playbook oficial da comunidade.
 
 ### "E se Composio cair?"
 

@@ -6,7 +6,7 @@ description: |
   envio de relatórios ao cliente e geração de propostas comerciais.
 ---
 
-Leia `.em5/agents/cs.md` e adote a persona completamente.
+Leia `.em5/agents/cs/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

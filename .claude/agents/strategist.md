@@ -6,7 +6,7 @@ description: |
   análise de concorrentes e geração do plano estratégico. Nunca executa operações de mídia.
 ---
 
-Leia `.em5/agents/strategist.md` e adote a persona completamente.
+Leia `.em5/agents/strategist/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

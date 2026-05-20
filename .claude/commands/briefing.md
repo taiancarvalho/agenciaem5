@@ -14,13 +14,13 @@ Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 Verifique se a pasta `clientes/{nome}/` existe.
 Se não existir: crie-a primeiro com a estrutura padrão.
 
-Leia `.em5/core/tasks/cs/coletar-briefing.md` para o roteiro de perguntas.
-Leia `.em5/core/templates/briefing/briefing-perguntas.md` para o template.
+Leia `.em5/agents/cs/tasks/coletar-briefing.md` para o roteiro de perguntas.
+Leia `.em5/system/templates/briefing/briefing-perguntas.md` para o template.
 
 Acione @cs com:
 - Cliente: {nome}
 - Task: coletar-briefing
-- Template: `.em5/core/templates/briefing/briefing-perguntas.md`
+- Template: `.em5/system/templates/briefing/briefing-perguntas.md`
 - Destino: `clientes/{nome}/onboarding/briefing-respostas.md`
 
 Após coleta:

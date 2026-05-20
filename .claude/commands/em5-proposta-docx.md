@@ -34,7 +34,7 @@ Adapter de `docx`.
 
 ### Passo 1 — Carregar template
 
-Templates base em `.em5/core/templates/contratos/`:
+Templates base em `.em5/system/templates/contratos/`:
 - `contrato-base.md` (markdown source)
 
 Se não existir versão `.docx` template, criar do markdown via skill `docx`

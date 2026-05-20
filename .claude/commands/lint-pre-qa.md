@@ -30,7 +30,7 @@ Se `$ARGUMENTS` estiver incompleto, pergunte cliente + tipo.
 
 ### Passo 1 — Carregar regras
 
-Ler `.em5/core/data/lint-rules.yaml`. Carregar bloco `{tipo}`.
+Ler `.em5/system/data/lint-rules.yaml`. Carregar bloco `{tipo}`.
 
 ### Passo 2 — Mapear arquivos alvo
 

@@ -20,7 +20,7 @@
 ```
 /extrair-design {slug} {fonte}
   ↓
-@designer Lux invoca .em5/tools/design-extractor/SKILL-source.md
+@designer Lux invoca .em5/infra/tools/design-extractor/SKILL-source.md
   ↓
 Composio firecrawl scrape (se URL) ou ler local
   ↓

@@ -23,7 +23,7 @@
     "test:watch": "vitest",
     "install:em5": "node bin/em5.js install",
     "upgrade:em5": "node bin/em5.js upgrade",
-    "validate": "node .em5/bin/em5-validate.js"
+    "validate": "node .em5/infra/bin/em5-validate.js"
   },
   "keywords": [
     "em5",
