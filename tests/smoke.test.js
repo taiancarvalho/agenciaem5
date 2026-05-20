@@ -40,11 +40,17 @@ describe('em5 smoke tests', () => {
 
   // #4 — Todos 15 agentes têm model_tier declarado
   it('todos agentes têm model_tier (Fase 1.1)', () => {
+    // Estrutura v2.0: agents/{nome}/persona.md (era agents/{nome}.md)
     const agentsDir = path.join(ROOT, '.em5/agents');
-    const agents = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md'));
+    const agents = fs.readdirSync(agentsDir).filter((f) => {
+      const stat = fs.statSync(path.join(agentsDir, f));
+      return stat.isDirectory();
+    });
     expect(agents.length).toBeGreaterThanOrEqual(15);
     for (const agent of agents) {
-      const content = fs.readFileSync(path.join(agentsDir, agent), 'utf8');
+      const personaPath = path.join(agentsDir, agent, 'persona.md');
+      expect(fs.existsSync(personaPath)).toBe(true);
+      const content = fs.readFileSync(personaPath, 'utf8');
       expect(content).toMatch(/model_tier:\s*(frontier|balanced|haiku)/);
     }
   });

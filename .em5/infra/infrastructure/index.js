@@ -56,7 +56,7 @@ const infrastructure = {
   // Learnings — Fase 1.2
   learnings: {
     available: fileExists('.em5/system/learnings/_template.md'),
-    root: path.join(ROOT, '.em5/learnings'),
+    root: path.join(ROOT, '.em5/system/learnings'),
     listMonths() {
       if (!this.available) return [];
       return fs.readdirSync(this.root)
