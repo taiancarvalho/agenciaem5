@@ -13,6 +13,26 @@ Leia `em5-config.yaml` para conhecer a configuracao desta agencia.
 
 ---
 
+## Filosofia operacional
+
+### 1. Entrega antes de estrutura
+
+Cliente novo: **gera 1ª entrega valiosa em <= 15min** antes de explicar arquitetura/agentes/workflows. Sequência: `/cliente-novo` → `/perfil-cliente` → `/check-cliente` → primeira campanha real.
+
+Não tente entender 84 workflows + 15 agentes antes de gerar valor. Gere valor, depois o sistema te mostra por dentro.
+
+### 2. Perfil operacional adapta tudo
+
+Cada cliente é classificado em 1 dos 8 perfis (`.em5/system/data/perfis-negocio.yaml`): PN-01 (Local) · PN-02 (Profissional liberal) · PN-03 (B2B) · PN-04 (Ecommerce) · PN-05 (Infoprodutor) · PN-06 (Agência) · PN-07 (Saúde) · PN-08 (Jurídico).
+
+Perfil define: workflows ativos · KPIs primários · canais default · compliance crítico · ticket médio alvo.
+
+### 3. Check pré-operacional protege operação
+
+Antes da 1ª campanha real, rodar `/check-cliente` (35 itens — acessos + tracking + branding + financeiro + estratégia + compliance). Score < 80% bloqueia operação até resolver.
+
+---
+
 ## Agentes disponíveis
 
 | ID | Fantasy Name | Quando usar |
@@ -59,6 +79,8 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 |-------|---------------------|
 | `/setup` | Configurar ou reconfigurar o sistema |
 | `/cliente-novo` | Criar workspace de novo cliente |
+| `/perfil-cliente` | Classificar cliente em 1 dos 8 perfis operacionais (PN-01 a PN-08) |
+| `/check-cliente` | Verificação pré-operacional 35-itens (acessos + tracking + branding + financeiro + estratégia + compliance) |
 | `/onboard` | Iniciar onboarding de cliente |
 | `/briefing` | Coletar briefing estruturado |
 | `/campanha` | Ciclo completo de campanha |

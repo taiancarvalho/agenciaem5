@@ -1,0 +1,167 @@
+# Perfis de Negócio — 8 verticais operacionais em5
+# Source of truth pra adaptação contextual (templates, workflows, KPIs, canais).
+# Cada cliente novo é classificado em 1 perfil (ou híbrido) durante onboarding.
+#
+# Convenção: PN-{XX} (Perfil Negócio numerado).
+# Diferente da nomenclatura KPA — em5 usa "perfil" não "família".
+
+versao: "1.0"
+data_criacao: "2026-05-20"
+
+perfis:
+
+  PN-01:
+    nome: "Estabelecimento Físico Local"
+    exemplos: ["restaurante", "salão", "oficina", "academia", "pet shop", "loja de bairro"]
+    canais_primarios: ["whatsapp", "google_maps", "instagram_local"]
+    gargalo_recorrente: "Captação recorrente + redução no-show"
+    kpis_chave: ["agendamentos_semana", "reservas_confirmadas", "taxa_recompra"]
+    workflows_relevantes:
+      - whatsapp-orquestracao  # confirmação agendamento + lembrete
+      - reels-ig               # presença local
+      - stories-sequencia      # diário operacional
+      - inteligencia-semanal   # concorrência bairro
+    workflows_irrelevantes:
+      - linkedin-post          # B2B não bate
+      - blog-seo               # longo prazo demais
+    ticket_medio_alvo: "R$ 1.500-3.000/mês"
+
+  PN-02:
+    nome: "Profissional Liberal Solo"
+    exemplos: ["médico", "psicólogo", "nutricionista", "coach", "consultor", "advogado"]
+    canais_primarios: ["instagram", "google_search", "indicacao"]
+    gargalo_recorrente: "Agenda cheia + construção autoridade"
+    kpis_chave: ["consultas_agendadas", "cpl_consulta", "autoridade_score_organico"]
+    workflows_relevantes:
+      - linkedin-post
+      - blog-seo               # autoridade + SEO local
+      - carrossel-ig           # educacional autoridade
+      - reels-ig
+      - newsletter             # nurturing pacientes
+      - lgpd-review-campanha   # CRÍTICO saúde
+    ticket_medio_alvo: "R$ 2.000-5.000/mês"
+
+  PN-03:
+    nome: "B2B Consultivo"
+    exemplos: ["software house", "consultoria empresarial", "agência B2B", "SaaS enterprise"]
+    canais_primarios: ["linkedin", "google_ads_search", "cold_outreach", "indicacao_executiva"]
+    gargalo_recorrente: "Geração lead qualificado + ciclo venda longo"
+    kpis_chave: ["mql_mes", "sql_mes", "ciclo_venda_dias", "deal_size_medio"]
+    workflows_relevantes:
+      - linkedin-post
+      - linkedin-artigo
+      - cold-outreach          # SDR
+      - prospec-fechamento
+      - case-study
+      - webinar-captura
+      - ab-test-ciclo          # otimização funil
+    workflows_irrelevantes:
+      - stories-sequencia      # B2C
+      - tiktok-native
+    ticket_medio_alvo: "R$ 5.000-30.000/mês"
+
+  PN-04:
+    nome: "Ecommerce Catálogo"
+    exemplos: ["loja virtual moda", "marketplace nicho", "D2C produto físico"]
+    canais_primarios: ["meta_ads", "google_pmax", "tiktok_shop", "email"]
+    gargalo_recorrente: "ROAS + CAC + recompra"
+    kpis_chave: ["roas", "cac", "ltv", "carrinho_abandonado_recovery", "recompra_60d"]
+    workflows_relevantes:
+      - ciclo-campanha         # tráfego heavy
+      - iteracao-criativa      # alta cadência criativos
+      - email-nurture-drip     # recovery + nurture
+      - lookalike-refresh
+      - setup-conversion-api
+      - clarity-comportamento  # CRO checkout
+      - ugc-creator-pipeline
+      - influencer-outreach
+    ticket_medio_alvo: "R$ 3.000-15.000/mês + % faturamento"
+
+  PN-05:
+    nome: "Infoprodutor Lançador"
+    exemplos: ["curso online", "mentoria grupo", "infoproduto digital", "co-product"]
+    canais_primarios: ["instagram", "youtube", "meta_ads_lancamento", "whatsapp_grupos"]
+    gargalo_recorrente: "Validação oferta + escala lançamento + retenção pós"
+    kpis_chave: ["lista_quente", "checkout_rate", "ticket_medio", "refund_rate"]
+    workflows_relevantes:
+      - lancamento             # workflow dedicado existente
+      - reels-ig
+      - youtube-longform
+      - email-nurture-drip
+      - newsletter
+      - case-study
+      - ab-test-ciclo
+    ticket_medio_alvo: "R$ 5.000-20.000/mês ou % vendas"
+
+  PN-06:
+    nome: "Agência de Marketing"
+    exemplos: ["agência tráfego", "agência social media", "agência design", "agência completa"]
+    canais_primarios: ["linkedin", "indicacao", "case_study", "thought_leadership"]
+    gargalo_recorrente: "Gestão portfolio clientes + delivery escalável + churn"
+    kpis_chave: ["clientes_ativos", "mrr", "churn_rate", "nrr", "ltv_cac_ratio"]
+    workflows_relevantes:
+      - linkedin-artigo
+      - case-study
+      - cold-outreach
+      - prospec-fechamento
+      - qbr-trimestral
+      - review-portfolio-mensal
+      - sop-update             # padronização interna
+      - recrutamento
+    notas: "em5 é built-for-this — auto-aplicável"
+    ticket_medio_alvo: "R$ 8.000-50.000/mês"
+
+  PN-07:
+    nome: "Clínica e Saúde"
+    exemplos: ["clínica multi-especialidade", "consultório odontológico", "clínica estética", "veterinária"]
+    canais_primarios: ["instagram", "google_maps", "google_ads_local", "whatsapp"]
+    gargalo_recorrente: "Agendamento + autorização ANVISA/CFM + reputação"
+    kpis_chave: ["agendamentos_consulta", "primeira_consulta_rate", "no_show_rate", "review_score_google"]
+    workflows_relevantes:
+      - whatsapp-orquestracao  # confirma agendamento
+      - lgpd-review-campanha   # CRÍTICO dados saúde
+      - lgpd-review-campanha   # ANVISA compliance
+      - carrossel-ig           # educacional saúde
+      - reels-ig
+      - inteligencia-semanal   # benchmark clínica região
+    compliance_critico:
+      - "Ad copy passa por checklist CFM/CRO/CRN/CRMV antes publish"
+      - "Sem antes/depois sem disclaimer"
+      - "Sem promessa resultado"
+    ticket_medio_alvo: "R$ 3.000-10.000/mês"
+
+  PN-08:
+    nome: "Jurídico e Regulado"
+    exemplos: ["escritório advocacia", "contabilidade", "corretora seguros", "consultoria financeira"]
+    canais_primarios: ["linkedin", "google_ads_search", "blog_seo", "indicacao_profissional"]
+    gargalo_recorrente: "Captação ética + autoridade + provimento OAB"
+    kpis_chave: ["consultas_iniciais", "conversion_consultoria_pago", "publicacoes_autoridade"]
+    workflows_relevantes:
+      - linkedin-post
+      - linkedin-artigo
+      - blog-seo               # autoridade + SEO
+      - newsletter
+      - case-study
+      - lgpd-review-campanha   # CRÍTICO provimento OAB
+    compliance_critico:
+      - "OAB Provimento 205/2021 — sem mercantilização"
+      - "Sem 'melhor advogado' ou comparações"
+      - "Sem antes/depois de caso"
+      - "Disclaimer 'não há resultado garantido'"
+    workflows_irrelevantes:
+      - tiktok-native          # tom incompatível
+      - stories-sequencia      # mercantilização
+    ticket_medio_alvo: "R$ 3.000-8.000/mês"
+
+# ===== HÍBRIDOS =====
+# Cliente pode ser combinação. Mais comum:
+hibridos_comuns:
+  - "PN-02 + PN-07 (Profissional liberal área saúde)"
+  - "PN-04 + PN-05 (Ecommerce com lançamentos sazonais)"
+  - "PN-06 + PN-03 (Agência B2B atendendo enterprise)"
+  - "PN-01 + PN-07 (Clínica franquia local)"
+
+# ===== USO =====
+# Skill: /perfil-cliente {nome-cliente}
+# Output: clientes/{nome}/onboarding/perfil-negocio.md (qual PN + justificativa + workflows ativos)
+# Roda durante onboarding-cliente.yaml ANTES de plano-estratégico
