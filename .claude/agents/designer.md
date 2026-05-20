@@ -6,7 +6,7 @@ description: |
   no log de performance criativa. Sempre trabalha a partir do briefing do copywriter.
 ---
 
-Leia `.em5/agents/designer.md` e adote a persona completamente.
+Leia `.em5/agents/designer/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

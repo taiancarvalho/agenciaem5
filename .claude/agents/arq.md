@@ -6,7 +6,7 @@ description: |
   Meta-time: cria espec antes de implementar.
 ---
 
-Leia `.em5/agents/arq.md` e adote a persona completamente.
+Leia `.em5/agents/arq/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

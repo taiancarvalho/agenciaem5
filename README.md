@@ -8,7 +8,7 @@
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Free Forever](https://img.shields.io/badge/free-forever-22c55e)](LICENSE)
 [![15 agents](https://img.shields.io/badge/agents-15-5b8dee)](.em5/agents/)
-[![Asaas](https://img.shields.io/badge/asaas-BR-yellow)](.em5/integracoes/excecoes.yaml)
+[![Asaas](https://img.shields.io/badge/asaas-BR-yellow)](.em5/infra/integracoes/excecoes.yaml)
 
 ---
 
@@ -57,7 +57,7 @@ cp .env.example .env
 
 ```bash
 npm test                          # 6 smoke tests
-node .em5/bin/em5-validate.js     # conformidade Constitution
+node .em5/infra/bin/em5-validate.js     # conformidade Constitution
 ```
 
 ### Operar
@@ -151,13 +151,13 @@ Abre o projeto no Claude Code. No primeiro comando:
 | XII | em Cinco Minutos | SHOULD |
 | XIII | Construção Self-Service | MUST |
 
-📖 Constituição completa: [`.em5/core/constitution.md`](.em5/core/constitution.md)
+📖 Constituição completa: [`.em5/system/constitution.md`](.em5/system/constitution.md)
 
 ---
 
 ## 🔒 Gate-Matrix (Severity)
 
-QA usa matriz de severidade em `.em5/core/data/gate-matrix.yaml`:
+QA usa matriz de severidade em `.em5/system/data/gate-matrix.yaml`:
 
 | Severidade | Ação | Override |
 |------------|------|----------|
@@ -183,7 +183,7 @@ Toolsets habilitados:
 
 ### Asaas (exceção formal Art. IX v1.3)
 
-Financeiro BR — PIX, boleto, cartão. Documentado em [`.em5/integracoes/excecoes.yaml`](.em5/integracoes/excecoes.yaml).
+Financeiro BR — PIX, boleto, cartão. Documentado em [`.em5/infra/integracoes/excecoes.yaml`](.em5/infra/integracoes/excecoes.yaml).
 
 ### WhatsApp dual-provider
 
@@ -195,7 +195,7 @@ Configurável via `/whats-setup`:
 
 ## 📚 Learnings Perpétuos
 
-`.em5/learnings/{ano-mes}/{categoria}.md` — sistema aprende em loop:
+`.em5/system/learnings/{ano-mes}/{categoria}.md` — sistema aprende em loop:
 
 - `qa-bloqueios.md` — padrões de bloqueio
 - `qa-overrides.md` — overrides + outcomes
@@ -229,7 +229,7 @@ Inquirer direto pra criar agente/task/playbook sem entrevista.
 /forge agent     # ou /forge task | /forge playbook
 ```
 
-Templates em `.em5/setup/forge-templates/`.
+Templates em `.em5/infra/setup/forge-templates/`.
 
 ---
 

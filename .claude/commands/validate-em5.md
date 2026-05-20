@@ -31,7 +31,7 @@
 
 ## Execução
 
-Script: `node .em5/bin/em5-validate.js`
+Script: `node .em5/infra/bin/em5-validate.js`
 
 Exit codes:
 - `0` — Sistema OK ou só pendências SHOULD

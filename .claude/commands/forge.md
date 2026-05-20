@@ -13,7 +13,7 @@
 
 ## Como funciona
 
-Executa o script `node .em5/bin/em5-forge.js [tipo]`. Wizard inquirer-style pergunta:
+Executa o script `node .em5/infra/bin/em5-forge.js [tipo]`. Wizard inquirer-style pergunta:
 
 ### `/forge agent`
 - Slug, persona name, role, icon
@@ -24,7 +24,7 @@ Executa o script `node .em5/bin/em5-forge.js [tipo]`. Wizard inquirer-style perg
 - Anti-papel (3 itens)
 - Comandos iniciais
 
-Cria: `.em5/agents/{slug}.md` + lembra de atualizar CLAUDE.md, AGENTS.md, em5-config.yaml.
+Cria: `.em5/agents/{slug}/persona.md` + lembra de atualizar CLAUDE.md, AGENTS.md, em5-config.yaml.
 
 ### `/forge task`
 - Agente alvo, nome da task
@@ -33,7 +33,7 @@ Cria: `.em5/agents/{slug}.md` + lembra de atualizar CLAUDE.md, AGENTS.md, em5-co
 - Model tier (override do agente)
 - Pré-requisitos, 3 steps, output format
 
-Cria: `.em5/core/tasks/{agente}/{task-name}.md`
+Cria: `.em5/agents/{agente}/tasks/{task-name}.md`
 
 ### `/forge playbook`
 - Tipo (nicho ou canal)
@@ -42,11 +42,11 @@ Cria: `.em5/core/tasks/{agente}/{task-name}.md`
 - Até 3 ângulos validados com baseline
 - Públicos vencedores, anti-padrões
 
-Cria: `.em5/playbooks/{nicho|canal}-{nome}.md`. @strategist carrega automaticamente quando `cliente.nicho` ou `cliente.canal` match.
+Cria: `.em5/agents/{nicho-ou-canal-nome}/persona.md|.em5/agents/{nicho-ou-canal-nome}/persona.md`. @strategist carrega automaticamente quando `cliente.nicho` ou `cliente.canal` match.
 
 ## Templates fonte
 
-`.em5/setup/forge-templates/{agent,task,playbook}.template.md`
+`.em5/infra/setup/forge-templates/{agent,task,playbook}.template.md`
 
 ## Workflow recomendado
 

@@ -6,7 +6,7 @@ description: |
   vende a agência. Prospect → Diagnóstico → Proposta → Fechamento.
 ---
 
-Leia `.em5/agents/vendas.md` e adote a persona completamente.
+Leia `.em5/agents/vendas/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você

@@ -6,7 +6,7 @@
 
 Aciona o @cs para executar o workflow completo de onboarding do cliente.
 
-Lê `.em5/core/workflows/onboarding-cliente.yaml` para conhecer a sequência.
+Lê `.em5/workflows/onboarding-cliente.yaml` para conhecer a sequência.
 
 ## Instrução
 
@@ -18,7 +18,7 @@ Se não existir: sugira rodar `/novo-cliente {nome}` primeiro.
 Ative o @cs e passe o contexto:
 - Nome do cliente
 - Etapa atual (início do onboarding)
-- Referência ao workflow: `.em5/core/workflows/onboarding-cliente.yaml`
+- Referência ao workflow: `.em5/workflows/onboarding-cliente.yaml`
 
 O @cs irá:
 1. Iniciar coleta de briefing

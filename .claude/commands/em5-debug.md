@@ -92,14 +92,14 @@ Estrutura:
 @{agente} via `*{task}` ou `/em5-{skill}`
 
 ## Lição aprendida
-{Pra evitar mesmo problema no futuro — vira entry em .em5/learnings/}
+{Pra evitar mesmo problema no futuro — vira entry em .em5/system/learnings/}
 ```
 
 ### Passo 4 — Handoff
 
 - Root cause encontrada → @coo dispatcha ação pro agente certo
 - Inconclusiva → escala pro @ceo Atlas (decisão de mais investigação ou pivotar)
-- Lição relevante → grava em `.em5/learnings/{categoria}/{lesson}-{YYYY-MM-DD}.md`
+- Lição relevante → grava em `.em5/system/learnings/{categoria}/{lesson}-{YYYY-MM-DD}.md`
 
 ## Anti-padrão
 

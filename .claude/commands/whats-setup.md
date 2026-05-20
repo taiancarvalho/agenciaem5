@@ -65,10 +65,10 @@ channels:
       session: default
       auth: none  # ou: api_key se setou
     templates:
-      path: .em5/core/data/whatsapp-templates.yaml
+      path: .em5/system/data/whatsapp-templates.yaml
       override_dir: clientes/{slug}/comunicacao/templates/
     stop_rules:
-      config: .em5/core/data/whats-stop-rules.yaml
+      config: .em5/system/data/whats-stop-rules.yaml
       active:
         - cliente_pediu_parar
         - horario_silencioso

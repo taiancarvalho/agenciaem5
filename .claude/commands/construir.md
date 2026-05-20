@@ -16,10 +16,10 @@
 
 ```
 @arq Arq 🏛️ — entrevista (≤ 5 min)
-  ↓ .em5/construcao/CT-{NNN}/entrevista.md
+  ↓ .em5/infra/forge/CT-{NNN}/entrevista.md
   ↓
 @arq Arq — desenha spec
-  ↓ .em5/construcao/CT-{NNN}/spec.md (status: approved)
+  ↓ .em5/infra/forge/CT-{NNN}/spec.md (status: approved)
   ↓
 @builder Cunha 🔨 — implementa via Forge templates
   ↓ arquivos criados + build-log.md (status: reviewing)
@@ -89,7 +89,7 @@ User: s
 
 @arq → spec.md aprovada → @builder Cunha
 @builder: 🔨 Cunha aqui. Implementando CT-001…
-  ✓ .em5/agents/legal.md criado
+  ✓ .em5/agents/legal/persona.md criado
   ✓ 3 tasks criadas
   ✓ skill /contrato criada
   ✓ 2 data files criados

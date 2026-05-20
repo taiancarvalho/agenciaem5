@@ -1,6 +1,6 @@
 # /setup — Configurar o em5
 
-Leia `.em5/setup/system-onboarding.md` e execute o wizard de configuração passo a passo.
+Leia `.em5/infra/setup/system-onboarding.md` e execute o wizard de configuração passo a passo.
 
 ## O que este comando faz
 

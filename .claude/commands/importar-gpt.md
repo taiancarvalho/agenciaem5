@@ -29,7 +29,7 @@ Exemplos:
 ```
 /importar-gpt {caminho}
   ↓
-Script .em5/bin/em5-import-gpt.js detecta formato
+Script .em5/infra/bin/em5-import-gpt.js detecta formato
   ↓
 Extrai: system prompt, knowledge files, actions
   ↓
@@ -40,8 +40,8 @@ Propõe mapping pro user:
   ↓
 User confirma
   ↓
-Gera .em5/agents/{slug}.md (com prompt original como referência)
-Gera .em5/core/data/{slug}/ (knowledge files + manifest)
+Gera .em5/agents/{slug}/persona.md (com prompt original como referência)
+Gera .em5/system/data/{slug}/ (knowledge files + manifest)
   ↓
 Lista próximos passos manuais
 ```
@@ -59,7 +59,7 @@ Import bruto = ponto de partida, não componente final.
 
 - Prompts originais ficam como **referência** no agente, não execução literal
 - Anti-papel padrão é adicionado pra evitar invasão de escopo (Art. V)
-- Knowledge files importados ficam em `.em5/core/data/{slug}/`
+- Knowledge files importados ficam em `.em5/system/data/{slug}/`
 - Agente NÃO entra em CLAUDE.md/AGENTS.md/em5-config.yaml automaticamente — user revisa primeiro
 
 ## Workflow recomendado

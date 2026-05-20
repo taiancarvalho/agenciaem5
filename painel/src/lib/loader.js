@@ -9,7 +9,7 @@ import yaml from 'js-yaml';
 const EM5_ROOT = path.resolve(process.cwd(), '..');
 const CLIENTES_DIR = path.join(EM5_ROOT, 'clientes');
 const CONFIG_PATH = path.join(EM5_ROOT, 'em5-config.yaml');
-const LEARNINGS_DIR = path.join(EM5_ROOT, '.em5/learnings');
+const LEARNINGS_DIR = path.join(EM5_ROOT, '.em5/system/learnings');
 
 function safeReadYAML(filePath) {
   if (!fs.existsSync(filePath)) return null;

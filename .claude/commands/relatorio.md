@@ -40,7 +40,7 @@ Período: {data_inicio} a {data_fim}
 Workflow: coleta @traffic → render HTML @cs → veredicto @qa → envio @cs (Gmail)
 Referências:
   - Skill com detalhamento técnico dos 4 passos: .claude/commands/relatorio.md
-  - Template HTML: .em5/core/templates/relatorios/relatorio-cliente.html
+  - Template HTML: .em5/system/templates/relatorios/relatorio-cliente.html
 Entregas esperadas:
   - clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md
   - clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.html
@@ -85,7 +85,7 @@ nunca pular @qa antes do envio.
 @coo aciona @cs com:
 - Cliente: {nome}
 - Origem: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.md`
-- Template: `.em5/core/templates/relatorios/relatorio-cliente.html`
+- Template: `.em5/system/templates/relatorios/relatorio-cliente.html`
 - Destino: `clientes/{nome}/relatorios/relatorio-{YYYY-MM-DD}.html`
 
 **Substituições obrigatórias:**

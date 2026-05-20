@@ -15,7 +15,7 @@
 
 Se `$ARGUMENTS` estiver vazio, pergunte o nome do cliente.
 
-Leia `.em5/core/workflows/iteracao-criativa.yaml` para a sequência completa.
+Leia `.em5/workflows/iteracao-criativa.yaml` para a sequência completa.
 
 Leia o contexto do cliente:
 - `clientes/{nome}/operacao/log-performance-criativa.md` — o que está rodando e como
@@ -23,7 +23,7 @@ Leia o contexto do cliente:
 Acione @coo com:
 - Cliente: {nome}
 - Workflow: iteracao-criativa
-- Referência: `.em5/core/workflows/iteracao-criativa.yaml`
+- Referência: `.em5/workflows/iteracao-criativa.yaml`
 - Dados: `clientes/{nome}/operacao/log-performance-criativa.md`
 
 **Regra:** Iteração é baseada em dados — nunca em achismo.

@@ -88,35 +88,35 @@ async function main() {
   // v1.0 → v1.1: rename personas + gate-matrix + learnings + novos skills
   if (isPre('1.1.0')) {
     copyFiles('v1.0 → v1.1: rename + gate-matrix + learnings', [
-      '.em5/core/constitution.md',
-      '.em5/core/data/gate-matrix.yaml',
-      '.em5/setup/forge-templates/agent.template.md',
-      '.em5/setup/forge-templates/task.template.md',
-      '.em5/setup/forge-templates/playbook.template.md',
-      '.em5/learnings/_template.md',
-      '.em5/bin/em5-forge.js',
+      '.em5/system/constitution.md',
+      '.em5/system/data/gate-matrix.yaml',
+      '.em5/infra/setup/forge-templates/agent.template.md',
+      '.em5/infra/setup/forge-templates/task.template.md',
+      '.em5/infra/setup/forge-templates/playbook.template.md',
+      '.em5/system/learnings/_template.md',
+      '.em5/infra/bin/em5-forge.js',
     ]);
   }
 
   // v1.1 → v1.2: aiox-core + meta-time + 3 high-value agents + WhatsApp + customGPT + Painel + Electron
   if (isPre('1.2.0')) {
     copyFiles('v1.1 → v1.2: aiox-core + meta-time + agentes high-value + WhatsApp + Painel + Electron', [
-      '.em5/hooks/registry.js',
-      '.em5/hooks/README.md',
-      '.em5/infrastructure/index.js',
-      '.em5/bin/em5-validate.js',
-      '.em5/bin/em5-import-gpt.js',
-      '.em5/agents/arq.md',
-      '.em5/agents/builder.md',
-      '.em5/agents/reviewer.md',
-      '.em5/agents/vendas.md',
-      '.em5/agents/fin.md',
-      '.em5/agents/scout.md',
-      '.em5/agents/whats.md',
-      '.em5/core/data/whatsapp-templates.yaml',
-      '.em5/core/data/whats-stop-rules.yaml',
-      '.em5/core/workflows/construcao-ciclo-completo.yaml',
-      '.em5/construcao/_template/spec.template.md',
+      '.em5/infra/hooks/registry.js',
+      '.em5/infra/hooks/README.md',
+      '.em5/infra/infrastructure/index.js',
+      '.em5/infra/bin/em5-validate.js',
+      '.em5/infra/bin/em5-import-gpt.js',
+      '.em5/agents/arq/persona.md',
+      '.em5/agents/builder/persona.md',
+      '.em5/agents/reviewer/persona.md',
+      '.em5/agents/vendas/persona.md',
+      '.em5/agents/fin/persona.md',
+      '.em5/agents/scout/persona.md',
+      '.em5/agents/whats/persona.md',
+      '.em5/system/data/whatsapp-templates.yaml',
+      '.em5/system/data/whats-stop-rules.yaml',
+      '.em5/workflows/construcao-ciclo-completo.yaml',
+      '.em5/infra/forge/_template/spec.template.md',
       'painel/package.json',
       'painel/astro.config.mjs',
       'painel/src/pages/index.astro',
@@ -131,10 +131,10 @@ async function main() {
   // v1.2 → v1.3: Art. IX revisado + Asaas + tasks completas + hooks ativos
   if (isPre('1.3.0')) {
     copyFiles('v1.2 → v1.3: Art. IX v1.3 + Asaas MCP + tasks completas', [
-      '.em5/integracoes/excecoes.yaml',
-      '.em5/core/tasks/fin/criar-cobranca-asaas.md',
-      '.em5/core/tasks/fin/monitorar-inadimplencia.md',
-      '.em5/learnings/2026-05/mcp-excecoes.md',
+      '.em5/infra/integracoes/excecoes.yaml',
+      '.em5/agents/fin/tasks/criar-cobranca-asaas.md',
+      '.em5/agents/fin/tasks/monitorar-inadimplencia.md',
+      '.em5/system/learnings/2026-05/mcp-excecoes.md',
       '.env.example',
       '.gitignore',
       'CHANGELOG.md',

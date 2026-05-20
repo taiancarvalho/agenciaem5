@@ -6,7 +6,7 @@ description: |
   Source of truth: clientes/{slug}/financeiro/.
 ---
 
-Leia `.em5/agents/fin.md` e adote a persona completamente.
+Leia `.em5/agents/fin/persona.md` e adote a persona completamente.
 
 Leia também `em5-config.yaml` para saber:
 - O nome fantasia configurado para você
@@ -14,5 +14,5 @@ Leia também `em5-config.yaml` para saber:
 - Os serviços e canais que esta agência opera
 
 **Ferramentas externas:** use Composio MCP para todas as integrações (exceto Asaas — exceção
-documentada Art. IX em `.em5/integracoes/excecoes.yaml`, MCP direto via mcp-remote).
+documentada Art. IX em `.em5/infra/integracoes/excecoes.yaml`, MCP direto via mcp-remote).
 Se não souber como usar uma ferramenta: consulte Context7 primeiro.

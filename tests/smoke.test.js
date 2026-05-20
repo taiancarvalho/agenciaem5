@@ -14,14 +14,14 @@ describe('em5 smoke tests', () => {
 
   // #1 — Validate retorna 0
   it('validate-em5 passa sem issues NON-NEGOTIABLE', () => {
-    const out = execSync('node .em5/bin/em5-validate.js', { cwd: ROOT, encoding: 'utf8' });
+    const out = execSync('node .em5/infra/bin/em5-validate.js', { cwd: ROOT, encoding: 'utf8' });
     expect(out).toContain('Todos os checks passaram');
     expect(out).not.toContain('🛑');
   });
 
   // #2 — Infrastructure health: todos módulos críticos OK
   it('infrastructure health reporta módulos críticos OK', () => {
-    const out = execSync('node .em5/infrastructure/index.js health', { cwd: ROOT, encoding: 'utf8' });
+    const out = execSync('node .em5/infra/infrastructure/index.js health', { cwd: ROOT, encoding: 'utf8' });
     const data = JSON.parse(out);
     const criticos = ['hooks', 'forge', 'gateMatrix', 'learnings', 'composio', 'constitution', 'config', 'agents'];
     for (const mod of criticos) {
@@ -31,7 +31,7 @@ describe('em5 smoke tests', () => {
 
   // #3 — Constitution tem 13 artigos com severidade declarada
   it('constitution tem 13 artigos (Arts. I–XIII)', () => {
-    const content = fs.readFileSync(path.join(ROOT, '.em5/core/constitution.md'), 'utf8');
+    const content = fs.readFileSync(path.join(ROOT, '.em5/system/constitution.md'), 'utf8');
     const requiredArticles = ['Filesystem First', 'Composio', 'Quality Gate', 'Learnings Perpétuos', 'Severity Gates', 'em Cinco Minutos', 'Construção Self-Service'];
     for (const art of requiredArticles) {
       expect(content).toContain(art);
@@ -40,11 +40,17 @@ describe('em5 smoke tests', () => {
 
   // #4 — Todos 15 agentes têm model_tier declarado
   it('todos agentes têm model_tier (Fase 1.1)', () => {
+    // Estrutura v2.0: agents/{nome}/persona.md (era agents/{nome}.md)
     const agentsDir = path.join(ROOT, '.em5/agents');
-    const agents = fs.readdirSync(agentsDir).filter((f) => f.endsWith('.md'));
+    const agents = fs.readdirSync(agentsDir).filter((f) => {
+      const stat = fs.statSync(path.join(agentsDir, f));
+      return stat.isDirectory();
+    });
     expect(agents.length).toBeGreaterThanOrEqual(15);
     for (const agent of agents) {
-      const content = fs.readFileSync(path.join(agentsDir, agent), 'utf8');
+      const personaPath = path.join(agentsDir, agent, 'persona.md');
+      expect(fs.existsSync(personaPath)).toBe(true);
+      const content = fs.readFileSync(personaPath, 'utf8');
       expect(content).toMatch(/model_tier:\s*(frontier|balanced|haiku)/);
     }
   });
@@ -70,7 +76,7 @@ describe('em5 Composio + Asaas (Art. IX v1.3)', () => {
     // Asaas tem que estar em excecoes.yaml se presente
     const externals = mcps.filter((m) => !['composio', 'context7'].includes(m));
     if (externals.length > 0) {
-      const excecoes = fs.readFileSync(path.join(ROOT, '.em5/integracoes/excecoes.yaml'), 'utf8');
+      const excecoes = fs.readFileSync(path.join(ROOT, '.em5/infra/integracoes/excecoes.yaml'), 'utf8');
       for (const mcp of externals) {
         expect(excecoes).toContain(`mcp_id: ${mcp}`);
       }

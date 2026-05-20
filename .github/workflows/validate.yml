@@ -26,20 +26,20 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Validate em5 conformity
-        run: node .em5/bin/em5-validate.js
+        run: node .em5/infra/bin/em5-validate.js
 
       - name: Syntax check bin scripts
         run: |
           node -c bin/em5.js
           node -c bin/em5-upgrade.js
           node -c lib/installer.js
-          node -c .em5/bin/em5-forge.js
-          node -c .em5/bin/em5-validate.js
-          node -c .em5/bin/em5-import-gpt.js
-          node -c .em5/bin/em5-init.js
-          node -c .em5/bin/em5-new-client.js
-          node -c .em5/hooks/registry.js
-          node -c .em5/infrastructure/index.js
+          node -c .em5/infra/bin/em5-forge.js
+          node -c .em5/infra/bin/em5-validate.js
+          node -c .em5/infra/bin/em5-import-gpt.js
+          node -c .em5/infra/bin/em5-init.js
+          node -c .em5/infra/bin/em5-new-client.js
+          node -c .em5/infra/hooks/registry.js
+          node -c .em5/infra/infrastructure/index.js
 
       - name: Validate hook scripts
         run: |
@@ -47,10 +47,10 @@ jobs:
           bash -n .claude/hooks/model-router.sh
 
       - name: Infrastructure health
-        run: node .em5/infrastructure/index.js health
+        run: node .em5/infra/infrastructure/index.js health
 
       - name: List agents
-        run: node .em5/infrastructure/index.js agents
+        run: node .em5/infra/infrastructure/index.js agents
 
       - name: Smoke tests (Vitest)
         run: npm test

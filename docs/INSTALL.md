@@ -133,7 +133,7 @@ Após adicionar `COMPOSIO_API_KEY`, **reinicia Claude Code**:
 Testa MCPs:
 
 ```bash
-node .em5/infrastructure/index.js toolsets
+node .em5/infra/infrastructure/index.js toolsets
 # Deve listar: meta_ads, google_analytics, gmail, slack, googlesheets, whatsapp_business, googledrive
 ```
 
@@ -166,7 +166,7 @@ ASAAS_SANDBOX=true     # false em produção
 Verifica que Asaas está documentado:
 
 ```bash
-cat .em5/integracoes/excecoes.yaml | head -20
+cat .em5/infra/integracoes/excecoes.yaml | head -20
 ```
 
 Deve mostrar entry `mcp_id: asaas`.
@@ -213,7 +213,7 @@ Wizard pergunta provider, telefone, templates, stop rules.
 ### 7.1 Conformidade
 
 ```bash
-node .em5/bin/em5-validate.js
+node .em5/infra/bin/em5-validate.js
 ```
 
 **Esperado:** `✅ Todos os checks passaram. 0 issues.`
@@ -234,7 +234,7 @@ npm test
 ### 7.3 Infrastructure health
 
 ```bash
-node .em5/infrastructure/index.js health
+node .em5/infra/infrastructure/index.js health
 ```
 
 **Esperado:** 8 módulos com status `ok` ou `loaded`.
@@ -422,7 +422,7 @@ source .env              # carrega .env
 ### "validate-em5 retorna issues"
 
 ```bash
-node .em5/bin/em5-validate.js 2>&1
+node .em5/infra/bin/em5-validate.js 2>&1
 # Cola o output completo no issue do GitHub se persistir
 ```
 

@@ -17,11 +17,11 @@ Parse o argumento: `{nome-cliente} {plataforma}`
 - Se plataforma não informada: pergunte (meta / google / ambos)
 
 **Para Meta Ads:**
-- Leia `.em5/core/tasks/traffic/auditar-conta.md`
+- Leia `.em5/agents/traffic/tasks/auditar-conta.md`
 - Use Composio MCP com ferramentas Meta Ads
 
 **Para Google Ads:**
-- Leia `.em5/core/tasks/traffic/auditar-conta-google.md`
+- Leia `.em5/agents/traffic/tasks/auditar-conta-google.md`
 - Use Composio MCP com ferramentas Google Ads
 
 Acione @traffic com:

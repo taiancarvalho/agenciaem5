@@ -7,7 +7,7 @@
 ### Added — Asaas + tasks completas + hooks ativos
 - **Constitution Art. IX revisado (v1.3):** Composio é gateway default, exceções permitidas pra MCPs oficiais com 5 critérios
 - **Asaas MCP integrado** como exceção formal (financeiro BR — PIX/boleto/cartão)
-- `.em5/integracoes/excecoes.yaml` documenta MCPs não-default com aprovação @ceo
+- `.em5/infra/integracoes/excecoes.yaml` documenta MCPs não-default com aprovação @ceo
 - Task `fin/criar-cobranca-asaas` + `fin/monitorar-inadimplencia` (com severity escalada por dias)
 - 26 tasks "fantasmas" preenchidas (vendas, fin, scout, whats, builder, reviewer)
 - 6 templates novos (proposta, diagnóstico, swot, weekly-report, briefing, etc.)
