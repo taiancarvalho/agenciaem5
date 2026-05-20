@@ -1,148 +1,100 @@
-# `.em5/` — Arquitetura
+# `.em5/` — Arquitetura v2.4 (Cenário C refatorado)
 
-> Sistema operacional da agência. **4 dirs apenas** — clareza estrutural priorizada.
+> Sistema operacional da agência. **4 dirs + historico/ raiz.** Refatorado pra eliminar redundância.
 
 ## Mapa rápido
 
 ```
-.em5/
-├── agents/        # Agentes: persona + tasks + playbook (tudo do agente junto)
-├── workflows/     # Pipelines yaml + roadmap + rotinas
-├── system/        # Governance: constitution + rules + templates + learnings
-└── infra/         # Dev/Tools: bin + hooks + setup + integrações
+AgenciaEm5/
+├── .em5/
+│   ├── agents/        # 13 agentes: persona + playbook
+│   ├── receitas/      # 25 receitas (substituem workflows yaml + tasks md)
+│   ├── blocos/        # 22 blocos atômicos reusáveis (steps 2+ receitas)
+│   ├── system/        # constitution + rules + checklists + templates + learnings
+│   └── infra/         # bin + tools + hooks + setup + forge + integracoes + docs
+└── historico/         # tickets vivos por demanda (raiz — UI futura)
+    └── {YYMMDD-clienteslug-tipo}/ticket.md
 ```
+
+## Conceitos centrais
+
+### Agente (13)
+Persona + playbook. Categorias:
+- **Estratégico:** ceo · strategist
+- **Tático:** coo
+- **Operacionais:** cs · traffic · copywriter · designer · qa · scout · fin · vendas · whats
+- **Meta:** builder (era arq + builder + reviewer fundidos)
+
+### Receita (25)
+`.em5/receitas/{nome}.md` — spec de operação (1 arquivo).
+
+Substitui antigo workflow yaml + task md (3 arquivos viraram 1). Frontmatter YAML + body markdown. Steps inline OU referenciam blocos.
+
+### Bloco (22)
+`.em5/blocos/{nome}.md` — step atômico reusável.
+
+Critério: step usado em **2+ receitas** vira bloco. Senão fica inline.
+
+### Ticket vivo
+`historico/{YYMMDD-clienteslug-tipo}/ticket.md` — instância executada de receita.
+
+1 documento por demanda. Todos agentes envolvidos anotam inline (YAML status + observações).
+
+Substitui sync manual de 3 arquivos antigos (log + status + notas-sessao).
+
+### Skills (22 canônicas)
+Classificadas:
+- **Operacional** (7): pula @ceo
+- **Estratégico** (3): passa @ceo
+- **Híbrido** (3): @ceo decide
+- **Utilitário** (5): meta/setup/status
+- **Adapters** (3): superpowers core
+- **/pedir** (1): conversacional fallback
+
+## Comparação antes vs depois
+
+| Métrica | v2.3 (antes) | v2.4 (Cenário C) | Redução |
+|---------|--------------|-------------------|---------|
+| Agentes | 15 | 13 | -13% |
+| Workflows yaml | 83 | 0 | -100% |
+| Tasks .md | 98 | 0 | -100% |
+| **Receitas** | — | 25 | (novo) |
+| **Blocos** | — | 22 | (novo) |
+| Skills | 45 | 22 | -51% |
+| Arquivos operação total | 226 | 47 | **-79%** |
+| Dispatch operacional | 2-3 hops | 1-2 hops | -33% |
+| Tokens operacional | ~80k | ~40-50k | -40% |
 
 ## Onde achar X?
 
 | Quero... | Path |
 |----------|------|
-| Persona de um agente | `agents/{agente}/persona.md` |
-| Tasks de um agente | `agents/{agente}/tasks/` |
-| Playbook (referência expert) de agente | `agents/{agente}/playbook.md` |
-| Workflows (pipelines) | `workflows/*.yaml` |
-| Roadmap de workflows | `workflows/_roadmap.md` |
-| Rotinas/cron schedule | `workflows/_rotinas.md` |
-| Constitution (13 artigos) | `system/constitution.md` |
+| Persona agente | `agents/{nome}/persona.md` |
+| Playbook agente | `agents/{nome}/playbook.md` |
+| Receita operação | `receitas/{nome}.md` |
+| Bloco atômico | `blocos/{nome}.md` |
+| Ticket vivo demanda | `historico/{id}/ticket.md` |
+| Constitution 13 artigos | `system/constitution.md` |
 | Regras estruturais | `system/rules/` |
-| Checklists QA | `system/checklists/` |
-| Templates (HTML/MD/YAML) | `system/templates/` |
-| Aprendizados versionados | `system/learnings/` |
+| Templates (DRE/LP/etc) | `system/templates/` |
+| Aprendizados | `system/learnings/` |
 | Scripts CLI | `infra/bin/` |
-| Hooks do Claude Code | `infra/hooks/` |
+| Hooks Claude Code | `infra/hooks/` |
 | Wizard setup | `infra/setup/` |
-| Templates do Forge (meta-time) | `infra/forge/` |
-| Integrações MCP | `infra/integracoes/` |
-| Tools (design-extractor, etc) | `infra/tools/` |
-| Documentação geral | `infra/docs/` |
 
-## Dirs detalhadas
+## Princípios de manutenção
 
-### `agents/`
+1. **Criar componente novo?** → @builder (`/construir`) — 3 modos (entrevista + impl + valid)
+2. **Receita similar já existe?** → consultar `receitas/_index.md` antes
+3. **Step usado em 2+ receitas?** → vira bloco
+4. **Não toca:** Constitution + identidade agentes + Composio + hierarquia 4-dirs
 
-Cada agente tem **3 arquivos** (todos opcionais exceto persona):
+## Backup
 
-```
-agents/
-├── traffic/
-│   ├── persona.md      ← definição YAML do agente (obrigatório)
-│   ├── playbook.md     ← referência expert do domínio (referenciado por tasks)
-│   └── tasks/          ← tasks executáveis pelo agente
-│       ├── auditar-conta.md
-│       ├── otimizar-campanha.md
-│       └── google-ads/  ← subdir opcional por canal
-│           └── estruturar-search.md
-├── copywriter/
-│   ├── persona.md
-│   ├── playbook.md
-│   └── tasks/
-└── ... (15 agentes)
-```
+Tag `backup/pre-refactor-v4-2026-05-20` → estado anterior à refatoração Cenário C.
 
-**Por que junto:** task `auditar-conta.md` referencia `playbook.md` — antes era em outro dir, gerava frankstein. Agora tudo do agente fica num único lugar.
-
-### `workflows/`
-
-Pipelines yaml (83) + 2 docs source-of-truth:
-
-```
-workflows/
-├── _roadmap.md           ← catálogo 84 workflows (status implementação)
-├── _rotinas.md           ← cadência (diário/semanal/mensal/etc) + cron /schedule
-├── ciclo-campanha.yaml   ← campanha completa
-├── relatorio-cliente.yaml
-├── auditoria-conta.yaml
-├── cobranca-mensal.yaml
-└── ... (83 yamls)
-```
-
-**Por que fora de `core/`:** `core/` vago. Workflow é cidadão de primeira classe — merece dir próprio.
-
-### `system/`
-
-Governance + assets compartilhados:
-
-```
-system/
-├── AGENTS.md              ← spec agnóstico Anthropic
-├── constitution.md        ← 13 artigos princípios (cidadão #1)
-├── constitution-index.md  ← TOC rápido
-├── comportamento-agente.md
-├── rules/                 ← mecânica operacional
-│   ├── agent-authority.md
-│   ├── agent-handoff.md
-│   └── workflow-execution.md
-├── checklists/            ← QA gates por entregável
-├── data/                  ← yaml configs (janelas-analise, canais-suportados, etc)
-├── templates/             ← HTML/MD templates (relatorio-cliente.html, etc)
-└── learnings/             ← aprendizados versionados
-    ├── ERRORS.md
-    ├── FEATURE_REQUESTS.md
-    ├── LEARNINGS.md
-    └── 2026-MM/           ← arquivo mensal
-```
-
-**Por que consolidado:** Constitution + Rules eram "regras" em 2 dirs separados. Agora todo "como o sistema pensa" mora em `system/`.
-
-### `infra/`
-
-Dev/tooling/config:
-
-```
-infra/
-├── bin/                ← scripts CLI (em5-init, em5-validate, em5-forge, em5-upgrade)
-├── hooks/              ← registry hooks Claude Code
-├── setup/              ← wizard config
-│   ├── em5-config.yaml ← config canônico template
-│   ├── system-onboarding.md
-│   └── forge-templates/← templates pra @builder gerar componentes
-├── forge/              ← meta-time templates
-│   └── _template/      ← spec/learning templates do CONSTRUÇÃO
-├── integracoes/        ← excecoes Composio MCP
-├── infrastructure/     ← config infra (index.js)
-├── tools/              ← utilities (design-extractor)
-└── docs/               ← documentação geral
-    └── example-client/ ← exemplo onboarding
-```
-
-**Por que consolidado:** antes eram 8 dirs separados (bin/tools/hooks/setup/integracoes/infrastructure/docs/construcao). Sem critério claro de separação. Agora 1 dir `infra/` cobre tudo "não-domínio".
-
-## Histórico
-
-Reorganização aplicada em 2026-05-19. Antes: **14 dirs** top-level no `.em5/` — frankstein orgânico. Depois: **4 dirs** com responsabilidades claras.
-
-Backup pre-reorg disponível na tag `backup/pre-reorg-2026-05-19`.
-
-## Regra de manutenção
-
-Ao criar novo arquivo, escolher dir pelo princípio:
-
-1. **É de um agente específico?** → `agents/{agente}/`
-2. **É pipeline executável?** → `workflows/`
-3. **É regra/governance/template compartilhado?** → `system/`
-4. **É dev/config/tool?** → `infra/`
-
-Em dúvida, perguntar: "se eu deletar esse dir, o que quebra?" — se resposta = "1 agente", vai em `agents/`. Se "vários workflows", vai em `system/`. Se "tooling dev", vai em `infra/`.
+Rollback: `git reset --hard backup/pre-refactor-v4-2026-05-20`
 
 ---
 
-*em5 v1.5 — Arquitetura limpa, 4 dirs, zero frankstein.*
+*em5 v2.4 — Cenário C refatorado. Sistema enxuto, testável, escalável.*

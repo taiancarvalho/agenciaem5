@@ -71,61 +71,90 @@ Toolsets planejados (Fase 1.3): WhatsApp Business, Google Drive (via Composio).
 
 ---
 
-## Skills disponíveis (canônicas)
+## Skills disponíveis (22 canônicas — classificadas por roteamento)
 
-| Skill | O que faz em ≤ 5 min |
-|-------|---------------------|
-| `/setup` | Configurar ou reconfigurar o sistema |
-| `/cliente-novo` | Criar workspace de novo cliente |
-| `/perfil-cliente` | Classificar cliente em 1 dos 8 perfis operacionais (PN-01 a PN-08) |
-| `/check-cliente` | Verificação pré-operacional 35-itens (acessos + tracking + branding + financeiro + estratégia + compliance) |
-| `/onboard` | Iniciar onboarding de cliente |
-| `/briefing` | Coletar briefing estruturado |
-| `/campanha` | Ciclo completo de campanha |
-| `/auditar` | Auditar conta de anuncios |
-| `/iterar` | Iterar criativos com baixa performance |
-| `/relatorio` | Gerar relatorio markdown + HTML e enviar (template `relatorio-cliente.html`) |
-| `/lint-pre-qa` | Lint mecânico (char count, nomenclatura, palavras proibidas) antes do @qa |
-| `/em5-brainstorm` | Brainstorm estruturado antes de decisão criativa (adapter de `superpowers:brainstorming`) |
-| `/em5-verify` | Self-check de artefato antes de marcar task done (adapter de `superpowers:verification-before-completion`) |
-| `/em5-roteiro-reels` | Roteiro Reels IG focado em gerar comentários (adapter de `instant-value-reels`) |
-| `/em5-call-para-sop` | Transcrição de call → SOP estruturado versionado (adapter de `generating-structured-sops`) |
-| `/em5-criativo-video` | Criativo em vídeo HTML standalone via HyperFrames — custo zero, sem queue (adapter de `hyperframes` + `hyperframes-cli` + `hyperframes-media`) |
-| `/em5-site-to-video` | Captura site/LP do cliente → vídeo promo automático (adapter de `website-to-hyperframes`) |
-| `/em5-plano` | Plano de execução explícito antes de delegar workflow complexo (adapter de `superpowers:writing-plans`) |
-| `/em5-scrape` | Scrape limpo de 1 página em markdown (adapter de `defuddle`) |
-| `/em5-proposta-docx` | Proposta/contrato em DOCX pra cliente/prospect (adapter de `docx`) |
-| `/em5-deck-pptx` | Deck PowerPoint pra pitch/QBR/apresentação (adapter de `pptx`) |
-| `/em5-debug` | Debug sistemático quando algo dá errado (adapter de `superpowers:systematic-debugging`) |
-| `/em5-paralelo` | Dispatch paralelo de agentes independentes (adapter de `superpowers:dispatching-parallel-agents`) |
-| `/em5-export-xlsx` | Export Excel pra cliente analisar dados crus (adapter de `xlsx`) |
-| `/em5-pdf` | Converter HTML/DOCX/PPTX em PDF estático (adapter de `pdf`) |
-| `/status` | Resumo operacional de um cliente |
-| `/saude` | Health check completo |
+### Entry conversacional
+| Skill | Roteia | Função |
+|-------|--------|--------|
+| `/pedir "{descrição}"` | @ceo OR @coo (NLP decide) | Fala português livre, sistema identifica skill |
 
-### Aliases retrocompat (deprecated — removidos após 2026-06-15)
+### Operacional (skip @ceo → @coo direto)
+| Skill | Receita |
+|-------|---------|
+| `/auditar` | auditoria-conta |
+| `/campanha` | ciclo-campanha |
+| `/relatorio` | relatorio-cliente |
+| `/iterar` | iteracao-criativa |
+| `/dia` | daily-run |
+| `/abertura-semana` | abertura-semana |
+| `/check-cliente` | check-cliente |
 
-`/novo-cliente`, `/onboarding`, `/criar-campanha`, `/auditoria-conta`, `/iterar-criativo`, `/status-cliente`, `/saude-sistema` ainda funcionam mas redirecionam pros nomes canônicos.
+### Estratégico (passa @ceo)
+| Skill | Receita |
+|-------|---------|
+| `/proposta` | prospec-fechamento |
+| `/qbr` | qbr-trimestral |
+| `/portfolio` | analise-portfolio |
 
-### Skills planejadas
+### Híbrido (@ceo decide + @coo executa)
+| Skill | Receita |
+|-------|---------|
+| `/cliente-novo` | (workspace) |
+| `/perfil-cliente` | perfilar-cliente |
+| `/onboard` | onboarding-cliente |
 
-- `/dia` — Daily run de todas contas (Fase 1.4)
-- `/forge` — Wizard criar agente/task/playbook (Fase 2)
-- `/aprender` — Consulta learnings antes de criar (Fase 1.2)
-- `/override` — Override @qa com auditoria (Fase 3.3)
-- `/validate-em5` — Conformidade contra Constitution (Fase 5.3)
-- `/construir` — Meta-time descobre + cria componente novo (Fase 6)
+### Utilitário / Meta
+| Skill | Função |
+|-------|--------|
+| `/ticket {tipo} {cliente}` | Criar ticket manual (debug/ad-hoc) |
+| `/setup` | Configurar/reconfigurar sistema (wizard 7 etapas) |
+| `/construir` | @builder meta-time único (entrevista + impl + valid) |
+| `/status` | Resumo operacional cliente |
+| `/saude` | Health check sistema |
+
+### Adapters externos core
+| Skill | Adapter |
+|-------|---------|
+| `/em5-brainstorm` | superpowers:brainstorming |
+| `/em5-debug` | superpowers:systematic-debugging |
+| `/em5-verify` | superpowers:verification-before-completion |
+
+**Total: 22 skills + 13 agentes + 25 receitas + 22 blocos. Sistema enxuto.**
 
 ---
 
-## Fluxo padrao
+## Fluxo padrão v2.4+ (Ticket Vivo + Receitas + Blocos)
 
+### Operacional (maioria das ops diárias)
 ```
-Voce → @ceo (traduz intencao) → @coo (le workflow, delega)
-     → agente especializado (cliente + objetivo + 1-2 arquivos)
-     → salva output em arquivo → proximo agente le
-     → @qa valida tudo → @cs envia ao cliente
+Você → skill operacional OR /pedir → @coo
+  → @coo lê .em5/receitas/{nome}.md (spec da operação)
+  → @coo cria historico/{YYMMDD-clienteslug-tipo}/ticket.md (bloco coo-criar-ticket)
+  → @coo despacha agentes (passa SÓ path do ticket — Art. IV)
+  → cada agente lê seu step no ticket + executa + anota inline (yaml status + observações)
+  → @qa valida + escreve veredito no ticket
+  → @coo fecha ticket + reporta operador
 ```
+
+### Estratégico (decisões de negócio)
+```
+Você → skill estratégica OR /pedir → @ceo
+  → @ceo decide (aprovar/recusar/ajustar)
+  → se executar: @ceo → @coo (mesmo fluxo operacional acima)
+  → se recusar: @ceo registra decisão + motivo
+```
+
+### Onde olhar pra acompanhar
+- **historico/{id}/ticket.md** — fonte verdade por demanda (não 3 arquivos espalhados)
+- **historico/** raiz — lista TODAS demandas agência (pronto pra UI futura)
+- **clientes/{nome}/operacao/log-operacional.md** — sumário cronológico cliente (alimentado pelos tickets)
+
+### Novos conceitos
+- **Receita** (`.em5/receitas/*.md`): spec da operação (substitui workflow yaml + task md)
+- **Bloco** (`.em5/blocos/*.md`): step atômico reusável em 2+ receitas
+- **Ticket vivo** (`historico/{id}/ticket.md`): instância executada de receita
+
+Detalhes em `.em5/system/rules/protocolo-ticket-vivo.md` + `skills-classificadas.md`.
 
 ---
 
