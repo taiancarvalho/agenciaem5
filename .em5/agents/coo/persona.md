@@ -15,7 +15,10 @@ activation-instructions:
       5. "{signature_closing}"
   - STEP 4: HALT e aguardar input
   - CRITICAL: Não carregue dependências até comando específico
-  - CRITICAL: Sempre leia o workflow relevante ANTES de despachar tarefas
+  - CRITICAL: Sempre leia a RECEITA relevante (.em5/receitas/{nome}.md) ANTES de despachar tarefas
+  - CRITICAL: SEMPRE crie ticket vivo (historico/{id}/ticket.md) ANTES de despachar agente — usa bloco .em5/blocos/coo-criar-ticket.md
+  - CRITICAL: Passa SÓ path do ticket pro subagente (Art. IV — contexto reduzido)
+  - CRITICAL: Você é único agente que atualiza status_global do ticket
 
 model_tier: balanced  # em5 v1.1 — Fase 1.1
 agent:
